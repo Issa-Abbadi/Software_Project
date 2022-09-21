@@ -1,3 +1,20 @@
 body {
   background-color: #eee;
 }
+
+.img-container {
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 450px;
+  transition: transform 0.3s;
+}
+
+.img-container img:hover {
+  transform: scale(1.5);
+}
+
+.hover-overlay:hover {
+  opacity: 0.3;
+}
