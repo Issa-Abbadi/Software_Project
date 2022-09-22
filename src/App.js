@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Nav from "./components/nav";
+import Nav from "./components/Nav_bar";
 import Footer from "./components/footer";
 
 import {
@@ -14,6 +14,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import Cart from "./Pages/Cart";
+import Login from "./Pages/Login";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
 
           <Route exact path="/cart" element={<Cart />} />
 
+          <Route exact path="/login" element={<Login />} />
           {/* <Navigate to="/" replace={true} /> */}
         </Routes>
 
