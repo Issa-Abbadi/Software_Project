@@ -7,30 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./Home.css";
-import Product from "../components/Product";
-
-const pic = ` 
-
-
-<div class="card">
-<div class="hover-overlay ">
-<a href='#!'>
-  <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid"/>
- </a>
-</div>
-
-<div class="card-body">
-
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <a href="#!" class="btn btn-primary">Button</a>
-</div>
-</div>`;
 
 function Home() {
   const [products, setProducts] = useState([]);
-
-  let x = 0;
 
   useEffect(() => {
     axios
@@ -54,7 +33,7 @@ function Home() {
     return (
       <>
         <Row>
-          <Col>
+          <Col sm={6} md={3}>
             <div class="card">
               <div class="hover-overlay ">
                 <a href="#!">
@@ -63,18 +42,18 @@ function Home() {
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{products[i].product_name}</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
                 <a href="#!" class="btn btn-primary">
-                  Button
+                  Buy
                 </a>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col sm={6} md={3}>
             <div class="card">
               <div class="hover-overlay ">
                 <a href="#!">
@@ -83,18 +62,18 @@ function Home() {
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{products[i + 1].product_name}</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
                 <a href="#!" class="btn btn-primary">
-                  Button
+                  Buy
                 </a>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col sm={6} md={3}>
             <div class="card">
               <div class="hover-overlay ">
                 <a href="#!">
@@ -103,18 +82,18 @@ function Home() {
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{products[i + 2].product_name}</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
                 <a href="#!" class="btn btn-primary">
-                  Button
+                  Buy
                 </a>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col sm={6} md={3}>
             <div class="card">
               <div class="hover-overlay ">
                 <a href="#!">
@@ -123,13 +102,13 @@ function Home() {
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{products[i + 3].product_name}</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
                 <a href="#!" class="btn btn-primary">
-                  Button
+                  Buy
                 </a>
               </div>
             </div>
@@ -152,7 +131,7 @@ function Home() {
         <>
           <Row>
             {" "}
-            <Col>
+            <Col sm={6} md={3}>
               <div class="card">
                 <div class="hover-overlay ">
                   <a href="#!">
@@ -161,19 +140,19 @@ function Home() {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{products[i].product_name}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
                   <a href="#!" class="btn btn-primary">
-                    Button
+                    Buy
                   </a>
                 </div>
               </div>
             </Col>
-            <Col></Col>
-            <Col></Col> <Col></Col>
+            <Col sm={6} md={3}></Col>
+            <Col sm={6} md={3}></Col> <Col sm={6} md={3}></Col>
           </Row>
         </>
       );
@@ -182,7 +161,7 @@ function Home() {
         <>
           <Row>
             {" "}
-            <Col>
+            <Col sm={6} md={3}>
               <div class="card">
                 <div class="hover-overlay ">
                   <a href="#!">
@@ -191,18 +170,18 @@ function Home() {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{products[i].product_name}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
                   <a href="#!" class="btn btn-primary">
-                    Button
+                    Buy
                   </a>
                 </div>
               </div>
             </Col>
-            <Col>
+            <Col sm={6} md={3}>
               <div class="card">
                 <div class="hover-overlay ">
                   <a href="#!">
@@ -211,19 +190,19 @@ function Home() {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{products[i + 1].product_name}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
                   <a href="#!" class="btn btn-primary">
-                    Button
+                    Buy
                   </a>
                 </div>
               </div>
             </Col>
-            <Col></Col>
-            <Col></Col>
+            <Col sm={6} md={3}></Col>
+            <Col sm={6} md={3}></Col>
           </Row>
         </>
       );
@@ -232,7 +211,7 @@ function Home() {
         <>
           <Row>
             {" "}
-            <Col>
+            <Col sm={6} md={3}>
               <div class="card">
                 <div class="hover-overlay ">
                   <a href="#!">
@@ -241,18 +220,18 @@ function Home() {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{products[i].product_name}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
                   <a href="#!" class="btn btn-primary">
-                    Button
+                    Buy
                   </a>
                 </div>
               </div>
             </Col>
-            <Col>
+            <Col sm={6} md={3}>
               <div class="card">
                 <div class="hover-overlay ">
                   <a href="#!">
@@ -261,18 +240,18 @@ function Home() {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{products[i + 1].product_name}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
                   <a href="#!" class="btn btn-primary">
-                    Button
+                    Buy
                   </a>
                 </div>
               </div>
             </Col>
-            <Col>
+            <Col sm={6} md={3}>
               <div class="card">
                 <div class="hover-overlay ">
                   <a href="#!">
@@ -281,18 +260,18 @@ function Home() {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{products[i + 2].product_name}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
                   <a href="#!" class="btn btn-primary">
-                    Button
+                    Buy
                   </a>
                 </div>
               </div>
             </Col>
-            <Col></Col>
+            <Col sm={6} md={3}></Col>
           </Row>
         </>
       );
@@ -303,109 +282,24 @@ function Home() {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col sm={7}>
-            <div class="img-container" style={{ "max-width": "22rem" }}>
-              <img
-                src="https://mdbootstrap.com/img/new/standard/city/053.webp"
-                class="w-100"
-              />
-            </div>
-          </Col>
-        </Row>
-      </Container>
-
-      <Container>
-        {DataTable()}
-        <Row>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-        </Row>{" "}
-        <Row>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-        </Row>{" "}
-        <Row>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-        </Row>{" "}
-        <Row>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-          <Col>
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: pic }} />
-          </Col>
-        </Row>
-      </Container>
+      <Container className="Home">{DataTable()}</Container>
     </>
   );
 }
 
 export default Home;
+
+{
+  /* <Container>
+<Row>
+  <Col sm={7}>
+    <div class="img-container" style={{ "max-width": "22rem" }}>
+      <img
+        src="https://mdbootstrap.com/img/new/standard/city/053.webp"
+        class="w-100"
+      />
+    </div>
+  </Col>
+</Row>
+</Container> */
+}
