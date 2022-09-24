@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -129,25 +130,27 @@ function Nav_bar() {
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown
-                id="nav-dropdown-dark-example2"
+                id="nav-dropdown-dark-example2 "
                 style={{
                   margin: "0",
                   padding: "0",
                 }}
                 title={
                   <div>
-                    <MDBIcon
-                      fas
-                      icon="heart"
-                      style={{
-                        color: "red",
-                        width: "10px",
-                        "margin-top": "0px",
+                    <a class="align-start">
+                      <MDBIcon
+                        fas
+                        icon="heart"
+                        style={{
+                          color: "red",
+                          width: "10px",
+                          "margin-top": "0px",
 
-                        "padding-top": "px",
-                        "margin-bottom": "0px",
-                      }}
-                    />
+                          "padding-top": "px",
+                          "margin-bottom": "0px",
+                        }}
+                      />
+                    </a>
                   </div>
                   // <i class="fa-solid fa-heart" ></i>
                 }
