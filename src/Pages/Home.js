@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/Row";
@@ -10,6 +11,7 @@ import "./Home.css";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  // const [value, setValue] = React.useState(0);
 
   useEffect(() => {
     axios
@@ -24,6 +26,64 @@ function Home() {
         console.log(error);
       });
   }, []);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setValue((v) => {
+  //       return v === 4 ? 0 : v + 1;
+  //     });
+  //   }, 1500);
+  //   return () => clearInterval(interval);
+  // }, []);
+  function ControlledCarousel() {
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+      setIndex(selectedIndex);
+    };
+
+    return (
+      <Carousel activeIndex={index} onSelect={handleSelect} variant="dark">
+        <Carousel.Item interval={1500}>
+          <img
+            className="cover d-block w-100"
+            src={imgs[0]}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="cover d-block w-100"
+            src={imgs[1]}
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="cover d-block w-100"
+            src={imgs[2]}
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    );
+  }
 
   let size = Object.keys(products).length;
   console.log(size);
@@ -280,9 +340,20 @@ function Home() {
     return ret;
   };
 
+  const imgs = [
+    "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1572656934803-d2162b2e98bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "https://images.unsplash.com/photo-1501924497965-792fefaea3dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80",
+  ];
+
   return (
     <>
-      <Container className="Home">{DataTable()}</Container>
+      <Container className="Home">
+        <ControlledCarousel />
+        {DataTable()}
+      </Container>
     </>
   );
 }

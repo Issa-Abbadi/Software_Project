@@ -28,3 +28,13 @@ body {
   max-height: 206px;
   /* width: 290px; */
 }
+
+.Home .cover {
+  width: 100%;
+  height: calc(100vh - 75px);
+
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
