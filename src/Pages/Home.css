@@ -1,5 +1,6 @@
 body {
   background-color: #eee;
+  font-family: Cairo;
 }
 
 .img-container {
@@ -31,10 +32,65 @@ body {
 
 .Home .cover {
   width: 100%;
-  height: calc(100vh - 75px);
+  height:  auto;
 
-  background-size: cover;
+  /* calc(100vh - 75px); */
+  max-width: 100%;
+  max-height: calc(100vh - 75px);
+  display: block;
+}
+
+.Home .sideImg1{
+  width: 70%;
+  height: auto;
+  max-height: calc(100vh - 75px);
+  max-width: 70%;
+  margin-top: 50px;
+  display: inline-block;
+  padding-right: 10px;
+  object-fit: cover;
+}
+
+.Home .sideImg2{
+  width: 30%;
+  height: auto;
+  max-height: calc(100vh - 75px);
+  max-width: 30%;
+  display: inline-block;
+  margin-top: 50px;
+  object-fit: cover;
+}
+
+.Home div .coverImgs{
+  overflow: hidden;
+  height: auto;
+  max-height: calc(100vh - 75px);
+  min-height:  calc(100vh - 75px);
+  display: block;
+}
+
+.Home .hr-inline {
+  display: inline;
+}
+
+.separator {
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgb(133, 128, 128);
+}
+
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
 }

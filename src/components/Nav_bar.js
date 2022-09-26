@@ -15,7 +15,7 @@ function Nav_bar() {
   const [isLogin, setIsLogin] = useState(0);
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg">
+     <Navbar bg="dark" variant="dark" expand="lg">
         <a class="navbar-brand" href="/">
           <img
             src="LOGO2.png"

@@ -7,6 +7,7 @@ import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+// import CenterMode from "../components/centerMode"
 import "./Home.css";
 
 function Home() {
@@ -351,8 +352,25 @@ function Home() {
   return (
     <>
       <Container className="Home">
-        <ControlledCarousel />
-        {DataTable()}
+        <a href="">
+          <ControlledCarousel />
+        </a>
+       <div class="coverImgs">
+        <a href="#">
+            <img src="./imgs/cover.jpg" alt="" class="sideImg1" />
+        </a>
+        <a href="#">
+            <img src="../imgs/soft&easy.jpg" alt="" class="sideImg2"  />
+        </a>
+       </div>
+       <div>
+         <h1 >
+         <div class="separator">متاجر عرضناها لك</div>
+         </h1>
+
+       </div>
+       {/* <CenterMode /> */}
+        {/* {DataTable()} */}
       </Container>
     </>
   );
