@@ -8,14 +8,37 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "https://kit.fontawesome.com/a076d05399.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
+import "./navbar.css";
 
 import { Link } from "react-router-dom";
 
 function Nav_bar() {
   const [isLogin, setIsLogin] = useState(0);
+  const [showKitchen, setShowKitchen] = useState(false);
+  const showKitchenDropdown = (e) => {
+    setShowKitchen(!showKitchen);
+  };
+  const hideKitchenDropdown = (e) => {
+    setShowKitchen(false);
+  };
+  const [showTable, setShowTable] = useState(false);
+  const showTableDropdown = (e) => {
+    setShowTable(!showTable);
+  };
+  const hideTableDropdown = (e) => {
+    setShowTable(false);
+  };
+
+  const [showHome, setShowHome] = useState(false);
+  const showHomeDropdown = (e) => {
+    setShowHome(!showHome);
+  };
+  const hideHomeDropdown = (e) => {
+    setShowHome(false);
+  };
   return (
     <>
-     <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar class="navbar" bg="dark" variant="dark" expand="lg">
         <a class="navbar-brand" href="/">
           <img
             src="LOGO2.png"
@@ -33,58 +56,86 @@ function Nav_bar() {
           <Navbar.Collapse id="ftco-nac">
             <Nav className="me-auto">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <Link to="/" class="nav-link">
-                    {" "}
-                    Home
-                  </Link>
-                </li>
                 <NavDropdown
-                  id="nav-dropdown-dark-example"
-                  title="Dropdown"
+                  title="المطبخ"
+                  id="collasible-nav-dropdown"
+                  show={showKitchen}
+                  onMouseEnter={showKitchenDropdown}
+                  onMouseLeave={hideKitchenDropdown}
                   menuVariant="dark"
+                  className="li"
                 >
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">
+                    رفايع المطبخ
+                  </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
-                    Another action
+                    أواني الطبخ
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
+                    توزيع وتوابل
                   </NavDropdown.Item>
                 </NavDropdown>
 
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Catalog
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Blog
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <Link to="/about" class="nav-link">
-                    About
-                  </Link>
-                </li>
+                <NavDropdown
+                  title="السفرة"
+                  id="collasible-nav-dropdown"
+                  show={showTable}
+                  onMouseEnter={showTableDropdown}
+                  onMouseLeave={hideTableDropdown}
+                  menuVariant="dark"
+                  className="li"
+                >
+                  <NavDropdown.Item href="#action/3.1">
+                    أدوات زجاجية
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    أطقم سفرة
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    شاي وجاتوه
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    أركوبيركس
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    شوك ومعالق
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">تقديم</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    خذف وبورسلين
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    وبونشاينا
+                  </NavDropdown.Item>
+                </NavDropdown>
+
+                <NavDropdown
+                  title="المنزل"
+                  id="collasible-nav-dropdown"
+                  show={showHome}
+                  onMouseEnter={showHomeDropdown}
+                  onMouseLeave={hideHomeDropdown}
+                  menuVariant="dark"
+                  className="li"
+                >
+                  <NavDropdown.Item href="#action/3.1">
+                    رفايع الحمام
+                  </NavDropdown.Item>
+                </NavDropdown>
               </ul>
             </Nav>
           </Navbar.Collapse>
 
-          <form class="d-flex" role="search">
+          <form class="d-flex col-md-4" role="search">
             <input
               class="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="بحث"
               aria-label="Search"
+              Style={{ width: "400px" }}
             />
             <button class="btn btn-outline-primary" type="submit">
-              Search
+              بحث
             </button>
           </form>
           {!isLogin && (
@@ -95,7 +146,7 @@ function Nav_bar() {
                   style={{ color: "#0d6efd" }}
                 ></i>
               </a>
-              <NavDropdown
+              {/* <NavDropdown
                 id="nav-dropdown-dark-example2"
                 title={
                   <a
@@ -128,8 +179,8 @@ function Nav_bar() {
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
                 </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown
+              </NavDropdown> */}
+              {/* <NavDropdown
                 id="nav-dropdown-dark-example2 "
                 style={{
                   margin: "0",
@@ -167,7 +218,7 @@ function Nav_bar() {
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
 
               <NavDropdown
                 align="end"
@@ -192,16 +243,16 @@ function Nav_bar() {
                 }
                 menuVariant="dark"
               >
-                <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/profile">
+                  تفاصيل الطلب
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Another action
+                  تسجيل دخول / إنشاء حساب
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.3">حسابي</NavDropdown.Item>
+
                 <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                  قائمة الرغبات
                 </NavDropdown.Item>
               </NavDropdown>
             </>
