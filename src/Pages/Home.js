@@ -7,7 +7,8 @@ import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import CenterMode from "../components/centerMode"
+import CenterMode from "../components/CenterMode";
+import Card from "../components/Card";
 import "./Home.css";
 
 function Home() {
@@ -48,7 +49,7 @@ function Home() {
         <Carousel.Item interval={1500}>
           <img
             className="cover d-block w-100"
-            src={imgs[0]}
+            src={imgs[0].url}
             alt="First slide"
           />
           <Carousel.Caption>
@@ -59,7 +60,7 @@ function Home() {
         <Carousel.Item>
           <img
             className="cover d-block w-100"
-            src={imgs[1]}
+            src={imgs[1].url}
             alt="Second slide"
           />
 
@@ -71,7 +72,7 @@ function Home() {
         <Carousel.Item>
           <img
             className="cover d-block w-100"
-            src={imgs[2]}
+            src={imgs[2].url}
             alt="Third slide"
           />
 
@@ -342,11 +343,21 @@ function Home() {
   };
 
   const imgs = [
-    "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1572656934803-d2162b2e98bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    "https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    "https://images.unsplash.com/photo-1501924497965-792fefaea3dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80",
+    {
+      url: "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1572656934803-d2162b2e98bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1501924497965-792fefaea3dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80",
+    },
   ];
 
   return (
@@ -355,21 +366,20 @@ function Home() {
         <a href="">
           <ControlledCarousel />
         </a>
-       <div class="coverImgs">
-        <a href="#">
+        <div class="coverImgs">
+          <a href="#">
             <img src="./imgs/cover.jpg" alt="" class="sideImg1" />
-        </a>
-        <a href="#">
-            <img src="../imgs/soft&easy.jpg" alt="" class="sideImg2"  />
-        </a>
-       </div>
-       <div>
-         <h1 >
-         <div class="separator">متاجر عرضناها لك</div>
-         </h1>
+          </a>
+          <a href="#">
+            <img src="../imgs/soft&easy.jpg" alt="" class="sideImg2" />
+          </a>
+        </div>
 
-       </div>
-       {/* <CenterMode /> */}
+        {/* <div className="centerMode">{<CenterMode />}</div> */}
+        <Card title="متاجر عرضناها لك" data={imgs} />
+        <Card title="الأعلى مبيعاً" data={imgs} />
+        <Card title="عروض خاصة" data={imgs} />
+        <Card title="جديد" data={imgs} />
         {/* {DataTable()} */}
       </Container>
     </>

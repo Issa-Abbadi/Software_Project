@@ -3,20 +3,20 @@ body {
   font-family: Cairo;
 }
 
-.img-container {
+.Home .img-container {
   overflow: hidden;
 }
 
-.img-container img {
+.Home .img-container img {
   width: 450px;
   transition: transform 0.3s;
 }
 
-.img-container img:hover {
+.Home .img-container img:hover {
   transform: scale(1.5);
 }
 
-.hover-overlay:hover {
+.Home .hover-overlay:hover {
   opacity: 0.6;
 }
 
@@ -32,7 +32,7 @@ body {
 
 .Home .cover {
   width: 100%;
-  height:  auto;
+  height: auto;
 
   /* calc(100vh - 75px); */
   max-width: 100%;
@@ -40,7 +40,7 @@ body {
   display: block;
 }
 
-.Home .sideImg1{
+.Home .sideImg1 {
   width: 70%;
   height: auto;
   max-height: calc(100vh - 75px);
@@ -51,7 +51,7 @@ body {
   object-fit: cover;
 }
 
-.Home .sideImg2{
+.Home .sideImg2 {
   width: 30%;
   height: auto;
   max-height: calc(100vh - 75px);
@@ -61,11 +61,11 @@ body {
   object-fit: cover;
 }
 
-.Home div .coverImgs{
+.Home div .coverImgs {
   overflow: hidden;
   height: auto;
   max-height: calc(100vh - 75px);
-  min-height:  calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
   display: block;
 }
 
@@ -74,7 +74,8 @@ body {
 }
 
 .separator {
-  margin-top: 20px;
+  margin-top: 60px;
+
   display: flex;
   align-items: center;
   text-align: center;
@@ -82,15 +83,19 @@ body {
 
 .separator::before,
 .separator::after {
-  content: '';
+  content: "";
   flex: 1;
   border-bottom: 1px solid rgb(133, 128, 128);
 }
 
 .separator:not(:empty)::before {
-  margin-right: .25em;
+  margin-right: 0.25em;
 }
 
 .separator:not(:empty)::after {
-  margin-left: .25em;
+  margin-left: 0.25em;
+}
+
+.Home .centerMode {
+  height: 200px;
 }
