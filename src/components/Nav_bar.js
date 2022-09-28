@@ -232,13 +232,14 @@ function Nav_bar() {
                     data-mdb-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
+                    <div id="profilePic"></div>
+                    {/* <img
                       src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                       class="rounded-circle"
                       height="30"
                       alt="Black and White Portrait of a Man"
                       loading="lazy"
-                    />
+                    /> */}
                   </a>
                 }
                 menuVariant="dark"

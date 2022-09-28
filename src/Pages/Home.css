@@ -3,20 +3,20 @@ body {
   font-family: Cairo;
 }
 
-.Home .img-container {
+.img-container {
   overflow: hidden;
 }
 
-.Home .img-container img {
+.img-container img {
   width: 450px;
   transition: transform 0.3s;
 }
 
-.Home .img-container img:hover {
+.img-container img:hover {
   transform: scale(1.5);
 }
 
-.Home .hover-overlay:hover {
+.hover-overlay:hover {
   opacity: 0.6;
 }
 
@@ -74,8 +74,7 @@ body {
 }
 
 .separator {
-  margin-top: 60px;
-
+  margin-top: 20px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -96,6 +95,36 @@ body {
   margin-left: 0.25em;
 }
 
-.Home .centerMode {
-  height: 200px;
+.text-reset {
+  text-decoration: none;
+}
+
+.text-reset:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 {
+  margin: -10px;
+}
+
+#footHead {
+  margin-top: 20px;
+}
+
+.footer .link-color:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.footer .fab:hover {
+  opacity: 0.8;
+}
+
+#profilePic {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: inline-block;
 }

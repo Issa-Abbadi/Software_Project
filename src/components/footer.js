@@ -11,88 +11,131 @@ function footer() {
         class="text-center text-lg-start bg-dark text-muted "
         style={{ "z-index": "1000" }}
       >
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-          <div>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="me-4 text-reset">
-              <i className="fab fa-google"></i>
-            </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
-        </section>
-
-        <section class="">
+        <section class="footer">
           <div class="container text-center text-md-start mt-5">
             <div class="row mt-3">
-              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <div
+                class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"
+                id="footHead"
+              >
                 <h6 class="text-uppercase fw-bold mb-4">
                   <i class="fas fa-gem me-3"></i>Houseware
                 </h6>
                 <p>We are a company providing the best Houseware for you </p>
+                <div>
+                  <a
+                    href="https://www.facebook.com/"
+                    class="me-4 text-reset"
+                    id="social"
+                  >
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a
+                    href="https://twitter.com/"
+                    class="me-4 text-reset"
+                    id="social"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a
+                    href="https://google.com/"
+                    class="me-4 text-reset"
+                    id="social"
+                  >
+                    <i className="fab fa-google"></i>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/"
+                    class="me-4 text-reset"
+                    id="social"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/"
+                    class="me-4 text-reset"
+                    id="social"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a
+                    href="https://github.com/"
+                    class="me-4 text-reset"
+                    id="social"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
               </div>
 
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 class="text-uppercase fw-bold mb-4">Products</h6>
-                <p>
+              <div
+                class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"
+                id="footHead"
+              >
+                <h6 class="text-uppercase fw-bold mb-4">CUSTOMER SERVICE</h6>
+                <p className="link-color">
                   <a href="#!" class="text-reset">
-                    Tools
+                    1-866-668-5962
                   </a>
                 </p>
-                <p>
+                <p className="link-color">
                   <a href="#!" class="text-reset">
-                    Tools
+                    Live Chat
                   </a>
                 </p>
-                <p>
+                <p className="link-color">
                   <a href="#!" class="text-reset">
-                    Tools
+                    Contact Us
                   </a>
                 </p>
-                <p>
+                <p className="link-color">
                   <a href="#!" class="text-reset">
-                    Tools
+                    FAQ
                   </a>
                 </p>
-              </div>
-
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
-                <p>
+                <p className="link-color">
                   <a href="#!" class="text-reset">
-                    Pricing
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">
-                    Settings
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">
-                    Orders
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">
-                    Help
+                    Shipping & Processing
                   </a>
                 </p>
               </div>
 
-              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <div
+                class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4"
+                id="footHead"
+              >
+                <h6 class="text-uppercase fw-bold mb-4">Our Work</h6>
+                <p className="link-color">
+                  <a href="#!" class="text-reset">
+                    About Us
+                  </a>
+                </p>
+                <p className="link-color">
+                  <a href="#!" class="text-reset">
+                    Outlet Stores
+                  </a>
+                </p>
+                <p className="link-color">
+                  <a href="#!" class="text-reset">
+                    Accessibility Statement
+                  </a>
+                </p>
+                <p className="link-color">
+                  <a href="#!" class="text-reset">
+                    Conditions of Use
+                  </a>
+                </p>
+                <p className="link-color">
+                  <a href="#!" class="text-reset">
+                    Privacy
+                  </a>
+                </p>
+              </div>
+
+              <div
+                class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4"
+                id="footHead"
+              >
                 <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                 <p>
                   <i class="fas fa-home me-3"></i> New York, NY 10012, US
