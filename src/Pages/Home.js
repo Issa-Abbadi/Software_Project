@@ -402,3 +402,24 @@ export default Home;
 </Row>
 </Container> */
 }
+
+// const navigate = useNavigate()
+
+//     useEffect(() => {
+//         const token = localStorage.getItem('TOKEN')
+//         if (!token) {
+//             navigate('/signin')
+//         }
+//     }, [])
+
+{
+  /* <div>HOME</div>
+            <div>
+                <span> {localStorage.getItem('EMAIL')} </span>
+                <button
+                    onClick={() => {
+                        localStorage.clear()
+                        navigate('/signin')
+                    }}
+                > LOGOUT </button> */
+}

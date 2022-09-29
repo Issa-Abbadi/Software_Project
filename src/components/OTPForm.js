@@ -4,11 +4,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormGroup, Container, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-function LoginForm(props) {
+function OTPForm(props) {
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("You have enter an invalid email address")
-      .required("Required"),
+    OTP: Yup.string()
+    .required("Required"),
     password: Yup.string()
       .required("No password provided.")
       .min(8, "Password is too short - should be 8 chars minimum.")
@@ -30,18 +29,18 @@ function LoginForm(props) {
           <div className="form-wrapper outcard">
             <Formik {...props} validationSchema={validationSchema}>
               <Form>
-                <h1>LOGIN</h1>
+                <h1>Forget Password</h1>
                 <FormGroup>
-                  <label htmlFor="email">Email</label>
-                  <Field name="email" type="email" className="form-control" />
+                  <label htmlFor="OTP">Code</label>
+                  <Field name="OTP" type="text" className="form-control" />
                   <ErrorMessage
-                    name="email"
+                    name="OTP"
                     className="d-block invalid-feedback"
                     component="span"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">New Password</label>
                   <Field
                     name="password"
                     type="password"
@@ -62,34 +61,6 @@ function LoginForm(props) {
                 >
                   {props.children}
                 </Button>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/signup"}
-                >
-                  {" "}
-                  SIGN UP{" "}
-                </Link>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/forget-pass"}
-                >
-                  {" "}
-                  Forget Password{" "}
-                </Link>
               </Form>
             </Formik>
           </div>
@@ -99,4 +70,4 @@ function LoginForm(props) {
   );
 }
 
-export default LoginForm;
+export default OTPForm;

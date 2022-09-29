@@ -5,15 +5,28 @@ let mongoose = require("mongoose"),
 // Student Model
 let accountSchema = require("../models/Account");
 
-router.post("/create-account", (req, res, next) => {
-  accountSchema.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      console.log(data);
-      res.json(data);
-    }
-  });
+router.post("/", (req, res) => {
+  console.log("in ...");
+  console.log(req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log(result, "11");
+      // match password with req.body.password
+      if (result.password !== req.body.password) {
+        res.send({ code: 404, message: "password wrong" });
+      } else {
+        res.send({
+          email: result.email,
+          code: 200,
+          message: "user Found",
+          token: "hfgdhg",
+        });
+      }
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
 });
 
 module.exports = router;

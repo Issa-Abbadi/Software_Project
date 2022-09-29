@@ -15,6 +15,9 @@ import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import Cart from "./Pages/Cart";
 import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
+import ForgetPassword from "./Pages/ForgetPassword";
+import NewSubmit from "./Pages/NewSubmit";
 
 function App() {
   return (
@@ -34,6 +37,12 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
 
           <Route exact path="/login" element={<Login />} />
+
+          <Route exact path="/signup" element={<SignUp />} />
+
+          <Route exact path="/forget-pass" element={<ForgetPassword />} />
+
+          <Route exact path="/otp" element={<NewSubmit />} />
           {/* <Navigate to="/" replace={true} /> */}
         </Routes>
 

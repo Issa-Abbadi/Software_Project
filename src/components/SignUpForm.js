@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormGroup, Container, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-function LoginForm(props) {
+function SignUpForm(props) {
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email("You have enter an invalid email address")
@@ -30,7 +30,7 @@ function LoginForm(props) {
           <div className="form-wrapper outcard">
             <Formik {...props} validationSchema={validationSchema}>
               <Form>
-                <h1>LOGIN</h1>
+                <h1>SIGNUP</h1>
                 <FormGroup>
                   <label htmlFor="email">Email</label>
                   <Field name="email" type="email" className="form-control" />
@@ -74,21 +74,7 @@ function LoginForm(props) {
                   to={"/signup"}
                 >
                   {" "}
-                  SIGN UP{" "}
-                </Link>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/forget-pass"}
-                >
-                  {" "}
-                  Forget Password{" "}
+                  Login{" "}
                 </Link>
               </Form>
             </Formik>
@@ -99,4 +85,4 @@ function LoginForm(props) {
   );
 }
 
-export default LoginForm;
+export default SignUpForm;
