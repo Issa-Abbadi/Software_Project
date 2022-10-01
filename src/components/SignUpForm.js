@@ -71,7 +71,7 @@ function SignUpForm(props) {
                     marginLeft: "5px",
                     marginRight: "5px",
                   }}
-                  to={"/signup"}
+                  to={"/login"}
                 >
                   {" "}
                   Login{" "}

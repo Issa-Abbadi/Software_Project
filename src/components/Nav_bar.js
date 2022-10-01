@@ -13,7 +13,7 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 
 function Nav_bar() {
-  const [isLogin, setIsLogin] = useState(0);
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
   const [showKitchen, setShowKitchen] = useState(false);
   const showKitchenDropdown = (e) => {
     setShowKitchen(!showKitchen);
@@ -36,8 +36,10 @@ function Nav_bar() {
   const hideHomeDropdown = (e) => {
     setShowHome(false);
   };
+
   return (
     <>
+      {console.log(isLogin)}
       <Navbar class="navbar" bg="dark" variant="dark" expand="lg">
         <a class="navbar-brand" href="/">
           <img
@@ -244,31 +246,65 @@ function Nav_bar() {
                 }
                 menuVariant="dark"
               >
-                <NavDropdown.Item href="/profile">
-                  تفاصيل الطلب
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item href="/cart">تفاصيل الطلب</NavDropdown.Item>
+                <NavDropdown.Item href="/login">
                   تسجيل دخول / إنشاء حساب
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">حسابي</NavDropdown.Item>
+                <NavDropdown.Item href="/profile">حسابي</NavDropdown.Item>
 
                 <NavDropdown.Item href="#action/3.4">
                   قائمة الرغبات
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/login" onClick={localStorage.clear()}>
+                  تسجيل خروج
                 </NavDropdown.Item>
               </NavDropdown>
             </>
           )}
           {isLogin && (
             <>
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  {" "}
-                  <Link to="/login" class="nav-link">
-                    {" "}
-                    Login
-                  </Link>
-                </li>
-              </ul>
+              <a class="text-reset m-2" href="/cart">
+                <i
+                  class="fas fa-shopping-cart"
+                  style={{ color: "#0d6efd" }}
+                ></i>
+              </a>
+              <NavDropdown
+                align="end"
+                id="nav-dropdown-dark-example3"
+                title={
+                  <a
+                    class="dropdown-toggle hidden-arrow align-start"
+                    href="/profile"
+                    id="navbarDropdownMenuAvatar"
+                    role="button"
+                    data-mdb-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                      class="rounded-circle"
+                      height="30"
+                      alt="Black and White Portrait of a Man"
+                      loading="lazy"
+                    />
+                  </a>
+                }
+                menuVariant="dark"
+              >
+                <NavDropdown.Item href="/cart">تفاصيل الطلب</NavDropdown.Item>
+                <NavDropdown.Item href="/login">
+                  تسجيل دخول / إنشاء حساب
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/profile">حسابي</NavDropdown.Item>
+
+                <NavDropdown.Item href="#action/3.4">
+                  قائمة الرغبات
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/login" onClick={localStorage.clear()}>
+                  تسجيل خروج
+                </NavDropdown.Item>
+              </NavDropdown>
             </>
           )}
         </Container>
