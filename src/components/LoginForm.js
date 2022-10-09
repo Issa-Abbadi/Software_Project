@@ -19,7 +19,7 @@ function LoginForm(props) {
     <>
       <Container>
         <Col
-          md={{ span: 4, offset: 4 }}
+          // md={{ span: 4, offset: 4 }}
           style={{
             "background-color": "#eee",
             padding: "2rem",
@@ -29,22 +29,23 @@ function LoginForm(props) {
         >
           <div className="form-wrapper outcard">
             <Formik {...props} validationSchema={validationSchema}>
-              <Form>
-                <h1>LOGIN</h1>
-                <FormGroup>
-                  <label htmlFor="email">Email</label>
-                  <Field name="email" type="email" className="form-control" />
+              <Form class = "login">
+                <h1>تسجيل الدخول</h1>
+                <FormGroup class = "login-title">
+                  <label htmlFor="email">الإيميل</label>
+                  <Field name="email" type="email" className="form-control" placeholder="الإيميل"/>
                   <ErrorMessage
                     name="email"
                     className="d-block invalid-feedback"
                     component="span"
                   />
                 </FormGroup>
-                <FormGroup>
-                  <label htmlFor="password">Password</label>
+                <FormGroup class = "password">
+                  <label htmlFor="password">كلمة السر</label>
                   <Field
                     name="password"
                     type="password"
+                    placeholder= "كلمة السر"
                     className="form-control"
                   />
                   <ErrorMessage
@@ -53,8 +54,26 @@ function LoginForm(props) {
                     component="span"
                   />
                 </FormGroup>
+                  <span class = "remembering">
+                    <label htmlFor="remeber">تذكرني</label>
+                    <input id="remeber" type="checkbox" />
+                  </span>
+                    <Link
+                  class="text-reset"
+                  style={{
+                    textAlign: "center",
+                    display: "inline-block",
+                    marginTop: "5px",
+                    marginLeft: "5px",
+                    marginRight: "5px",
+                  }}
+                  to={"/forget-pass"}
+                >
+                  {" "}
+                  نسيت كلمة السر ؟{" "}
+                </Link>
                 <Button
-                  style={{ margin: "2rem", display: "block" }}
+                  style={{display: "block" , width: "100%" , marginTop: "5%" }}
                   variant="dark"
                   size="lg"
                   block="block"
@@ -76,20 +95,7 @@ function LoginForm(props) {
                   {" "}
                   SIGN UP{" "}
                 </Link>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/forget-pass"}
-                >
-                  {" "}
-                  Forget Password{" "}
-                </Link>
+               
               </Form>
             </Formik>
           </div>

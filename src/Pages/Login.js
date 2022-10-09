@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import "./loginAndSign.css";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -33,13 +34,23 @@ function Login(props) {
 
   return (
     <>
-      <LoginForm
+      <div class="login-container">
+        <div class = "login-form">
+        <LoginForm 
         initialValues={formValues}
         onSubmit={onSubmit}
         enableReinitialize
       >
-        Login
+        تسجيل الدخول
       </LoginForm>
+        </div>
+        <div class = "side-login">
+             <h1>مستخدم جديد</h1>
+             
+        </div>
+           
+      </div>
+     
     </>
   );
 }
