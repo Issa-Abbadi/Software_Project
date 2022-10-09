@@ -13,3 +13,12 @@
   left: 0;
   background-color: #0d6efd;
 }
+
+.navbar .navbar-link {
+  text-decoration: none;
+  color: darkgrey;
+}
+
+.navbar .navbar-link:hover {
+  color: white;
+}

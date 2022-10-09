@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SignUpForm from "../components/SignUpForm";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -15,6 +17,7 @@ function SignUp() {
       .then((res) => {
         if (res.status === 200) {
           alert("Signup success.");
+          navigate("/login");
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));

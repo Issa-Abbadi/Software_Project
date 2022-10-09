@@ -20,10 +20,12 @@ function Login(props) {
         if (res.data.code === 404) {
           alert("Password is wrong");
         }
-        if (res.status === 200) {
+        if (res.data.code === 200) {
           localStorage.setItem("TOKEN", res.data.token);
           localStorage.setItem("EMAIL", res.data.email);
+          console.log("LOGIN SUCCESS", localStorage.getItem("TOKEN"));
           navigate("/");
+          navigate(0);
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));

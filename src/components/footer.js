@@ -72,30 +72,16 @@ function footer() {
                 class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"
                 id="footHead"
               >
-                <h6 class="text-uppercase fw-bold mb-4">CUSTOMER SERVICE</h6>
+                <h6 class="text-uppercase fw-bold mb-4">خدمة العملاء</h6>
+
                 <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    1-866-668-5962
+                  <a href="/support" class="text-reset">
+                    تواصل معنا
                   </a>
                 </p>
                 <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Live Chat
-                  </a>
-                </p>
-                <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Contact Us
-                  </a>
-                </p>
-                <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    FAQ
-                  </a>
-                </p>
-                <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Shipping & Processing
+                  <a href="/FAQ" class="text-reset">
+                    الأسئلة الشائعة
                   </a>
                 </p>
               </div>
@@ -104,30 +90,21 @@ function footer() {
                 class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4"
                 id="footHead"
               >
-                <h6 class="text-uppercase fw-bold mb-4">Our Work</h6>
+                <h6 class="text-uppercase fw-bold mb-4">تعرف أكثر</h6>
                 <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    About Us
+                  <a href="/aboutUs" class="text-reset">
+                    عن الموقع{" "}
+                  </a>
+                </p>
+
+                <p className="link-color">
+                  <a href="/conditionsOfUse" class="text-reset">
+                    شروط الاستخدام
                   </a>
                 </p>
                 <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Outlet Stores
-                  </a>
-                </p>
-                <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Accessibility Statement
-                  </a>
-                </p>
-                <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Conditions of Use
-                  </a>
-                </p>
-                <p className="link-color">
-                  <a href="#!" class="text-reset">
-                    Privacy
+                  <a href="/privacy" class="text-reset">
+                    الخصوصية
                   </a>
                 </p>
               </div>
@@ -136,7 +113,7 @@ function footer() {
                 class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4"
                 id="footHead"
               >
-                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                <h6 class="text-uppercase fw-bold mb-4">معلومات التواصل</h6>
                 <p>
                   <i class="fas fa-home me-3"></i> New York, NY 10012, US
                 </p>

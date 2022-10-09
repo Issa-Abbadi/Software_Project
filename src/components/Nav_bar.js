@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { useAuth0 } from "@auth0/auth0-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
@@ -37,9 +37,16 @@ function Nav_bar() {
     setShowHome(false);
   };
 
+  const [showMarket, setShowMarket] = useState(false);
+  const showMarketDropdown = (e) => {
+    setShowMarket(!showMarket);
+  };
+  const hideMarketDropdown = (e) => {
+    setShowMarket(false);
+  };
+
   return (
     <>
-      {console.log(isLogin)}
       <Navbar class="navbar" bg="dark" variant="dark" expand="lg">
         <a class="navbar-brand" href="/">
           <img
@@ -56,10 +63,17 @@ function Nav_bar() {
         <Container>
           <Navbar.Toggle aria-controls="ftco-nav" />
           <Navbar.Collapse id="ftco-nac">
-            <Nav className="me-auto">
+            <Nav className="me-auto" bsStyle="tabs">
               <ul class="navbar-nav mr-auto">
                 <NavDropdown
-                  title="المطبخ"
+                  title={
+                    <>
+                      <Link class="navbar-link" to="/kitchenProducts">
+                        {" "}
+                        المطبخ
+                      </Link>
+                    </>
+                  }
                   id="collasible-nav-dropdown"
                   show={showKitchen}
                   onMouseEnter={showKitchenDropdown}
@@ -79,7 +93,14 @@ function Nav_bar() {
                 </NavDropdown>
 
                 <NavDropdown
-                  title="السفرة"
+                  title={
+                    <>
+                      <Link class="navbar-link" to="/tableProducts">
+                        {" "}
+                        السفرة{" "}
+                      </Link>
+                    </>
+                  }
                   id="collasible-nav-dropdown"
                   show={showTable}
                   onMouseEnter={showTableDropdown}
@@ -112,7 +133,14 @@ function Nav_bar() {
                 </NavDropdown>
 
                 <NavDropdown
-                  title="المنزل"
+                  title={
+                    <>
+                      <Link class="navbar-link" to="/homeProducts">
+                        {" "}
+                        المنزل{" "}
+                      </Link>
+                    </>
+                  }
                   id="collasible-nav-dropdown"
                   show={showHome}
                   onMouseEnter={showHomeDropdown}
@@ -122,6 +150,27 @@ function Nav_bar() {
                 >
                   <NavDropdown.Item href="#action/3.1">
                     رفايع الحمام
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  title={
+                    <>
+                      <Link class="navbar-link" to="/markets">
+                        {" "}
+                        متاجرنا{" "}
+                      </Link>
+                    </>
+                  }
+                  id="collasible-nav-dropdown"
+                  show={showMarket}
+                  onMouseEnter={showMarketDropdown}
+                  onMouseLeave={hideMarketDropdown}
+                  menuVariant="dark"
+                  className="li"
+                >
+                  <NavDropdown.Item href="#action/3.1">الفهد</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">
+                    شمس الشام
                   </NavDropdown.Item>
                 </NavDropdown>
               </ul>
@@ -246,17 +295,8 @@ function Nav_bar() {
                 }
                 menuVariant="dark"
               >
-                <NavDropdown.Item href="/cart">تفاصيل الطلب</NavDropdown.Item>
                 <NavDropdown.Item href="/login">
                   تسجيل دخول / إنشاء حساب
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/profile">حسابي</NavDropdown.Item>
-
-                <NavDropdown.Item href="#action/3.4">
-                  قائمة الرغبات
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/login" onClick={localStorage.clear()}>
-                  تسجيل خروج
                 </NavDropdown.Item>
               </NavDropdown>
             </>
