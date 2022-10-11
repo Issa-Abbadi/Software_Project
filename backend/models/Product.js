@@ -15,6 +15,12 @@ let productSchema = new Schema(
     product_category: {
       type: String,
     },
+    product_rating: {
+      type: Number,
+    },
+    product_description: {
+      type: String,
+    },
     product_img: {
       type: String,
     },
