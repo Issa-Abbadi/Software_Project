@@ -23,7 +23,15 @@ function HomeProducts(props) {
 
   return (
     <>
-      <Products products={products} />
+      <div class="father">
+        <div class="sidee-bar">
+            Hello World , Welcome
+        </div>
+         <div style={{margin:"20px"}} class="content-bar">
+              <Products products={products} />
+          </div>
+        
+      </div>
     </>
   );
 }

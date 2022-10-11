@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
+import "./products.css"
 function Products(props) {
   const products = props.products;
   let size = Object.keys(products).length;
@@ -21,7 +21,7 @@ function Products(props) {
 
   const card = (product) => {
     return (
-      <div class="card">
+      <div class="card cardContent">
         <div class="hover-overlay ">
           <a href="#!">
             <img src={product.product_img} class="img-fluid" />
@@ -45,7 +45,7 @@ function Products(props) {
     console.log("I is equal", i);
     return (
       <>
-        <Row>
+        <Row style={{"margin-bottom":"20px"}}>
           <Col sm={6} md={3}>
             {card(products[i])}
           </Col>
@@ -74,7 +74,7 @@ function Products(props) {
     if (size === 1) {
       ret[i / 4 + 1] = (
         <>
-          <Row>
+          <Row style={{"margin-bottom":"20px"}}>
             {" "}
             <Col sm={6} md={3}>
               {card(products[i])}
@@ -87,7 +87,7 @@ function Products(props) {
     } else if (size === 2) {
       ret[i / 4 + 1] = (
         <>
-          <Row>
+          <Row style={{"margin-bottom":"20px"}}>
             {" "}
             <Col sm={6} md={3}>
               {card(products[i])}
@@ -103,7 +103,7 @@ function Products(props) {
     } else if (size === 3) {
       ret[i / 4 + 1] = (
         <>
-          <Row>
+          <Row style={{"margin-bottom":"20px"}}>
             {" "}
             <Col sm={6} md={3}>
               {card(products[i])}

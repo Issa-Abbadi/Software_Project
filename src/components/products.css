@@ -1,0 +1,29 @@
+.cardContent{
+    text-align: center;
+    min-height: 100%;
+    max-height: 100%;
+    width: auto;
+}
+
+.cardContent .img-fluid{
+    min-height: 200px;
+    max-height: 200px;
+}
+.father .sidee-bar{
+    width:20%;
+    background-color: blue;
+    height: 100%;
+    display: inline-block;
+    position: fixed;
+}
+.father  .content-bar{
+    display: inline-block;
+    margin:0;
+    padding: 0;
+    width: calc( 80% - 100px);
+}
+.father{
+    direction: ltr;
+    display: flex;
+
+}

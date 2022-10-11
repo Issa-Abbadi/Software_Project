@@ -32,6 +32,7 @@ function App() {
       <Router>
         <header>
           <Nav />
+          
         </header>
 
         <Routes>
