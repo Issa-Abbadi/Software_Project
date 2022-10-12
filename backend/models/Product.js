@@ -21,7 +21,13 @@ let productSchema = new Schema(
     product_description: {
       type: String,
     },
+    sub_categoty: {
+      type: String,
+    },
     product_img: {
+      type: String,
+    },
+    colors: {
       type: String,
     },
   },

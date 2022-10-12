@@ -8,6 +8,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "https://kit.fontawesome.com/a076d05399.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
+import { Outlet } from "react-router-dom";
+
 import "./navbar.css";
 
 import { Link } from "react-router-dom";
@@ -47,9 +49,10 @@ function Nav_bar() {
 
   return (
     <>
-      <div style={{ height: "75px" }}>
+      <Outlet />
+      <div style={{ minHeight: "75px" }}>
         <Navbar
-          style={{ top: "0", height: "75px" }}
+          style={{ top: "0", minHeight: "75px" }}
           class="navbar"
           bg="dark"
           variant="dark"
@@ -58,7 +61,7 @@ function Nav_bar() {
         >
           <a class="navbar-brand" href="/">
             <img
-              src="LOGO2.png"
+              src={require("../assets/LOGO2.png")}
               alt="Logo"
               width="60"
               height="48"
@@ -89,13 +92,23 @@ function Nav_bar() {
                     menuVariant="dark"
                     className="li"
                   >
-                    <NavDropdown.Item href="#action/3.1">
+                    <NavDropdown.Item
+                      eventkey="1"
+                      href="/kitchenProducts/kitchen-accessories"
+                    >
                       رفايع المطبخ
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item
+                      eventkey="2"
+                      href="/kitchenProducts/cooking-tools"
+                    >
                       أواني الطبخ
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item
+                      eventkey="3"
+                      href="/kitchenProducts/distribution"
+                      state=""
+                    >
                       توزيع وتوابل
                     </NavDropdown.Item>
                   </NavDropdown>

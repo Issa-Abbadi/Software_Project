@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import "./products.css"
+import "./products.css";
 function Products(props) {
   const products = props.products;
   let size = Object.keys(products).length;
@@ -20,6 +20,45 @@ function Products(props) {
   };
 
   const card = (product) => {
+    // const retColors = (product) => {
+    //   console.log(product);
+
+    //   if ("colors" in product) {
+    //     return <></>;
+    //   } else {
+    //     return <>Helo</>;
+    // .map((prod) => (
+    //   <div style={{ margin: "5px" }}>
+    //     HELLO WORLD
+    // {
+    /* <a
+              href={product.product_img}
+              class="btn"
+              style={{
+                backgroundColor: product.color,
+                width: "25px",
+                height: "25px",
+                borderRadius: "50%",
+              }}
+            ></a> */
+    // }
+    //   </div>
+    // ));
+
+    //   return (<> <div style={{ margin: "5px" }}>
+    //   <a
+    //     href="!#"
+    //     class="btn"
+    //     style={{
+    //       backgroundColor: product.colors,
+    //       width: "25px",
+    //       height: "25px",
+    //       borderRadius: "50%",
+    //     }}
+    //   ></a>
+    // </div></>)
+    //   }
+    // };
     return (
       <div class="card cardContent">
         <div class="hover-overlay ">
@@ -31,10 +70,12 @@ function Products(props) {
         <div class="card-body">
           <h5 class="card-title">{product.product_name}</h5>
           <h5 class="card-title">{Stars(product.product_rating)}</h5>
-          <h5 class="card-title">{product.product_price}</h5>
+          <h5 class="card-title">{product.product_price}$</h5>
+          <h6 class="card-title">المتجر:{product.product_company} </h6>
           <p class="card-text">{product.product_description}</p>
+          {/* {retColors(product)} */}
           <a href="#!" class="btn btn-primary">
-            Buy
+            أضف للسلّة
           </a>
         </div>
       </div>
@@ -45,7 +86,7 @@ function Products(props) {
     console.log("I is equal", i);
     return (
       <>
-        <Row style={{"margin-bottom":"20px"}}>
+        <Row style={{ "margin-bottom": "20px" }}>
           <Col sm={6} md={3}>
             {card(products[i])}
           </Col>
@@ -74,7 +115,7 @@ function Products(props) {
     if (size === 1) {
       ret[i / 4 + 1] = (
         <>
-          <Row style={{"margin-bottom":"20px"}}>
+          <Row style={{ "margin-bottom": "20px" }}>
             {" "}
             <Col sm={6} md={3}>
               {card(products[i])}
@@ -87,7 +128,7 @@ function Products(props) {
     } else if (size === 2) {
       ret[i / 4 + 1] = (
         <>
-          <Row style={{"margin-bottom":"20px"}}>
+          <Row style={{ "margin-bottom": "20px" }}>
             {" "}
             <Col sm={6} md={3}>
               {card(products[i])}
@@ -103,7 +144,7 @@ function Products(props) {
     } else if (size === 3) {
       ret[i / 4 + 1] = (
         <>
-          <Row style={{"margin-bottom":"20px"}}>
+          <Row style={{ "margin-bottom": "20px" }}>
             {" "}
             <Col sm={6} md={3}>
               {card(products[i])}
