@@ -44,11 +44,6 @@ function App() {
           <Route exact path="/homeProducts" element={<HomeProducts />} />
           <Route
             exact
-            path="/kitchenProducts"
-            element={<KitchenProducts props={{ type: "0" }} />}
-          />
-          <Route
-            exact
             path="/kitchenProducts/kitchen-accessories"
             element={<KitchenProducts props={{ type: "1" }} />}
           />
@@ -63,6 +58,12 @@ function App() {
             path="/kitchenProducts/distribution"
             element={<KitchenProducts props={{ type: "3" }} />}
           />
+          <Route
+            exact
+            path="/kitchenProducts"
+            element={<KitchenProducts props={{ type: "0" }} />}
+          />
+
           <Route exact path="/tableProducts" element={<TableProducts />} />
           <Route exact path="/otp" element={<NewSubmit />} />
           <Route exact path="/support" element={<Support />} />

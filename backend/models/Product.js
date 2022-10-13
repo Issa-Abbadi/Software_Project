@@ -30,6 +30,9 @@ let productSchema = new Schema(
     colors: {
       type: Array,
     },
+    sizes: {
+      type: Array,
+    },
   },
   {
     collection: "Products",

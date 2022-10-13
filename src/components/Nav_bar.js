@@ -8,13 +8,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "https://kit.fontawesome.com/a076d05399.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
-import { Outlet } from "react-router-dom";
+
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import "./navbar.css";
 
-import { Link } from "react-router-dom";
-
 function Nav_bar() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
   const [showKitchen, setShowKitchen] = useState(false);
   const showKitchenDropdown = (e) => {
@@ -49,7 +49,6 @@ function Nav_bar() {
 
   return (
     <>
-      <Outlet />
       <div style={{ minHeight: "75px" }}>
         <Navbar
           style={{ top: "0", minHeight: "75px" }}
@@ -91,6 +90,9 @@ function Nav_bar() {
                     onMouseLeave={hideKitchenDropdown}
                     menuVariant="dark"
                     className="li"
+                    onClick={() => {
+                      navigate(0);
+                    }}
                   >
                     <NavDropdown.Item
                       eventkey="1"
