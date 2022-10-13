@@ -12,18 +12,33 @@
 .father .sidee-bar{
     width:20%;
     background-color: blue;
-    height: 100%;
-    display: inline-block;
+    justify-content: left;
+    height: 60%;
     position: fixed;
 }
 .father  .content-bar{
-    display: inline-block;
-    margin:0;
-    padding: 0;
+    justify-content: right;
+
     width: calc( 80% - 100px);
 }
 .father{
     direction: ltr;
     display: flex;
+}
 
+.filterPart{
+    direction: rtl;
+}
+
+
+.filter1{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    direction: rtl;
+}
+
+.filter1 .childFilter{
+    width: 300px;
+    
 }

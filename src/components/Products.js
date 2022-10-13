@@ -22,6 +22,7 @@ function Products(props) {
   const card = (product) => {
     return (
       <div class="card cardContent">
+        
         <div class="hover-overlay ">
           <a href="#!">
             <img src={product.product_img} class="img-fluid" />
@@ -43,8 +44,9 @@ function Products(props) {
 
   const RowTable = (i) => {
     console.log("I is equal", i);
+    
     return (
-      <>
+       <>
         <Row style={{"margin-bottom":"20px"}}>
           <Col sm={6} md={3}>
             {card(products[i])}

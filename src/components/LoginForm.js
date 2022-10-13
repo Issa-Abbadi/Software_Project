@@ -7,8 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginForm(props) {
   const validationSchema = Yup.object().shape({
     email: Yup.string()
-      .email("You have enter an invalid email address")
-      .required("Required"),
+      .email("You have enter an invalid email address"),
+      // .required("Required"),
     password: Yup.string()
       .required("No password provided.")
       .min(8, "Password is too short - should be 8 chars minimum.")
@@ -46,7 +46,7 @@ function LoginForm(props) {
                 <h1 class = "loginTitle">تسجيل الدخول</h1>
                 <FormGroup class = "login-title">
                   <label htmlFor="email">البريد الالكتروني</label>
-                  <Field name="email" type="email" className="form-control" placeholder="البريد الالكتروني"/>
+                  <Field name="email" type="email" className="form-control" required placeholder="البريد الالكتروني"/>
                   <ErrorMessage
                     name="email"
                     className="d-block invalid-feedback"

@@ -5,6 +5,8 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Products from "../components/Products";
+import Filtering_in_PLP from "../components/filtering_in_PLP";
+
 
 function KitchenProducts(props) {
   const [products, setProducts] = useState([]);
@@ -25,7 +27,9 @@ function KitchenProducts(props) {
 
   return (
     <>
+      <Filtering_in_PLP></Filtering_in_PLP>
       <Products products={products} />
+
     </>
   );
 }
