@@ -32,7 +32,6 @@ function App() {
       <Router>
         <header>
           <Nav />
-          
         </header>
 
         <Routes>
@@ -43,7 +42,27 @@ function App() {
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/forget-pass" element={<ForgetPassword />} />
           <Route exact path="/homeProducts" element={<HomeProducts />} />
-          <Route exact path="/kitchenProducts" element={<KitchenProducts />} />
+          <Route
+            exact
+            path="/kitchenProducts"
+            element={<KitchenProducts props={{ type: "0" }} />}
+          />
+          <Route
+            exact
+            path="/kitchenProducts/kitchen-accessories"
+            element={<KitchenProducts props={{ type: "1" }} />}
+          />
+
+          <Route
+            exact
+            path="/kitchenProducts/cooking-tools"
+            element={<KitchenProducts props={{ type: "2" }} />}
+          />
+          <Route
+            exact
+            path="/kitchenProducts/distribution"
+            element={<KitchenProducts props={{ type: "3" }} />}
+          />
           <Route exact path="/tableProducts" element={<TableProducts />} />
           <Route exact path="/otp" element={<NewSubmit />} />
           <Route exact path="/support" element={<Support />} />
