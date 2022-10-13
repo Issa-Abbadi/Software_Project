@@ -28,7 +28,7 @@ let productSchema = new Schema(
       type: String,
     },
     colors: {
-      type: String,
+      type: Array,
     },
   },
   {

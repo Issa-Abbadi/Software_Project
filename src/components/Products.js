@@ -2,104 +2,30 @@ import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 import "./products.css";
+import SingleProduct from "./SingleProduct";
 function Products(props) {
   const products = props.products;
+  const [productImg, setProductImg] = useState("");
   let size = Object.keys(products).length;
-  const Stars = (rating) => {
-    const starArray = [...Array(5).keys()].map((i) => i + 1);
-    return starArray.map((i) => (
-      <FontAwesomeIcon
-        key={i}
-        icon={faStar}
-        color={rating >= i ? "orange" : "lightgrey"}
-      />
-    ));
-  };
-
-  const card = (product) => {
-    // const retColors = (product) => {
-    //   console.log(product);
-
-    //   if ("colors" in product) {
-    //     return <></>;
-    //   } else {
-    //     return <>Helo</>;
-    // .map((prod) => (
-    //   <div style={{ margin: "5px" }}>
-    //     HELLO WORLD
-    // {
-    /* <a
-              href={product.product_img}
-              class="btn"
-              style={{
-                backgroundColor: product.color,
-                width: "25px",
-                height: "25px",
-                borderRadius: "50%",
-              }}
-            ></a> */
-    // }
-    //   </div>
-    // ));
-
-    //   return (<> <div style={{ margin: "5px" }}>
-    //   <a
-    //     href="!#"
-    //     class="btn"
-    //     style={{
-    //       backgroundColor: product.colors,
-    //       width: "25px",
-    //       height: "25px",
-    //       borderRadius: "50%",
-    //     }}
-    //   ></a>
-    // </div></>)
-    //   }
-    // };
-    return (
-      <div class="card cardContent">
-        
-        <div class="hover-overlay ">
-          <a href="#!">
-            <img src={product.product_img} class="img-fluid" />
-          </a>
-        </div>
-
-        <div class="card-body">
-          <h5 class="card-title">{product.product_name}</h5>
-          <h5 class="card-title">{Stars(product.product_rating)}</h5>
-          <h5 class="card-title">{product.product_price}$</h5>
-          <h6 class="card-title">المتجر:{product.product_company} </h6>
-          <p class="card-text">{product.product_description}</p>
-          {/* {retColors(product)} */}
-          <a href="#!" class="btn btn-primary">
-            أضف للسلّة
-          </a>
-        </div>
-      </div>
-    );
-  };
 
   const RowTable = (i) => {
     console.log("I is equal", i);
-    
     return (
-       <>
-        <Row style={{"margin-bottom":"20px"}}>
+      <>
+        <Row style={{ "margin-bottom": "20px" }}>
           <Col sm={6} md={3}>
-            {card(products[i])}
+            <SingleProduct product={products[i]} />
           </Col>
           <Col sm={6} md={3}>
-            {card(products[i + 1])}
+            <SingleProduct product={products[i + 1]} />
           </Col>
           <Col sm={6} md={3}>
-            {card(products[i + 2])}
+            <SingleProduct product={products[i + 2]} />
           </Col>
           <Col sm={6} md={3}>
-            {card(products[i + 3])}
+            <SingleProduct product={products[i + 3]} />
           </Col>
         </Row>
       </>
@@ -120,7 +46,7 @@ function Products(props) {
           <Row style={{ "margin-bottom": "20px" }}>
             {" "}
             <Col sm={6} md={3}>
-              {card(products[i])}
+              <SingleProduct product={products[i]} />
             </Col>
             <Col sm={6} md={3}></Col>
             <Col sm={6} md={3}></Col> <Col sm={6} md={3}></Col>
@@ -133,10 +59,10 @@ function Products(props) {
           <Row style={{ "margin-bottom": "20px" }}>
             {" "}
             <Col sm={6} md={3}>
-              {card(products[i])}
+              <SingleProduct product={products[i]} />
             </Col>
             <Col sm={6} md={3}>
-              {card(products[i + 1])}
+              <SingleProduct product={products[i + 1]} />
             </Col>
             <Col sm={6} md={3}></Col>
             <Col sm={6} md={3}></Col>
@@ -149,13 +75,13 @@ function Products(props) {
           <Row style={{ "margin-bottom": "20px" }}>
             {" "}
             <Col sm={6} md={3}>
-              {card(products[i])}
+              <SingleProduct product={products[i]} />
             </Col>
             <Col sm={6} md={3}>
-              {card(products[i + 1])}
+              <SingleProduct product={products[i + 1]} />
             </Col>
             <Col sm={6} md={3}>
-              {card(products[i + 2])}
+              <SingleProduct product={products[i + 2]} />
             </Col>
             <Col sm={6} md={3}></Col>
           </Row>
