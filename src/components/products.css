@@ -33,12 +33,37 @@
 
 .filter1{
     width: 100%;
-    display: flex;
     justify-content: right;
     direction: rtl;
 }
 
 .filter1 .childFilter{
-    width: 300px;
+    width: 30%;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-left: 10%;
     
+}
+
+
+.filter1 #label{
+    direction: rtl;
+    width: 25%;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+
+
+.filter1 .childFilter2{
+    width: 40%;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-left: 10%;
 }

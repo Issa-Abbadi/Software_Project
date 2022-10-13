@@ -1,12 +1,13 @@
 export const colourOptions = [
-    { value: "ocean1", label: "Ocean" },
-    { value: "blue", label: "Blue" },
-    { value: "purple", label: "Purple" },
-    { value: "red", label: "Red" },
-    { value: "orange", label: "Orange" },
-    { value: "yellow", label: "Yellow" },
-    { value: "green", label: "Green" },
-    { value: "forest", label: "Forest" },
-    { value: "slate", label: "Slate" },
-    { value: "silver", label: "Silver" }
+    { value: "أبيض", label: "أبيض" },
+    { value: "أزرق", label: "أزرق" },
+    { value: "أسود", label: "أسود" },
+    { value: "أحمر", label: "أحمر" },
+    { value: "أخصر", label: "أخضر" }
+  ];
+
+  export const recomendedOptions = [
+    { value: "high-to-law", label: "السعر: من الاعلى الى الأقل" },
+    { value: "low-to-high", label: "السعر: من الأقل الى الأعلى" },
+    { value: "cutomer-rating", label: "تقييم الزبائن" }
   ];

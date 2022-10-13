@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import "./products.css"
 import "./data.js"
 import { colourOptions } from "./data.js";
+import { recomendedOptions } from "./data.js";
 import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
 
@@ -39,7 +40,11 @@ import { components } from "react-select";
   
     render() {
       return (
-       <div class="filter1">     
+       <div class="filter1">    
+
+          <div id="label">
+                مصنف بواسطه
+          </div>
         <span 
           class="d-inline-block childFilter"
           data-toggle="popover"
@@ -57,9 +62,29 @@ import { components } from "react-select";
             onChange={this.handleChange}
             allowSelectAll={true}
             // value={this.state.optionSelected}
-            placeholder="النوع"
+            placeholder="اللون"
           />
         </span>
+
+          <span 
+              class="d-inline-block childFilter2"
+              data-toggle="popover"
+              data-trigger="focus"
+              data-content="Please selecet account(s)"
+              >
+              <ReactSelect 
+                options={recomendedOptions}
+                isMulti
+                closeMenuOnSelect={false}
+                hideSelectedOptions={false}
+                components={{
+                  Option
+                }}
+                onChange={this.handleChange}
+                allowSelectAll={true}
+                placeholder="ينصح به"
+              />
+          </span>
         </div>
       );
     }
