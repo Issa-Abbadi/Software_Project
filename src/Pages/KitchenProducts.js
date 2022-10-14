@@ -11,13 +11,14 @@ import Filtering_in_PLP from "../components/filtering_in_PLP";
 function KitchenProducts(props) {
   const [products, setProducts] = useState([]);
   const [type, setType] = useState(props.props.type);
+  const [colors, setColors] = useState([]);
+  const [sorting, setSorting] = useState([]);
 
-  let filterData;
+  let filterData, sortedData;
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(type);
-
+    setProducts([]);
     axios
       .get("http://localhost:4000/Products/kitchen/")
       .then(({ data }) => {
@@ -35,23 +36,94 @@ function KitchenProducts(props) {
         } else {
           setProducts(data);
         }
+        if (colors[0] != null) {
+          filterData = productsFilterColor(products);
+          setProducts(filterData);
+        }
+        if (sorting[0] != null) {
+          productsSorting(sorting);
+        }
       })
       .catch((error) => {
-        console.log("false");
         console.log(error);
       });
-  }, [type]);
+  }, [type, colors, sorting]);
 
-  const productsFilterType = (data, filter) => {
-    return data.filter(function (product) {
-      return product.sub_category == filter;
-    });
+  function dynamicSort(property) {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return function (a, b) {
+      /* next line works with strings and numbers,
+       * and you may want to customize it to your needs
+       */
+      var result =
+        a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+
+      return result * sortOrder;
+    };
+  }
+
+  const handleSorting = (selected) => {
+    setSorting(selected.value);
   };
 
-  let filteredProducts;
+  const handleColors = (selected) => {
+    setColors(
+      selected.map((color) => {
+        return color.value;
+      })
+    );
+  };
+  let filteredData;
+
+  const productsFilterType = (data, filter) => {
+    filteredData = data.filter(function (product) {
+      return product.sub_category == filter;
+    });
+
+    return filteredData;
+  };
+  const productsFilterColor = (data) => {
+    filteredData = data.filter(function (product) {
+      if (product.contain_colors[0] != null) {
+        for (let j = 0; j < product.contain_colors.length; j++) {
+          for (let i = 0; i < colors.length; i++) {
+            if (product.contain_colors[j].color == colors[i]) {
+              return product;
+            }
+          }
+        }
+      }
+    });
+
+    return filteredData;
+  };
+
+  const productsSorting = (filter) => {
+    const res = [...products];
+    const dat = [...products];
+    if (filter === "low-to-high") res.sort(dynamicSort("product_price"));
+    else if (filter === "high-to-low") res.sort(dynamicSort("-product_price"));
+    else if (filter === "customer-rating")
+      res.sort(dynamicSort("-product_rating"));
+
+    console.log("FILTER", res);
+    console.log(Object.is(dat, products));
+    console.log(Object.is(products, products));
+    console.log("state", products);
+
+    setProducts([].concat(res));
+  };
+
   return (
     <>
-      <Filtering_in_PLP></Filtering_in_PLP>
+      <Filtering_in_PLP
+        handleColors={handleColors}
+        handleSorting={handleSorting}
+      />
       <Products products={products} />
     </>
   );

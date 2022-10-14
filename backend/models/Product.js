@@ -33,6 +33,9 @@ let productSchema = new Schema(
     sizes: {
       type: Array,
     },
+    contain_colors: {
+      type: Array,
+    },
   },
   {
     collection: "Products",
