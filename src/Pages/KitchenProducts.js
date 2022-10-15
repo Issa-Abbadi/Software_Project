@@ -37,11 +37,11 @@ function KitchenProducts(props) {
         } else {
           setProducts(data);
         }
+        if (sorting[0] != null) {
+          productsSorting(sorting, products);
+        }
         if (colors[0] != null) {
           productsFilterColor(filterData);
-        }
-        if (sorting[0] != null) {
-          productsSorting(sorting);
         }
       })
       .catch((error) => {
@@ -105,16 +105,16 @@ function KitchenProducts(props) {
     return filteredData;
   };
 
-  const productsSorting = (filter) => {
-    const res = [...products];
-    const dat = [...products];
+  const productsSorting = (filter, data) => {
+    const res = [...data];
+
     if (filter === "low-to-high") res.sort(dynamicSort("product_price"));
     else if (filter === "high-to-low") res.sort(dynamicSort("-product_price"));
     else if (filter === "customer-rating")
       res.sort(dynamicSort("-product_rating"));
 
     console.log("FILTER", res);
-    console.log(Object.is(dat, products));
+
     console.log(Object.is(products, products));
     console.log("state", products);
 
