@@ -23,6 +23,7 @@ function KitchenProducts(props) {
       .get("http://localhost:4000/Products/kitchen/")
       .then(({ data }) => {
         if (type === "0") {
+          filterData = data;
           setProducts(data);
         } else if (type === "1") {
           filterData = productsFilterType(data, "رفايع المطبخ");
@@ -37,8 +38,7 @@ function KitchenProducts(props) {
           setProducts(data);
         }
         if (colors[0] != null) {
-          filterData = productsFilterColor(products);
-          setProducts(filterData);
+          productsFilterColor(filterData);
         }
         if (sorting[0] != null) {
           productsSorting(sorting);
@@ -87,7 +87,7 @@ function KitchenProducts(props) {
     return filteredData;
   };
   const productsFilterColor = (data) => {
-    filteredData = data.filter(function (product) {
+    filteredData = data.filter((product) => {
       if (product.contain_colors[0] != null) {
         for (let j = 0; j < product.contain_colors.length; j++) {
           for (let i = 0; i < colors.length; i++) {
@@ -96,9 +96,12 @@ function KitchenProducts(props) {
             }
           }
         }
+      } else {
       }
     });
 
+    console.log("COLO RED", filteredData);
+    setProducts(filteredData);
     return filteredData;
   };
 
