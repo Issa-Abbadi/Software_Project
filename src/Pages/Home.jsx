@@ -33,45 +33,50 @@ function Home() {
     };
     return (
       <div>
-      <Carousel activeIndex={index} onSelect={handleSelect} variant="dark" style={{"display":"flex"}}>
-        <Carousel.Item interval={1500}>
-          <img
-            className="cover d-block w-100"
-            src={imgs[0].url}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="cover d-block w-100"
-            src={imgs[1].url}
-            alt="Second slide"
-          />
+        <Carousel
+          activeIndex={index}
+          onSelect={handleSelect}
+          variant="dark"
+          style={{ display: "flex" }}
+        >
+          <Carousel.Item interval={1500}>
+            <img
+              className="cover d-block w-100"
+              src={imgs[0].url}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="cover d-block w-100"
+              src={imgs[1].url}
+              alt="Second slide"
+            />
 
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="cover d-block w-100"
-            src={imgs[2].url}
-            alt="Third slide"
-          />
+            <Carousel.Caption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="cover d-block w-100"
+              src={imgs[2].url}
+              alt="Third slide"
+            />
 
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+            <Carousel.Caption>
+              <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
       </div>
     );
   }
@@ -351,27 +356,32 @@ function Home() {
 
   return (
     <>
-    
-      <Container className="Home">
-        <a href="">
-          <ControlledCarousel />
-        </a>
-        <div class="coverImgs">
-          <a href="#">
-            <img src="./imgs/cover.jpg" alt="" class="sideImg1" />
+      <div style={{ display: "inline-block", maxWidth: "100%" }}>
+        <Container className="Home">
+          <a href="">
+            <ControlledCarousel />
           </a>
-          <a href="#">
-            <img src="../imgs/soft&easy.jpg" alt="" class="sideImg2" />
-          </a>
-        </div>
+          <div class="coverImgs">
+            <a href="#">
+              <img src="./imgs/cover.jpg" alt="" class="sideImg1" />
+            </a>
+            <a href="#">
+              <img src="../imgs/soft&easy.jpg" alt="" class="sideImg2" />
+            </a>
+          </div>
 
-        {/* <div className="centerMode">{<CenterMode />}</div> */}
-        <Card title="متاجر عرضناها لك" data={imgs} />
-        <Card title="الأعلى مبيعاً" data={imgs} />
-        <Card title="عروض خاصة" data={imgs} />
-        <Card title="جديد" data={imgs} />
-        {/* {DataTable()} */}
-      </Container>
+          {/* <div className="centerMode">{<CenterMode />}</div> */}
+          <Card
+            title="متاجر عرضناها لك"
+            data={imgs}
+            style={{ margin: "20%" }}
+          />
+          <Card title="الأعلى مبيعاً" data={imgs} />
+          <Card title="عروض خاصة" data={imgs} />
+          <Card title="جديد" data={imgs} />
+          {/* {DataTable()} */}
+        </Container>
+      </div>
     </>
   );
 }

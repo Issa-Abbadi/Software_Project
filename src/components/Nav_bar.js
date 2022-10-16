@@ -51,9 +51,12 @@ function Nav_bar() {
     <>
       <div style={{ minHeight: "75px" }}>
         <Navbar
-          style={{ top: "0", minHeight: "75px" }}
+          style={{
+            top: "0",
+            minHeight: "75px",
+          }}
           class="navbar"
-          bg="dark"
+          // bg="dark"
           variant="dark"
           expand="lg"
           fixed="top"
@@ -303,9 +306,8 @@ function Nav_bar() {
                   id="nav-dropdown-dark-example3"
                   title={
                     <a
-                      class="dropdown-toggle hidden-arrow align-start"
+                      id="profileLink"
                       href="/profile"
-                      id="navbarDropdownMenuAvatar"
                       role="button"
                       data-mdb-toggle="dropdown"
                       aria-expanded="false"
@@ -341,7 +343,6 @@ function Nav_bar() {
                   id="nav-dropdown-dark-example3"
                   title={
                     <a
-                      class="dropdown-toggle hidden-arrow align-start"
                       href="/profile"
                       id="navbarDropdownMenuAvatar"
                       role="button"

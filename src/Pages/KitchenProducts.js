@@ -42,6 +42,8 @@ function KitchenProducts(props) {
         }
         if (colors[0] != null) {
           productsFilterColor(filterData);
+        } else {
+          setProducts(filterData);
         }
       })
       .catch((error) => {
