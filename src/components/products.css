@@ -31,39 +31,86 @@
 }
 
 
-.filter1{
+.filter{
     width: 100%;
     justify-content: right;
     direction: rtl;
+    padding-right: 10px; 
+    margin-top: 0;
 }
 
-.filter1 .childFilter{
-    width: 30%;
+.filter .childFilter1{
+    width: fit-content;
     display: inline-block;
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 15px;
-    margin-left: 10%;
+    margin-left: 5%;
+    /* border: 3px solid black; */
+
     
 }
 
 
-.filter1 #label{
+.filter #label{
     direction: rtl;
     width: 25%;
     font-weight: bold;
     font-size: 25px;
-    margin-bottom: 15px;
     margin-top: 5px;
+    margin-bottom: -10px;
+
 }
 
 
 
-.filter1 .childFilter2{
-    width: 40%;
+.filter .childFilter2{
+    width: fit-content;
     display: inline-block;
     font-weight: bold;
     font-size: 20px;
-    margin-bottom: 15px;
-    margin-left: 10%;
+    margin-left: 5%;
+
+}
+
+
+.filter .childFilter3{
+    width: fit-content;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 5%;
+
+}
+
+
+.filter .childFilter4{
+    width: fit-content;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 5%;
+}
+
+
+.filter .line{
+    color: black;
+    height: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.kitchen-page{
+    display: flex;
+}
+
+.side-bar{
+    display: block;
+    background-color: red;
+    width: 15%;
+    height: 100%;
+}
+
+.page-body{
+
 }

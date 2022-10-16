@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Nav from "./components/Nav_bar";
 import Footer from "./components/footer";
-
+import Sidebar from './components/Sidebar';
+import "./components/navbar.css";
 import {
   BrowserRouter as Router,
   Routes,
+  BrowserRouter,
   Route,
   useNavigate,
 } from "react-router-dom";
-
 import Home from "./Pages/Home";
-
 import Profile from "./Pages/Profile";
 import Cart from "./Pages/Cart";
 import Login from "./Pages/Login";
@@ -25,15 +25,24 @@ import FAQ from "./Pages/FAQ";
 import AboutUs from "./Pages/AboutUs";
 import ConOfUse from "./Pages/ConditionsOfUse";
 import Privacy from "./Pages/Privacy";
+import Analytics from "./Pages/Analytics";
 
 function App() {
   return (
     <>
+      
       <Router>
         <header>
           <Nav />
         </header>
-
+          <Sidebar class="sideBar">
+            <Routes>
+                  <Route path="/"element={<Home/>}/>
+                  <Route path="/aboutUs"element={<AboutUs/>}/>
+                  <Route path="/analytics"element={<Analytics/>}/>
+            </Routes>
+          </Sidebar>
+         
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/profile" element={<Profile />} />

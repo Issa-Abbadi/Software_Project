@@ -1,3 +1,4 @@
+
 .navbar .li::before {
   content: "";
   position: absolute;
@@ -21,4 +22,41 @@
 
 .navbar .navbar-link:hover {
   color: white;
+}
+
+
+main{
+  width: 100%;
+  padding: 20px;
+}
+
+.sidebar{
+  display: block;
+  background-color: #000;
+  color: #fff;
+  height: 100%;
+  position: relative;
+  left: 0;
+  width: 180px;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.top_section{
+  align-items: center;
+  padding: 20px 15px;
+}
+
+.logo{
+  font-size: 30px;
+}
+
+.bars{
+  font-size: 25px;
+  margin-left: 30px;
+}
+
+.links{
+  color: #fff;
+  padding: 5px 15x;
 }

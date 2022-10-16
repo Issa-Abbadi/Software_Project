@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -10,6 +9,9 @@ import Col from "react-bootstrap/Col";
 import CenterMode from "../components/CenterMode";
 import Card from "../components/Card";
 import "./Home.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom/dist";
+import Analytics from "./Analytics";
+import Sidebar from "../components/Sidebar";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -29,9 +31,9 @@ function Home() {
     const handleSelect = (selectedIndex, e) => {
       setIndex(selectedIndex);
     };
-
     return (
-      <Carousel activeIndex={index} onSelect={handleSelect} variant="dark">
+      <div>
+      <Carousel activeIndex={index} onSelect={handleSelect} variant="dark" style={{"display":"flex"}}>
         <Carousel.Item interval={1500}>
           <img
             className="cover d-block w-100"
@@ -70,6 +72,7 @@ function Home() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      </div>
     );
   }
 
@@ -348,6 +351,7 @@ function Home() {
 
   return (
     <>
+    
       <Container className="Home">
         <a href="">
           <ControlledCarousel />

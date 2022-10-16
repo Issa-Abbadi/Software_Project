@@ -5,6 +5,10 @@ import { colourOptions } from "./data.js";
 import { recomendedOptions } from "./data.js";
 import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
+import { sizeOptions } from "./data.js";
+import { marketOptions } from "./data.js";
+
+
 
 const Option = (props) => {
   return (
@@ -44,15 +48,16 @@ export default class filtering_in_PLP extends Component {
 
   render() {
     return (
-      <div class="filter1">
+      <div class="filter">
         <div id="label">مصنف بواسطه</div>
+        <hr class="line"></hr>
         <span
-          class="d-inline-block childFilter"
+          class="d-inline-block childFilter1"
           data-toggle="popover"
           data-trigger="focus"
           data-content="Please selecet account(s)"
         >
-          <ReactSelect
+          <ReactSelect 
             options={colourOptions}
             isMulti
             closeMenuOnSelect={false}
@@ -83,8 +88,50 @@ export default class filtering_in_PLP extends Component {
             onChange={this.handleChange2}
             allowSelectAll={true}
             placeholder="ينصح به"
+            
           />
         </span>
+         
+        <span
+          class="d-inline-block childFilter3"
+          data-toggle="popover"
+          data-trigger="focus"
+          data-content="Please selecet account(s)"
+        >
+          <ReactSelect
+            options={sizeOptions}
+            isMulti
+            closeMenuOnSelect={false}
+            hideSelectedOptions={false}
+            components={{
+              Option,
+            }}
+            onChange={this.handleChange3}
+            allowSelectAll={true}
+            placeholder="الحجم"
+          />
+        </span>
+
+        <span
+          class="d-inline-block childFilter4"
+          data-toggle="popover"
+          data-trigger="focus"
+          data-content="Please selecet account(s)"
+        >
+          <ReactSelect
+            options={marketOptions}
+            isMulti
+            closeMenuOnSelect={false}
+            hideSelectedOptions={false}
+            components={{
+              Option,
+            }}
+            onChange={this.handleChange3}
+            allowSelectAll={true}
+            placeholder="المتجر"
+          />
+        </span>
+     
       </div>
     );
   }
