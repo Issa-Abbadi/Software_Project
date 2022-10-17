@@ -68,6 +68,7 @@ export default class filtering_in_PLP extends Component {
           data-content="Please selecet account(s)"
         >
           <ReactSelect
+            styles={{ "border-raduis": "25%" }}
             options={colourOptions}
             isMulti
             closeMenuOnSelect={false}

@@ -354,7 +354,7 @@ function Home() {
 
   return (
     <>
-      <div style={{ display: "inline-block", maxWidth: "100%" }}>
+      <div style={{ display: "inline-block", width: "100%" }}>
         <Container className="Home">
           <a href="">
             <ControlledCarousel />

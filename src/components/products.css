@@ -1,116 +1,129 @@
-.cardContent{
-    text-align: center;
-    min-height: 100%;
-    max-height: 100%;
-    width: auto;
+.cardContent {
+  text-align: center;
+  min-height: 100%;
+  max-height: 100%;
+  width: auto;
+  border: 5px double var(--may-green);
 }
 
-.cardContent .img-fluid{
-    min-height: 200px;
-    max-height: 200px;
+.cardContent:hover {
+  transform: scale(1.03);
 }
-.father .sidee-bar{
-    width:20%;
-    background-color: blue;
-    justify-content: left;
-    height: 60%;
-    position: fixed;
+.cardContent .img-fluid {
+  min-height: 200px;
+  max-height: 200px;
 }
-.father  .content-bar{
-    justify-content: right;
+.father .sidee-bar {
+  width: 20%;
+  background-color: blue;
+  justify-content: left;
+  height: 60%;
+  position: fixed;
+}
+.father .content-bar {
+  justify-content: right;
 
-    width: calc( 80% - 100px);
+  width: calc(80% - 100px);
 }
-.father{
-    direction: ltr;
-    display: flex;
-}
-
-.filterPart{
-    direction: rtl;
-}
-
-
-.filter{
-    width: 100%;
-    justify-content: right;
-    direction: rtl;
-    padding-right: 10px; 
-    margin-top: 0;
+.father {
+  direction: ltr;
+  display: flex;
 }
 
-.filter .childFilter1{
-    width: fit-content;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 15px;
-    margin-left: 5%;
-    /* border: 3px solid black; */
-
-    
+.filterPart {
+  direction: rtl;
 }
 
-
-.filter #label{
-    direction: rtl;
-    width: 25%;
-    font-weight: bold;
-    font-size: 25px;
-    margin-top: 5px;
-    margin-bottom: -10px;
-
+.filter {
+  width: 100%;
+  justify-content: right;
+  direction: rtl;
+  padding-right: 10px;
+  margin-top: 0;
 }
 
-
-
-.filter .childFilter2{
-    width: fit-content;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 5%;
-
+.filter .childFilter1 {
+  width: fit-content;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-left: 5%;
+  /* border: 3px solid black; */
 }
 
-
-.filter .childFilter3{
-    width: fit-content;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 5%;
-
+.filter #label {
+  direction: rtl;
+  width: 25%;
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: -10px;
 }
 
-
-.filter .childFilter4{
-    width: fit-content;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 5%;
+.filter .childFilter2 {
+  width: fit-content;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
-
-.filter .line{
-    color: black;
-    height: 5px;
-    margin-bottom: 5px;
-    padding: 0;
+.filter .childFilter3 {
+  width: fit-content;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
-.kitchen-page{
-    display: flex;
+.filter .childFilter4 {
+  width: fit-content;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
-.side-bar{
-    display: block;
-    background-color: red;
-    width: 15%;
-    height: 100%;
+.filter .line {
+  color: black;
+  height: 5px;
+  margin-bottom: 5px;
+  padding: 0;
 }
 
-.page-body{
+.kitchen-page {
+  display: flex;
+}
 
+.side-bar {
+  display: block;
+  background-color: red;
+  width: 15%;
+  height: 100%;
+}
+
+.cardContent .btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--may-green);
+  --bs-btn-border-color: var(--may-green);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--may-green);
+  --bs-btn-hover-border-color: var(--may-green);
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--may-green);
+  --bs-btn-active-border-color: var(--may-green);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--may-green);
+  --bs-btn-disabled-border-color: var(--may-green);
+}
+
+.cardContent .btn-primary:hover {
+  opacity: 0.9;
+}
+
+.filter .css-1s2u09g-control {
+  border-radius: 75%;
 }

@@ -37,9 +37,9 @@ function App() {
         <div style={{ display: "flex" }}>
           <div
             style={{
-              flex: "76%",
+              flex: "1",
               margin: "0% 2%",
-              maxWidth: "76%",
+              // maxWidth: "100%",
               minHeight: "1200px",
             }}
           >
@@ -82,10 +82,10 @@ function App() {
               <Route exact path="/privacy" element={<Privacy />} />
             </Routes>
           </div>
-          <Sidebar
+          {/* <Sidebar
             class="sideBar"
             style={{ flex: "20%", maxWidth: "20%" }}
-          ></Sidebar>
+          ></Sidebar> */}
         </div>
 
         <footer>

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import "./navbar.css"
+import "./navbar.css";
 import "https://kit.fontawesome.com/a076d05399.js";
 
 function footer() {
   return (
     <>
       <footer
-        class="text-center text-lg-start bg-dark text-muted "
-        style={{ "z-index": "1000", paddingTop: "5%" }}
+        class="text-center text-lg-start  text-muted "
+        style={{
+          "z-index": "1000",
+          paddingBottom: "4%",
+          backgroundColor: "var(--dark-liver-horses)",
+        }}
       >
         <section class="footer">
           <div class="container text-center text-md-start mt-5">

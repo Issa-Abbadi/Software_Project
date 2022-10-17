@@ -207,26 +207,29 @@ function Nav_bar() {
               </Nav>
             </Navbar.Collapse>
 
-            <form class="d-flex col-md-4" role="search">
+            <form class="d-flex col-md-6" role="search">
               <input
                 class="form-control me-2"
                 type="search"
                 placeholder="بحث"
                 aria-label="Search"
-                Style={{ width: "400px" }}
               />
-              <button class="btn btn-outline-primary" type="submit">
+              <button
+                style={{ "margin-right": "10px" }}
+                class="btn btn-outline-primary"
+                type="submit"
+              >
                 بحث
               </button>
             </form>
             {!isLogin && (
               <>
-                <a class="text-reset m-2" href="/cart">
+                {/* <a class="text-reset m-2" href="/cart">
                   <i
                     class="fas fa-shopping-cart"
                     style={{ color: "#0d6efd" }}
                   ></i>
-                </a>
+                </a> */}
                 {/* <NavDropdown
                 id="nav-dropdown-dark-example2"
                 title={
@@ -369,6 +372,7 @@ function Nav_bar() {
                   <NavDropdown.Item href="#action/3.4">
                     قائمة الرغبات
                   </NavDropdown.Item>
+                  <NavDropdown.Item href="/cart">السلة</NavDropdown.Item>
                   <NavDropdown.Item
                     href="/login"
                     onClick={localStorage.clear()}

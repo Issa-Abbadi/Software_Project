@@ -34,23 +34,15 @@ function Login(props) {
 
   return (
     <>
-      <div class="login-container">
-        <div class = "login-form">
-        <LoginForm 
-        initialValues={formValues}
-        onSubmit={onSubmit}
-        enableReinitialize
-      >
-        تسجيل الدخول
-      </LoginForm>
-        </div>
-        <div class = "side-login">
-             <h1>مستخدم جديد</h1>
-             
-        </div>
-           
+      <div class="login-form" style={{ justifyContent: "center" }}>
+        <LoginForm
+          initialValues={formValues}
+          onSubmit={onSubmit}
+          enableReinitialize
+        >
+          تسجيل الدخول
+        </LoginForm>
       </div>
-     
     </>
   );
 }
