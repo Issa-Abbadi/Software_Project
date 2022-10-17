@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-
+import "./navbar.css"
 import "https://kit.fontawesome.com/a076d05399.js";
 
 function footer() {
   return (
     <>
       <footer
-        class="text-center text-lg-start bg-dark text-muted "
+        class="text-center text-lg-start  text-muted "
         style={{ "z-index": "1000" }}
       >
         <section class="footer">

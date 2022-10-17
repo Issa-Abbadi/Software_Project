@@ -33,8 +33,10 @@ main {
 
 .sidebar {
   display: block;
-  background-color: #000;
-  color: #fff;
+  background-color: rgb(212, 208, 208);
+  border: 3px solid rgb(187, 183, 183);
+  border-color: transparent rgb(187, 183, 183) transparent transparent;
+  color: black;
   height: 100%;
   position: relative;
   left: 0;
@@ -44,8 +46,10 @@ main {
 }
 
 .top_section {
+  display: flex;
   align-items: center;
-  padding: 20px 15px;
+  padding: 0 15px;
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -53,13 +57,35 @@ main {
 }
 
 .bars {
+  display: flex;
   font-size: 25px;
   margin-left: 30px;
 }
 
-.links {
-  color: #fff;
-  padding: 5px 15x;
+.nav-link {
+  display: flex;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: var(--bs-nav-link-color);
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.link {
+  display: flex;
+  color: black;
+  padding-bottom: 20px ;
+  gap: 15px;
+  transition: all 0.5s;
+}
+
+.link:hover{
+  background: var(--tumbleweed);
+}
+
+.active{
+  background: red;
+  
 }
 
 .dropdown-menu-dark {
@@ -81,4 +107,8 @@ main {
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: var(--tumbleweed);
   --bs-gradient: none;
+}
+
+.footer{
+  background-color: var(--dark-liver-horses);
 }
