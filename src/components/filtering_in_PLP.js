@@ -8,8 +8,6 @@ import { components } from "react-select";
 import { sizeOptions } from "./data.js";
 import { marketOptions } from "./data.js";
 
-
-
 const Option = (props) => {
   return (
     <div>
@@ -45,6 +43,18 @@ export default class filtering_in_PLP extends Component {
     });
     this.props.handleSorting(selected);
   };
+  handleChange3 = (selected) => {
+    this.setState({
+      optionSelected: selected,
+    });
+    this.props.handleSizes(selected);
+  };
+  handleChange4 = (selected) => {
+    this.setState({
+      optionSelected: selected,
+    });
+    this.props.handleStores(selected);
+  };
 
   render() {
     return (
@@ -57,7 +67,7 @@ export default class filtering_in_PLP extends Component {
           data-trigger="focus"
           data-content="Please selecet account(s)"
         >
-          <ReactSelect 
+          <ReactSelect
             options={colourOptions}
             isMulti
             closeMenuOnSelect={false}
@@ -88,10 +98,9 @@ export default class filtering_in_PLP extends Component {
             onChange={this.handleChange2}
             allowSelectAll={true}
             placeholder="ينصح به"
-            
           />
         </span>
-         
+
         <span
           class="d-inline-block childFilter3"
           data-toggle="popover"
@@ -126,12 +135,11 @@ export default class filtering_in_PLP extends Component {
             components={{
               Option,
             }}
-            onChange={this.handleChange3}
+            onChange={this.handleChange4}
             allowSelectAll={true}
             placeholder="المتجر"
           />
         </span>
-     
       </div>
     );
   }

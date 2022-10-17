@@ -35,15 +35,12 @@ function App() {
           <Nav />
         </header>
         <div style={{ display: "flex" }}>
-          <Sidebar
-            class="sideBar"
-            style={{ flex: "20%", maxWidth: "20%" }}
-          ></Sidebar>
           <div
             style={{
-              flex: "80%",
+              flex: "76%",
               margin: "0% 2%",
-              maxWidth: "80%",
+              maxWidth: "76%",
+              minHeight: "1200px",
             }}
           >
             <Routes>
@@ -85,6 +82,10 @@ function App() {
               <Route exact path="/privacy" element={<Privacy />} />
             </Routes>
           </div>
+          <Sidebar
+            class="sideBar"
+            style={{ flex: "20%", maxWidth: "20%" }}
+          ></Sidebar>
         </div>
 
         <footer>
