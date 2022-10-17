@@ -8,8 +8,6 @@ function footer() {
   return (
     <>
       <footer
-        class="text-center text-lg-start  text-muted "
-        style={{ "z-index": "1000" }}
         class="text-center text-lg-start bg-dark text-muted "
         style={{ "z-index": "1000", paddingTop: "5%" }}
       >
