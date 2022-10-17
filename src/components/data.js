@@ -12,15 +12,13 @@ export const recomendedOptions = [
   { value: "customer-rating", label: "تقييم الزبائن" },
 ];
 
-
 export const sizeOptions = [
-  { value: "small", label: "حجم صغير" },
-  { value: "meduime", label: "حجم وسط"},
-  { value: "larg", label: "حجم كبير"},
+  { value: "S", label: "حجم صغير" },
+  { value: "M", label: "حجم وسط" },
+  { value: "L", label: "حجم كبير" },
 ];
 
-
 export const marketOptions = [
-  { value: "Alrawafed", label: "الروافد" },
-  { value: "Alfahid", label: "الفهد"},
+  { value: "الروافد", label: "الروافد" },
+  { value: "الفهد", label: "الفهد" },
 ];
