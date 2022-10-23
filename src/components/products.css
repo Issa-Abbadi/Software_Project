@@ -3,9 +3,19 @@
   min-height: 100%;
   max-height: 100%;
   width: auto;
+  border-radius: 10%;
+  overflow: hidden;
+  /* border: 5px double var(--may-green); */
+}
+.cardContent:hover{
   border: 5px double var(--may-green);
+  box-shadow: 3px 2px;
 }
 
+.cardContent img:hover{
+  opacity: 0.6;
+  
+}
 .cardContent:hover {
   transform: scale(1.03);
 }
@@ -44,6 +54,7 @@
 
 .filter .childFilter1 {
   width: fit-content;
+  height: fit-content;
   display: inline-block;
   font-weight: bold;
   font-size: 20px;
@@ -63,10 +74,17 @@
 
 .filter .childFilter2 {
   width: fit-content;
+  height: fit-content;
+
   display: inline-block;
   font-weight: bold;
   font-size: 20px;
   margin-left: 5%;
+}
+
+.filter .childFilter2 .recomo{
+    height: fit-content;
+    width: fit-content;
 }
 
 .filter .childFilter3 {
@@ -98,7 +116,6 @@
 
 .side-bar {
   display: block;
-  background-color: red;
   width: 15%;
   height: 100%;
 }
@@ -127,3 +144,5 @@
 .filter .css-1s2u09g-control {
   border-radius: 75%;
 }
+
+

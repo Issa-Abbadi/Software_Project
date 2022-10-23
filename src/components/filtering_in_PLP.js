@@ -89,7 +89,7 @@ export default class filtering_in_PLP extends Component {
           data-trigger="focus"
           data-content="Please selecet account(s)"
         >
-          <ReactSelect
+          <ReactSelect 
             options={recomendedOptions}
             closeMenuOnSelect={false}
             hideSelectedOptions={false}

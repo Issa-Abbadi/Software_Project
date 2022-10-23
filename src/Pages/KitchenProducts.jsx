@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Products from "../components/Products";
 import Filtering_in_PLP from "../components/filtering_in_PLP";
+
 function KitchenProducts(props) {
   const [products, setProducts] = useState([]);
   const [type, setType] = useState(props.props.type);

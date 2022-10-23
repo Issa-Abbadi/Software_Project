@@ -10,6 +10,8 @@ export const recomendedOptions = [
   { value: "high-to-low", label: "السعر: من الاعلى الى الأقل" },
   { value: "low-to-high", label: "السعر: من الأقل الى الأعلى" },
   { value: "customer-rating", label: "تقييم الزبائن" },
+  { value: "Newest", label: "الأجدد" },
+
 ];
 
 export const sizeOptions = [
