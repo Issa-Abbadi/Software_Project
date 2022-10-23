@@ -15,16 +15,7 @@ import Sidebar from "../components/Sidebar";
 
 function Home() {
   const [products, setProducts] = useState([]);
-  // const [value, setValue] = React.useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setValue((v) => {
-  //       return v === 4 ? 0 : v + 1;
-  //     });
-  //   }, 1500);
-  //   return () => clearInterval(interval);
-  // }, []);
   function ControlledCarousel() {
     const [index, setIndex] = useState(0);
 
@@ -82,258 +73,6 @@ function Home() {
   let size = Object.keys(products).length;
   console.log(size);
 
-  const RowTable = (i) => {
-    console.log("I is equal", i);
-    return (
-      <>
-        <Row>
-          <Col sm={6} md={3}>
-            <div class="card">
-              <div class="hover-overlay ">
-                <a href="#!">
-                  <img src={products[i].product_img} class="img-fluid" />
-                </a>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">{products[i].product_name}</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">
-                  Buy
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col sm={6} md={3}>
-            <div class="card">
-              <div class="hover-overlay ">
-                <a href="#!">
-                  <img src={products[i + 1].product_img} class="img-fluid" />
-                </a>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">{products[i + 1].product_name}</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">
-                  Buy
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col sm={6} md={3}>
-            <div class="card">
-              <div class="hover-overlay ">
-                <a href="#!">
-                  <img src={products[i + 2].product_img} class="img-fluid" />
-                </a>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">{products[i + 2].product_name}</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">
-                  Buy
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col sm={6} md={3}>
-            <div class="card">
-              <div class="hover-overlay ">
-                <a href="#!">
-                  <img src={products[i + 3].product_img} class="img-fluid" />
-                </a>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">{products[i + 3].product_name}</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">
-                  Buy
-                </a>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </>
-    );
-  };
-
-  const DataTable = () => {
-    let ret = [];
-    let i = 0;
-    for (i = 0; size > 3; i += 4) {
-      console.log("IN LOOP");
-      ret[i / 4] = RowTable(i);
-      size -= 4;
-    }
-    if (size === 1) {
-      ret[i / 4 + 1] = (
-        <>
-          <Row>
-            {" "}
-            <Col sm={6} md={3}>
-              <div class="card">
-                <div class="hover-overlay ">
-                  <a href="#!">
-                    <img src={products[i].product_img} class="img-fluid" />
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{products[i].product_name}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </Col>
-            <Col sm={6} md={3}></Col>
-            <Col sm={6} md={3}></Col> <Col sm={6} md={3}></Col>
-          </Row>
-        </>
-      );
-    } else if (size === 2) {
-      ret[i / 4 + 1] = (
-        <>
-          <Row>
-            {" "}
-            <Col sm={6} md={3}>
-              <div class="card">
-                <div class="hover-overlay ">
-                  <a href="#!">
-                    <img src={products[i].product_img} class="img-fluid" />
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{products[i].product_name}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </Col>
-            <Col sm={6} md={3}>
-              <div class="card">
-                <div class="hover-overlay ">
-                  <a href="#!">
-                    <img src={products[i + 1].product_img} class="img-fluid" />
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{products[i + 1].product_name}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </Col>
-            <Col sm={6} md={3}></Col>
-            <Col sm={6} md={3}></Col>
-          </Row>
-        </>
-      );
-    } else if (size === 3) {
-      ret[i / 4 + 1] = (
-        <>
-          <Row>
-            {" "}
-            <Col sm={6} md={3}>
-              <div class="card">
-                <div class="hover-overlay ">
-                  <a href="#!">
-                    <img src={products[i].product_img} class="img-fluid" />
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{products[i].product_name}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </Col>
-            <Col sm={6} md={3}>
-              <div class="card">
-                <div class="hover-overlay ">
-                  <a href="#!">
-                    <img src={products[i + 1].product_img} class="img-fluid" />
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{products[i + 1].product_name}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </Col>
-            <Col sm={6} md={3}>
-              <div class="card">
-                <div class="hover-overlay ">
-                  <a href="#!">
-                    <img src={products[i + 2].product_img} class="img-fluid" />
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{products[i + 2].product_name}</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">
-                    Buy
-                  </a>
-                </div>
-              </div>
-            </Col>
-            <Col sm={6} md={3}></Col>
-          </Row>
-        </>
-      );
-    }
-
-    return ret;
-  };
-
   const imgs = [
     {
       url: "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
@@ -352,6 +91,25 @@ function Home() {
     },
   ];
 
+  const imgs2 = [
+    {
+      url: require("../assets/Stores/FahadHome.jpg"),
+    },
+    {
+      url: require("../assets/Stores/Rawafed.jpg"),
+    },
+    {
+      url: require("../assets/Stores/Saeed.jpg"),
+    },
+    {
+      url: require("../assets/Stores/Shames.jpg"),
+    },
+    {
+      url: require("../assets/Stores/kaery.jpg"),
+    },
+  ];
+  console.log('"' + imgs2[0].url + '"');
+
   return (
     <>
       <div style={{ display: "inline-block", width: "100%" }}>
@@ -359,24 +117,184 @@ function Home() {
           <a href="">
             <ControlledCarousel />
           </a>
-          <div class="coverImgs">
+          {/* <div class="coverImgs">
             <a href="#">
               <img src="./imgs/cover.jpg" alt="" class="sideImg1" />
             </a>
             <a href="#">
               <img src="../imgs/soft&easy.jpg" alt="" class="sideImg2" />
             </a>
-          </div>
-
+          </div> */}
           {/* <div className="centerMode">{<CenterMode />}</div> */}
+
           <Card
             title="متاجر عرضناها لك"
-            data={imgs}
+            data={imgs2}
             style={{ margin: "20%" }}
           />
-          <Card title="الأعلى مبيعاً" data={imgs} />
+
+          <h1>
+            {" "}
+            <div class="separator">انتقل بمطبخك الى مستوى اخر من التطور</div>
+          </h1>
+          <a href="/kitchenProducts">
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "#eee",
+                position: "relative",
+                height: "400px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "Center",
+              }}
+            >
+              <img
+                style={{ height: "400px", flex: "1" }}
+                src={require("../assets/kitchen/goodKitchen.jpg")}
+              />
+
+              <div id="arrowAnim" style={{ flex: "3" }}>
+                <div class="arrowSliding">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay1">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay2">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay3">
+                  <div class="arrow"></div>
+                </div>
+              </div>
+
+              <img
+                style={{ height: "400px", flex: "1" }}
+                src={require("../assets/kitchen/badKitchen.jpg")}
+              />
+            </div>
+          </a>
+          <h1>
+            {" "}
+            <div class="separator"></div>
+          </h1>
+          <a href="/tableProducts">
+            <div
+              style={{
+                marginTop: "40px",
+                backgroundColor: "#eee",
+                position: "relative",
+                height: "400px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "Center",
+              }}
+            >
+              <img
+                src={require("../assets/table/forksInGlass.jpg")}
+                style={{
+                  height: "400px",
+                  width: "20%",
+                  position: "absolute",
+                  right: "0",
+                }}
+              />
+              <div>
+                <h5
+                  style={{
+                    textAlign: "right",
+                    height: "400px",
+                    width: "15%",
+                    position: "absolute",
+                    fontWeight: "bold",
+                    fontSize: "5vw",
+                    color: "var(--dark-liver-horses)",
+                    top: "5% ",
+                    right: "27%",
+                  }}
+                >
+                  الترتيب أساس في السفرة
+                </h5>
+              </div>
+              <img
+                style={{
+                  height: "400px",
+                  width: "55%",
+                  position: "absolute",
+                  left: "0",
+                }}
+                src={require("../assets/table/table.jpg")}
+              />{" "}
+            </div>
+          </a>
+          <h1>
+            {" "}
+            <div class="separator"></div>
+          </h1>
+          <a href="/homeProducts">
+            <div
+              style={{
+                marginTop: "40px",
+                backgroundColor: "#eee",
+                position: "relative",
+                height: "400px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "Center",
+              }}
+            >
+              <h5
+                style={{
+                  textAlign: "right",
+                  height: "400px",
+                  width: "15%",
+                  position: "absolute",
+                  fontWeight: "bold",
+                  fontSize: "5vw",
+                  color: "var(--dark-liver-horses)",
+                  top: "5% ",
+                  right: "5%",
+                }}
+              >
+                أضف اللون القوي لمنزلك
+              </h5>
+              <img
+                src={require("../assets/home/greentable.jpg")}
+                style={{
+                  height: "400px",
+                  width: "25%",
+                  position: "absolute",
+                  right: "25%",
+                  opacity: "0.25",
+                }}
+              />
+              <img
+                src={require("../assets/home/greentable.jpg")}
+                style={{
+                  height: "400px",
+                  width: "25%",
+                  position: "absolute",
+                  right: "50%",
+                  opacity: "0.6",
+                }}
+              />
+
+              <img
+                src={require("../assets/home/greentable.jpg")}
+                style={{
+                  height: "400px",
+                  width: "25%",
+                  position: "absolute",
+                  right: "75%",
+                }}
+              />
+            </div>
+          </a>
+
+          {/* <Card title="الأعلى مبيعاً" data={imgs} />
           <Card title="عروض خاصة" data={imgs} />
-          <Card title="جديد" data={imgs} />
+          <Card title="جديد" data={imgs} /> */}
           {/* {DataTable()} */}
         </Container>
       </div>

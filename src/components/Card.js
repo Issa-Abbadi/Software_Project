@@ -37,7 +37,7 @@ export default function Card({ title, data }) {
                 <img
                   src={item.url}
                   alt="hero_img"
-                  style={{ height: "200px" }}
+                  style={{ height: "200px", "border-radius": "50%" }}
                 />
               </div>
             </>
