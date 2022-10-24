@@ -1,35 +1,55 @@
 import React, { Children } from "react";
 import "./navbar.css";
-import { FaRegChartBar, FaTh, FaUserAlt, FaBars } from "react-icons/fa";
+import {
+  FaTh,
+  FaBars,
+  FaUserAlt,
+  FaRegChartBar,
+  FaCommentAlt,
+  FaShoppingBag,
+  FaThList,
+} from "react-icons/fa";
 import { NavLink } from "react-bootstrap";
 
 const Sidebar = ({ children }) => {
   const menuItem = [
     {
       path: "/home",
-      name: "Home",
+      name: "الرئيسية",
       icon: <FaTh />,
     },
     {
       path: "/aboutUs",
-      name: "AboutUs",
+      name: "عن متجرك",
       icon: <FaUserAlt />,
     },
     {
       path: "/analytics",
-      name: "Analytics",
+      name: "احصائيات",
       icon: <FaRegChartBar />,
+    },
+    {
+      path: "/comment",
+      name: "التعليقات",
+      icon: <FaCommentAlt />,
+    },
+    {
+      path: "/product",
+      name: "المنتجات",
+      icon: <FaShoppingBag />,
+    },
+    {
+      path: "/productList",
+      name: "قائمة المنتجات",
+      icon: <FaThList />,
     },
   ];
 
   return (
-    <div className="containerr" style={{ flex: "20%" }}>
+    <div className="containerr" style={{ width: "20%" }}>
       <div className="sidebar">
         <div className="top_section">
-          <h1 class="logo">Logo</h1>
-          <div className="bars">
-            <FaBars />
-          </div>
+          <div className="bars" style={{ height: "20px" }}></div>
         </div>
         {menuItem.map((item, index) => (
           <NavLink

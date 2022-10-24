@@ -26,6 +26,7 @@ import AboutUs from "./Pages/AboutUs";
 import ConOfUse from "./Pages/ConditionsOfUse";
 import Privacy from "./Pages/Privacy";
 import Analytics from "./Pages/Analytics";
+import Admin from "./Pages/Admin";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <div style={{ display: "flex" }}>
           <div
             style={{
+              position: "relative",
               flex: "1",
               margin: "0% 2%",
               // maxWidth: "100%",
@@ -44,7 +46,9 @@ function App() {
             }}
           >
             <Routes>
+              <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/" element={<Home />} />
+
               <Route exact path="/profile" element={<Profile />} />
               <Route exact path="/cart" element={<Cart />} />
               <Route exact path="/login" element={<Login />} />

@@ -25,8 +25,12 @@ function Login(props) {
           localStorage.setItem("TOKEN", res.data.token);
           localStorage.setItem("EMAIL", res.data.email);
           console.log("LOGIN SUCCESS", localStorage.getItem("TOKEN"));
-          navigate("/");
-          navigate(0);
+          if (res.data.email.includes("houseware")) {
+            navigate("/admin");
+          } else {
+            navigate("/");
+            navigate(0);
+          }
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));

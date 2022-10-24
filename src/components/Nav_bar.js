@@ -54,11 +54,12 @@ function Nav_bar() {
           style={{
             top: "0",
             minHeight: "75px",
+            direction: "rtl",
           }}
           class="navbar"
           // bg="dark"
           variant="dark"
-          expand="lg"
+          expand="md"
           fixed="top"
         >
           <a class="navbar-brand" href="/">
@@ -215,7 +216,7 @@ function Nav_bar() {
                 aria-label="Search"
               />
               <button
-                style={{ "margin-right": "10px" }}
+                style={{ margin: "0px 10px" }}
                 class="btn btn-outline-primary"
                 type="submit"
               >
@@ -305,7 +306,6 @@ function Nav_bar() {
               </NavDropdown> */}
 
                 <NavDropdown
-                  align="end"
                   id="nav-dropdown-dark-example3"
                   title={
                     <a
@@ -335,14 +335,13 @@ function Nav_bar() {
             )}
             {isLogin && (
               <>
-                <a class="text-reset m-2" href="/cart">
+                {/* <a class="text-reset m-2" href="/cart">
                   <i
                     class="fas fa-shopping-cart"
                     style={{ color: "#0d6efd" }}
                   ></i>
-                </a>
+                </a> */}
                 <NavDropdown
-                  align="end"
                   id="nav-dropdown-dark-example3"
                   title={
                     <a
