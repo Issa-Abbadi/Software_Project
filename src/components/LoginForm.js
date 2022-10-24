@@ -3,15 +3,16 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormGroup, Container, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import "../Pages/loginAndSign.css";
+
+
+
 
 function LoginForm(props) {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("You have enter an invalid email address"),
     // .required("Required"),
     password: Yup.string()
-      .required("No password provided.")
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
   });
   console.log(props);
   return (
@@ -50,11 +51,16 @@ function LoginForm(props) {
             }}
           >
             <Formik {...props} validationSchema={validationSchema}>
-              <Form class="loginForm">
-                <img src={require("../assets/LOGO2.png")} />
-                <h1 class="loginTitle">تسجيل الدخول</h1>
-                <FormGroup class="login-title">
-                  <label htmlFor="email">البريد الالكتروني</label>
+              <Form class="loginForm ">
+                <div class="Lock">
+                    <img src={require("../assets/loginLock.png")} class="lockImg" />
+                </div>
+                <div>
+                    <h1 class="loginTitle">تسجيل الدخول</h1>
+                </div>
+
+                <div class="fields">
+                <FormGroup class="login-title ">
                   <Field
                     name="email"
                     type="email"
@@ -66,15 +72,17 @@ function LoginForm(props) {
                     name="email"
                     className="d-block invalid-feedback"
                     component="span"
+
                   />
                 </FormGroup>
                 <FormGroup class="password">
-                  <label htmlFor="password">كلمة السر</label>
                   <Field
                     name="password"
                     type="password"
                     placeholder="كلمة السر"
                     className="form-control"
+                    required
+
                   />
                   <ErrorMessage
                     name="password"
@@ -82,10 +90,8 @@ function LoginForm(props) {
                     component="span"
                   />
                 </FormGroup>
-                <span class="remembering">
-                  <label htmlFor="remeber">تذكرني</label>
-                  <input id="remeber" type="checkbox" />
-                </span>
+                </div>
+
                 <Link
                   class="text-reset"
                   style={{
@@ -100,7 +106,7 @@ function LoginForm(props) {
                   {" "}
                   نسيت كلمة السر ؟{" "}
                 </Link>
-                <Button
+                <Button 
                   style={{ display: "block", width: "100%", marginTop: "5%" }}
                   variant="dark"
                   size="lg"

@@ -21,29 +21,58 @@
     width: fit-content;
 }
 
-.login .login-title{
-    margin-bottom: 5% ;
+.loginForm .fields .login-title{
+    display: block;
+    width: 90%;
+    margin: auto;
 }
 
+.loginForm .fields .password{
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-top: 5% ;
+}
 
-.login .password{
-    margin-bottom: 2%;
+.login-form .fields{
+    width: 100%;
+    display: block;
 }
 
 .loginForm{
     display: flex;
     align-items: center;
     flex-direction: column;
+    
     margin-top: 10px;
     height: 80vh;
-    width: 40vh;
+    width: 50vh;
     background: #fff;
     Box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
     backdrop-filter: blur(8.5px);
     border-radius: 10px;
     text-transform: uppercase;
+    direction: rtl;
 }
 
 .loginTitle{
-    margin: 3rem 0 2rem 
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }  
+
+.css-1a4cg4j-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: var(--may-green);
+}
+
+ 
+.login-form .Lock .lockImg{
+    width: 15%;
+    margin: auto;
+    display: block;
+    margin-top: 10%;
+    background-color: var(--may-green);
+    border-radius: 50%;
+    padding: 5px;
+}
+
