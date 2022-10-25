@@ -58,11 +58,10 @@ function SingleProduct(props) {
             }}
             class="btn"
             style={{
-              backgroundColor: "#eee",
               width: "40px",
               height: "25px",
               borderRadius: "10%",
-              border: "2px solid black",
+              border: "2px solid var(--may-green)",
               fontWeight: "bold",
               textAlign: "center",
               verticalAlign: "center",
@@ -87,16 +86,15 @@ function SingleProduct(props) {
       </div>
 
       <div class="card-body">
-        {retColors(product)}
-        <div></div>
-        {retSizes(product)}
-
-        <h5 class="card-title">{product.product_name}</h5>
+        <h5 class="card-title" style={{ fontWeight: "bold" }}>
+          {product.product_name}
+        </h5>
+        <div style={{ height: "5px" }}></div>
         <h5 class="card-title">{Stars(product.product_rating)}</h5>
         <h5 class="card-title">{productPrice}$</h5>
         <h6 class="card-title">المتجر:{product.product_company} </h6>
+        {retSizes(product)} {retColors(product)}
         <p class="card-text">{product.product_description}</p>
-
         <a href="#!" class="btn btn-primary">
           أضف للسلّة
         </a>
