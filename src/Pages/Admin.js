@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddProduct from "./AddProduct";
+import Disposes from "../components/Dashboard";
 function Admin(props) {
   // const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ function Admin(props) {
           right: "0",
         }}
       />
-      <AddProduct />
+      <Disposes />
     </div>
   );
 }

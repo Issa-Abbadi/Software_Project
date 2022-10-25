@@ -25,6 +25,9 @@
 .navbar {
   background-color: var(--dark-liver-horses);
 }
+.navbar .dropdown-menu-dark {
+  --bs-dropdown-link-active-bg: var(--may-green);
+}
 
 main {
   width: 100%;
@@ -86,6 +89,10 @@ main {
 
 .dropdown-menu-dark {
   background-color: var(--dark-liver-horses);
+}
+
+.dropdown-menu-dark:active {
+  --bs-dropdown-link-active-bg: var(--may-green);
 }
 
 .navbar .btn-outline-primary {
