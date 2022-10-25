@@ -3,15 +3,21 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormGroup, Container, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import "../Pages/loginAndSign.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  faYoutube,
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function LoginForm(props) {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("You have enter an invalid email address"),
     // .required("Required"),
-    password: Yup.string()
-      .required("No password provided.")
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+    password: Yup.string(),
   });
   console.log(props);
   return (
@@ -51,78 +57,100 @@ function LoginForm(props) {
           >
             <Formik {...props} validationSchema={validationSchema}>
               <Form class="loginForm">
-                <img src={require("../assets/LOGO2.png")} />
-                <h1 class="loginTitle">تسجيل الدخول</h1>
-                <FormGroup class="login-title">
-                  <label htmlFor="email">البريد الالكتروني</label>
-                  <Field
-                    name="email"
-                    type="email"
-                    className="form-control"
-                    required
-                    placeholder="البريد الالكتروني"
+                <div class="Lock">
+                  <img
+                    src={require("../assets/loginLock.png")}
+                    class="lockImg"
                   />
-                  <ErrorMessage
-                    name="email"
-                    className="d-block invalid-feedback"
-                    component="span"
-                  />
-                </FormGroup>
-                <FormGroup class="password">
-                  <label htmlFor="password">كلمة السر</label>
-                  <Field
-                    name="password"
-                    type="password"
-                    placeholder="كلمة السر"
-                    className="form-control"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    className="d-block invalid-feedback"
-                    component="span"
-                  />
-                </FormGroup>
-                <span class="remembering">
-                  <label htmlFor="remeber">تذكرني</label>
-                  <input id="remeber" type="checkbox" />
-                </span>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/forget-pass"}
-                >
-                  {" "}
-                  نسيت كلمة السر ؟{" "}
-                </Link>
-                <Button
-                  style={{ display: "block", width: "100%", marginTop: "5%" }}
-                  variant="dark"
-                  size="lg"
-                  block="block"
-                  type="submit"
-                >
-                  {props.children}
-                </Button>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/signup"}
-                >
-                  {" "}
-                  SIGN UP{" "}
-                </Link>
+                </div>
+                <div class="loggin">
+                  <h1 class="loginTitle">أدخل إلى حسابك</h1>
+                </div>
+
+                <div class="fields">
+                  <FormGroup class="login-title ">
+                    <Field
+                      name="email"
+                      type="email"
+                      className="form-control"
+                      required
+                      placeholder="البريد الالكتروني"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      className="d-block invalid-feedback"
+                      component="span"
+                    />
+                  </FormGroup>
+                  <FormGroup class="password">
+                    <Field
+                      name="password"
+                      type="password"
+                      placeholder="كلمة السر"
+                      className="form-control"
+                      required
+                    />
+                    <ErrorMessage
+                      name="password"
+                      className="d-block invalid-feedback"
+                      component="span"
+                    />
+                  </FormGroup>
+                </div>
+
+                <div class="login-Button">
+                  <Button variant="dark" size="lg" block="block" type="submit">
+                    {props.children}
+                  </Button>
+                </div>
+
+                <div class="sign-with-others">
+                  <h2>
+                    <span>أو عن طريق</span>
+                  </h2>
+                </div>
+
+                <div class="social-container">
+                  <a href="https://www.youtube.com" className="youtube social">
+                    <FontAwesomeIcon icon={faYoutube} size="2x" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/learnbuildteach/"
+                    className="facebook social"
+                  >
+                    <FontAwesomeIcon icon={faFacebook} size="2x" />
+                  </a>
+                  <a
+                    href="https://www.twitter.com/jamesqquick"
+                    className="twitter social"
+                  >
+                    <FontAwesomeIcon icon={faTwitter} size="2x" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/learnbuildteach"
+                    className="instagram social"
+                  >
+                    <FontAwesomeIcon icon={faInstagram} size="2x" />
+                  </a>
+                </div>
+                <div class="addition-links">
+                  <div class="forgetPassword">
+                    <Link class="text-reset" to={"/forget-pass"}>
+                      {" "}
+                      نسيت كلمة السر ؟{" "}
+                    </Link>
+                  </div>
+
+                  <div class="signUP">
+                    <label>هل تمتلك حساب؟</label>
+                    <div>
+                      <Link class="create-account" to={"/signup"}>
+                        {" "}
+                        انشأ حسابك{" "}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </Form>
             </Formik>
           </div>

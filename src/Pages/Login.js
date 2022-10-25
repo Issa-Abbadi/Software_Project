@@ -12,6 +12,7 @@ function Login(props) {
   });
   // onSubmit handler
   const onSubmit = (studentObject) => {
+    console.log(studentObject);
     axios
       .post("http://localhost:4000/login/", studentObject)
       .then((res) => {
