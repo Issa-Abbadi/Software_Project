@@ -4,7 +4,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormGroup, Container, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "../Pages/loginAndSign.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  faYoutube,
+  faFacebook,
+  faTwitter,
+  faInstagram
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
@@ -51,12 +58,12 @@ function LoginForm(props) {
             }}
           >
             <Formik {...props} validationSchema={validationSchema}>
-              <Form class="loginForm ">
+              <Form class="loginForm">
                 <div class="Lock">
                     <img src={require("../assets/loginLock.png")} class="lockImg" />
                 </div>
-                <div>
-                    <h1 class="loginTitle">تسجيل الدخول</h1>
+                <div class="loggin">
+                    <h1 class="loginTitle">أدخل إلى حسابك</h1>
                 </div>
 
                 <div class="fields">
@@ -91,44 +98,65 @@ function LoginForm(props) {
                   />
                 </FormGroup>
                 </div>
+               
+                <div class="login-Button">
+                  <Button 
+                    variant="dark"
+                    size="lg"
+                    block="block"
+                    type="submit"
+                  >
+                    {props.children}
+                  </Button>
+                </div>
 
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/forget-pass"}
-                >
-                  {" "}
-                  نسيت كلمة السر ؟{" "}
-                </Link>
-                <Button 
-                  style={{ display: "block", width: "100%", marginTop: "5%" }}
-                  variant="dark"
-                  size="lg"
-                  block="block"
-                  type="submit"
-                >
-                  {props.children}
-                </Button>
-                <Link
-                  class="text-reset"
-                  style={{
-                    textAlign: "center",
-                    display: "inline-block",
-                    marginTop: "5px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
-                  }}
-                  to={"/signup"}
-                >
-                  {" "}
-                  SIGN UP{" "}
-                </Link>
+                <div class="sign-with-others">
+                    <h2><span>أو عن طريق</span></h2>
+                </div>
+
+                <div class="social-container">
+                    <a href="https://www.youtube.com"
+                          className="youtube social">
+                          <FontAwesomeIcon icon={faYoutube} size="2x" />
+                    </a>
+                    <a href="https://www.facebook.com/learnbuildteach/"
+                          className="facebook social">
+                          <FontAwesomeIcon icon={faFacebook} size="2x" />
+                    </a>
+                    <a href="https://www.twitter.com/jamesqquick" className="twitter social">
+                          <FontAwesomeIcon icon={faTwitter} size="2x" />
+                    </a>
+                    <a href="https://www.instagram.com/learnbuildteach"
+                          className="instagram social">
+                            <FontAwesomeIcon icon={faInstagram} size="2x" />
+                    </a>
+                </div>
+                <div class="addition-links">
+
+                    <div class="forgetPassword">
+                        <Link
+                          class="text-reset"
+                          to={"/forget-pass"}
+                        >
+                          {" "}
+                          نسيت كلمة السر ؟{" "}
+                        </Link>
+                    </div>
+
+                    <div class="signUP">
+                        <label>هل تمتلك حساب؟</label>
+                        <div>
+                            <Link class="create-account"
+                              to={"/signup"}
+                            >
+                              {" "}
+                              انشأ حسابك {" "}
+                            </Link>
+                        </div>
+                    </div>
+                  </div>
+
+
               </Form>
             </Formik>
           </div>

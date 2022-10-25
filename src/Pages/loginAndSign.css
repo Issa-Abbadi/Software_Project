@@ -37,6 +37,7 @@
 .login-form .fields{
     width: 100%;
     display: block;
+    margin-bottom: 5%;
 }
 
 .loginForm{
@@ -45,8 +46,8 @@
     flex-direction: column;
     
     margin-top: 10px;
-    height: 80vh;
-    width: 50vh;
+    height: 76vh;
+    width: 60vh;
     background: #fff;
     Box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
     backdrop-filter: blur(8.5px);
@@ -55,10 +56,13 @@
     direction: rtl;
 }
 
-.loginTitle{
+.loginForm .loggin .loginTitle{
+    display: block;
     font-weight: bold;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    text-align: center;
 }  
 
 .css-1a4cg4j-MuiButtonBase-root-MuiTab-root.Mui-selected{
@@ -76,3 +80,143 @@
     padding: 5px;
 }
 
+.loginForm {
+    display: block ;
+}
+
+
+
+.loginForm .login-Button{
+   width: 100%;
+   display: block;
+   text-align: center;
+}
+
+.loginForm .login-Button button{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    border-radius: 0;
+}
+
+.loginForm .sign-with-others{
+    margin: 8% 5%;
+}
+
+.loginForm .sign-with-others h2{
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin: 10px 0 0; 
+    font-weight: bold;
+}
+
+.loginForm .sign-with-others h2 span{
+    background:#fff; 
+    padding:0 5%;
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    /* background-color: red; */
+  }
+
+  a.social {
+    margin: 0 1rem;
+    transition: transform 250ms;
+    display: inline-block;
+  }
+
+  a.social:hover {
+    transform: translateY(-2px);
+  }
+
+  a.youtube {
+    color: #eb3223;
+  }
+  
+  a.facebook {
+    color: #4968ad;
+  }
+  
+  a.twitter {
+    color: #49a1eb;
+  }
+  
+  a.instagram {
+    color: black;
+  }
+
+
+  .addition-links{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    height: 10%;
+    margin-top: 10%;
+}
+
+.addition-links .sign-up link{
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    background-color: yellow;
+    width: fit-content;
+}
+
+.loginForm .addition-links .forgetPassword .text-reset{
+    margin: auto;
+    display: inline-block;
+    right: 0;
+    /* background-color: yellow; */
+    width: fit-content;
+}
+
+.loginForm .addition-links .forgetPassword{
+    color: var(--may-green);   
+}
+
+.loginForm .addition-links .forgetPassword:hover{
+    font-weight: bold;
+}
+
+
+
+.loginForm .addition-links{
+    display: inline-block;
+    /* background-color: blue; */
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+
+.loginForm .addition-links .signUP{
+    display:inline-block;
+    position: absolute;
+    width: fit-content;
+    left: 0;
+    top:0;
+    text-decoration: none;
+
+}
+.loginForm .addition-links .signUP div{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.loginForm .addition-links .signUP div .create-account {
+    display: inline-block;
+    color: var(--may-green);
+    text-decoration: none;
+}
+
+.loginForm .addition-links .signUP div .create-account:hover{
+    text-decoration: underline;
+    color: var(--dark-liver-horses);
+    font-weight: bold;
+}
