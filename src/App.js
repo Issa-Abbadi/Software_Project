@@ -27,6 +27,7 @@ import ConOfUse from "./Pages/ConditionsOfUse";
 import Privacy from "./Pages/Privacy";
 import Analytics from "./Pages/Analytics";
 import Admin from "./Pages/Admin";
+import Product from "./Pages/Product";
 
 function App() {
   return (
@@ -42,12 +43,13 @@ function App() {
               flex: "1",
               margin: "0% 2%",
               // maxWidth: "100%",
-              minHeight: "1200px",
+              minHeight: "700px",
             }}
           >
             <Routes>
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/" element={<Home />} />
+              <Route exact path="/product" element={<Product />} />
 
               <Route exact path="/profile" element={<Profile />} />
               <Route exact path="/cart" element={<Cart />} />

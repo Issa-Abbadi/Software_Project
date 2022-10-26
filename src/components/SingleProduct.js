@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faStar,
   faStarHalf,
@@ -80,9 +81,9 @@ function SingleProduct(props) {
   return (
     <div class="card cardContent">
       <div class="hover-overlay ">
-        <a href="#!">
+        <Link to="/product" state={{ product: product }}>
           <img src={productImg} class="img-fluid" />
-        </a>
+        </Link>
       </div>
 
       <div class="card-body">

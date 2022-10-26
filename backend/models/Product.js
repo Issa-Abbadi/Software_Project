@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 let productSchema = new Schema(
   {
+    _id: {
+      type: Object,
+    },
     product_name: {
       type: String,
     },
