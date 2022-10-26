@@ -12,6 +12,9 @@ let accountSchema = new Schema(
     otp: {
       type: String,
     },
+    username: {
+      type: String,
+    },
   },
   {
     collection: "accounts",

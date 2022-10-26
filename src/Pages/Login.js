@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-
-
+import { LocalGasStationRounded } from "@mui/icons-material";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -12,7 +11,6 @@ function Login(props) {
     password: "",
   });
 
-  
   // onSubmit handler
   const onSubmit = (studentObject) => {
     axios
@@ -25,11 +23,13 @@ function Login(props) {
           alert("Password is wrong");
         }
         if (res.data.code === 200) {
-          localStorage.setItem("TOKEN", res.data.token);
-          localStorage.setItem("EMAIL", res.data.email);
-          console.log("LOGIN SUCCESS", localStorage.getItem("TOKEN"));
+          window.localStorage.setItem("TOKEN", res.data.token);
+          window.localStorage.setItem("EMAIL", res.data.email);
+          window.localStorage.setItem("UserName", res.data.username);
+
           if (res.data.email.includes("houseware")) {
             navigate("/admin");
+            navigate(0);
           } else {
             navigate("/");
             navigate(0);
@@ -40,10 +40,6 @@ function Login(props) {
   };
 
   return (
-   
-
-  
-
     <>
       <div class="login-form" style={{ justifyContent: "center" }}>
         <LoginForm

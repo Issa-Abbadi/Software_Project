@@ -98,6 +98,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
+
         {/* <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
@@ -146,6 +147,7 @@ function DashboardContent() {
             </IconButton>
           </Toolbar> */}
         <Divider />
+
         {/* <List component="nav">
             {mainListItems}
             <Divider sx={{ my: 1 }} />
@@ -164,6 +166,7 @@ function DashboardContent() {
             overflow: "auto",
           }}
         >
+          <h1> {localStorage.getItem("UserName")} </h1>
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>

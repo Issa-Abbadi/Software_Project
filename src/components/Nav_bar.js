@@ -13,9 +13,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import "./navbar.css";
 
-function Nav_bar() {
+function Nav_bar(props) {
   const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
+  const [isLogin, setIsLogin] = useState(props.login);
+
   const [showKitchen, setShowKitchen] = useState(false);
   const showKitchenDropdown = (e) => {
     setShowKitchen(!showKitchen);
@@ -372,12 +373,7 @@ function Nav_bar() {
                     قائمة الرغبات
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/cart">السلة</NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="/login"
-                    onClick={localStorage.clear()}
-                  >
-                    تسجيل خروج
-                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/logout">تسجيل خروج</NavDropdown.Item>
                 </NavDropdown>
               </>
             )}

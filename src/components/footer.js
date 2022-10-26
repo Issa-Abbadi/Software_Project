@@ -11,7 +11,7 @@ function footer() {
         class="text-center text-lg-start  text-muted "
         style={{
           "z-index": "1000",
-          paddingBottom: "4%",
+          paddingBottom: "5%",
           backgroundColor: "var(--dark-liver-horses)",
         }}
       >

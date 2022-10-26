@@ -37,6 +37,7 @@ function Admin(props) {
           right: "0",
         }}
       />
+
       <Disposes />
     </div>
   );

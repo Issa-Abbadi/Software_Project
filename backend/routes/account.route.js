@@ -21,6 +21,7 @@ router.post("/", (req, res) => {
           code: 200,
           message: "user Found",
           token: "hfgdhg",
+          username: result.username,
         });
       }
     })

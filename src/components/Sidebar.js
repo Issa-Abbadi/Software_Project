@@ -46,7 +46,7 @@ const Sidebar = ({ children }) => {
   ];
 
   return (
-    <div className="containerr" style={{ width: "20%" }}>
+    <div className="containerr" style={{ width: "20%", margin: "0" }}>
       <div className="sidebar">
         <div className="top_section">
           <div className="bars" style={{ height: "20px" }}></div>

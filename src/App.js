@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav_bar";
 import Footer from "./components/footer";
 import Sidebar from "./components/Sidebar";
@@ -28,13 +28,22 @@ import Privacy from "./Pages/Privacy";
 import Analytics from "./Pages/Analytics";
 import Admin from "./Pages/Admin";
 import Product from "./Pages/Product";
+import Logout from "./Pages/Logout";
 
 function App() {
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
+  useEffect(() => {
+    const data = localStorage.getItem("EMAIL");
+    if (data === null) {
+    } else {
+      setIsLogin(data);
+    }
+  }, [isLogin]);
   return (
     <>
       <Router>
         <header>
-          <Nav />
+          <Nav login={isLogin} />
         </header>
         <div style={{ display: "flex" }}>
           <div
@@ -49,6 +58,8 @@ function App() {
             <Routes>
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/" element={<Home />} />
+              <Route exact path="/logout" element={<Logout />} />
+
               <Route exact path="/product" element={<Product />} />
 
               <Route exact path="/profile" element={<Profile />} />
