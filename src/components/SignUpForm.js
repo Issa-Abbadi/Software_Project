@@ -64,8 +64,12 @@ function SignUpForm(props) {
         axios
           .post("http://localhost:4000/signup/", studentObject)
           .then((res) => {
-            if (res.status === 200) {
+            console.log(res.data.code);
+            if (res.data.code === 200) {
               alert("Signup success.");
+              navigate("/login");
+            } else if (res.data.code === 500) {
+              alert("You Already have an account");
               navigate("/login");
             } else Promise.reject();
           })
