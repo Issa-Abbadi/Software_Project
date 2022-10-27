@@ -56,6 +56,10 @@ function Nav_bar(props) {
             top: "0",
             minHeight: "75px",
             direction: "rtl",
+
+            display: "flex",
+            "justify-content": "space-around",
+            "flex-wrap": "nowrap",
           }}
           class="navbar"
           // bg="dark"
@@ -73,7 +77,7 @@ function Nav_bar(props) {
               margin="0"
               padding="0"
             ></img>
-            Houseware
+            {/* Houseware */}
           </a>
           <Container>
             <Navbar.Toggle aria-controls="ftco-nav" />
@@ -215,14 +219,15 @@ function Nav_bar(props) {
                 type="search"
                 placeholder="بحث"
                 aria-label="Search"
+                style={{ marginLeft: "5px" }}
               />
-              <button
+              {/* <button
                 style={{ margin: "0px 10px" }}
                 class="btn btn-outline-primary"
                 type="submit"
               >
                 بحث
-              </button>
+              </button> */}
             </form>
             {!isLogin && (
               <>
