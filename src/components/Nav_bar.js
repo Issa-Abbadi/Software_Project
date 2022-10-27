@@ -12,6 +12,7 @@ import { MDBIcon } from "mdb-react-ui-kit";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import "./navbar.css";
+import Dashboard from "./Dashboard";
 
 function Nav_bar(props) {
   const navigate = useNavigate();

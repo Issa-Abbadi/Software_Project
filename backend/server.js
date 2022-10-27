@@ -10,6 +10,7 @@ const productRoute = require("./routes/product.route");
 const createAccountRoute = require("./routes/create.account.route");
 const submitOTPRoute = require("./routes/submit.otp.route");
 const sendOTPRoute = require("./routes/send.otp.route");
+const addProductRoute = require("./routes/create.product.route");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db).then(
@@ -32,6 +33,7 @@ app.use(cors());
 
 app.use("/login", accountRoute);
 app.use("/Products", productRoute);
+app.use("/addProduct", addProductRoute);
 app.use("/signup", createAccountRoute);
 app.use("/submit-otp", submitOTPRoute);
 app.use("/send-otp", sendOTPRoute);

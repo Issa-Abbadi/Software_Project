@@ -9,37 +9,37 @@ import {
   FaShoppingBag,
   FaThList,
 } from "react-icons/fa";
-import { NavLink } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-const Sidebar = ({ children }) => {
+const Sidebar = (props, { children }) => {
   const menuItem = [
     {
-      path: "/home",
+      path: "/admin",
       name: "الرئيسية",
       icon: <FaTh />,
     },
     {
-      path: "/aboutUs",
+      path: "/admin",
       name: "عن متجرك",
       icon: <FaUserAlt />,
     },
     {
-      path: "/analytics",
+      path: "/admin",
       name: "احصائيات",
       icon: <FaRegChartBar />,
     },
     {
-      path: "/comment",
-      name: "التعليقات",
+      path: "/admin",
+      name: "أضف منتج",
       icon: <FaCommentAlt />,
     },
     {
-      path: "/product",
+      path: "/admin",
       name: "المنتجات",
       icon: <FaShoppingBag />,
     },
     {
-      path: "/productList",
+      path: "/admin",
       name: "قائمة المنتجات",
       icon: <FaThList />,
     },
@@ -54,6 +54,7 @@ const Sidebar = ({ children }) => {
         {menuItem.map((item, index) => (
           <NavLink
             to={item.path}
+            state={{ Name: item.name }}
             key={index}
             className="link"
             activeclassName="active"
@@ -63,6 +64,7 @@ const Sidebar = ({ children }) => {
           </NavLink>
         ))}
       </div>
+      <main>{children}</main>
     </div>
   );
 };

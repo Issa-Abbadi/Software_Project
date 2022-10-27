@@ -20,54 +20,57 @@ import { styled } from "@mui/system";
 import Container from "@mui/material/Container";
 
 const validationSchema = Yup.object().shape({
+  username: Yup.string().required("مطلوب"),
   email: Yup.string()
     .email("You have enter an invalid email address")
-    .required("Required"),
-  password: Yup.string()
-    .required("No password provided.")
-    .min(8, "Password is too short - should be 8 chars minimum.")
-    .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+    .required("مطلوب"),
+  password: Yup.string().required("مطلوب").min(8, "8 حروف على الأقل"),
 });
-const useStyles = styled((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+// const useStyles = styled((theme) => ({
+//   paper: {
+//     marginTop: theme.spacing(8),
+//     display: "flex",
+//     flexDirection: "column",
+//     alignItems: "center",
+//   },
+//   avatar: {
+//     margin: theme.spacing(1),
+//     backgroundColor: theme.palette.secondary.main,
+//   },
+//   form: {
+//     width: "100%", // Fix IE 11 issue.
+//     marginTop: theme.spacing(3),
+//   },
+//   submit: {
+//     margin: theme.spacing(3, 0, 2),
+//   },
+// }));
 
 function SignUpForm(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      username: "",
+      email: "",
+      password: "",
+      ppassword: "",
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
-      axios
-        .post("http://localhost:4000/signup/", studentObject)
-        .then((res) => {
-          if (res.status === 200) {
-            alert("Signup success.");
-            navigate("/login");
-          } else Promise.reject();
-        })
-        .catch((err) => alert("Something went wrong"));
+      console.log(studentObject);
+      if (formik.values.ppassword === formik.values.password) {
+        axios
+          .post("http://localhost:4000/signup/", studentObject)
+          .then((res) => {
+            if (res.status === 200) {
+              alert("Signup success.");
+              navigate("/login");
+            } else Promise.reject();
+          })
+          .catch((err) => alert("Something went wrong"));
+      }
     },
   });
 
@@ -77,53 +80,41 @@ function SignUpForm(props) {
       <div className="form-wrapper outcard">
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
+          <div>
+            <Avatar>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
-            <form className={classes.form} onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     autoComplete="fname"
-                    name="firstName"
+                    name="username"
                     variant="outlined"
-                    required
                     fullWidth
-                    id="firstName"
-                    label="First Name"
+                    id="username"
+                    label="اسم المستخدم"
                     autoFocus
-                    value={formik.values.email}
+                    value={formik.values.username}
                     onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
+                    error={
+                      formik.touched.username && Boolean(formik.errors.username)
+                    }
+                    helperText={
+                      formik.touched.username && formik.errors.username
+                    }
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
-                    autoComplete="lname"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
-                  />
-                </Grid>
+                <Grid item xs={12} sm={6}></Grid>
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
-                    required
                     fullWidth
                     id="email"
-                    label="Email Address"
+                    label="الإيميل"
                     name="email"
                     autoComplete="email"
                     value={formik.values.email}
@@ -135,25 +126,34 @@ function SignUpForm(props) {
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
-                    required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label="كلمة السر"
                     type="password"
                     id="password"
                     autoComplete="current-password"
-                    value={formik.values.email}
+                    value={formik.values.password}
                     onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
+                    error={
+                      formik.touched.password && Boolean(formik.errors.password)
+                    }
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
-                    }
-                    label="I want to receive inspiration, marketing promotions and updates via email."
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    name="ppassword"
+                    label="كرر كلمة السر"
+                    type="ppassword"
+                    id="ppassword"
+                    autoComplete="current-ppassword"
+                    value={formik.values.ppassword}
+                    onChange={formik.handleChange}
+                    error={Boolean(
+                      formik.values.ppassword !== formik.values.password
+                    )}
+                    helperText={"ليست صحيحة"}
                   />
                 </Grid>
               </Grid>
@@ -162,14 +162,13 @@ function SignUpForm(props) {
                 fullWidth
                 variant="contained"
                 color="primary"
-                className={classes.submit}
               >
-                Sign Up
+                إنشاء حساب
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    Already have an account? Sign in
+                  <Link href="/login" variant="body2">
+                    تمتلك حساب؟ سجل الدخول
                   </Link>
                 </Grid>
               </Grid>
