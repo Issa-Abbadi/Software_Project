@@ -24,38 +24,13 @@ function LoginForm(props) {
     <>
       <Container>
         <Col
-          // md={{ span: 4, offset: 4 }}
-          style={
-            {
-              //   "background-color": "#eee",
-              // padding: "2rem",
-              // borderRadius: "5%",
-              // marginTop: "20px",
-              // "background-color": "blue",
-              // "display": "flex",
-              // "align-items": "center",
-              // "flex-direction": "column",
-              // "height": "80vh",
-              // "width": "30vh",
-              // "background": "rgba(255,255,255,0.1)",
-              // "Box-shadow": "0 8px 32px 0 rgba(31,38,135,0.37)",
-              // "backdrop-filter": "blur(8.5px)",
-              // "border-radius": "10px",
-              // "color": "#ffffff",
-              // "text-transform": "uppercase",
-              // "letter-spacing": "0.1rem"
-            }
-          }
         >
           <div
             className="form-wrapper outcard"
-            style={{
-              justifyContent: "center",
-              "align-items": "center",
-              display: "flex",
-            }}
+            
           >
             <Formik {...props} validationSchema={validationSchema}>
+             <div class="login-container"> 
               <Form class="loginForm">
                 <div class="Lock">
                   <img
@@ -64,7 +39,7 @@ function LoginForm(props) {
                   />
                 </div>
                 <div class="loggin">
-                  <h1 class="loginTitle">أدخل إلى حسابك</h1>
+                  <p class="loginTitle">أدخل إلى حسابك</p>
                 </div>
 
                 <div class="fields">
@@ -97,7 +72,12 @@ function LoginForm(props) {
                     />
                   </FormGroup>
                 </div>
-
+                <div class="forgetPassword">
+                    <Link class="text-reset" to={"/forget-pass"}>
+                      {" "}
+                      نسيت كلمة السر ؟{" "}
+                    </Link>
+                </div>
                 <div class="login-Button">
                   <Button variant="dark" size="lg" block="block" type="submit">
                     {props.children}
@@ -105,12 +85,13 @@ function LoginForm(props) {
                 </div>
 
                 <div class="sign-with-others">
-                  <h2>
+                  <p>
                     <span>أو عن طريق</span>
-                  </h2>
+                  </p>
                 </div>
 
                 <div class="social-container">
+                 <div>
                   <a href="https://www.youtube.com" className="youtube social">
                     <FontAwesomeIcon icon={faYoutube} size="2x" />
                   </a>
@@ -132,26 +113,21 @@ function LoginForm(props) {
                   >
                     <FontAwesomeIcon icon={faInstagram} size="2x" />
                   </a>
-                </div>
-                <div class="addition-links">
-                  <div class="forgetPassword">
-                    <Link class="text-reset" to={"/forget-pass"}>
-                      {" "}
-                      نسيت كلمة السر ؟{" "}
-                    </Link>
                   </div>
+                </div>
+                 
 
                   <div class="signUP">
-                    <label>هل تمتلك حساب؟</label>
                     <div>
-                      <Link class="create-account" to={"/signup"}>
+                    <label for="labeling">هل تمتلك حساب؟</label>
+                      <Link class="create-account" to={"/signup"} id="labeling">
                         {" "}
                         انشأ حسابك{" "}
                       </Link>
-                    </div>
+                      </div>
                   </div>
-                </div>
               </Form>
+              </div>
             </Formik>
           </div>
         </Col>

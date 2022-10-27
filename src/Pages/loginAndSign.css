@@ -1,7 +1,6 @@
 .login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  
 }
 
 .login-container .login-form {
@@ -37,23 +36,35 @@
 .login-form .fields {
   width: 100%;
   display: block;
-  margin-bottom: 5%;
+  /* margin-bottom: 5%; */
 }
 
-.loginForm {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  margin-top: 10px;
-  height: 76vh;
-  width: 60vh;
-  background: #fff;
+.login-container .loginForm {
+  display: block;
+  margin-top: 10%;
+  /* height: fit-content; */
+  width: 25vw;
+  background: white;
+  margin: auto;
+  /* background-color: red; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   border-radius: 10px;
-  text-transform: uppercase;
   direction: rtl;
+}
+
+.login-container{
+  /* background-color: blue; */
+  display: block;
+  width: 100%;
+  direction: rtl;
+  margin-top: 5%;
+}
+
+
+.loginForm .loggin{
+  width: 100%;
+  display: block;
 }
 
 .loginForm .loggin .loginTitle {
@@ -61,7 +72,8 @@
   font-weight: bold;
   margin-top: 5%;
   margin-bottom: 5%;
-  width: 100%;
+  font-size: 2vw;
+  /* background-color: red; */
   text-align: center;
 }
 
@@ -69,14 +81,29 @@
   color: var(--may-green);
 }
 
-.login-form .Lock .lockImg {
+.login-container .loginForm .Lock {
+  display: flex;
+  justify-content: center;
+}
+
+.login-container .loginForm .Lock .lockImg {
   width: 15%;
   margin: auto;
-  display: block;
+  /* display: inline-block; */
   margin-top: 10%;
   background-color: var(--may-green);
   border-radius: 50%;
-  padding: 5px;
+  left: 50%;
+  right: 50%; 
+  /* padding: 5px; */
+
+}
+
+.login-container .loginForm .Lock .lockImg img {
+  display: block;
+  margin-top: 5%;
+  margin: auto;
+  margin-left: 50%;
 }
 
 .loginForm {
@@ -87,6 +114,8 @@
   width: 100%;
   display: block;
   text-align: center;
+  /* margin-bottom: 5%; */
+  /* background-color: red; */
 }
 
 .loginForm .login-Button button {
@@ -94,32 +123,49 @@
   margin: auto;
   text-align: center;
   border-radius: 0;
+  font-size: 3vh;
 }
 
 .loginForm .sign-with-others {
-  margin: 8% 5%;
+  /* margin: 8% 5%; */
+   display: block;
+   width: 100%;
+   margin-bottom: 7%;
+   margin-top: 10%;
+   /* background-color: red; */
 }
 
-.loginForm .sign-with-others h2 {
-  width: 100%;
+.loginForm .sign-with-others p {
+  width: 90%;
   text-align: center;
   border-bottom: 1px solid #000;
   line-height: 0.1em;
-  margin: 10px 0 0;
+  /* margin: 10px 0 0; */
+  margin: auto;
+  margin-top: 5%;
   font-weight: bold;
 }
 
-.loginForm .sign-with-others h2 span {
+.loginForm .sign-with-others p span {
+  margin-top: 5%;
   background: #fff;
   padding: 0 5%;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 2vw;
 }
 
 .social-container {
-  display: flex;
-  justify-content: center;
+  display: block;
+  width: 100%;
   /* background-color: red; */
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.social-container div {
+  display: block;
+  width: 90%;
+  margin: auto;  
 }
 
 a.social {
@@ -134,81 +180,103 @@ a.social:hover {
 
 a.youtube {
   color: #eb3223;
+  width: fit-content;
 }
 
 a.facebook {
   color: #4968ad;
+  width: fit-content;
+
 }
 
 a.twitter {
   color: #49a1eb;
+  width: fit-content;
+
 }
 
 a.instagram {
   color: black;
+  width: fit-content;
+
 }
 
-.addition-links {
+/* .addition-links {
   position: absolute;
   bottom: 0;
   width: 100%;
   display: flex;
   height: 10%;
   margin-top: 10%;
-}
-
+} */
+/* 
 .addition-links .sign-up link {
   position: absolute;
   display: inline-block;
   left: 0;
   background-color: yellow;
   width: fit-content;
-}
+} */
 
-.loginForm .addition-links .forgetPassword .text-reset {
+.loginForm .forgetPassword .text-reset {
   margin: auto;
-  display: inline-block;
-  right: 0;
+  display: block;
   /* background-color: yellow; */
   width: fit-content;
 }
 
-.loginForm .addition-links .forgetPassword {
+.loginForm  .forgetPassword {
+  /* color: var(--may-green); */
+  display: block;
+  width: 100%;
+  /* background-color: red; */
+  margin-bottom: 5%;
+}
+
+.loginForm  .forgetPassword .text-reset {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+
+
+.loginForm  .signUP  {
+   display: block;
+   margin: auto;
+   width: 100%;
+   margin-bottom: 15%;
+   /* background-color: red; */
+   margin-bottom: 10px;
+}
+
+.loginForm  .signUP div {
+  display: block;
+  width: 90%;
+  margin: auto;
+  height: fit-content;
+  margin-bottom: 5%;
+}
+
+.loginForm  .signUP div .create-account{
+  /* background-color: red; */
+  text-decoration: none;
   color: var(--may-green);
 }
 
-.loginForm .addition-links .forgetPassword:hover {
-  font-weight: bold;
+.loginForm  .signUP div .create-account:hover{
+    text-decoration: underline;
+    font-weight: bold;
 }
 
-.loginForm .addition-links {
-  display: inline-block;
-  /* background-color: blue; */
-  margin-top: 5%;
-  margin-bottom: 0;
-}
-
-.loginForm .addition-links .signUP {
-  display: inline-block;
-  position: absolute;
-  width: fit-content;
-  left: 0;
-  top: 0;
-  text-decoration: none;
-}
-.loginForm .addition-links .signUP div {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.loginForm .addition-links .signUP div .create-account {
+/* .loginForm  .signUP div .create-account {
   display: inline-block;
   color: var(--may-green);
   text-decoration: none;
-}
+} */
 
-.loginForm .addition-links .signUP div .create-account:hover {
+/* .loginForm .addition-links .signUP div .create-account:hover {
   text-decoration: underline;
   color: var(--dark-liver-horses);
   font-weight: bold;
-}
+} */
