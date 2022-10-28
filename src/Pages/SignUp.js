@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SignUpForm from "../components/SignUpForm";
+import Alert from "@mui/material/Alert";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -12,15 +13,15 @@ function SignUp() {
   });
   // onSubmit handler
   const onSubmit = (studentObject) => {
-    axios
-      .post("http://localhost:4000/signup/", studentObject)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Signup success.");
-          navigate("/login");
-        } else Promise.reject();
-      })
-      .catch((err) => alert("Something went wrong"));
+    // axios
+    //   .post("http://localhost:4000/signup/", studentObject)
+    //   .then((res) => {
+    //     if (res.status === 200) {
+    //       alert("Signup success.");
+    //       navigate("/login");
+    //     } else Promise.reject();
+    //   })
+    //   .catch((err) => alert("Something went wrong"));
   };
 
   return (

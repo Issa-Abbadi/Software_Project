@@ -4,6 +4,7 @@ import axios from "axios";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import { FormGroup, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -49,6 +50,7 @@ const validationSchema = Yup.object().shape({
 function SignUpForm(props) {
   // const classes = useStyles();
   const navigate = useNavigate();
+  const [code, setCode] = useState(0);
 
   const formik = useFormik({
     initialValues: {
@@ -67,11 +69,9 @@ function SignUpForm(props) {
             console.log(res.data.code);
 
             if (res.data.code === 200) {
-              alert("Signup success.");
               navigate("/login");
             } else if (res.data.code === 500) {
-              alert("You Already have an account");
-              navigate("/login");
+              setCode(500);
             } else Promise.reject();
           })
           .catch((err) => alert("Something went wrong"));
@@ -150,7 +150,7 @@ function SignUpForm(props) {
                     fullWidth
                     name="ppassword"
                     label="كرر كلمة السر"
-                    type="ppassword"
+                    type="password"
                     id="ppassword"
                     autoComplete="current-ppassword"
                     value={formik.values.ppassword}
@@ -177,6 +177,9 @@ function SignUpForm(props) {
                 </Grid>
               </Grid>
             </form>
+            {code === 500 && (
+              <Alert severity="error">يوجد حساب لهذا الإيميل مسبقاً</Alert>
+            )}
           </div>
           <Box mt={5}></Box>
         </Container>
