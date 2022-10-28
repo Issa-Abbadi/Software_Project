@@ -22,10 +22,8 @@ import Container from "@mui/material/Container";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("مطلوب"),
-  email: Yup.string()
-    .email("You have enter an invalid email address")
-    .required("مطلوب"),
-  password: Yup.string().required("مطلوب").min(8, "8 حروف على الأقل"),
+  email: Yup.string().email("هذا البريد الالكتروني غير صالح").required("مطلوب"),
+  password: Yup.string().required("مطلوب").min(8, "ثمانية حروف على الأقل"),
 });
 // const useStyles = styled((theme) => ({
 //   paper: {
@@ -94,7 +92,7 @@ function SignUpForm(props) {
             </Typography>
             <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
                     autoComplete="fname"
                     name="username"
@@ -113,13 +111,13 @@ function SignUpForm(props) {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}></Grid>
+
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
                     fullWidth
                     id="email"
-                    label="الإيميل"
+                    label="البريد الالكتروني"
                     name="email"
                     autoComplete="email"
                     value={formik.values.email}
@@ -141,6 +139,9 @@ function SignUpForm(props) {
                     onChange={formik.handleChange}
                     error={
                       formik.touched.password && Boolean(formik.errors.password)
+                    }
+                    helperText={
+                      formik.touched.password && formik.errors.password
                     }
                   />
                 </Grid>
@@ -178,7 +179,9 @@ function SignUpForm(props) {
               </Grid>
             </form>
             {code === 500 && (
-              <Alert severity="error">يوجد حساب لهذا الإيميل مسبقاً</Alert>
+              <Alert severity="error">
+                يوجد حساب لهذا البريد الالكتروني مسبقاً
+              </Alert>
             )}
           </div>
           <Box mt={5}></Box>
