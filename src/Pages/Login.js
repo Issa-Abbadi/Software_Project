@@ -13,30 +13,29 @@ function Login(props) {
 
   // onSubmit handler
   const onSubmit = (studentObject) => {
-    axios
-      .post("http://localhost:4000/login/", studentObject)
-      .then((res) => {
-        if (res.data.code === 500) {
-          alert("User Not Found");
-        }
-        if (res.data.code === 404) {
-          alert("Password is wrong");
-        }
-        if (res.data.code === 200) {
-          window.localStorage.setItem("TOKEN", res.data.token);
-          window.localStorage.setItem("EMAIL", res.data.email);
-          window.localStorage.setItem("UserName", res.data.username);
-
-          if (res.data.email.includes("houseware")) {
-            navigate("/admin");
-            navigate(0);
-          } else {
-            navigate("/");
-            navigate(0);
-          }
-        } else Promise.reject();
-      })
-      .catch((err) => alert("Something went wrong"));
+    //   axios
+    //     .post("http://localhost:4000/login/", studentObject)
+    //     .then((res) => {
+    //       if (res.data.code === 500) {
+    //         alert("User Not Found");
+    //       }
+    //       if (res.data.code === 404) {
+    //         alert("Password is wrong");
+    //       }
+    //       if (res.data.code === 200) {
+    //         window.localStorage.setItem("TOKEN", res.data.token);
+    //         window.localStorage.setItem("EMAIL", res.data.email);
+    //         window.localStorage.setItem("UserName", res.data.username);
+    //         if (res.data.email.includes("houseware")) {
+    //           navigate("/admin");
+    //           navigate(0);
+    //         } else {
+    //           navigate("/");
+    //           navigate(0);
+    //         }
+    //       } else Promise.reject();
+    //     })
+    //     .catch((err) => alert("Something went wrong"));
   };
 
   return (
