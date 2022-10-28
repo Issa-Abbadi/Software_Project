@@ -1,6 +1,5 @@
 .login-container {
   display: block;
-  
 }
 
 .login-container .login-form {
@@ -46,7 +45,6 @@
   width: fit-content;
   background: white;
   margin: auto;
- 
 
   /* background-color: red; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -55,7 +53,7 @@
   direction: rtl;
 }
 
-.login-container{
+.login-container {
   /* background-color: blue; */
   display: block;
   width: 100%;
@@ -63,8 +61,7 @@
   margin-top: 5%;
 }
 
-
-.loginForm .loggin{
+.loginForm .loggin {
   width: 100%;
   display: block;
 }
@@ -96,9 +93,8 @@
   background-color: var(--may-green);
   border-radius: 50%;
   left: 50%;
-  right: 50%; 
+  right: 50%;
   /* padding: 5px; */
-
 }
 
 .login-container .loginForm .Lock .lockImg img {
@@ -130,11 +126,11 @@
 
 .loginForm .sign-with-others {
   /* margin: 8% 5%; */
-   display: block;
-   width: 100%;
-   margin-bottom: 7%;
-   margin-top: 10%;
-   /* background-color: red; */
+  display: block;
+  width: 100%;
+  margin-bottom: 7%;
+  margin-top: 10%;
+  /* background-color: red; */
 }
 
 .loginForm .sign-with-others p {
@@ -167,7 +163,7 @@
 .social-container div {
   display: block;
   width: 90%;
-  margin: auto;  
+  margin: auto;
 }
 
 a.social {
@@ -188,19 +184,16 @@ a.youtube {
 a.facebook {
   color: #4968ad;
   width: fit-content;
-
 }
 
 a.twitter {
   color: #49a1eb;
   width: fit-content;
-
 }
 
 a.instagram {
   color: black;
   width: fit-content;
-
 }
 
 /* .addition-links {
@@ -227,7 +220,7 @@ a.instagram {
   width: fit-content;
 }
 
-.loginForm  .forgetPassword {
+.loginForm .forgetPassword {
   /* color: var(--may-green); */
   display: block;
   width: 100%;
@@ -235,24 +228,22 @@ a.instagram {
   margin-bottom: 5%;
 }
 
-.loginForm  .forgetPassword .text-reset {
+.loginForm .forgetPassword .text-reset {
   display: block;
   width: 90%;
   margin: auto;
 }
 
-
-
-.loginForm  .signUP  {
-   display: block;
-   margin: auto;
-   width: 100%;
-   margin-bottom: 15%;
-   /* background-color: red; */
-   margin-bottom: 10px;
+.loginForm .signUP {
+  display: block;
+  margin: auto;
+  width: 100%;
+  margin-bottom: 15%;
+  /* background-color: red; */
+  margin-bottom: 10px;
 }
 
-.loginForm  .signUP div {
+.loginForm .signUP div {
   display: block;
   width: 90%;
   margin: auto;
@@ -260,15 +251,15 @@ a.instagram {
   margin-bottom: 5%;
 }
 
-.loginForm  .signUP div .create-account{
+.loginForm .signUP div .create-account {
   /* background-color: red; */
   text-decoration: none;
   color: var(--may-green);
 }
 
-.loginForm  .signUP div .create-account:hover{
-    text-decoration: underline;
-    font-weight: bold;
+.loginForm .signUP div .create-account:hover {
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /* .loginForm  .signUP div .create-account {
@@ -282,22 +273,36 @@ a.instagram {
   color: var(--dark-liver-horses);
   font-weight: bold;
 } */
- .finding{
-     /* background-color: #cc7a72; */
-     background-color: #eee;
-     padding-top: 3%;
-     padding-left: 5%;
-     padding-right: 5%;
-     padding-bottom: 5%;
-     border-radius: 5px; 
- }
+.finding {
+  /* background-color: #cc7a72; */
+  /* border: 5px black soild !important; */
+  padding-top: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  /* border-radius: 5px; */
+}
 
- 
+.labels {
+  direction: rtl;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 
- .labels{
-      direction : rtl;
-      text-align : center;
-      margin-top: 2%;
-      margin-bottom: 2%;
+.css-1fu7jd5-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: var(--may-green) !important;
+}
 
- }
+.css-1fu7jd5-MuiButtonBase-root-MuiButton-root {
+  background-color: var(--may-green) !important;
+}
+
+.css-101ca9i-MuiTypography-root-MuiLink-root {
+  text-decoration: none !important;
+  color: var(--may-green) !important;
+}
+
+.css-101ca9i-MuiTypography-root-MuiLink-root:hover {
+  font-weight: bold;
+}

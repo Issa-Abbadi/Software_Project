@@ -81,19 +81,25 @@ function SignUpForm(props) {
   console.log(props);
   return (
     <>
-      <div className="form-wrapper outcard"> 
+      <div className="form-wrapper outcard signupForm">
         <Container component="main" maxWidth="xs">
           <CssBaseline />
 
           <div class="finding">
-            <Avatar style={{"margin":"auto", "backgroundColor":"var(--may-green)", "marginTop":"5%"   }}>
-                <LockOutlinedIcon/>
+            <Avatar
+              style={{
+                margin: "auto",
+                backgroundColor: "var(--may-green)",
+                marginTop: "5%",
+              }}
+            >
+              <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" class="labels">
-              إشترك الأن
+              إنشاء حساب
             </Typography>
             <form onSubmit={formik.handleSubmit}>
-              <Grid container spacing={2} style={{"direction":"rtl"}} >
+              <Grid container spacing={2} style={{ direction: "rtl" }}>
                 <Grid item xs={12}>
                   <TextField
                     autoComplete="fname"
@@ -169,12 +175,12 @@ function SignUpForm(props) {
                 fullWidth
                 variant="contained"
                 color="primary"
-                style={{"marginTop":"5%"}}
+                style={{ marginTop: "5%" }}
               >
                 إنشاء حساب
               </Button>
               <Grid container justifyContent="flex-end">
-                <Grid item style={{"marginTop":"1%"}}>
+                <Grid item style={{ marginTop: "1%" }}>
                   <Link href="/login" variant="body2">
                     تمتلك حساب؟ سجل الدخول
                   </Link>

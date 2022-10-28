@@ -94,7 +94,7 @@ main {
 }
 
 .dropdown-menu-dark:active {
-  --bs-dropdown-link-active-bg: var(--may-green);
+  --bs-dropdown-link-active-bg: var(--may-green) !important;
 }
 
 .navbar .btn-outline-primary {
