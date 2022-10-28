@@ -19,6 +19,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/system";
 import Container from "@mui/material/Container";
+import "../Pages/loginAndSign.css";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("مطلوب"),
@@ -80,18 +81,19 @@ function SignUpForm(props) {
   console.log(props);
   return (
     <>
-      <div className="form-wrapper outcard">
+      <div className="form-wrapper outcard"> 
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          <div>
-            <Avatar>
-              <LockOutlinedIcon />
+
+          <div class="finding">
+            <Avatar style={{"margin":"auto", "backgroundColor":"var(--may-green)", "marginTop":"5%"   }}>
+                <LockOutlinedIcon/>
             </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign up
+            <Typography component="h1" variant="h5" class="labels">
+              إشترك الأن
             </Typography>
             <form onSubmit={formik.handleSubmit}>
-              <Grid container spacing={2}>
+              <Grid container spacing={2} style={{"direction":"rtl"}} >
                 <Grid item xs={12}>
                   <TextField
                     autoComplete="fname"
@@ -167,11 +169,12 @@ function SignUpForm(props) {
                 fullWidth
                 variant="contained"
                 color="primary"
+                style={{"marginTop":"5%"}}
               >
                 إنشاء حساب
               </Button>
               <Grid container justifyContent="flex-end">
-                <Grid item>
+                <Grid item style={{"marginTop":"1%"}}>
                   <Link href="/login" variant="body2">
                     تمتلك حساب؟ سجل الدخول
                   </Link>

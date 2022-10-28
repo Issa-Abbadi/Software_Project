@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -16,7 +16,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-    "bootstrap": "^5.2.1",
+    "bootstrap": "^5.2.2",
     "formik": "^2.2.9",
     "gapi-script": "^1.2.0",
     "mdb-react-ui-kit": "^4.2.0",
@@ -27,7 +27,7 @@
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
-    "react-select": "^5.4.0",
+    "react-select": "^5.5.7",
     "react-slick": "^0.29.0",
     "react-social-icons": "^5.15.0",
     "recharts": "^2.1.15",
@@ -61,6 +61,6 @@
     ]
   },
   "devDependencies": {
-    "html-loader": "^4.1.0"
+    "html-loader": "^4.2.0"
   }
 }
