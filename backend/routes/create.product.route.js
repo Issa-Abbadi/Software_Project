@@ -16,6 +16,8 @@ router.post("/", (req, res) => {
     product_company: req.body.product_company,
     product_rating: 0,
     product_description: req.body.product_description,
+    sub_category: req.body.sub_category,
+    product_img: req.body.product_img,
   });
 
   newProduct

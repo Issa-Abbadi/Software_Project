@@ -65,6 +65,7 @@ function SignUpForm(props) {
           .post("http://localhost:4000/signup/", studentObject)
           .then((res) => {
             console.log(res.data.code);
+
             if (res.data.code === 200) {
               alert("Signup success.");
               navigate("/login");
@@ -157,7 +158,6 @@ function SignUpForm(props) {
                     error={Boolean(
                       formik.values.ppassword !== formik.values.password
                     )}
-                    helperText={"ليست صحيحة"}
                   />
                 </Grid>
               </Grid>

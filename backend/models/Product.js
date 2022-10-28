@@ -15,6 +15,9 @@ let productSchema = new Schema(
     product_category: {
       type: String,
     },
+    sub_category: {
+      type: String,
+    },
     product_rating: {
       type: Number,
     },
