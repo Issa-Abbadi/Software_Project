@@ -64,7 +64,7 @@ function ForgetPassForm(props) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" class="labels">
-              تسجيل دخول
+                نسيت كلمة السر!!
             </Typography>
             <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={2} style={{ direction: "rtl" }}>
@@ -92,7 +92,7 @@ function ForgetPassForm(props) {
                 color="primary"
                 style={{ marginTop: "5%" }}
               >
-                تسجيل دخول
+                  إعادة تعيين كلمة السر
               </Button>
             </form>
             {code === 500 && (
