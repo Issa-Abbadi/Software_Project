@@ -33,6 +33,7 @@ const AddProductForm = () => {
   ]);
   const [subGategory, setSubGategory] = useState([]);
   const [product_img, setProduct_img] = useState("");
+  const [code, setCode] = useState(0);
 
   const navigate = useNavigate();
   const formik = useFormik({
@@ -53,13 +54,13 @@ const AddProductForm = () => {
         .post("http://localhost:4000/addProduct/", studentObject)
         .then((res) => {
           if (res.data.code === 500) {
-            alert("Aready Added");
+            setCode(500);
           }
           if (res.data.code === 404) {
-            alert("Something wrong");
+            setCode(404);
           }
           if (res.data.code === 200) {
-            alert("Added Successfully");
+            setCode(200);
 
             navigate("/admin");
           } else Promise.reject();
@@ -202,11 +203,11 @@ const AddProductForm = () => {
         {product_img !== "" && (
           <Alert
             severity="success"
-            onClick={() => {
+            onClose={() => {
               setProduct_img("");
             }}
           >
-            أضيفت الصورة
+            {"أضيفت الصورة  "}
           </Alert>
         )}
 
@@ -214,6 +215,9 @@ const AddProductForm = () => {
           Submit
         </Button>
       </form>
+      {code === 500 && <Alert severity="warning">هذا المنتج موجود</Alert>}
+      {code === 200 && <Alert severity="success">تمت الإضافة بنجاح</Alert>}
+      {code === 404 && <Alert severity="error">خطأ في التنفيذ</Alert>}
     </div>
   );
 };
