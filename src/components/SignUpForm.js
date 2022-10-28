@@ -127,6 +127,7 @@ function SignUpForm(props) {
                     id="email"
                     label="البريد الالكتروني"
                     name="email"
+                    style={{"direction":"rtl"}}
                     autoComplete="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
