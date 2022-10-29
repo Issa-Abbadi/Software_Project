@@ -36,7 +36,7 @@ function ForgetPassForm(props) {
       axios
         .post("http://localhost:4000/send-otp/", studentObject)
         .then((res) => {
-          if (res.status === 200) {
+          if (res.data.code === 200) {
             navigate("/otp");
           } else {
             setCode(500);
@@ -64,7 +64,7 @@ function ForgetPassForm(props) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" class="labels">
-                نسيت كلمة السر!!
+              نسيت كلمة السر!!
             </Typography>
             <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={2} style={{ direction: "rtl" }}>
@@ -92,7 +92,7 @@ function ForgetPassForm(props) {
                 color="primary"
                 style={{ marginTop: "5%" }}
               >
-                  إعادة تعيين كلمة السر
+                إعادة تعيين كلمة السر
               </Button>
             </form>
             {code === 500 && (
