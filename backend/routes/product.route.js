@@ -34,7 +34,7 @@ router.post("/one", (req, res) => {
 
 router.get("/kitchen", (req, res) => {
   productSchema
-    .find({ product_category: "kitchen" })
+    .find({ product_category: "المطبخ" })
     .then((result) => {
       res.send(result);
     })
@@ -45,7 +45,7 @@ router.get("/kitchen", (req, res) => {
 
 router.get("/table", (req, res) => {
   productSchema
-    .find({ product_category: "table" })
+    .find({ product_category: "السفرة" })
     .then((result) => {
       res.send(result);
     })
@@ -56,7 +56,7 @@ router.get("/table", (req, res) => {
 
 router.get("/home", (req, res) => {
   productSchema
-    .find({ product_category: "home" })
+    .find({ product_category: "المنزل" })
     .then((result) => {
       res.send(result);
     })

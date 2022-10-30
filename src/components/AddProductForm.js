@@ -38,9 +38,9 @@ const AddProductForm = (props) => {
   //   product_img: "",
   // }
   const [gategory, setGategory] = useState([
-    { id: "table", name: "السفرة" },
-    { id: "kitchen", name: "المطبخ" },
-    { id: "home", name: "المنزل" },
+    { id: "السفرة", name: "السفرة" },
+    { id: "المطبخ", name: "المطبخ" },
+    { id: "المنزل", name: "المنزل" },
   ]);
   const [subGategory, setSubGategory] = useState([]);
   const [product_img, setProduct_img] = useState("");
@@ -107,7 +107,7 @@ const AddProductForm = (props) => {
   }, [formik.values.product_img]);
 
   useEffect(() => {
-    if (formik.values.product_category === "table") {
+    if (formik.values.product_category === "السفرة") {
       setSubGategory([
         { id: "أدوات زجاجية", name: "أدوات زجاجية" },
         { id: "أطقم سفرة", name: "أطقم سفرة" },
@@ -118,13 +118,13 @@ const AddProductForm = (props) => {
         { id: "خذف وبورسلين", name: "خذف وبورسلين" },
         { id: "وبونشانيا", name: "وبونشانيا" },
       ]);
-    } else if (formik.values.product_category === "kitchen") {
+    } else if (formik.values.product_category === "المطبخ") {
       setSubGategory([
         { id: "رفايع المطبخ", name: "رفايع المطبخ" },
         { id: "أواني المطبخ", name: "أواني المطبخ" },
         { id: "توزيع وتوابل", name: "توزيع وتوابل" },
       ]);
-    } else if (formik.values.product_category === "home") {
+    } else if (formik.values.product_category === "المنزل") {
       setSubGategory([{ id: "رفايع الحمايم", name: "رفايع الحمايم" }]);
     } else {
       setSubGategory([]);
