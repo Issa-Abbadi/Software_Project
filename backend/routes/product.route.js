@@ -15,6 +15,23 @@ router.get("/", (req, res) => {
   });
 });
 
+router.post("/company", (req, res) => {
+  console.log("Hello", req.body.product_company);
+  productSchema
+    .find({ product_company: req.body.product_company })
+    .then((result) => {
+      console.log("result is ", result);
+      if (result === null) {
+        res.send({ code: 500, message: "user not found" });
+      } else {
+        res.send(result);
+      }
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 router.post("/one", (req, res) => {
   console.log(req.body);
   productSchema

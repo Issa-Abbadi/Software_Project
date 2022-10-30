@@ -22,7 +22,9 @@ export default function Orders() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/Products/")
+      .post("http://localhost:4000/Products/company", {
+        product_company: localStorage.getItem("UserName"),
+      })
       .then(({ data }) => {
         setProducts(data);
         console.log("h", data);
