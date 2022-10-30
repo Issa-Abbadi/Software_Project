@@ -370,9 +370,7 @@ function Nav_bar(props) {
                   menuVariant="dark"
                 >
                   <NavDropdown.Item href="/cart">تفاصيل الطلب</NavDropdown.Item>
-                  <NavDropdown.Item href="/login">
-                    تسجيل دخول / إنشاء حساب
-                  </NavDropdown.Item>
+
                   <NavDropdown.Item href="/profile">حسابي</NavDropdown.Item>
 
                   <NavDropdown.Item href="#action/3.4">

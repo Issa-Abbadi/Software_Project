@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
+import CircularProgress from "@mui/material/CircularProgress";
 import TextField from "@mui/material/TextField";
 import "../Pages/loginAndSign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,6 +34,7 @@ function ForgetPassForm(props) {
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
+      setCode(1);
       axios
         .post("http://localhost:4000/send-otp/", studentObject)
         .then((res) => {
@@ -85,15 +87,33 @@ function ForgetPassForm(props) {
                 </Grid>
               </Grid>
 
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                style={{ marginTop: "5%" }}
-              >
-                إعادة تعيين كلمة السر
-              </Button>
+              {code !== 1 && (
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  style={{ marginTop: "5%" }}
+                >
+                  إعادة تعيين كلمة السر
+                </Button>
+              )}
+              {code === 1 && (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "10px",
+                  }}
+                >
+                  <CircularProgress
+                    color="warning"
+                    // determinate={false}
+                    //size="md"
+                    //variant="plain"
+                  />
+                </div>
+              )}
             </form>
             {code === 500 && (
               <Alert severity="error">
@@ -109,66 +129,3 @@ function ForgetPassForm(props) {
 }
 
 export default ForgetPassForm;
-
-{
-  /* <>
-<div className="form-wrapper outcard signupForm">
-  <Container component="main" maxWidth="xs">
-    <CssBaseline />
-
-    <div class="finding">
-      <Avatar
-        style={{
-          margin: "auto",
-          backgroundColor: "var(--may-green)",
-          marginTop: "5%",
-        }}
-      >
-        <LockOutlinedIcon />
-      </Avatar>
-      <Typography component="h1" variant="h5" class="labels">
-        تسجيل دخول
-      </Typography>
-      <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={2} style={{ direction: "rtl" }}>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              fullWidth
-              id="email"
-              label="البريد الالكتروني"
-              name="email"
-              style={{ direction: "rtl" }}
-              autoComplete="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-          </Grid>
-        
-        </Grid>
-      
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          style={{ marginTop: "5%" }}
-        >
-          تسجيل دخول
-        </Button>
-       
-      </form>
-      {code === 500 && (
-        <Alert severity="error">
-          لا يوجد حساب لهذا البريد الالكتروني
-        </Alert>
-      )}
-      {code === 404 && <Alert severity="warning">كلمة السر خاطئة</Alert>}
-    </div>
-    <Box mt={5}></Box>
-  </Container>
-</div>
-</> */
-}
