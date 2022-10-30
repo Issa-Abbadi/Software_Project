@@ -25,7 +25,18 @@ const validationSchema = yup.object({
   product_description: yup.string().required("مطلوب"),
 });
 
-const AddProductForm = () => {
+const AddProductForm = (props) => {
+  const [product, setProduct] = useState(props.product);
+  const [form, useForm] = useState(props.form);
+  // {
+  //   product_name: "",
+  //   product_price: "",
+  //   product_category: "",
+  //   sub_category: "",
+  //   product_company: localStorage.getItem("UserName"),
+  //   product_description: "",
+  //   product_img: "",
+  // }
   const [gategory, setGategory] = useState([
     { id: "table", name: "السفرة" },
     { id: "kitchen", name: "المطبخ" },
@@ -38,34 +49,53 @@ const AddProductForm = () => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      product_name: "",
-      product_price: "",
-      product_category: "",
-      sub_category: "",
+      product_name: product.product_name,
+      product_price: product.product_price,
+      product_category: product.product_category,
+      sub_category: product.sub_category,
       product_company: localStorage.getItem("UserName"),
-      product_description: "",
-      product_img: "",
+      product_description: product.product_description,
+      product_img: product.product_img,
+      _id: product._id,
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
       console.log("h", studentObject);
+      if (form === "add") {
+        axios
+          .post("http://localhost:4000/addProduct/", studentObject)
+          .then((res) => {
+            if (res.data.code === 500) {
+              setCode(500);
+            }
+            if (res.data.code === 404) {
+              setCode(404);
+            }
+            if (res.data.code === 200) {
+              setCode(200);
 
-      axios
-        .post("http://localhost:4000/addProduct/", studentObject)
-        .then((res) => {
-          if (res.data.code === 500) {
-            setCode(500);
-          }
-          if (res.data.code === 404) {
-            setCode(404);
-          }
-          if (res.data.code === 200) {
-            setCode(200);
+              navigate("/admin");
+            } else Promise.reject();
+          })
+          .catch((err) => alert("Something went wrong"));
+      } else if (form === "addE") {
+        axios
+          .put("http://localhost:4000/addProduct/", studentObject)
+          .then((res) => {
+            if (res.data.code === 500) {
+              setCode(500);
+            }
+            if (res.data.code === 404) {
+              setCode(404);
+            }
+            if (res.data.code === 200) {
+              setCode(200);
 
-            navigate("/admin");
-          } else Promise.reject();
-        })
-        .catch((err) => alert("Something went wrong"));
+              navigate("/admin");
+            } else Promise.reject();
+          })
+          .catch((err) => alert("Something went wrong"));
+      }
     },
   });
 
@@ -104,7 +134,8 @@ const AddProductForm = () => {
   return (
     <div style={{ marginTop: " 5%" }}>
       <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
-        <h1>أضف منتج</h1>
+        {form === "add" && <h1>أضف منتج</h1>}
+        {form === "addE" && <h1>تعديل منتج</h1>}
         <TextField
           fullWidth
           id="product_name"
@@ -212,11 +243,12 @@ const AddProductForm = () => {
         )}
 
         <Button color="primary" variant="contained" fullWidth type="submit">
-          Submit
+          {form === "add" && <>إضافة </>}
+          {form === "addE" && <>تعديل </>}
         </Button>
       </form>
-      {code === 500 && <Alert severity="warning">هذا المنتج موجود</Alert>}
-      {code === 200 && <Alert severity="success">تمت الإضافة بنجاح</Alert>}
+      {code === 500 && <Alert severity="warning">هذا المنتج غير موجود</Alert>}
+      {code === 200 && <Alert severity="success">تم تعديل المنتج بنجاح </Alert>}
       {code === 404 && <Alert severity="error">خطأ في التنفيذ</Alert>}
     </div>
   );

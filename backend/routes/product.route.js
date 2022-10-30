@@ -18,7 +18,10 @@ router.get("/", (req, res) => {
 router.post("/one", (req, res) => {
   console.log(req.body);
   productSchema
-    .findOne({ product_name: req.body.product_name })
+    .findOne({
+      product_name: req.body.product_name,
+      product_company: req.body.product_company,
+    })
     .then((result) => {
       if (result === null) {
         res.send({ code: 500, message: "user not found" });

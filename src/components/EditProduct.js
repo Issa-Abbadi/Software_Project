@@ -21,11 +21,13 @@ const validationSchema = yup.object({
 const EditProduct = () => {
   const [code, setCode] = useState(0);
   const [form, setForm] = useState("edit");
+  const [product, setProduct] = useState();
 
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       product_name: "",
+      product_company: localStorage.getItem("UserName"),
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
@@ -33,15 +35,18 @@ const EditProduct = () => {
 
       axios
         .post("http://localhost:4000/Products/one", studentObject)
+
         .then((res) => {
+          console.log(res.data);
           if (res.data.code === 500) {
             setCode(500);
             console.log("res2", res);
           }
           if (res.data.code === 200) {
             setCode(200);
+            setProduct(res.data.result);
             console.log("res", res);
-            setForm("add");
+            setForm("addE");
           } else Promise.reject();
         })
         .catch((err) => alert("Something went wrong"));
@@ -74,11 +79,10 @@ const EditProduct = () => {
               تعديل
             </Button>
           </form>
-          {code === 500 && <Alert severity="warning">هذا المنتج موجود</Alert>}
-          {code === 200 && <Alert severity="success">تمت الإضافة بنجاح</Alert>}
+          {code === 500 && <Alert severity="error">هذا المنتج غير موجود</Alert>}
         </div>
       )}
-      {form === "add" && <AddProductForm />}
+      {form === "addE" && <AddProductForm product={product} form={form} />}
     </>
   );
 };

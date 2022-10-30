@@ -30,4 +30,39 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/", (req, res) => {
+  console.log("in ...");
+  console.log(req.body);
+
+  productSchema
+    .findOne({ _id: req.body._id })
+    .then((result) => {
+      console.log(req.body);
+
+      productSchema
+        .updateOne(
+          { _id: result._id },
+          {
+            product_name: req.body.product_name,
+            product_price: req.body.product_price,
+            product_category: req.body.product_category,
+            product_description: req.body.product_description,
+            sub_category: req.body.sub_category,
+            product_img: req.body.product_img,
+          }
+        )
+        .then((result) => {
+          console.log("ININ");
+          res.send({ code: 200, message: "product updated" });
+        })
+        .catch((err) => {
+          console.log("ININOut");
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "otp is wrong" });
+    });
+});
+
 module.exports = router;

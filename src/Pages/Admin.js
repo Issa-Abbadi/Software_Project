@@ -8,6 +8,17 @@ import AddProductForm from "../components/AddProductForm";
 import EditProduct from "../components/EditProduct";
 import { useLocation } from "react-router-dom";
 function Admin(props) {
+  const [form, setForm] = useState("add");
+  const [product, setProduct] = useState({
+    product_name: "",
+    product_price: "",
+    product_category: "",
+    sub_category: "",
+    product_company: localStorage.getItem("UserName"),
+    product_description: "",
+    product_img: "",
+  });
+
   // const navigate = useNavigate();
   const [dash, setDash] = useState({ Name: "الرئيسية" });
   useEffect(() => {
@@ -55,7 +66,9 @@ function Admin(props) {
       />
 
       {dash.Name === "الرئيسية" && <Disposes />}
-      {dash.Name === "أضف منتج" && <AddProductForm />}
+      {dash.Name === "أضف منتج" && (
+        <AddProductForm product={product} form={form} />
+      )}
       {dash.Name === "تعديل منتج" && <EditProduct />}
     </div>
   );
