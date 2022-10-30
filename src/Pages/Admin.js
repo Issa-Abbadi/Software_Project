@@ -6,6 +6,8 @@ import AddProduct from "./AddProduct";
 import Disposes from "../components/Dashboard";
 import AddProductForm from "../components/AddProductForm";
 import EditProduct from "../components/EditProduct";
+import Orders from "../components/Orders";
+import Paper from "@mui/material/Paper";
 import { useLocation } from "react-router-dom";
 function Admin(props) {
   const [form, setForm] = useState("add");
@@ -70,6 +72,13 @@ function Admin(props) {
         <AddProductForm product={product} form={form} />
       )}
       {dash.Name === "تعديل منتج" && <EditProduct />}
+      {dash.Name === "قائمة المنتجات" && (
+        <Paper
+          sx={{ p: 2, display: "flex", flexDirection: "column", flex: "1" }}
+        >
+          <Orders />
+        </Paper>
+      )}
     </div>
   );
 }
