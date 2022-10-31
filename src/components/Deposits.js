@@ -17,21 +17,36 @@ export default function Deposits() {
     console.log("token = ", token);
     setUserName(token);
     axios
-      .post("http://localhost:4000/Products/company", [
-        { product_company: localStorage.getItem("UserName") },
-      ])
+      .post("http://localhost:4000/Products/company", {
+        product_company: localStorage.getItem("UserName"),
+      })
       .then(({ data }) => {
         setProducts(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  const getRating = (products) => {
+    console.log(products);
+    let sum = 0;
+    let len = 0;
+    for (let i = 0; i < products.length; i++) {
+      console.log(i);
+      sum += products[i].product_rating;
+      len += 1;
+    }
+    console.log("sum&len", sum, len);
+    return sum / len;
+  };
+
   return (
     <React.Fragment>
       <Title>{username}</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        {getRating(products)}
       </Typography>
       {/* <Typography color="text.secondary" sx={{ flex: 1 }}>
      on 15 March, 2019
