@@ -36,7 +36,7 @@ router.post("/one", (req, res) => {
   console.log(req.body);
   productSchema
     .findOne({
-      product_name: req.body.product_name,
+      _id: req.body.id,
       product_company: req.body.product_company,
     })
     .then((result) => {

@@ -20,42 +20,67 @@ const validationSchema = yup.object({
 
 const EditProduct = () => {
   const [code, setCode] = useState(0);
-  const [form, setForm] = useState("edit");
+  const [form, setForm] = useState("add");
   const [product, setProduct] = useState();
 
   const navigate = useNavigate();
-  const formik = useFormik({
-    initialValues: {
-      product_name: "",
-      product_company: localStorage.getItem("UserName"),
-    },
-    validationSchema: validationSchema,
-    onSubmit: (studentObject) => {
-      console.log("h", studentObject);
 
-      axios
-        .post("http://localhost:4000/Products/one", studentObject)
+  // const formik = useFormik({
+  //   initialValues: {
+  //     product_name: localStorage.getItem("EditProduct"),
+  //     product_company: localStorage.getItem("UserName"),
+  //   },
+  //   validationSchema: validationSchema,
+  //   onSubmit: (studentObject) => {
+  //     console.log("h", studentObject);
 
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.code === 500) {
-            setCode(500);
-            console.log("res2", res);
-          }
-          if (res.data.code === 200) {
-            setCode(200);
-            setProduct(res.data.result);
-            console.log("res", res);
-            setForm("addE");
-          } else Promise.reject();
-        })
-        .catch((err) => alert("Something went wrong"));
-    },
-  });
+  //     axios
+  //       .post("http://localhost:4000/Products/one", studentObject)
+
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         if (res.data.code === 500) {
+  //           setCode(500);
+  //           console.log("res2", res);
+  //         }
+  //         if (res.data.code === 200) {
+  //           setCode(200);
+  //           setProduct(res.data.result);
+  //           console.log("res", res);
+  //           setForm("addE");
+  //         } else Promise.reject();
+  //       })
+  //       .catch((err) => alert("Something went wrong"));
+  //   },
+  // });
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:4000/Products/one", {
+        product_company: localStorage.getItem("UserName"),
+        id: localStorage.getItem("EditProduct"),
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.code === 500) {
+          setCode(500);
+          console.log("res2", res);
+        }
+        if (res.data.code === 200) {
+          setCode(200);
+          setProduct(res.data.result);
+          console.log("res", res);
+          setForm("addE");
+        } else Promise.reject();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
-      {form === "edit" && (
+      {/* {form === "edit" && (
         <div style={{ marginTop: " 5%" }}>
           <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
             <h1>اسم المنتج</h1>
@@ -81,7 +106,8 @@ const EditProduct = () => {
           </form>
           {code === 500 && <Alert severity="error">هذا المنتج غير موجود</Alert>}
         </div>
-      )}
+      )} */}
+      {console.log("local", localStorage.getItem("EditProduct"))}
       {form === "addE" && <AddProductForm product={product} form={form} />}
     </>
   );

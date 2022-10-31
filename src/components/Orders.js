@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Link from "@mui/material/Link";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import Title from "./Title";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, renderCell } from "@mui/x-data-grid";
+import { optionGroupUnstyledClasses } from "@mui/base";
+import { Link } from "react-router-dom";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -20,6 +23,8 @@ function preventDefault(event) {
 
 export default function Orders() {
   const [products, setProducts] = useState([]);
+  const [ID, setID] = useState([]);
+
   useEffect(() => {
     axios
       .post("http://localhost:4000/Products/company", {
@@ -50,7 +55,16 @@ export default function Orders() {
     { field: "الصنف", headerName: "الصنف", width: 150 },
     { field: "التقييم", headerName: "التقييم", width: 150 },
     { field: "الوصف", headerName: "الوصف", width: 150 },
-    { field: "السعر", headerName: "السعر", width: 150 },
+    {
+      field: "السعر",
+      headerName: "السعر",
+      width: 150,
+      renderCell: () => (
+        <Link to="/admin" state={{ Name: "تعديل منتج" }}>
+          تعديل
+        </Link>
+      ),
+    },
   ];
 
   return (
@@ -62,6 +76,13 @@ export default function Orders() {
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
+          onSelectionModelChange={(newSelectionModel) => {
+            console.log(newSelectionModel);
+            setID(newSelectionModel);
+            localStorage.setItem("EditProduct", newSelectionModel);
+            console.log(ID);
+          }}
+          disableMultipleSelection={true}
           localeText={{
             // Root
             noRowsLabel: "لا يوجد سطور",
