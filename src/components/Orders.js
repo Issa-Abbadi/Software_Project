@@ -6,9 +6,11 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
+import { Avatar } from "@mui/material";
 import axios from "axios";
 import Title from "./Title";
 import { DataGrid, renderCell } from "@mui/x-data-grid";
+
 import { optionGroupUnstyledClasses } from "@mui/base";
 import { Link } from "react-router-dom";
 
@@ -47,17 +49,65 @@ export default function Orders() {
     التقييم: product.product_rating,
     الوصف: product.product_description,
     السعر: product.product_price + "$",
+    الصورة: product.product_img,
   }));
 
   const columns = [
-    { field: "الاسم", headerName: "الاسم", width: 150 },
-    { field: "الفئة", headerName: "الفئة", width: 150 },
-    { field: "الصنف", headerName: "الصنف", width: 150 },
-    { field: "التقييم", headerName: "التقييم", width: 150 },
-    { field: "الوصف", headerName: "الوصف", width: 150 },
+    { field: "الاسم", headerName: "الاسم", flex: 2 },
+    {
+      field: "الصورة",
+      headerName: "الصورة",
+      flex: 1,
+      renderCell: (params) => {
+        console.log(params);
+        return (
+          <>
+            <Avatar src={params.value} />
+            {params.value.username}
+          </>
+        );
+      },
+    },
+    {
+      field: "الفئة",
+      headerName: "الفئة",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      field: "الصنف",
+      headerName: "الصنف",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      field: "التقييم",
+      headerName: "التقييم",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      field: "الوصف",
+      headerName: "الوصف",
+
+      flex: 2,
+      headerAlign: "center",
+      align: "center",
+    },
     {
       field: "السعر",
       headerName: "السعر",
+
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      field: "تعديل",
+      headerName: "تعديل",
       width: 150,
       renderCell: () => (
         <Link to="/admin" state={{ Name: "تعديل منتج" }}>
@@ -72,6 +122,7 @@ export default function Orders() {
       <Title>منتجاتك</Title>
       <div style={{ height: "400px", width: "100%" }}>
         <DataGrid
+          style={{ overflow: "scroll" }}
           rows={rows}
           columns={columns}
           pageSize={5}
