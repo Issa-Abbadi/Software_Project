@@ -138,3 +138,37 @@ main {
 .form-wrapper .btn-dark:hover {
   opacity: 0.9;
 }
+
+.MuiDataGrid-root.MuiDataGrid-root--densityStandard {
+  direction: ltr !important;
+  transform: rotateY(180deg);
+}
+.MuiButton-textPrimary {
+  transform: rotateY(180deg);
+  color: #141414 !important;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  transform: rotateY(180deg);
+}
+
+.MuiDataGrid-cellContent {
+  transform: rotateY(180deg);
+}
+
+.MuiDataGrid-footerContainer {
+  transform: rotateY(180deg);
+}
+
+.MuiButton-startIcon.MuiButton-iconSizeSmall {
+  margin-left: -2px !important;
+  margin-right: 8px !important;
+}
+
+.MuiDataGrid-cellCheckbox {
+  transform: rotateY(180deg);
+}
+
+.MuiCheckbox-root {
+  /* transform: rotateY(180deg); */
+}

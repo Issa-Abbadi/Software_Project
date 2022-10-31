@@ -9,10 +9,11 @@ import Button from "@mui/material/Button";
 import { Avatar } from "@mui/material";
 import axios from "axios";
 import Title from "./Title";
-import { DataGrid, renderCell } from "@mui/x-data-grid";
+import { DataGrid, renderCell, GridColDef } from "@mui/x-data-grid";
 
 import { optionGroupUnstyledClasses } from "@mui/base";
 import { Link } from "react-router-dom";
+import { spacing } from "@mui/system";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -53,16 +54,19 @@ export default function Orders() {
   }));
 
   const columns = [
-    { field: "الاسم", headerName: "الاسم", flex: 2 },
+    { field: "الاسم", headerName: "الاسم", width: 150 },
     {
       field: "الصورة",
       headerName: "الصورة",
-      flex: 1,
+      width: 50,
       renderCell: (params) => {
         console.log(params);
         return (
           <>
-            <Avatar src={params.value} />
+            <Avatar
+              src={params.value}
+              style={{ transform: "rotateY(180deg)" }}
+            />
             {params.value.username}
           </>
         );
@@ -71,21 +75,21 @@ export default function Orders() {
     {
       field: "الفئة",
       headerName: "الفئة",
-      flex: 1,
+      width: 70,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "الصنف",
       headerName: "الصنف",
-      flex: 1,
+      width: 100,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "التقييم",
       headerName: "التقييم",
-      flex: 1,
+      width: 50,
       headerAlign: "center",
       align: "center",
     },
@@ -93,7 +97,7 @@ export default function Orders() {
       field: "الوصف",
       headerName: "الوصف",
 
-      flex: 2,
+      width: 200,
       headerAlign: "center",
       align: "center",
     },
@@ -101,18 +105,20 @@ export default function Orders() {
       field: "السعر",
       headerName: "السعر",
 
-      flex: 1,
+      width: 50,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "تعديل",
       headerName: "تعديل",
-      width: 150,
+      width: 50,
       renderCell: () => (
-        <Link to="/admin" state={{ Name: "تعديل منتج" }}>
-          تعديل
-        </Link>
+        <span style={{ transform: "rotateY(180deg)" }}>
+          <Link to="/admin" state={{ Name: "تعديل منتج" }}>
+            تعديل
+          </Link>
+        </span>
       ),
     },
   ];
@@ -122,18 +128,17 @@ export default function Orders() {
       <Title>منتجاتك</Title>
       <div style={{ height: "400px", width: "100%" }}>
         <DataGrid
-          style={{ overflow: "scroll" }}
           rows={rows}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
+          checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {
             console.log(newSelectionModel);
             setID(newSelectionModel);
             localStorage.setItem("EditProduct", newSelectionModel);
             console.log(ID);
           }}
-          disableMultipleSelection={true}
           localeText={{
             // Root
             noRowsLabel: "لا يوجد سطور",
