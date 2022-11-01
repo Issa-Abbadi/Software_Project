@@ -19,6 +19,10 @@ function Admin(props) {
     product_company: localStorage.getItem("UserName"),
     product_description: "",
     product_img: "",
+    product_quantity: "",
+    product_size: "",
+    product_color: "",
+    returnable: true,
   });
 
   // const navigate = useNavigate();
@@ -69,6 +73,9 @@ function Admin(props) {
 
       {dash.Name === "الرئيسية" && <Disposes />}
       {dash.Name === "أضف منتج" && (
+        <AddProductForm product={product} form={form} />
+      )}
+      {dash.Name === "إضافة أنواع" && (
         <AddProductForm product={product} form={form} />
       )}
       {dash.Name === "تعديل منتج" && <EditProduct />}

@@ -29,7 +29,7 @@ function SingleProduct(props) {
   const [productPrice, setProductPrice] = useState(props.product.product_price);
 
   const retColors = (product) => {
-    if (product.vars[0] != null) {
+    if (product.vars[1] != null) {
       return product.vars.map((prod) => (
         <span style={{ margin: "5px" }} class="spanColors">
           <a

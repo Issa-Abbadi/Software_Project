@@ -21,6 +21,16 @@ router.post("/", (req, res) => {
     product_size: req.body.product_size,
     product_color: req.body.product_color,
     product_quantity: req.body.product_quantity,
+    returnable: req.body.returnable,
+    vars: [
+      {
+        quantity: req.body.quantity,
+        price: req.body.product_price,
+        size: req.body.product_size,
+        color: req.body.product_color,
+        product_img: req.body.product_img,
+      },
+    ],
   });
 
   newProduct
@@ -55,6 +65,7 @@ router.put("/", (req, res) => {
             product_size: req.body.product_size,
             product_color: req.body.product_color,
             product_quantity: req.body.product_quantity,
+            returnable: req.body.returnable,
           }
         )
         .then((result) => {

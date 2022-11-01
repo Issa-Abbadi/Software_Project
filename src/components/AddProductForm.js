@@ -9,8 +9,11 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Input from "@mui/material/Input";
 import Alert from "@mui/material/Alert";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import InputLabel from "@mui/material/InputLabel";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import { faHouseMedicalCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,8 +29,9 @@ const validationSchema = yup.object({
 });
 
 const AddProductForm = (props) => {
+  const location = useLocation();
   const [product, setProduct] = useState(props.product);
-  const [form, useForm] = useState(props.form);
+  const [form, setForm] = useState(props.form);
   // {
   //   product_name: "",
   //   product_price: "",
@@ -79,10 +83,11 @@ const AddProductForm = (props) => {
       product_size: product.product_size,
       product_color: product.product_color,
       product_quantity: product.product_quantity,
+      returnable: product.returnable,
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
-      console.log("h", studentObject);
+      console.log("h3", studentObject);
       if (form === "add") {
         axios
           .post("http://localhost:4000/addProduct/", studentObject)
@@ -122,6 +127,7 @@ const AddProductForm = (props) => {
   });
 
   useEffect(() => {
+    console.log("hh", location.state);
     if (formik.values.product_img !== "") {
       setProduct_img(formik.values.product_img);
       console.log(product_img);
@@ -190,9 +196,21 @@ const AddProductForm = (props) => {
           type="number"
           id="product_quantity"
           name="product_quantity"
-          label="السعر"
+          label="الكمية"
           value={formik.values.product_quantity}
           onChange={formik.handleChange}
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={formik.values.returnable}
+              value={formik.values.returnable}
+            />
+          }
+          name="returnable"
+          id="returnable"
+          onChange={formik.handleChange}
+          label="قابل للإرجاع"
         />
         <TextField
           style={{ width: "200px" }}
@@ -306,12 +324,15 @@ const AddProductForm = (props) => {
             {"أضيفت الصورة  "}
           </Alert>
         )}
-
+        {/* {code !== 200 && ( */}
         <Button color="primary" variant="contained" fullWidth type="submit">
           {form === "add" && <>إضافة </>}
           {form === "addE" && <>تعديل </>}
         </Button>
+        {/* // )} */}
+        {/* {code === 200 && setForm("addMore")} */}
       </form>
+
       {code === 500 && form === "addE" && (
         <Alert severity="warning">هذا المنتج غير موجود</Alert>
       )}

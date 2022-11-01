@@ -28,7 +28,7 @@ let productSchema = new Schema(
       type: String,
     },
     returnable: {
-      type: String,
+      type: Boolean,
     },
     sub_categoty: {
       type: String,

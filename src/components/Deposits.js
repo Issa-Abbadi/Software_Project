@@ -46,7 +46,7 @@ export default function Deposits() {
     <React.Fragment>
       <Title>{username}</Title>
       <Typography component="p" variant="h4">
-        {getRating(products)}
+        {getRating(products).toFixed(2)}
       </Typography>
       {/* <Typography color="text.secondary" sx={{ flex: 1 }}>
      on 15 March, 2019
