@@ -42,6 +42,25 @@ const AddProductForm = (props) => {
     { id: "المطبخ", name: "المطبخ" },
     { id: "المنزل", name: "المنزل" },
   ]);
+
+  const [color, setColor] = useState([
+    { id: "أبيض", name: "أبيض" },
+    { id: "أزرق", name: "أزرق" },
+    { id: "أسود", name: "أسود" },
+    { id: "أحمر", name: "أحمر" },
+    { id: "أخضر", name: "أخضر" },
+    { id: "أصفر", name: "أصفر" },
+    { id: "برتقالي", name: "برتقالي" },
+    { id: "زهري", name: "زهري" },
+    { id: "بنفسجي", name: "بنفسجي" },
+    { id: "بني", name: "بني" },
+  ]);
+
+  const [size, setSize] = useState([
+    { id: "S", name: "S" },
+    { id: "M", name: "M" },
+    { id: "L", name: "L" },
+  ]);
   const [subGategory, setSubGategory] = useState([]);
   const [product_img, setProduct_img] = useState("");
   const [code, setCode] = useState(0);
@@ -57,6 +76,9 @@ const AddProductForm = (props) => {
       product_description: product.product_description,
       product_img: product.product_img,
       _id: product._id,
+      product_size: product.product_size,
+      product_color: product.product_color,
+      product_quantity: product.product_quantity,
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
@@ -163,6 +185,15 @@ const AddProductForm = (props) => {
             formik.touched.product_price && formik.errors.product_price
           }
         />
+        <Input
+          fullWidth
+          type="number"
+          id="product_quantity"
+          name="product_quantity"
+          label="السعر"
+          value={formik.values.product_quantity}
+          onChange={formik.handleChange}
+        />
         <TextField
           style={{ width: "200px" }}
           className="px-2 my-2"
@@ -175,6 +206,40 @@ const AddProductForm = (props) => {
           onChange={formik.handleChange}
         >
           {gategory.map((option) => (
+            <MenuItem key={option.id} value={option.id}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
+          style={{ width: "200px" }}
+          className="px-2 my-2"
+          variant="outlined"
+          name="product_color"
+          id="اللون"
+          select
+          label="اللون"
+          value={formik.values.product_color}
+          onChange={formik.handleChange}
+        >
+          {color.map((option) => (
+            <MenuItem key={option.id} value={option.id}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
+          style={{ width: "200px" }}
+          className="px-2 my-2"
+          variant="outlined"
+          name="product_size"
+          id="الحجم"
+          select
+          label="الحجم"
+          value={formik.values.product_size}
+          onChange={formik.handleChange}
+        >
+          {size.map((option) => (
             <MenuItem key={option.id} value={option.id}>
               {option.name}
             </MenuItem>
@@ -247,8 +312,18 @@ const AddProductForm = (props) => {
           {form === "addE" && <>تعديل </>}
         </Button>
       </form>
-      {code === 500 && <Alert severity="warning">هذا المنتج غير موجود</Alert>}
-      {code === 200 && <Alert severity="success">تم تعديل المنتج بنجاح </Alert>}
+      {code === 500 && form === "addE" && (
+        <Alert severity="warning">هذا المنتج غير موجود</Alert>
+      )}
+      {code === 500 && form === "add" && (
+        <Alert severity="warning">هذا المنتج موجود</Alert>
+      )}
+      {code === 200 && form === "addE" && (
+        <Alert severity="success">تم تعديل المنتج بنجاح </Alert>
+      )}
+      {code === 200 && form === "add" && (
+        <Alert severity="success">تم إضافة المنتج بنجاح </Alert>
+      )}
       {code === 404 && <Alert severity="error">خطأ في التنفيذ</Alert>}
     </div>
   );

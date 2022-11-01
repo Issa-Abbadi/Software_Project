@@ -29,8 +29,8 @@ function SingleProduct(props) {
   const [productPrice, setProductPrice] = useState(props.product.product_price);
 
   const retColors = (product) => {
-    if (product.colors[0] != null) {
-      return product.colors.map((prod) => (
+    if (product.vars[0] != null) {
+      return product.vars.map((prod) => (
         <span style={{ margin: "5px" }} class="spanColors">
           <a
             onClick={() => {
@@ -40,10 +40,24 @@ function SingleProduct(props) {
             }}
             class="btn"
           >
-            <img
-              src={prod.product_img}
-              style={{ width: "50px", height: "50px" }}
-            />
+            {prod.size === "S" && (
+              <img
+                src={prod.product_img}
+                style={{ width: "25px", height: "25px" }}
+              />
+            )}
+            {prod.size === "M" && (
+              <img
+                src={prod.product_img}
+                style={{ width: "50px", height: "50px" }}
+              />
+            )}
+            {prod.size === "L" && (
+              <img
+                src={prod.product_img}
+                style={{ width: "75px", height: "75px" }}
+              />
+            )}
           </a>
         </span>
       ));

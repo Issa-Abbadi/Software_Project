@@ -18,6 +18,9 @@ router.post("/", (req, res) => {
     product_description: req.body.product_description,
     sub_category: req.body.sub_category,
     product_img: req.body.product_img,
+    product_size: req.body.product_size,
+    product_color: req.body.product_color,
+    product_quantity: req.body.product_quantity,
   });
 
   newProduct
@@ -49,6 +52,9 @@ router.put("/", (req, res) => {
             product_description: req.body.product_description,
             sub_category: req.body.sub_category,
             product_img: req.body.product_img,
+            product_size: req.body.product_size,
+            product_color: req.body.product_color,
+            product_quantity: req.body.product_quantity,
           }
         )
         .then((result) => {

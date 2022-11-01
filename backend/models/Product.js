@@ -24,20 +24,26 @@ let productSchema = new Schema(
     product_description: {
       type: String,
     },
+    product_size: {
+      type: String,
+    },
+    returnable: {
+      type: String,
+    },
     sub_categoty: {
       type: String,
     },
     product_img: {
       type: String,
     },
-    colors: {
+    vars: {
       type: Array,
     },
-    sizes: {
-      type: Array,
+    product_color: {
+      type: String,
     },
-    contain_colors: {
-      type: Array,
+    product_quantity: {
+      type: Number,
     },
   },
   {

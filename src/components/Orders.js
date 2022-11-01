@@ -132,7 +132,7 @@ export default function Orders() {
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
+          // checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {
             console.log(newSelectionModel);
             setID(newSelectionModel);

@@ -105,15 +105,20 @@ function KitchenProducts(props) {
   };
   const productsFilterColor = (data) => {
     filteredData = data.filter((product) => {
-      if (product.contain_colors[0] != null) {
-        for (let j = 0; j < product.contain_colors.length; j++) {
+      if (product.vars[0] != null) {
+        for (let j = 0; j < product.vars.length; j++) {
           for (let i = 0; i < colors.length; i++) {
-            if (product.contain_colors[j].color == colors[i]) {
+            if (product.vars[j].color == colors[i]) {
               return product;
             }
           }
         }
-      } else {
+      } else if (product.product_color != null) {
+        for (let i = 0; i < colors.length; i++) {
+          if (product.product_color == colors[i]) {
+            return product;
+          }
+        }
       }
     });
     console.log("COLO RED", filteredData);
@@ -122,15 +127,20 @@ function KitchenProducts(props) {
   };
   const productsFilterSize = (data) => {
     filteredData = data.filter((product) => {
-      if (product.sizes[0] != null) {
-        for (let j = 0; j < product.sizes.length; j++) {
+      if (product.vars[0] != null) {
+        for (let j = 0; j < product.vars.length; j++) {
           for (let i = 0; i < sizes.length; i++) {
-            if (product.sizes[j].size == sizes[i]) {
+            if (product.vars[j].size == sizes[i]) {
               return product;
             }
           }
         }
-      } else {
+      } else if (product.product_color != null) {
+        for (let i = 0; i < sizes.length; i++) {
+          if (product.product_size == sizes[i]) {
+            return product;
+          }
+        }
       }
     });
     console.log("COLO RED", filteredData);
