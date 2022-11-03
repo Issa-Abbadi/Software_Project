@@ -29,8 +29,9 @@ const validationSchema = yup.object({
 });
 
 const AddProductForm = (props) => {
-  const location = useLocation();
+  // const location = useLocation();
   const [product, setProduct] = useState(props.product);
+  console.log(props.product);
   const [form, setForm] = useState(props.form);
   // {
   //   product_name: "",
@@ -122,12 +123,29 @@ const AddProductForm = (props) => {
             } else Promise.reject();
           })
           .catch((err) => alert("Something went wrong"));
+      } else if (form === "addVar") {
+        axios
+          .put("http://localhost:4000/addProduct/Var", studentObject)
+          .then((res) => {
+            if (res.data.code === 500) {
+              setCode(500);
+            }
+            if (res.data.code === 404) {
+              setCode(404);
+            }
+            if (res.data.code === 200) {
+              setCode(200);
+
+              navigate("/admin");
+            } else Promise.reject();
+          })
+          .catch((err) => alert("Something went wrong"));
       }
     },
   });
 
   useEffect(() => {
-    console.log("hh", location.state);
+    //console.log("hh", location.state);
     if (formik.values.product_img !== "") {
       setProduct_img(formik.values.product_img);
       console.log(product_img);
@@ -164,18 +182,22 @@ const AddProductForm = (props) => {
       <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
         {form === "add" && <h1>أضف منتج</h1>}
         {form === "addE" && <h1>تعديل منتج</h1>}
-        <TextField
-          fullWidth
-          id="product_name"
-          name="product_name"
-          label="الاسم"
-          value={formik.values.product_name}
-          onChange={formik.handleChange}
-          error={
-            formik.touched.product_name && Boolean(formik.errors.product_name)
-          }
-          helperText={formik.touched.product_name && formik.errors.product_name}
-        />
+        {form !== "addVar" && (
+          <TextField
+            fullWidth
+            id="product_name"
+            name="product_name"
+            label="الاسم"
+            value={formik.values.product_name}
+            onChange={formik.handleChange}
+            error={
+              formik.touched.product_name && Boolean(formik.errors.product_name)
+            }
+            helperText={
+              formik.touched.product_name && formik.errors.product_name
+            }
+          />
+        )}
         <Input
           fullWidth
           type="number"
@@ -200,35 +222,40 @@ const AddProductForm = (props) => {
           value={formik.values.product_quantity}
           onChange={formik.handleChange}
         />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={formik.values.returnable}
-              value={formik.values.returnable}
+
+        {form !== "addVar" && (
+          <>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formik.values.returnable}
+                  value={formik.values.returnable}
+                />
+              }
+              name="returnable"
+              id="returnable"
+              onChange={formik.handleChange}
+              label="قابل للإرجاع"
             />
-          }
-          name="returnable"
-          id="returnable"
-          onChange={formik.handleChange}
-          label="قابل للإرجاع"
-        />
-        <TextField
-          style={{ width: "200px" }}
-          className="px-2 my-2"
-          variant="outlined"
-          name="product_category"
-          id="الفئة"
-          select
-          label="الفئة"
-          value={formik.values.product_category}
-          onChange={formik.handleChange}
-        >
-          {gategory.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
+            <TextField
+              style={{ width: "200px" }}
+              className="px-2 my-2"
+              variant="outlined"
+              name="product_category"
+              id="الفئة"
+              select
+              label="الفئة"
+              value={formik.values.product_category}
+              onChange={formik.handleChange}
+            >
+              {gategory.map((option) => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>{" "}
+          </>
+        )}
         <TextField
           style={{ width: "200px" }}
           className="px-2 my-2"
@@ -263,41 +290,46 @@ const AddProductForm = (props) => {
             </MenuItem>
           ))}
         </TextField>
-        <TextField
-          style={{ width: "200px" }}
-          className="px-2 my-2"
-          variant="outlined"
-          name="sub_category"
-          id="الصنف"
-          select
-          label="الصنف"
-          value={formik.values.sub_category}
-          onChange={formik.handleChange}
-        >
-          {subGategory.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          fullWidth
-          multiline
-          rows="5"
-          id="product_description"
-          name="product_description"
-          label="الوصف"
-          value={formik.values.product_description}
-          onChange={formik.handleChange}
-          error={
-            formik.touched.product_description &&
-            Boolean(formik.errors.product_description)
-          }
-          helperText={
-            formik.touched.product_description &&
-            formik.errors.product_description
-          }
-        />
+        {form !== "addVar" && (
+          <>
+            <TextField
+              style={{ width: "200px" }}
+              className="px-2 my-2"
+              variant="outlined"
+              name="sub_category"
+              id="الصنف"
+              select
+              label="الصنف"
+              value={formik.values.sub_category}
+              onChange={formik.handleChange}
+            >
+              {subGategory.map((option) => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              fullWidth
+              multiline
+              rows="5"
+              id="product_description"
+              name="product_description"
+              label="الوصف"
+              value={formik.values.product_description}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.product_description &&
+                Boolean(formik.errors.product_description)
+              }
+              helperText={
+                formik.touched.product_description &&
+                formik.errors.product_description
+              }
+            />{" "}
+          </>
+        )}
+        <div></div>
         {product_img === "" && (
           <Button variant="contained" component="label">
             إضافة صورة
@@ -324,13 +356,14 @@ const AddProductForm = (props) => {
             {"أضيفت الصورة  "}
           </Alert>
         )}
-        {/* {code !== 200 && ( */}
+
         <Button color="primary" variant="contained" fullWidth type="submit">
           {form === "add" && <>إضافة </>}
           {form === "addE" && <>تعديل </>}
+          {form === "addVar" && <>إضافة نوع</>}
         </Button>
-        {/* // )} */}
-        {/* {code === 200 && setForm("addMore")} */}
+
+        {/* {code === 200 && navigate("/admin")} */}
       </form>
 
       {code === 500 && form === "addE" && (

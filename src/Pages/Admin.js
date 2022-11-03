@@ -9,6 +9,8 @@ import EditProduct from "../components/EditProduct";
 import Orders from "../components/Orders";
 import Paper from "@mui/material/Paper";
 import { useLocation } from "react-router-dom";
+import AddVarForm from "../components/AddVarForm";
+import EditVarForm from "../components/EditVarForm";
 function Admin(props) {
   const [form, setForm] = useState("add");
   const [product, setProduct] = useState({
@@ -23,6 +25,7 @@ function Admin(props) {
     product_size: "",
     product_color: "",
     returnable: true,
+    vars: [],
   });
 
   // const navigate = useNavigate();
@@ -75,9 +78,8 @@ function Admin(props) {
       {dash.Name === "أضف منتج" && (
         <AddProductForm product={product} form={form} />
       )}
-      {dash.Name === "إضافة أنواع" && (
-        <AddProductForm product={product} form={form} />
-      )}
+      {dash.Name === "إضافة نوع" && <AddVarForm />}
+      {dash.Name === "تعديل نوع" && <EditVarForm />}
       {dash.Name === "تعديل منتج" && <EditProduct />}
       {dash.Name === "قائمة المنتجات" && (
         <Paper

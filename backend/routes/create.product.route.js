@@ -82,4 +82,55 @@ router.put("/", (req, res) => {
     });
 });
 
+router.put("/Var", (req, res) => {
+  console.log("in ...");
+  console.log(req.body);
+
+  productSchema
+    .findOne({ _id: req.body._id })
+    .then((result) => {
+      console.log(req.body);
+      let var1;
+      let var2;
+      console.log("vars", result.vars);
+      if (result.vars[0]) {
+        var1 = result.vars[0];
+      }
+      if (result.vars[1]) {
+        var2 = result.vars[1];
+      }
+
+      console.log("VVVVVVVVVVVVVVVVVVVVVVVV", var2);
+
+      productSchema
+        .updateOne(
+          { _id: result._id },
+          {
+            vars: [
+              {
+                quantity: req.body.quantity,
+                price: req.body.product_price,
+                size: req.body.product_size,
+                color: req.body.product_color,
+                product_img: req.body.product_img,
+              },
+              var1,
+              var2,
+            ],
+          }
+        )
+        .then((result) => {
+          console.log("ININNNNNNNNNNNNNNNNNNNNNNN");
+          res.send({ code: 200, message: "product updated" });
+        })
+        .catch((err) => {
+          console.log("ININOut");
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "otp is wrong" });
+    });
+});
+
 module.exports = router;

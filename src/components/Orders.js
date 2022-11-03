@@ -51,6 +51,7 @@ export default function Orders() {
     الوصف: product.product_description,
     السعر: product.product_price + "$",
     الصورة: product.product_img,
+    vars: product.vars,
   }));
 
   const columns = [
@@ -119,6 +120,75 @@ export default function Orders() {
             تعديل
           </Link>
         </span>
+      ),
+    },
+    {
+      field: "1 نوع",
+      headerName: "1 نوع",
+      width: 100,
+      renderCell: (params) => (
+        <>
+          {console.log("fب", params.row)}
+          {params.row.vars[0] === null ? (
+            <span style={{ transform: "rotateY(180deg)" }}>
+              <Link to="/admin" state={{ Name: "إضافة نوع" }}>
+                إضافة نوع
+              </Link>
+            </span>
+          ) : (
+            <span style={{ transform: "rotateY(180deg)" }}>
+              <Link to="/admin" state={{ Name: "تعديل نوع" }}>
+                تعديل نوع
+              </Link>
+            </span>
+          )}
+        </>
+      ),
+    },
+    {
+      field: "2 نوع",
+      headerName: "2 نوع",
+      width: 100,
+      renderCell: (params) => (
+        <>
+          {console.log("fب", params.row)}
+          {params.row.vars[1] === null ? (
+            <span style={{ transform: "rotateY(180deg)" }}>
+              <Link to="/admin" state={{ Name: "إضافة نوع" }}>
+                إضافة نوع
+              </Link>
+            </span>
+          ) : (
+            <span style={{ transform: "rotateY(180deg)" }}>
+              <Link to="/admin" state={{ Name: "تعديل نوع" }}>
+                تعديل نوع
+              </Link>
+            </span>
+          )}
+        </>
+      ),
+    },
+    {
+      field: "3 نوع",
+      headerName: "3 نوع",
+      width: 100,
+      renderCell: (params) => (
+        <>
+          {console.log("fب", params.row)}
+          {params.row.vars[2] === null ? (
+            <span style={{ transform: "rotateY(180deg)" }}>
+              <Link to="/admin" state={{ Name: "إضافة نوع" }}>
+                إضافة نوع
+              </Link>
+            </span>
+          ) : (
+            <span style={{ transform: "rotateY(180deg)" }}>
+              <Link to="/admin" state={{ Name: "تعديل نوع" }}>
+                تعديل نوع
+              </Link>
+            </span>
+          )}
+        </>
       ),
     },
   ];
@@ -194,6 +264,9 @@ export default function Orders() {
             columnHeaderSortIconLabel: "Sort",
           }}
         />
+        <Link to="/admin" state={{ Name: "أضف منتج" }}>
+          إضافة منتج
+        </Link>
       </div>
     </React.Fragment>
   );
