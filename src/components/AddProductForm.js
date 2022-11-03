@@ -17,21 +17,23 @@ import { useLocation } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import { faHouseMedicalCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
-const validationSchema = yup.object({
-  product_name: yup.string().required("مطلوب"),
-  product_price: yup
-    .string()
-
-    .required("مطلوب"),
-  product_price: yup.string().required("مطلوب"),
-  product_category: yup.string().required("مطلوب"),
-  product_description: yup.string().required("مطلوب"),
-});
-
 const AddProductForm = (props) => {
+  let validationSchema = yup.object({});
+  if (props.form === "add" || props.form === "addE") {
+    validationSchema = yup.object({
+      product_name: yup.string().required("مطلوب"),
+
+      product_price: yup.string().required("مطلوب"),
+      product_price: yup.string().required("مطلوب"),
+      product_category: yup.string().required("مطلوب"),
+      product_description: yup.string().required("مطلوب"),
+    });
+  }
   // const location = useLocation();
   const [product, setProduct] = useState(props.product);
-  console.log(props.product);
+  console.log("h1", props.product);
+  console.log("k1", props.form);
+
   const [form, setForm] = useState(props.form);
   // {
   //   product_name: "",
@@ -88,7 +90,7 @@ const AddProductForm = (props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
-      console.log("h3", studentObject);
+      console.log("Submit", studentObject);
       if (form === "add") {
         axios
           .post("http://localhost:4000/addProduct/", studentObject)
@@ -182,7 +184,7 @@ const AddProductForm = (props) => {
       <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
         {form === "add" && <h1>أضف منتج</h1>}
         {form === "addE" && <h1>تعديل منتج</h1>}
-        {form !== "addVar" && (
+        {form !== "addVar" && form !== "addEVar" && (
           <TextField
             fullWidth
             id="product_name"
@@ -223,7 +225,7 @@ const AddProductForm = (props) => {
           onChange={formik.handleChange}
         />
 
-        {form !== "addVar" && (
+        {form !== "addVar" && form !== "addEVar" && (
           <>
             <FormControlLabel
               control={
@@ -290,7 +292,7 @@ const AddProductForm = (props) => {
             </MenuItem>
           ))}
         </TextField>
-        {form !== "addVar" && (
+        {form !== "addVar" && form !== "addEVar" && (
           <>
             <TextField
               style={{ width: "200px" }}
@@ -361,6 +363,8 @@ const AddProductForm = (props) => {
           {form === "add" && <>إضافة </>}
           {form === "addE" && <>تعديل </>}
           {form === "addVar" && <>إضافة نوع</>}
+          {form === "addEVar" && <>تعديل نوع</>}
+          {console.log(formik.values)}
         </Button>
 
         {/* {code === 200 && navigate("/admin")} */}

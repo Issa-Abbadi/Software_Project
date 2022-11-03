@@ -30,6 +30,8 @@ router.post("/", (req, res) => {
         color: req.body.product_color,
         product_img: req.body.product_img,
       },
+      null,
+      null,
     ],
   });
 
@@ -100,8 +102,6 @@ router.put("/Var", (req, res) => {
         var2 = result.vars[1];
       }
 
-      console.log("VVVVVVVVVVVVVVVVVVVVVVVV", var2);
-
       productSchema
         .updateOne(
           { _id: result._id },
@@ -115,6 +115,7 @@ router.put("/Var", (req, res) => {
                 product_img: req.body.product_img,
               },
               var1,
+
               var2,
             ],
           }
