@@ -25,11 +25,19 @@ function Admin(props) {
     product_size: "",
     product_color: "",
     returnable: true,
-    vars: [],
+    vars: [
+      {
+        product_price: "",
+        product_img: "",
+        product_quantity: "",
+        product_size: "",
+        product_color: "",
+      },
+    ],
   });
 
   // const navigate = useNavigate();
-  const [dash, setDash] = useState({ Name: "الرئيسية" });
+  const [dash, setDash] = useState({ Name: "الرئيسية", Value: "0" });
   useEffect(() => {
     // const token = localStorage.getItem("EMAIL");
     // console.log("token = ", token);
@@ -76,10 +84,10 @@ function Admin(props) {
 
       {dash.Name === "الرئيسية" && <Disposes />}
       {dash.Name === "أضف منتج" && (
-        <AddProductForm product={product} form={form} />
+        <AddProductForm product={product} form={form} value={0} />
       )}
       {dash.Name === "إضافة نوع" && <AddVarForm />}
-      {dash.Name === "تعديل نوع" && <EditVarForm />}
+      {dash.Name === "تعديل نوع" && <EditVarForm value={dash.Value} />}
       {dash.Name === "تعديل منتج" && <EditProduct />}
       {dash.Name === "قائمة المنتجات" && (
         <Paper

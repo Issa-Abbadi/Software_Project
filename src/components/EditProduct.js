@@ -108,7 +108,9 @@ const EditProduct = () => {
         </div>
       )} */}
       {console.log("local", localStorage.getItem("EditProduct"))}
-      {form === "addE" && <AddProductForm product={product} form={form} />}
+      {form === "addE" && (
+        <AddProductForm product={product} form={form} value={0} />
+      )}
     </>
   );
 };

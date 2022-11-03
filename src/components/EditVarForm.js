@@ -14,12 +14,13 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import { faHouseMedicalCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import AddProductForm from "./AddProductForm";
+import { PropaneSharp } from "@mui/icons-material";
 
 const validationSchema = yup.object({
   product_name: yup.string().required("مطلوب"),
 });
 
-const AddVarForm = () => {
+const AddVarForm = (props) => {
   const [code, setCode] = useState(0);
   const [form, setForm] = useState("add");
   const [product, setProduct] = useState();
@@ -53,7 +54,9 @@ const AddVarForm = () => {
   return (
     <>
       {console.log("local", localStorage.getItem("EditProduct"))}
-      {form === "addEVar" && <AddProductForm product={product} form={form} />}
+      {form === "addEVar" && (
+        <AddProductForm product={product} form={form} value={props.value} />
+      )}
     </>
   );
 };

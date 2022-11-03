@@ -31,6 +31,7 @@ const AddProductForm = (props) => {
   }
   // const location = useLocation();
   const [product, setProduct] = useState(props.product);
+  const [value, setValue] = useState(0);
   console.log("h1", props.product);
   console.log("k1", props.form);
 
@@ -76,17 +77,19 @@ const AddProductForm = (props) => {
   const formik = useFormik({
     initialValues: {
       product_name: product.product_name,
-      product_price: product.product_price,
+      product_price: product.vars[value].product_price,
       product_category: product.product_category,
       sub_category: product.sub_category,
       product_company: localStorage.getItem("UserName"),
       product_description: product.product_description,
-      product_img: product.product_img,
+      product_img: product.vars[value].product_img,
       _id: product._id,
-      product_size: product.product_size,
-      product_color: product.product_color,
-      product_quantity: product.product_quantity,
+      product_size: product.vars[value].product_size,
+      product_color: product.vars[value].product_color,
+      product_quantity: product.vars[value].product_quantity,
       returnable: product.returnable,
+      vars: product.vars,
+      value: value,
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
@@ -128,6 +131,23 @@ const AddProductForm = (props) => {
       } else if (form === "addVar") {
         axios
           .put("http://localhost:4000/addProduct/Var", studentObject)
+          .then((res) => {
+            if (res.data.code === 500) {
+              setCode(500);
+            }
+            if (res.data.code === 404) {
+              setCode(404);
+            }
+            if (res.data.code === 200) {
+              setCode(200);
+
+              navigate("/admin");
+            } else Promise.reject();
+          })
+          .catch((err) => alert("Something went wrong"));
+      } else if (form === "addEVar") {
+        axios
+          .put("http://localhost:4000/addProduct/VarE", studentObject)
           .then((res) => {
             if (res.data.code === 500) {
               setCode(500);

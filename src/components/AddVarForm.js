@@ -34,7 +34,15 @@ const AddVarForm = () => {
     product_size: "",
     product_color: "",
     returnable: true,
-    vars: [],
+    vars: [
+      {
+        product_price: "",
+        product_img: "",
+        product_quantity: "",
+        product_size: "",
+        product_color: "",
+      },
+    ],
     _id: localStorage.getItem("EditProduct"),
   });
 
@@ -67,7 +75,9 @@ const AddVarForm = () => {
   return (
     <>
       {console.log("local", localStorage.getItem("EditProduct"))}
-      {form === "addVar" && <AddProductForm product={product} form={form} />}
+      {form === "addVar" && (
+        <AddProductForm product={product} form={form} value={0} />
+      )}
     </>
   );
 };

@@ -137,7 +137,7 @@ export default function Orders() {
             </span>
           ) : (
             <span style={{ transform: "rotateY(180deg)" }}>
-              <Link to="/admin" state={{ Name: "تعديل نوع" }}>
+              <Link to="/admin" state={{ Name: "تعديل نوع", Value: "0" }}>
                 تعديل نوع
               </Link>
             </span>
@@ -160,7 +160,7 @@ export default function Orders() {
             </span>
           ) : (
             <span style={{ transform: "rotateY(180deg)" }}>
-              <Link to="/admin" state={{ Name: "تعديل نوع" }}>
+              <Link to="/admin" state={{ Name: "تعديل نوع", Value: "1" }}>
                 تعديل نوع
               </Link>
             </span>
@@ -183,7 +183,7 @@ export default function Orders() {
             </span>
           ) : (
             <span style={{ transform: "rotateY(180deg)" }}>
-              <Link to="/admin" state={{ Name: "تعديل نوع" }}>
+              <Link to="/admin" state={{ Name: "تعديل نوع", Value: "2" }}>
                 تعديل نوع
               </Link>
             </span>
