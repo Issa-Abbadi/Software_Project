@@ -23,44 +23,51 @@ function SingleProduct(props) {
       }
     });
   };
+
   const [product, setProduct] = useState(props.product);
-  const [productImg, setProductImg] = useState(props.product.product_img);
-  const [productSize, setProductSize] = useState(props.product.product_size);
-  const [productPrice, setProductPrice] = useState(props.product.product_price);
+  const [productImg, setProductImg] = useState(
+    props.product.vars[0].product_img
+  );
+  const [productSize, setProductSize] = useState(props.product.vars[0].size);
+  const [productPrice, setProductPrice] = useState(props.product.vars[0].price);
 
   const retColors = (product) => {
     if (product.vars[1] != null) {
-      return product.vars.map((prod) => (
-        <span style={{ margin: "5px" }} class="spanColors">
-          <a
-            onClick={() => {
-              setProductImg(prod.product_img);
-              setProductPrice(prod.price);
-              setProductSize(prod.size);
-            }}
-            class="btn"
-          >
-            {prod.size === "S" && (
-              <img
-                src={prod.product_img}
-                style={{ width: "25px", height: "25px" }}
-              />
-            )}
-            {prod.size === "M" && (
-              <img
-                src={prod.product_img}
-                style={{ width: "50px", height: "50px" }}
-              />
-            )}
-            {prod.size === "L" && (
-              <img
-                src={prod.product_img}
-                style={{ width: "75px", height: "75px" }}
-              />
-            )}
-          </a>
-        </span>
-      ));
+      return product.vars.map((prod) => {
+        if (prod !== null) {
+          return (
+            <span style={{ margin: "5px" }} class="spanColors">
+              <a
+                onClick={() => {
+                  setProductImg(prod.product_img);
+                  setProductPrice(prod.price);
+                  setProductSize(prod.size);
+                }}
+                class="btn"
+              >
+                {prod.size === "S" && (
+                  <img
+                    src={prod.product_img}
+                    style={{ width: "25px", height: "25px" }}
+                  />
+                )}
+                {prod.size === "M" && (
+                  <img
+                    src={prod.product_img}
+                    style={{ width: "50px", height: "50px" }}
+                  />
+                )}
+                {prod.size === "L" && (
+                  <img
+                    src={prod.product_img}
+                    style={{ width: "75px", height: "75px" }}
+                  />
+                )}
+              </a>
+            </span>
+          );
+        }
+      });
     } else {
     }
   };

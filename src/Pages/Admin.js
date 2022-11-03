@@ -15,15 +15,12 @@ function Admin(props) {
   const [form, setForm] = useState("add");
   const [product, setProduct] = useState({
     product_name: "",
-    product_price: "",
+
     product_category: "",
     sub_category: "",
     product_company: localStorage.getItem("UserName"),
     product_description: "",
-    product_img: "",
-    product_quantity: "",
-    product_size: "",
-    product_color: "",
+
     returnable: true,
     vars: [
       {

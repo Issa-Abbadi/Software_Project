@@ -49,8 +49,8 @@ export default function Orders() {
     الصنف: product.sub_category,
     التقييم: product.product_rating,
     الوصف: product.product_description,
-    السعر: product.product_price + "$",
-    الصورة: product.product_img,
+    السعر: product.vars[0].price + "$",
+    الصورة: product.vars[0].product_img,
     vars: product.vars,
   }));
 

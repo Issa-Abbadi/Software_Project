@@ -6,9 +6,7 @@ let productSchema = new Schema(
     product_name: {
       type: String,
     },
-    product_price: {
-      type: Number,
-    },
+
     product_company: {
       type: String,
     },
@@ -24,26 +22,16 @@ let productSchema = new Schema(
     product_description: {
       type: String,
     },
-    product_size: {
-      type: String,
-    },
+
     returnable: {
       type: Boolean,
     },
     sub_categoty: {
       type: String,
     },
-    product_img: {
-      type: String,
-    },
+
     vars: {
       type: Array,
-    },
-    product_color: {
-      type: String,
-    },
-    product_quantity: {
-      type: Number,
     },
   },
   {

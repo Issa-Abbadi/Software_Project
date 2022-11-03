@@ -18,6 +18,7 @@ import FileBase64 from "react-file-base64";
 import { faHouseMedicalCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const AddProductForm = (props) => {
+  console.log("this ", props.product, "then", props.value);
   let validationSchema = yup.object({});
   if (props.form === "add" || props.form === "addE") {
     validationSchema = yup.object({
@@ -31,7 +32,7 @@ const AddProductForm = (props) => {
   }
   // const location = useLocation();
   const [product, setProduct] = useState(props.product);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(props.value);
   console.log("h1", props.product);
   console.log("k1", props.form);
 
@@ -77,16 +78,16 @@ const AddProductForm = (props) => {
   const formik = useFormik({
     initialValues: {
       product_name: product.product_name,
-      product_price: product.vars[value].product_price,
+      product_price: product.vars[value].price,
       product_category: product.product_category,
       sub_category: product.sub_category,
       product_company: localStorage.getItem("UserName"),
       product_description: product.product_description,
       product_img: product.vars[value].product_img,
       _id: product._id,
-      product_size: product.vars[value].product_size,
-      product_color: product.vars[value].product_color,
-      product_quantity: product.vars[value].product_quantity,
+      product_size: product.vars[value].size,
+      product_color: product.vars[value].color,
+      product_quantity: product.vars[value].quantity,
       returnable: product.returnable,
       vars: product.vars,
       value: value,

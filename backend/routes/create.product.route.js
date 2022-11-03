@@ -11,16 +11,11 @@ router.post("/", (req, res) => {
 
   const newProduct = new productSchema({
     product_name: req.body.product_name,
-    product_price: req.body.product_price,
     product_category: req.body.product_category,
     product_company: req.body.product_company,
     product_rating: 0,
     product_description: req.body.product_description,
     sub_category: req.body.sub_category,
-    product_img: req.body.product_img,
-    product_size: req.body.product_size,
-    product_color: req.body.product_color,
-    product_quantity: req.body.product_quantity,
     returnable: req.body.returnable,
     vars: [
       {
@@ -59,14 +54,11 @@ router.put("/", (req, res) => {
           { _id: result._id },
           {
             product_name: req.body.product_name,
-            product_price: req.body.product_price,
+
             product_category: req.body.product_category,
             product_description: req.body.product_description,
             sub_category: req.body.sub_category,
-            product_img: req.body.product_img,
-            product_size: req.body.product_size,
-            product_color: req.body.product_color,
-            product_quantity: req.body.product_quantity,
+
             returnable: req.body.returnable,
           }
         )
@@ -142,32 +134,40 @@ router.put("/VarE", (req, res) => {
     .findOne({ _id: req.body._id })
     .then((result) => {
       console.log(req.body);
-      let var1;
-      let var2;
+
       console.log("vars", result.vars);
-      if (result.vars[0]) {
-        var1 = result.vars[0];
+      if (req.body.value === "0") {
+        result.vars[0] = {
+          quantity: req.body.quantity,
+          price: req.body.product_price,
+          size: req.body.product_size,
+          color: req.body.product_color,
+          product_img: req.body.product_img,
+        };
+      } else if (req.body.value === "1") {
+        result.vars[1] = {
+          quantity: req.body.quantity,
+          price: req.body.product_price,
+          size: req.body.product_size,
+          color: req.body.product_color,
+          product_img: req.body.product_img,
+        };
+      } else if (req.body.value === "2") {
+        result.vars[2] = {
+          quantity: req.body.quantity,
+          price: req.body.product_price,
+          size: req.body.product_size,
+          color: req.body.product_color,
+          product_img: req.body.product_img,
+        };
       }
-      if (result.vars[1]) {
-        var2 = result.vars[1];
-      }
+      console.log("vars", result.vars);
 
       productSchema
         .updateOne(
           { _id: result._id },
           {
-            vars: [
-              {
-                quantity: req.body.quantity,
-                price: req.body.product_price,
-                size: req.body.product_size,
-                color: req.body.product_color,
-                product_img: req.body.product_img,
-              },
-              var1,
-
-              var2,
-            ],
+            vars: result.vars,
           }
         )
         .then((result) => {
