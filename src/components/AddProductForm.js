@@ -15,9 +15,28 @@ import InputLabel from "@mui/material/InputLabel";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import FileBase64 from "react-file-base64";
+import rtlPlugin from "stylis-plugin-rtl";
 import { faHouseMedicalCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CacheProvider } from "@emotion/react";
+import { prefixer } from "stylis";
+import createCache from "@emotion/cache";
+
+const rtlTheme = createTheme({ direction: "rtl" });
+
+const cacheRtl = createCache({
+  key: "muirtl",
+  // prefixer is the only stylis plugin by default, so when
+  // overriding the plugins you need to include it explicitly
+  // if you want to retain the auto-prefixing behavior.
+  stylisPlugins: [prefixer, rtlPlugin],
+});
 
 const AddProductForm = (props) => {
+  React.useLayoutEffect(() => {
+    document.body.setAttribute("dir", "rtl");
+  }, []);
+
   console.log("this ", props.product, "then", props.value);
   let validationSchema = yup.object({});
   if (props.form === "add" || props.form === "addE") {
@@ -202,208 +221,215 @@ const AddProductForm = (props) => {
 
   return (
     <div style={{ marginTop: " 5%" }}>
-      <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
-        {form === "add" && <h1>أضف منتج</h1>}
-        {form === "addE" && <h1>تعديل منتج</h1>}
-        {form !== "addVar" && form !== "addEVar" && (
-          <TextField
-            fullWidth
-            id="product_name"
-            name="product_name"
-            label="الاسم"
-            value={formik.values.product_name}
-            onChange={formik.handleChange}
-            error={
-              formik.touched.product_name && Boolean(formik.errors.product_name)
-            }
-            helperText={
-              formik.touched.product_name && formik.errors.product_name
-            }
-          />
-        )}
-        <Input
-          fullWidth
-          type="number"
-          id="product_price"
-          name="product_price"
-          label="السعر"
-          value={formik.values.product_price}
-          onChange={formik.handleChange}
-          error={
-            formik.touched.product_price && Boolean(formik.errors.product_price)
-          }
-          helperText={
-            formik.touched.product_price && formik.errors.product_price
-          }
-        />
-        <Input
-          fullWidth
-          type="number"
-          id="product_quantity"
-          name="product_quantity"
-          label="الكمية"
-          value={formik.values.product_quantity}
-          onChange={formik.handleChange}
-        />
-
-        {form !== "addVar" && form !== "addEVar" && (
-          <>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={formik.values.returnable}
-                  value={formik.values.returnable}
-                />
+      <CacheProvider value={cacheRtl}>
+        <ThemeProvider theme={rtlTheme}>
+          <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
+            {form === "add" && <h1>أضف منتج</h1>}
+            {form === "addE" && <h1>تعديل منتج</h1>}
+            {form !== "addVar" && form !== "addEVar" && (
+              <TextField
+                fullWidth
+                id="product_name"
+                name="product_name"
+                label="الاسم"
+                value={formik.values.product_name}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.product_name &&
+                  Boolean(formik.errors.product_name)
+                }
+                helperText={
+                  formik.touched.product_name && formik.errors.product_name
+                }
+              />
+            )}
+            <Input
+              fullWidth
+              type="number"
+              id="product_price"
+              name="product_price"
+              label="السعر"
+              value={formik.values.product_price}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.product_price &&
+                Boolean(formik.errors.product_price)
               }
-              name="returnable"
-              id="returnable"
-              onChange={formik.handleChange}
-              label="قابل للإرجاع"
+              helperText={
+                formik.touched.product_price && formik.errors.product_price
+              }
             />
+            <Input
+              fullWidth
+              type="number"
+              id="product_quantity"
+              name="product_quantity"
+              label="الكمية"
+              value={formik.values.product_quantity}
+              onChange={formik.handleChange}
+            />
+
+            {form !== "addVar" && form !== "addEVar" && (
+              <>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={formik.values.returnable}
+                      value={formik.values.returnable}
+                    />
+                  }
+                  name="returnable"
+                  id="returnable"
+                  onChange={formik.handleChange}
+                  label="قابل للإرجاع"
+                />
+                <TextField
+                  style={{ width: "200px" }}
+                  className="px-2 my-2"
+                  variant="outlined"
+                  name="product_category"
+                  id="الفئة"
+                  select
+                  label="الفئة"
+                  value={formik.values.product_category}
+                  onChange={formik.handleChange}
+                >
+                  {gategory.map((option) => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>{" "}
+              </>
+            )}
             <TextField
               style={{ width: "200px" }}
               className="px-2 my-2"
               variant="outlined"
-              name="product_category"
-              id="الفئة"
+              name="product_color"
+              id="اللون"
               select
-              label="الفئة"
-              value={formik.values.product_category}
+              label="اللون"
+              value={formik.values.product_color}
               onChange={formik.handleChange}
             >
-              {gategory.map((option) => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>{" "}
-          </>
-        )}
-        <TextField
-          style={{ width: "200px" }}
-          className="px-2 my-2"
-          variant="outlined"
-          name="product_color"
-          id="اللون"
-          select
-          label="اللون"
-          value={formik.values.product_color}
-          onChange={formik.handleChange}
-        >
-          {color.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          style={{ width: "200px" }}
-          className="px-2 my-2"
-          variant="outlined"
-          name="product_size"
-          id="الحجم"
-          select
-          label="الحجم"
-          value={formik.values.product_size}
-          onChange={formik.handleChange}
-        >
-          {size.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        {form !== "addVar" && form !== "addEVar" && (
-          <>
-            <TextField
-              style={{ width: "200px" }}
-              className="px-2 my-2"
-              variant="outlined"
-              name="sub_category"
-              id="الصنف"
-              select
-              label="الصنف"
-              value={formik.values.sub_category}
-              onChange={formik.handleChange}
-            >
-              {subGategory.map((option) => (
+              {color.map((option) => (
                 <MenuItem key={option.id} value={option.id}>
                   {option.name}
                 </MenuItem>
               ))}
             </TextField>
             <TextField
-              fullWidth
-              multiline
-              rows="5"
-              id="product_description"
-              name="product_description"
-              label="الوصف"
-              value={formik.values.product_description}
+              style={{ width: "200px" }}
+              className="px-2 my-2"
+              variant="outlined"
+              name="product_size"
+              id="الحجم"
+              select
+              label="الحجم"
+              value={formik.values.product_size}
               onChange={formik.handleChange}
-              error={
-                formik.touched.product_description &&
-                Boolean(formik.errors.product_description)
-              }
-              helperText={
-                formik.touched.product_description &&
-                formik.errors.product_description
-              }
-            />{" "}
-          </>
-        )}
-        <div></div>
-        {product_img === "" && (
-          <Button variant="contained" component="label">
-            إضافة صورة
-            <span style={{ display: "none" }}>
-              <FileBase64
-                name="product_img"
-                id="InputImg"
-                hidden
-                multiple={false}
-                onDone={({ base64 }) => (
-                  setProduct_img(base64), (formik.values.product_img = base64)
-                )}
-              />
-            </span>
-          </Button>
-        )}
-        {product_img !== "" && (
-          <Alert
-            severity="success"
-            onClose={() => {
-              setProduct_img("");
-            }}
-          >
-            {"أضيفت الصورة  "}
-          </Alert>
-        )}
+            >
+              {size.map((option) => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>
+            {form !== "addVar" && form !== "addEVar" && (
+              <>
+                <TextField
+                  style={{ width: "200px" }}
+                  className="px-2 my-2"
+                  variant="outlined"
+                  name="sub_category"
+                  id="الصنف"
+                  select
+                  label="الصنف"
+                  value={formik.values.sub_category}
+                  onChange={formik.handleChange}
+                >
+                  {subGategory.map((option) => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows="5"
+                  id="product_description"
+                  name="product_description"
+                  label="الوصف"
+                  value={formik.values.product_description}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.product_description &&
+                    Boolean(formik.errors.product_description)
+                  }
+                  helperText={
+                    formik.touched.product_description &&
+                    formik.errors.product_description
+                  }
+                />{" "}
+              </>
+            )}
+            <div></div>
+            {product_img === "" && (
+              <Button variant="contained" component="label">
+                إضافة صورة
+                <span style={{ display: "none" }}>
+                  <FileBase64
+                    name="product_img"
+                    id="InputImg"
+                    hidden
+                    multiple={false}
+                    onDone={({ base64 }) => (
+                      setProduct_img(base64),
+                      (formik.values.product_img = base64)
+                    )}
+                  />
+                </span>
+              </Button>
+            )}
+            {product_img !== "" && (
+              <Alert
+                severity="success"
+                onClose={() => {
+                  setProduct_img("");
+                }}
+              >
+                {"أضيفت الصورة  "}
+              </Alert>
+            )}
 
-        <Button color="primary" variant="contained" fullWidth type="submit">
-          {form === "add" && <>إضافة </>}
-          {form === "addE" && <>تعديل </>}
-          {form === "addVar" && <>إضافة نوع</>}
-          {form === "addEVar" && <>تعديل نوع</>}
-          {console.log(formik.values)}
-        </Button>
+            <Button color="primary" variant="contained" fullWidth type="submit">
+              {form === "add" && <>إضافة </>}
+              {form === "addE" && <>تعديل </>}
+              {form === "addVar" && <>إضافة نوع</>}
+              {form === "addEVar" && <>تعديل نوع</>}
+              {console.log(formik.values)}
+            </Button>
 
-        {/* {code === 200 && navigate("/admin")} */}
-      </form>
+            {/* {code === 200 && navigate("/admin")} */}
+          </form>
 
-      {code === 500 && form === "addE" && (
-        <Alert severity="warning">هذا المنتج غير موجود</Alert>
-      )}
-      {code === 500 && form === "add" && (
-        <Alert severity="warning">هذا المنتج موجود</Alert>
-      )}
-      {code === 200 && form === "addE" && (
-        <Alert severity="success">تم تعديل المنتج بنجاح </Alert>
-      )}
-      {code === 200 && form === "add" && (
-        <Alert severity="success">تم إضافة المنتج بنجاح </Alert>
-      )}
-      {code === 404 && <Alert severity="error">خطأ في التنفيذ</Alert>}
+          {code === 500 && form === "addE" && (
+            <Alert severity="warning">هذا المنتج غير موجود</Alert>
+          )}
+          {code === 500 && form === "add" && (
+            <Alert severity="warning">هذا المنتج موجود</Alert>
+          )}
+          {code === 200 && form === "addE" && (
+            <Alert severity="success">تم تعديل المنتج بنجاح </Alert>
+          )}
+          {code === 200 && form === "add" && (
+            <Alert severity="success">تم إضافة المنتج بنجاح </Alert>
+          )}
+          {code === 404 && <Alert severity="error">خطأ في التنفيذ</Alert>}
+        </ThemeProvider>
+      </CacheProvider>
     </div>
   );
 };
