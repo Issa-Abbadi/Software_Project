@@ -21,12 +21,11 @@ body {
 }
 
 .Home .cover {
-  width: 100%;
-  height: auto;
+  width: auto;
 
   /* calc(100vh - 75px); */
-  max-width: 100%;
-  max-height: calc(100vh - 75px);
+  max-width: 2000px;
+  height: calc(100vh - 75px);
   display: block;
 }
 

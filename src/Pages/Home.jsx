@@ -12,9 +12,15 @@ import "./Home.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom/dist";
 import Analytics from "./Analytics";
 import Sidebar from "../components/Sidebar";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 function Home() {
+  const theme = useTheme();
   const [products, setProducts] = useState([]);
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
+  const config = isMatch ? "500px" : "100%";
 
   function ControlledCarousel() {
     const [index, setIndex] = useState(0);
@@ -23,14 +29,17 @@ function Home() {
       setIndex(selectedIndex);
     };
     return (
-      <div>
+      <div style={{ height: "100%", overflow: "hidden" }}>
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}
           variant="dark"
           style={{ display: "flex" }}
         >
-          <Carousel.Item interval={1500}>
+          <Carousel.Item
+            interval={1500}
+            style={{ height: "100%", overflow: "hidden" }}
+          >
             <img
               className="cover d-block w-100"
               src={imgs[0].url}
@@ -114,9 +123,17 @@ function Home() {
     <>
       <div style={{ display: "inline-block", width: "100%" }}>
         <Container className="Home">
-          <a href="">
-            <ControlledCarousel />
-          </a>
+          <div
+            style={{
+              overflow: "hidden",
+              height: "100%",
+              width: config,
+            }}
+          >
+            <a href="">
+              <ControlledCarousel />
+            </a>
+          </div>
           {/* <div class="coverImgs">
             <a href="#">
               <img src="./imgs/cover.jpg" alt="" class="sideImg1" />
@@ -127,11 +144,13 @@ function Home() {
           </div> */}
           {/* <div className="centerMode">{<CenterMode />}</div> */}
 
-          <Card
-            title="متاجر عرضناها لك"
-            data={imgs2}
-            style={{ margin: "20%" }}
-          />
+          <div style={{ width: config }}>
+            <Card
+              title="متاجر عرضناها لك"
+              data={imgs2}
+              style={{ margin: "20%" }}
+            />
+          </div>
 
           <h1>
             {" "}
@@ -144,15 +163,19 @@ function Home() {
                 backgroundColor: "#eee",
                 position: "relative",
                 height: "400px",
+                width: config,
+                overflow: "hidden",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "Center",
               }}
             >
-              <img
-                style={{ height: "400px", flex: "1" }}
-                src={require("../assets/kitchen/goodKitchen.jpg")}
-              />
+              <div style={{ height: "400px", overflow: "hidden" }}>
+                <img
+                  style={{ height: "400px", flex: "1" }}
+                  src={require("../assets/kitchen/goodKitchen.jpg")}
+                />
+              </div>
 
               <div id="arrowAnim" style={{ flex: "3" }}>
                 <div class="arrowSliding">
@@ -168,11 +191,12 @@ function Home() {
                   <div class="arrow"></div>
                 </div>
               </div>
-
-              <img
-                style={{ height: "400px", flex: "1" }}
-                src={require("../assets/kitchen/badKitchen.jpg")}
-              />
+              <div style={{ height: "400px", overflow: "hidden" }}>
+                <img
+                  style={{ height: "400px", flex: "1" }}
+                  src={require("../assets/kitchen/badKitchen.jpg")}
+                />
+              </div>
             </div>
           </a>
           <h1>
