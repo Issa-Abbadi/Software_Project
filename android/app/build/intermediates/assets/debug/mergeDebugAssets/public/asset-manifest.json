@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "./static/css/main.5bbbf5a8.css",
+    "main.js": "./static/js/main.736f9a9f.js",
+    "static/media/badKitchen.jpg": "./static/media/badKitchen.39fdf0244cc36ae53ead.jpg",
+    "static/media/greentable.jpg": "./static/media/greentable.4bf046473fd4da072a3a.jpg",
+    "static/media/goodKitchen.jpg": "./static/media/goodKitchen.228ebfabdbfc5d13f9e5.jpg",
+    "static/media/table.jpg": "./static/media/table.cf55948f2b3173b7394b.jpg",
+    "static/media/forksInGlass.jpg": "./static/media/forksInGlass.9a813b57810984b70398.jpg",
+    "static/media/Rawafed.jpg": "./static/media/Rawafed.5c4b55b05ceffb5ec298.jpg",
+    "static/media/Saeed.jpg": "./static/media/Saeed.765e51466036263e7364.jpg",
+    "static/media/LOGO2.png": "./static/media/LOGO2.0a9513dbf23947a44988.png",
+    "static/media/Shames.jpg": "./static/media/Shames.98ae9430324aa7d9f1dd.jpg",
+    "static/media/FahadHome.jpg": "./static/media/FahadHome.f0d41bc3dfd359267fda.jpg",
+    "static/media/kaery.jpg": "./static/media/kaery.8b6cc97eddf865210262.jpg",
+    "static/media/slick.svg": "./static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "./static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "./index.html",
+    "static/media/right-arrow.svg": "./static/media/right-arrow.fc357ade42522f70b495aba0189ebc1f.svg",
+    "static/media/left-arrow.svg": "./static/media/left-arrow.93b889879e649b69f6ec14cd1b6fc011.svg",
+    "main.5bbbf5a8.css.map": "./static/css/main.5bbbf5a8.css.map",
+    "main.736f9a9f.js.map": "./static/js/main.736f9a9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5bbbf5a8.css",
+    "static/js/main.736f9a9f.js"
+  ]
+}
