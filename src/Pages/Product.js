@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import SingleProduct from "../components/SingleProduct";
 import Button from "@mui/material/Button";
+import { LocalGasStationRounded } from "@mui/icons-material";
 
 function Product(props) {
   const location = useLocation();
@@ -12,6 +13,11 @@ function Product(props) {
       setProduct(_state);
     }
   }, [location]);
+
+  const addProduct = () => {
+    localStorage.setItem("cart", product.product._id);
+    console.log("added to cart ");
+  };
 
   return (
     <>
@@ -37,7 +43,11 @@ function Product(props) {
                 <img src={product.product.product_img} />
               </div>
 
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={addProduct()}
+              >
                 أضف للسلة
               </Button>
             </div>

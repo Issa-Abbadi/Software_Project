@@ -1,9 +1,16 @@
 import * as React from "react";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "./Title";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  faStar,
+  faStarHalf,
+  faStarHalfAlt,
+  faStarAndCrescent,
+} from "@fortawesome/free-solid-svg-icons";
 
 function preventDefault(event) {
   event.preventDefault();
@@ -42,11 +49,28 @@ export default function Deposits() {
     return sum / len;
   };
 
+  const Stars = (rating) => {
+    const starArray = [...Array(5).keys()].map((i) => i + 1);
+    return starArray.map((i) => {
+      if (rating >= i) {
+        return <FontAwesomeIcon key={i} icon={faStar} color={"orange"} />;
+      } else if (rating >= i - 0.5) {
+        return (
+          <FontAwesomeIcon key={i} icon={faStarHalfAlt} color={"orange"} />
+        );
+      } else {
+        return <></>;
+      }
+    });
+  };
+
   return (
     <React.Fragment>
       <Title>{username}</Title>
       <Typography component="p" variant="h4">
         {getRating(products).toFixed(2)}
+        <div />
+        {Stars(getRating(products).toFixed(2))}
       </Typography>
       {/* <Typography color="text.secondary" sx={{ flex: 1 }}>
      on 15 March, 2019

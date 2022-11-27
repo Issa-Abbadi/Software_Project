@@ -8,6 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "https://kit.fontawesome.com/a076d05399.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -377,7 +378,13 @@ function Nav_bar(props) {
                     قائمة الرغبات
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/cart">السلة</NavDropdown.Item>
-                  <NavDropdown.Item href="/logout">تسجيل خروج</NavDropdown.Item>
+
+                  <NavDropdown.Item href="/logout">
+                    <GoogleLogout
+                      clientId={localStorage.getItem("ClientID")}
+                      buttonText="تسجيل خروج"
+                    />
+                  </NavDropdown.Item>
                 </NavDropdown>
               </>
             )}

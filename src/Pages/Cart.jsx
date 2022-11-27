@@ -23,7 +23,10 @@ import React from "react";
 function Cart(props) {
   return (
     <>
-      <Checkout />
+      Hello
+      {console.log(localStorage.getItem("cart"), "")}
+      {localStorage.getItem("cart")}
+      {/* <Checkout /> */}
     </>
   );
 }

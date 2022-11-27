@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import { FormGroup, Col } from "react-bootstrap";
@@ -19,11 +19,49 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "@mui/material/Container";
 import "../Pages/loginAndSign.css";
 
+import { gapi } from "gapi-script";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { Logout } from "@mui/icons-material";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("مطلوب"),
   password: Yup.string().required("مطلوب"),
 });
 function LoginForm(props) {
+  const [profile, setProfile] = useState([]);
+
+  const clientId =
+    "979602721583-if0g2i6k86eo9515n49m5d5gbm9pl3ea.apps.googleusercontent.com";
+
+  const onSuccess = (res) => {
+    setProfile(res.profileObj);
+    window.localStorage.setItem("ClientID", clientId);
+    window.localStorage.setItem("EMAIL", res.profileObj.email);
+    window.localStorage.setItem("UserName", res.profileObj.name);
+    navigate("/");
+    navigate(0);
+  };
+
+  const onFailure = (err) => {
+    console.log("failed", err);
+  };
+
+  const logOut = () => {
+    setProfile(null);
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("EMAIL") === null) {
+      logOut();
+    }
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  });
   const navigate = useNavigate();
   const [code, setCode] = useState(0);
 
@@ -132,6 +170,14 @@ function LoginForm(props) {
               >
                 تسجيل دخول
               </Button>
+              <GoogleLogin
+                clientId={clientId}
+                buttonText="Sign in with Google"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={true}
+              />
               <Grid container justifyContent="flex-end">
                 <Grid item style={{ marginTop: "1%" }}>
                   <Link href="/signup" variant="body2">
