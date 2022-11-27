@@ -12,7 +12,10 @@ let accountSchema = new Schema(
     otp: {
       type: String,
     },
-    username: {
+    name: {
+      type: String,
+    },
+    imageUrl: {
       type: String,
     },
   },

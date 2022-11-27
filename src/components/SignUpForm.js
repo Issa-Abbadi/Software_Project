@@ -22,7 +22,7 @@ import Container from "@mui/material/Container";
 import "../Pages/loginAndSign.css";
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required("مطلوب"),
+  name: Yup.string().required("مطلوب"),
   email: Yup.string().email("هذا البريد الالكتروني غير صالح").required("مطلوب"),
   password: Yup.string().required("مطلوب").min(8, "ثمانية حروف على الأقل"),
 });
@@ -53,7 +53,7 @@ function SignUpForm(props) {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
       ppassword: "",
@@ -103,20 +103,16 @@ function SignUpForm(props) {
                 <Grid item xs={12}>
                   <TextField
                     autoComplete="fname"
-                    name="username"
+                    name="name"
                     variant="outlined"
                     fullWidth
-                    id="username"
+                    id="name"
                     label="اسم المستخدم"
                     autoFocus
-                    value={formik.values.username}
+                    value={formik.values.name}
                     onChange={formik.handleChange}
-                    error={
-                      formik.touched.username && Boolean(formik.errors.username)
-                    }
-                    helperText={
-                      formik.touched.username && formik.errors.username
-                    }
+                    error={formik.touched.name && Boolean(formik.errors.name)}
+                    helperText={formik.touched.name && formik.errors.name}
                   />
                 </Grid>
 

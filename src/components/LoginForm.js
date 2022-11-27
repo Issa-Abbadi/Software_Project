@@ -34,6 +34,47 @@ function LoginForm(props) {
     "979602721583-if0g2i6k86eo9515n49m5d5gbm9pl3ea.apps.googleusercontent.com";
 
   const onSuccess = (res) => {
+    // console.log(res.profileObj);
+    // axios
+    //   .post("http://localhost:4000/login/", { email: res.profileObj.email })
+    //   .then((res) => {
+    //     if (res.data.code === 500) {
+    //       axios
+    //         .post("http://localhost:4000/signup/", {
+    //           email: res.profileObj.email,
+    //           password: res.profileObj.password,
+    //           name: res.profileObj.name,
+    //         })
+    //         .then((res) => {
+    //           // console.log(res.data.code);
+
+    //           if (res.data.code === 200) {
+    //             navigate("/login");
+    //           } else if (res.data.code === 500) {
+    //             setCode(500);
+    //           } else Promise.reject();
+    //         })
+    //         .catch((err) => alert("Something went wrong"));
+    //     }
+    //     if (res.data.code === 404) {
+    //       setCode(404); //Password is Wrong
+    //     }
+    //     if (res.data.code === 200) {
+    //       localStorage.setItem("Profile", JSON.stringify(res.data));
+    //       window.localStorage.setItem("TOKEN", res.data.token);
+    //       window.localStorage.setItem("EMAIL", res.data.email);
+    //       window.localStorage.setItem("UserName", res.data.name);
+
+    //       if (res.data.email.includes("houseware")) {
+    //         navigate("/admin");
+    //         navigate(0);
+    //       } else {
+    //         navigate("/");
+    //         navigate(0);
+    //       }
+    //     } else Promise.reject();
+    //   })
+    //   .catch((err) => alert("Something went wrong"));
     setProfile(res.profileObj);
     window.localStorage.setItem("ClientID", clientId);
     window.localStorage.setItem("EMAIL", res.profileObj.email);
@@ -86,7 +127,7 @@ function LoginForm(props) {
             localStorage.setItem("Profile", JSON.stringify(res.data));
             window.localStorage.setItem("TOKEN", res.data.token);
             window.localStorage.setItem("EMAIL", res.data.email);
-            window.localStorage.setItem("UserName", res.data.username);
+            window.localStorage.setItem("UserName", res.data.name);
 
             if (res.data.email.includes("houseware")) {
               navigate("/admin");

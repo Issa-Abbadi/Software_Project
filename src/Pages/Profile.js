@@ -23,15 +23,14 @@ import { Avatar } from "@mui/material";
 function Profile() {
   return (
     <>
-      <section style={{ backgroundColor: "#eee" }}>
+      <section style={{ backgroundColor: "#eee", direction: "rtl" }}>
         <MDBContainer className="py-5">
           <MDBRow>
             <MDBCol>
-              <MDBBreadcrumb className="bg-dark rounded-3 p-3 mb-4">
+              <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
                 <MDBBreadcrumbItem>
-                  <a href="#">Home</a>
+                  <a href="/">الرئيسية</a>
                 </MDBBreadcrumbItem>
-                <MDBBreadcrumbItem active>Profile</MDBBreadcrumbItem>
               </MDBBreadcrumb>
             </MDBCol>
           </MDBRow>
@@ -46,24 +45,25 @@ function Profile() {
                     style={{
                       width: "50%",
                       height: "50%",
-                      marginLeft: "25%",
+                      marginRight: "25%",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
                     fluid
                   />
-                  <p className="text-muted mb-1">Full Stack Developer</p>
-                  <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+
+                  {/* <p className="text-muted mb-1">Full Stack Developer</p>
+                  <p className="text-muted mb-4">Bay Area, San Francisco, CA</p> */}
                   <div className="d-flex justify-content-center mb-2">
                     <MDBBtn outline className="ms-1">
-                      Edit Information
+                      تغيير الصورة
                     </MDBBtn>
                   </div>
                 </MDBCardBody>
               </MDBCard>
 
-              <MDBCard className="mb-4 mb-lg-0">
+              {/* <MDBCard className="mb-4 mb-lg-0">
                 <MDBCardBody className="p-0">
                   <MDBListGroup flush className="rounded-3">
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
@@ -104,33 +104,33 @@ function Profile() {
                     </MDBListGroupItem>
                   </MDBListGroup>
                 </MDBCardBody>
-              </MDBCard>
+              </MDBCard> */}
             </MDBCol>
             <MDBCol lg="8">
               <MDBCard className="mb-4">
                 <MDBCardBody>
                   <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>Full Name</MDBCardText>
+                      <MDBCardText>الاسم</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
-                        Johnatan Smith
+                        {JSON.parse(localStorage.getItem("Profile")).name}
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
                   <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>Email</MDBCardText>
+                      <MDBCardText>البريد الإلكتروني</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
-                        example@example.com
+                        {JSON.parse(localStorage.getItem("Profile")).email}
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>
-                  <hr />
+                  {/* <hr />
                   <MDBRow>
                     <MDBCol sm="3">
                       <MDBCardText>Phone</MDBCardText>
@@ -162,7 +162,7 @@ function Profile() {
                         Bay Area, San Francisco, CA
                       </MDBCardText>
                     </MDBCol>
-                  </MDBRow>
+                  </MDBRow> */}
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>
