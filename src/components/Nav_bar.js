@@ -222,6 +222,9 @@ function Nav_bar(props) {
                 type="search"
                 placeholder="بحث"
                 aria-label="Search"
+                onChange={(event) =>
+                  localStorage.setItem("search", event.target.value)
+                }
                 style={{ marginLeft: "5px" }}
               />
               {/* <button

@@ -15,6 +15,7 @@ function KitchenProducts(props) {
   const [sizes, setSizes] = useState([]);
   const [stores, setStores] = useState([]);
   const [sorting, setSorting] = useState([]);
+  const [search, setSearch] = useState(localStorage.getItem("search"));
   let filterData, sortedData;
   const navigate = useNavigate();
   useEffect(() => {
@@ -37,6 +38,19 @@ function KitchenProducts(props) {
         } else {
           setProducts(data);
         }
+
+        filterData = filterData.filter((product) => {
+          if (search === "") {
+            console.log("Notd");
+            return product;
+          } else if (
+            product.product_name.toLowerCase().includes(search.toLowerCase())
+          ) {
+            console.log("feilterdd");
+            return product;
+          }
+        });
+        setProducts(filterData);
         sortedData = filterData;
         if (colors[0] != null) {
           sortedData = productsFilterColor(filterData);
