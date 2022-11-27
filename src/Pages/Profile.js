@@ -18,6 +18,7 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
+import { Avatar } from "@mui/material";
 
 function Profile() {
   return (
@@ -39,11 +40,17 @@ function Profile() {
             <MDBCol lg="4">
               <MDBCard className="mb-4 ">
                 <MDBCardBody className="text-center">
-                  <MDBCardImage
-                    src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                  <Avatar
+                    src={JSON.parse(localStorage.getItem("Profile")).imageUrl}
                     alt="avatar"
-                    className="rounded-circle"
-                    style={{ width: "150px" }}
+                    style={{
+                      width: "50%",
+                      height: "50%",
+                      marginLeft: "25%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
                     fluid
                   />
                   <p className="text-muted mb-1">Full Stack Developer</p>

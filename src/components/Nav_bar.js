@@ -11,6 +11,7 @@ import { MDBIcon } from "mdb-react-ui-kit";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 import "./navbar.css";
 import Dashboard from "./Dashboard";
@@ -359,12 +360,13 @@ function Nav_bar(props) {
                       data-mdb-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                        class="rounded-circle"
-                        height="30"
-                        alt="Black and White Portrait of a Man"
-                        loading="lazy"
+                      <span></span>
+
+                      <Avatar
+                        src={
+                          JSON.parse(localStorage.getItem("Profile")).imageUrl
+                        }
+                        referrerpolicy="no-referrer"
                       />
                     </a>
                   }

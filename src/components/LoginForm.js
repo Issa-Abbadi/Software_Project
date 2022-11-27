@@ -38,6 +38,7 @@ function LoginForm(props) {
     window.localStorage.setItem("ClientID", clientId);
     window.localStorage.setItem("EMAIL", res.profileObj.email);
     window.localStorage.setItem("UserName", res.profileObj.name);
+    localStorage.setItem("Profile", JSON.stringify(res.profileObj));
     navigate("/");
     navigate(0);
   };
@@ -82,6 +83,7 @@ function LoginForm(props) {
             setCode(404); //Password is Wrong
           }
           if (res.data.code === 200) {
+            localStorage.setItem("Profile", JSON.stringify(res.data));
             window.localStorage.setItem("TOKEN", res.data.token);
             window.localStorage.setItem("EMAIL", res.data.email);
             window.localStorage.setItem("UserName", res.data.username);
