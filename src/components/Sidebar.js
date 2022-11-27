@@ -61,11 +61,11 @@ const Sidebar = (props, { children }) => {
             to={item.path}
             state={{ Name: item.name }}
             key={index}
-            className="link"
+            className="link "
             activeclassName="active"
           >
             <div className="icon">{item.icon}</div>
-            <div className="link_text">{item.name}</div>
+            <div className="link_text ">{item.name}</div>
           </NavLink>
         ))}
       </div>
