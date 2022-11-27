@@ -80,7 +80,7 @@ function Home() {
   }
 
   let size = Object.keys(products).length;
-  console.log(size);
+  //console.log(size);
 
   const imgs = [
     {
@@ -117,7 +117,7 @@ function Home() {
       url: require("../assets/Stores/kaery.jpg"),
     },
   ];
-  console.log('"' + imgs2[0].url + '"');
+  //console.log('"' + imgs2[0].url + '"');
 
   return (
     <>

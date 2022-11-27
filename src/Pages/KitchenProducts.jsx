@@ -121,7 +121,7 @@ function KitchenProducts(props) {
         }
       }
     });
-    console.log("COLO RED", filteredData);
+    //console.log("COLO RED", filteredData);
     setProducts(filteredData);
     return filteredData;
   };
@@ -143,7 +143,7 @@ function KitchenProducts(props) {
         }
       }
     });
-    console.log("COLO RED", filteredData);
+    //console.log("COLO RED", filteredData);
     setProducts(filteredData);
     return filteredData;
   };
@@ -158,7 +158,7 @@ function KitchenProducts(props) {
       } else {
       }
     });
-    console.log("COLO RED", filteredData);
+    //console.log("COLO RED", filteredData);
     setProducts(filteredData);
     return filteredData;
   };
@@ -169,9 +169,9 @@ function KitchenProducts(props) {
     else if (filter === "high-to-low") res.sort(dynamicSort("-product_price"));
     else if (filter === "customer-rating")
       res.sort(dynamicSort("-product_rating"));
-    console.log("FILTER", res);
-    console.log(Object.is(products, products));
-    console.log("state", products);
+    //console.log("FILTER", res);
+    // console.log(Object.is(products, products));
+    // console.log("state", products);
     setProducts([].concat(res));
   };
   return (

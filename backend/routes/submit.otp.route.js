@@ -7,8 +7,8 @@ let accountSchema = require("../models/Account");
 
 router.put("/", (req, res) => {
   console.log("in ...");
-  console.log(req.body);
-  console.log(req.body.OTP);
+  //console.log(req.body);
+  // console.log(req.body.OTP);
   accountSchema
     .findOne({ otp: req.body.OTP })
     .then((result) => {

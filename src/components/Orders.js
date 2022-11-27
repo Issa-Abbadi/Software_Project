@@ -35,7 +35,7 @@ export default function Orders() {
       })
       .then(({ data }) => {
         setProducts(data);
-        console.log("h", data);
+        //console.log("h", data);
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +61,7 @@ export default function Orders() {
       headerName: "الصورة",
       width: 50,
       renderCell: (params) => {
-        console.log(params);
+        //console.log(params);
         return (
           <>
             <Avatar
@@ -128,7 +128,6 @@ export default function Orders() {
       width: 100,
       renderCell: (params) => (
         <>
-          {console.log("fب", params.row)}
           {params.row.vars[0] === null ? (
             <span style={{ transform: "rotateY(180deg)" }}>
               <Link to="/admin" state={{ Name: "إضافة نوع" }}>
@@ -151,7 +150,6 @@ export default function Orders() {
       width: 100,
       renderCell: (params) => (
         <>
-          {console.log("fب", params.row)}
           {params.row.vars[1] === null ? (
             <span style={{ transform: "rotateY(180deg)" }}>
               <Link to="/admin" state={{ Name: "إضافة نوع" }}>
@@ -174,7 +172,6 @@ export default function Orders() {
       width: 100,
       renderCell: (params) => (
         <>
-          {console.log("fب", params.row)}
           {params.row.vars[2] === null ? (
             <span style={{ transform: "rotateY(180deg)" }}>
               <Link to="/admin" state={{ Name: "إضافة نوع" }}>

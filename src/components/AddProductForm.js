@@ -37,7 +37,7 @@ const AddProductForm = (props) => {
     document.body.setAttribute("dir", "rtl");
   }, []);
 
-  console.log("this ", props.product, "then", props.value);
+  //console.log("this ", props.product, "then", props.value);
   let validationSchema = yup.object({});
   if (props.form === "add" || props.form === "addE") {
     validationSchema = yup.object({
@@ -52,8 +52,8 @@ const AddProductForm = (props) => {
   // const location = useLocation();
   const [product, setProduct] = useState(props.product);
   const [value, setValue] = useState(props.value);
-  console.log("h1", props.product);
-  console.log("k1", props.form);
+  //console.log("h1", props.product);
+  // console.log("k1", props.form);
 
   const [form, setForm] = useState(props.form);
   // {
@@ -113,7 +113,7 @@ const AddProductForm = (props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
-      console.log("Submit", studentObject);
+      //console.log("Submit", studentObject);
       if (form === "add") {
         axios
           .post("http://localhost:4000/addProduct/", studentObject)
@@ -190,7 +190,7 @@ const AddProductForm = (props) => {
     //console.log("hh", location.state);
     if (formik.values.product_img !== "") {
       setProduct_img(formik.values.product_img);
-      console.log(product_img);
+      // console.log(product_img);
     }
   }, [formik.values.product_img]);
 
@@ -409,7 +409,7 @@ const AddProductForm = (props) => {
               {form === "addE" && <>تعديل </>}
               {form === "addVar" && <>إضافة نوع</>}
               {form === "addEVar" && <>تعديل نوع</>}
-              {console.log(formik.values)}
+              {/* {console.log(formik.values)} */}
             </Button>
 
             {/* {code === 200 && navigate("/admin")} */}

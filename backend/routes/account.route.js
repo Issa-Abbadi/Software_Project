@@ -7,11 +7,11 @@ let accountSchema = require("../models/Account");
 
 router.post("/", (req, res) => {
   console.log("in ...");
-  console.log(req.body);
+  //console.log(req.body);
   accountSchema
     .findOne({ email: req.body.email })
     .then((result) => {
-      console.log(result, "11");
+      //console.log(result, "11");
       // match password with req.body.password
       if (result.password !== req.body.password) {
         res.send({ code: 404, message: "password wrong" });

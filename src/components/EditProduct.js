@@ -61,15 +61,15 @@ const EditProduct = () => {
         id: localStorage.getItem("EditProduct"),
       })
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.code === 500) {
           setCode(500);
-          console.log("res2", res);
+          // console.log("res2", res);
         }
         if (res.data.code === 200) {
           setCode(200);
           setProduct(res.data.result);
-          console.log("res", res);
+          // console.log("res", res);
           setForm("addE");
         } else Promise.reject();
       })

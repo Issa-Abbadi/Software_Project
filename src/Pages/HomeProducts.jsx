@@ -12,8 +12,8 @@ function HomeProducts(props) {
       .get("http://localhost:4000/Products/home")
       .then(({ data }) => {
         setProducts(data);
-        console.log("True");
-        console.log(data);
+        // console.log("True");
+        // console.log(data);
       })
       .catch((error) => {
         console.log("false");
@@ -24,13 +24,10 @@ function HomeProducts(props) {
   return (
     <>
       <div class="father">
-        <div class="sidee-bar">
-            Hello World , Welcome
+        <div class="sidee-bar">Hello World , Welcome</div>
+        <div style={{ margin: "20px" }} class="content-bar">
+          <Products products={products} />
         </div>
-         <div style={{margin:"20px"}} class="content-bar">
-              <Products products={products} />
-          </div>
-        
       </div>
     </>
   );

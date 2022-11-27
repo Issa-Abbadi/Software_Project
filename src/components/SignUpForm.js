@@ -60,12 +60,12 @@ function SignUpForm(props) {
     },
     validationSchema: validationSchema,
     onSubmit: (studentObject) => {
-      console.log(studentObject);
+      //console.log(studentObject);
       if (formik.values.ppassword === formik.values.password) {
         axios
           .post("http://localhost:4000/signup/", studentObject)
           .then((res) => {
-            console.log(res.data.code);
+            // console.log(res.data.code);
 
             if (res.data.code === 200) {
               navigate("/login");
@@ -78,7 +78,7 @@ function SignUpForm(props) {
     },
   });
 
-  console.log(props);
+  //console.log(props);
   return (
     <>
       <div className="form-wrapper outcard signupForm">
@@ -127,7 +127,7 @@ function SignUpForm(props) {
                     id="email"
                     label="البريد الالكتروني"
                     name="email"
-                    style={{"direction":"rtl"}}
+                    style={{ direction: "rtl" }}
                     autoComplete="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}

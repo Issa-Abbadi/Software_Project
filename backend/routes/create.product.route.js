@@ -7,7 +7,7 @@ let productSchema = require("../models/Product");
 
 router.post("/", (req, res) => {
   console.log("in ...");
-  console.log(req.body);
+  //console.log(req.body);
 
   const newProduct = new productSchema({
     product_name: req.body.product_name,
@@ -42,12 +42,12 @@ router.post("/", (req, res) => {
 
 router.put("/", (req, res) => {
   console.log("in ...");
-  console.log(req.body);
+  //console.log(req.body);
 
   productSchema
     .findOne({ _id: req.body._id })
     .then((result) => {
-      console.log(req.body);
+      //console.log(req.body);
 
       productSchema
         .updateOne(
@@ -63,11 +63,11 @@ router.put("/", (req, res) => {
           }
         )
         .then((result) => {
-          console.log("ININ");
+          // console.log("ININ");
           res.send({ code: 200, message: "product updated" });
         })
         .catch((err) => {
-          console.log("ININOut");
+          //console.log("ININOut");
           res.send({ code: 500, message: "Server err" });
         });
     })
@@ -78,15 +78,15 @@ router.put("/", (req, res) => {
 
 router.put("/Var", (req, res) => {
   console.log("in ...");
-  console.log(req.body);
+  //console.log(req.body);
 
   productSchema
     .findOne({ _id: req.body._id })
     .then((result) => {
-      console.log(req.body);
+      //console.log(req.body);
       let var1;
       let var2;
-      console.log("vars", result.vars);
+      //console.log("vars", result.vars);
       if (result.vars[0]) {
         var1 = result.vars[0];
       }
@@ -113,11 +113,11 @@ router.put("/Var", (req, res) => {
           }
         )
         .then((result) => {
-          console.log("ININNNNNNNNNNNNNNNNNNNNNNN");
+          // console.log("ININNNNNNNNNNNNNNNNNNNNNNN");
           res.send({ code: 200, message: "product updated" });
         })
         .catch((err) => {
-          console.log("ININOut");
+          // console.log("ININOut");
           res.send({ code: 500, message: "Server err" });
         });
     })
@@ -128,14 +128,14 @@ router.put("/Var", (req, res) => {
 
 router.put("/VarE", (req, res) => {
   console.log("in ...");
-  console.log(req.body);
+  //console.log(req.body);
 
   productSchema
     .findOne({ _id: req.body._id })
     .then((result) => {
-      console.log(req.body);
+      //console.log(req.body);
 
-      console.log("vars", result.vars);
+      // console.log("vars", result.vars);
       if (req.body.value === "0") {
         result.vars[0] = {
           quantity: req.body.quantity,
@@ -161,7 +161,7 @@ router.put("/VarE", (req, res) => {
           product_img: req.body.product_img,
         };
       }
-      console.log("vars", result.vars);
+      //console.log( "vars", result.vars);
 
       productSchema
         .updateOne(
@@ -171,11 +171,11 @@ router.put("/VarE", (req, res) => {
           }
         )
         .then((result) => {
-          console.log("ININNNNNNNNNNNNNNNNNNNNNNN");
+          // console.log("ININNNNNNNNNNNNNNNNNNNNNNN");
           res.send({ code: 200, message: "product updated" });
         })
         .catch((err) => {
-          console.log("ININOut");
+          // console.log("ININOut");
           res.send({ code: 500, message: "Server err" });
         });
     })

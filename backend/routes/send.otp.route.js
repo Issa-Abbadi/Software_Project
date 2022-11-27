@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
   });
 
   if (info.messageId) {
-    console.log(info, 84);
+    // console.log(info, 84);
     accountSchema
       .updateOne({ email: req.body.email }, { otp: _otp })
       .then((result) => {

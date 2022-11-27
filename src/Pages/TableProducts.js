@@ -12,8 +12,8 @@ function TableProducts(props) {
       .get("http://localhost:4000/Products/table")
       .then(({ data }) => {
         setProducts(data);
-        console.log("True");
-        console.log(data);
+        // console.log("True");
+        // console.log(data);
       })
       .catch((error) => {
         console.log("false");

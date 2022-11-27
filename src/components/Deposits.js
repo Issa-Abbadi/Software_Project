@@ -14,7 +14,7 @@ export default function Deposits() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const token = localStorage.getItem("UserName");
-    console.log("token = ", token);
+    // console.log("token = ", token);
     setUserName(token);
     axios
       .post("http://localhost:4000/Products/company", {
@@ -22,7 +22,7 @@ export default function Deposits() {
       })
       .then(({ data }) => {
         setProducts(data);
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -30,15 +30,15 @@ export default function Deposits() {
   }, []);
 
   const getRating = (products) => {
-    console.log(products);
+    // console.log(products);
     let sum = 0;
     let len = 0;
     for (let i = 0; i < products.length; i++) {
-      console.log(i);
+      //console.log(i);
       sum += products[i].product_rating;
       len += 1;
     }
-    console.log("sum&len", sum, len);
+    // console.log("sum&len", sum, len);
     return sum / len;
   };
 
