@@ -169,6 +169,6 @@ main {
   transform: rotateY(180deg);
 }
 
-.MuiCheckbox-root {
-  /* transform: rotateY(180deg); */
-}
+/* .MuiCheckbox-root {
+  transform: rotateY(180deg);
+} */
