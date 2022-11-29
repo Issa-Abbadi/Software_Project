@@ -30,4 +30,15 @@ router.post("/", (req, res) => {
     });
 });
 
+router.post("/one", (req, res) => {
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 module.exports = router;

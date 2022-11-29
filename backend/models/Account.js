@@ -18,6 +18,9 @@ let accountSchema = new Schema(
     imageUrl: {
       type: String,
     },
+    cart: {
+      type: Array,
+    },
   },
   {
     collection: "accounts",

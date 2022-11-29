@@ -49,6 +49,24 @@ router.post("/one", (req, res) => {
     });
 });
 
+router.post("/oneForCart", (req, res) => {
+  console.log(req.body._id.map((_id) => _id._id));
+
+  productSchema
+    .find({
+      _id: req.body._id.map((_id) => _id._id),
+    })
+    .then((result) => {
+      console.log("res", result);
+      if (result === null) {
+        res.send({ code: 500, message: "user not found" });
+      } else res.send({ result: result, code: 200 });
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 router.get("/kitchen", (req, res) => {
   productSchema
     .find({ product_category: "المطبخ" })
