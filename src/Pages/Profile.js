@@ -41,6 +41,7 @@ function Profile() {
                 <MDBCardBody className="text-center">
                   <Avatar
                     src={JSON.parse(localStorage.getItem("Profile")).imageUrl}
+                    referrerpolicy="no-referrer"
                     alt="avatar"
                     style={{
                       width: "50%",
