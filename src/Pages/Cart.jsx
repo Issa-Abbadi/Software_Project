@@ -78,76 +78,241 @@ function Cart(props) {
 
               {products !== "" &&
                 products !== null &&
-                account.cart.map((acc) => {
+                products.map((prod) => {
                   console.log("iii=", products, account.cart);
 
                   i++;
-                  if (products[i] != null)
-                    return (
-                      <MDBCard className="rounded-3 mb-4">
-                        <MDBCardBody className="p-4">
-                          <MDBRow className="justify-content-between align-items-center">
-                            <MDBCol md="2" lg="2" xl="2">
-                              <MDBCardImage
-                                className="rounded-3"
-                                fluid
-                                src={products[i].vars[acc.var].product_img}
-                                alt="Cotton T-shirt"
-                              />
-                            </MDBCol>
-                            <MDBCol md="3" lg="3" xl="3">
-                              <p className="lead fw-normal mb-2">
-                                {products[i].product_name}
-                              </p>
-                              <p>
-                                <span className="text-muted">الحجم: </span>
-                                {products[i].vars[acc.var].size}{" "}
-                              </p>
-                            </MDBCol>
-                            <MDBCol
-                              md="3"
-                              lg="3"
-                              xl="2"
-                              className="d-flex align-items-center justify-content-around"
-                            >
-                              <MDBBtn color="link" className="px-2">
-                                <MDBIcon fas icon="minus" />
-                              </MDBBtn>
 
-                              <MDBInput
-                                min={0}
-                                defaultValue={acc.quantity}
-                                type="number"
-                                size="sm"
-                              />
+                  console.log("in..");
+                  if (account.cart[i] != null) {
+                    if (account.cart[i].vars[0] != null) {
+                      let vars = account.cart[i].vars[0].var;
+                      let quantity = account.cart[i].vars[0].quantity;
 
-                              <MDBBtn color="link" className="px-2">
-                                <MDBIcon fas icon="plus" />
-                              </MDBBtn>
-                            </MDBCol>
-                            <MDBCol
-                              md="3"
-                              lg="2"
-                              xl="2"
-                              className="offset-lg-1"
-                            >
-                              <MDBTypography tag="h5" className="mb-0">
-                                ${products[i].vars[acc.var].price}
-                              </MDBTypography>
-                            </MDBCol>
-                            <MDBCol md="1" lg="1" xl="1" className="text-end">
-                              <a href="#!" className="text-danger">
-                                <MDBIcon
-                                  fas
-                                  icon="trash text-danger"
-                                  size="lg"
-                                />
-                              </a>
-                            </MDBCol>
-                          </MDBRow>
-                        </MDBCardBody>
-                      </MDBCard>
-                    );
+                      return (
+                        <>
+                          <MDBCard className="rounded-3 mb-4">
+                            <MDBCardBody className="p-4">
+                              <MDBRow className="justify-content-between align-items-center">
+                                <MDBCol md="2" lg="2" xl="2">
+                                  <MDBCardImage
+                                    className="rounded-3"
+                                    fluid
+                                    src={prod.vars[vars].product_img}
+                                    alt="Cotton T-shirt"
+                                  />
+                                </MDBCol>
+                                <MDBCol md="3" lg="3" xl="3">
+                                  <p className="lead fw-normal mb-2">
+                                    {prod.product_name}
+                                  </p>
+                                  <p>
+                                    <span className="text-muted">الحجم: </span>
+                                    {prod.vars[vars].size}{" "}
+                                  </p>
+                                </MDBCol>
+                                <MDBCol
+                                  md="3"
+                                  lg="3"
+                                  xl="2"
+                                  className="d-flex align-items-center justify-content-around"
+                                >
+                                  <MDBBtn color="link" className="px-2">
+                                    <MDBIcon fas icon="minus" />
+                                  </MDBBtn>
+
+                                  <MDBInput
+                                    min={0}
+                                    defaultValue={quantity}
+                                    type="number"
+                                    size="sm"
+                                  />
+
+                                  <MDBBtn color="link" className="px-2">
+                                    <MDBIcon fas icon="plus" />
+                                  </MDBBtn>
+                                </MDBCol>
+                                <MDBCol
+                                  md="3"
+                                  lg="2"
+                                  xl="2"
+                                  className="offset-lg-1"
+                                >
+                                  <MDBTypography tag="h5" className="mb-0">
+                                    ${prod.vars[vars].price}
+                                  </MDBTypography>
+                                </MDBCol>
+                                <MDBCol
+                                  md="1"
+                                  lg="1"
+                                  xl="1"
+                                  className="text-end"
+                                >
+                                  <a href="#!" className="text-danger">
+                                    <MDBIcon
+                                      fas
+                                      icon="trash text-danger"
+                                      size="lg"
+                                    />
+                                  </a>
+                                </MDBCol>
+                              </MDBRow>
+                            </MDBCardBody>
+                          </MDBCard>
+                          {account.cart[i].vars[1] != null &&
+                            (vars = account.cart[i].vars[1].var) != null &&
+                            (quantity = account.cart[i].vars[1].quantity) !=
+                              null && (
+                              <MDBCard className="rounded-3 mb-4">
+                                <MDBCardBody className="p-4">
+                                  <MDBRow className="justify-content-between align-items-center">
+                                    <MDBCol md="2" lg="2" xl="2">
+                                      <MDBCardImage
+                                        className="rounded-3"
+                                        fluid
+                                        src={prod.vars[vars].product_img}
+                                        alt="Cotton T-shirt"
+                                      />
+                                    </MDBCol>
+                                    <MDBCol md="3" lg="3" xl="3">
+                                      <p className="lead fw-normal mb-2">
+                                        {prod.product_name}
+                                      </p>
+                                      <p>
+                                        <span className="text-muted">
+                                          الحجم:{" "}
+                                        </span>
+                                        {prod.vars[vars].size}{" "}
+                                      </p>
+                                    </MDBCol>
+                                    <MDBCol
+                                      md="3"
+                                      lg="3"
+                                      xl="2"
+                                      className="d-flex align-items-center justify-content-around"
+                                    >
+                                      <MDBBtn color="link" className="px-2">
+                                        <MDBIcon fas icon="minus" />
+                                      </MDBBtn>
+
+                                      <MDBInput
+                                        min={0}
+                                        defaultValue={quantity}
+                                        type="number"
+                                        size="sm"
+                                      />
+
+                                      <MDBBtn color="link" className="px-2">
+                                        <MDBIcon fas icon="plus" />
+                                      </MDBBtn>
+                                    </MDBCol>
+                                    <MDBCol
+                                      md="3"
+                                      lg="2"
+                                      xl="2"
+                                      className="offset-lg-1"
+                                    >
+                                      <MDBTypography tag="h5" className="mb-0">
+                                        ${prod.vars[vars].price}
+                                      </MDBTypography>
+                                    </MDBCol>
+                                    <MDBCol
+                                      md="1"
+                                      lg="1"
+                                      xl="1"
+                                      className="text-end"
+                                    >
+                                      <a href="#!" className="text-danger">
+                                        <MDBIcon
+                                          fas
+                                          icon="trash text-danger"
+                                          size="lg"
+                                        />
+                                      </a>
+                                    </MDBCol>
+                                  </MDBRow>
+                                </MDBCardBody>
+                              </MDBCard>
+                            )}
+                          {account.cart[i].vars[2] != null &&
+                            (vars = account.cart[i].vars[2].var) != null &&
+                            (quantity = account.cart[i].vars[2].quantity) !=
+                              null && (
+                              <MDBCard className="rounded-3 mb-4">
+                                <MDBCardBody className="p-4">
+                                  <MDBRow className="justify-content-between align-items-center">
+                                    <MDBCol md="2" lg="2" xl="2">
+                                      <MDBCardImage
+                                        className="rounded-3"
+                                        fluid
+                                        src={prod.vars[vars].product_img}
+                                        alt="Cotton T-shirt"
+                                      />
+                                    </MDBCol>
+                                    <MDBCol md="3" lg="3" xl="3">
+                                      <p className="lead fw-normal mb-2">
+                                        {prod.product_name}
+                                      </p>
+                                      <p>
+                                        <span className="text-muted">
+                                          الحجم:{" "}
+                                        </span>
+                                        {prod.vars[vars].size}{" "}
+                                      </p>
+                                    </MDBCol>
+                                    <MDBCol
+                                      md="3"
+                                      lg="3"
+                                      xl="2"
+                                      className="d-flex align-items-center justify-content-around"
+                                    >
+                                      <MDBBtn color="link" className="px-2">
+                                        <MDBIcon fas icon="minus" />
+                                      </MDBBtn>
+
+                                      <MDBInput
+                                        min={0}
+                                        defaultValue={quantity}
+                                        type="number"
+                                        size="sm"
+                                      />
+
+                                      <MDBBtn color="link" className="px-2">
+                                        <MDBIcon fas icon="plus" />
+                                      </MDBBtn>
+                                    </MDBCol>
+                                    <MDBCol
+                                      md="3"
+                                      lg="2"
+                                      xl="2"
+                                      className="offset-lg-1"
+                                    >
+                                      <MDBTypography tag="h5" className="mb-0">
+                                        ${prod.vars[vars].price}
+                                      </MDBTypography>
+                                    </MDBCol>
+                                    <MDBCol
+                                      md="1"
+                                      lg="1"
+                                      xl="1"
+                                      className="text-end"
+                                    >
+                                      <a href="#!" className="text-danger">
+                                        <MDBIcon
+                                          fas
+                                          icon="trash text-danger"
+                                          size="lg"
+                                        />
+                                      </a>
+                                    </MDBCol>
+                                  </MDBRow>
+                                </MDBCardBody>
+                              </MDBCard>
+                            )}
+                        </>
+                      );
+                    }
+                  }
                 })}
               <MDBCard>
                 <MDBCardBody>

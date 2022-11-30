@@ -56,6 +56,7 @@ router.post("/oneForCart", (req, res) => {
     .find({
       _id: req.body._id.map((_id) => _id._id),
     })
+
     .then((result) => {
       console.log("res", result);
       if (result === null) {
