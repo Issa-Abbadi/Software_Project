@@ -20,6 +20,21 @@ import axios from "axios";
 import Checkout from "../components/Checkout";
 
 import React, { useState, useEffect } from "react";
+function dynamicSort(property) {
+  var sortOrder = 1;
+  if (property[0] === "-") {
+    sortOrder = -1;
+    property = property.substr(1);
+  }
+  return function (a, b) {
+    /* next line works with strings and numbers,
+     * and you may want to customize it to your needs
+     */
+    var result =
+      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+    return result * sortOrder;
+  };
+}
 
 function Cart(props) {
   let i = -1;
@@ -46,10 +61,11 @@ function Cart(props) {
   useEffect(() => {
     if (account !== "") {
       var x = 0;
-
+      let cart = account.cart.sort(dynamicSort("_id"));
+      console.log("cart", cart);
       axios
         .post("http://localhost:4000/Products/oneForCart", {
-          _id: account.cart,
+          _id: cart,
         })
         .then(({ data }) => {
           setProducts(data.result);
@@ -246,7 +262,7 @@ function Cart(props) {
                                         className="rounded-3"
                                         fluid
                                         src={prod.vars[vars].product_img}
-                                        alt="Cotton T-shirt"
+                                        alt="Product_Picture"
                                       />
                                     </MDBCol>
                                     <MDBCol md="3" lg="3" xl="3">

@@ -427,6 +427,12 @@ const AddProductForm = (props) => {
           {code === 200 && form === "add" && (
             <Alert severity="success">تم إضافة المنتج بنجاح </Alert>
           )}
+          {code === 200 &&
+            form === "addVar" &&
+            navigate("/admin", { state: { Name: "قائمة المنتجات" } })}
+          {code === 200 &&
+            form === "addEVar" &&
+            navigate("/admin", { state: { Name: "قائمة المنتجات" } })}
           {code === 404 && <Alert severity="error">خطأ في التنفيذ</Alert>}
         </ThemeProvider>
       </CacheProvider>

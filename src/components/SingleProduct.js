@@ -7,6 +7,8 @@ import {
   faStarHalfAlt,
   faStarAndCrescent,
 } from "@fortawesome/free-solid-svg-icons";
+import Alert from "@mui/material/Alert";
+import axios from "axios";
 
 function SingleProduct(props) {
   const Stars = (rating) => {
@@ -30,9 +32,12 @@ function SingleProduct(props) {
   );
   const [productSize, setProductSize] = useState(props.product.vars[0].size);
   const [productPrice, setProductPrice] = useState(props.product.vars[0].price);
+  const [productVar, setProductVar] = useState(props.product.vars[0]._id);
+  const [code, setCode] = useState(0);
 
   const retColors = (product) => {
     if (product.vars[1] != null) {
+      let vars = 0;
       return product.vars.map((prod) => {
         if (prod !== null) {
           return (
@@ -41,7 +46,7 @@ function SingleProduct(props) {
                 onClick={() => {
                   setProductImg(prod.product_img);
                   setProductPrice(prod.price);
-                  setProductSize(prod.size);
+                  setProductVar(prod._id);
                 }}
                 class="btn"
               >
@@ -67,6 +72,7 @@ function SingleProduct(props) {
             </span>
           );
         }
+        vars++;
       });
     } else {
     }
@@ -101,6 +107,28 @@ function SingleProduct(props) {
   //   }
   // };
 
+  const addtoCart = () => {
+    axios
+      .post("http://localhost:4000/login/addtoCart", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product._id,
+        var: productVar,
+        quantity: 1,
+      })
+      .then((res) => {
+        if (res.data.code === 500) {
+          setCode(500);
+        }
+        if (res.data.code === 404) {
+          setCode(404);
+        }
+        if (res.data.code === 200) {
+          setCode(200);
+        } else Promise.reject();
+      })
+      .catch((err) => alert("Something went wrong"));
+  };
+
   return (
     <div class="card cardContent">
       <div class="hover-overlay ">
@@ -124,9 +152,14 @@ function SingleProduct(props) {
         {/* {retSizes(product)} */}
         {retColors(product)}
         <p class="card-text">{product.product_description}</p>
-        <a href="#!" class="btn btn-primary">
+        <a onClick={addtoCart} class="btn btn-primary">
           أضف للسلّة
         </a>
+        {code == 200 && (
+          <Alert severity="success" onClose={() => {}}>
+            {"تمت إضافة المنتج بنجاح"}
+          </Alert>
+        )}
       </div>
     </div>
   );

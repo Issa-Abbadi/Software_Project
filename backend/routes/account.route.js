@@ -41,4 +41,55 @@ router.post("/one", (req, res) => {
     });
 });
 
+router.post("/addtoCart", (req, res) => {
+  let cart;
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      let i = 0;
+      let index = -1;
+      result.cart.map((prod) => {
+        if (prod._id === req.body._id) {
+          index = i;
+        }
+        i++;
+      });
+      if (index == -1) {
+        result.cart[i] = {
+          _id: req.body._id,
+          vars: [{ var: req.body.var, quantity: req.body.quantity }],
+        };
+        cart = result.cart;
+      } else {
+        let found = false;
+        result.cart[index].vars.map((var1) => {
+          if (var1.var == req.body.var) {
+            found = true;
+          }
+        });
+        if (found == false) {
+          result.cart[index].vars = [
+            ...result.cart[index].vars,
+            { var: req.body.var, quantity: req.body.quantity },
+          ];
+          cart = result.cart;
+        }
+      }
+
+      accountSchema
+        .updateOne({ email: result.email }, { cart: cart })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Added" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+
+      console.log("cart", req.body);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 module.exports = router;

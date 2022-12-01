@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
     returnable: req.body.returnable,
     vars: [
       {
+        _id: 0,
         quantity: req.body.quantity,
         price: req.body.product_price,
         size: req.body.product_size,
@@ -89,9 +90,11 @@ router.put("/Var", (req, res) => {
       //console.log("vars", result.vars);
       if (result.vars[0]) {
         var1 = result.vars[0];
+        var1._id = 1;
       }
       if (result.vars[1]) {
         var2 = result.vars[1];
+        var2._id = 2;
       }
 
       productSchema
@@ -100,7 +103,8 @@ router.put("/Var", (req, res) => {
           {
             vars: [
               {
-                quantity: req.body.quantity,
+                _id: 0,
+                quantity: req.body.product_quantity,
                 price: req.body.product_price,
                 size: req.body.product_size,
                 color: req.body.product_color,
@@ -138,7 +142,8 @@ router.put("/VarE", (req, res) => {
       // console.log("vars", result.vars);
       if (req.body.value === "0") {
         result.vars[0] = {
-          quantity: req.body.quantity,
+          _id: 0,
+          quantity: req.body.product_quantity,
           price: req.body.product_price,
           size: req.body.product_size,
           color: req.body.product_color,
@@ -146,7 +151,8 @@ router.put("/VarE", (req, res) => {
         };
       } else if (req.body.value === "1") {
         result.vars[1] = {
-          quantity: req.body.quantity,
+          _id: 1,
+          quantity: req.body.product_quantity,
           price: req.body.product_price,
           size: req.body.product_size,
           color: req.body.product_color,
@@ -154,7 +160,8 @@ router.put("/VarE", (req, res) => {
         };
       } else if (req.body.value === "2") {
         result.vars[2] = {
-          quantity: req.body.quantity,
+          _id: 2,
+          quantity: req.body.product_quantity,
           price: req.body.product_price,
           size: req.body.product_size,
           color: req.body.product_color,

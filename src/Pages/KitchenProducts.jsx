@@ -71,6 +71,7 @@ function KitchenProducts(props) {
         console.log(error);
       });
   }, [type, colors, sorting, sizes, stores]);
+
   function dynamicSort(property) {
     var sortOrder = 1;
     if (property[0] === "-") {
