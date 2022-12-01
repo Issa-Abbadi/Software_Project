@@ -61,17 +61,28 @@ router.post("/addtoCart", (req, res) => {
         };
         cart = result.cart;
       } else {
-        let found = false;
+        let found = -1;
         result.cart[index].vars.map((var1) => {
           if (var1.var == req.body.var) {
-            found = true;
+            found = var1.var;
           }
         });
-        if (found == false) {
+        if (found == -1) {
           result.cart[index].vars = [
             ...result.cart[index].vars,
             { var: req.body.var, quantity: req.body.quantity },
           ];
+          cart = result.cart;
+        } else {
+          console.log(
+            "duplicate",
+            req.body.quantity + result.cart[index].vars[found].quantity
+          );
+          result.cart[index].vars[found] = {
+            var: result.cart[index].vars[found].var,
+            quantity:
+              req.body.quantity + result.cart[index].vars[found].quantity,
+          };
           cart = result.cart;
         }
       }
