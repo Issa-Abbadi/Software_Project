@@ -3,6 +3,7 @@ import Nav from "./components/Nav_bar";
 import Footer from "./components/footer";
 import Sidebar from "./components/Sidebar";
 import "./components/navbar.css";
+import "./chatingSystem.css";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,6 +11,7 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
+import ChatRoom from "./components/ChatRoom";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Cart from "./Pages/Cart";
@@ -106,6 +108,16 @@ function App() {
         </div>
 
         <footer>
+          <div className="chatingSystem">
+            <header>
+              <h1>⚛️🔥💬</h1>
+            </header>
+
+            <section>
+              {" "}
+              <ChatRoom />{" "}
+            </section>
+          </div>
           <Footer />
         </footer>
       </Router>

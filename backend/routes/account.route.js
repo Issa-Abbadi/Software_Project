@@ -41,6 +41,28 @@ router.post("/one", (req, res) => {
     });
 });
 
+// router.post("/minus", (req, res) => {
+//   accountSchema
+//     .findOne({ email: req.body.email })
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       res.send(err);
+//     });
+// });
+
+// router.post("/plus", (req, res) => {
+//   accountSchema
+//     .findOne({ email: req.body.email })
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       res.send(err);
+//     });
+// });
+
 router.post("/addtoCart", (req, res) => {
   let cart;
   accountSchema

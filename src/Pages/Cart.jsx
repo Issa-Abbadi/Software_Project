@@ -77,6 +77,21 @@ function Cart(props) {
     }
   }, [account]);
 
+  // const minus = (vars) => {
+  //   console.log("kkk", vars);
+  //   axios
+  //     .post("http://localhost:4000/login/minus", {
+  //       email: localStorage.getItem("EMAIL"),
+  //       var: vars,
+  //     })
+  //     .then(({ data }) => {
+  //       setProducts(data.result);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
   return (
     <>
       <section
@@ -101,6 +116,7 @@ function Cart(props) {
 
                   console.log("in..");
                   if (account.cart[i] != null) {
+                    let _id = account.cart[i]._id;
                     if (account.cart[i].vars[0] != null) {
                       let vars = account.cart[i].vars[0].var;
                       let quantity = account.cart[i].vars[0].quantity;
@@ -133,7 +149,11 @@ function Cart(props) {
                                   xl="2"
                                   className="d-flex align-items-center justify-content-around"
                                 >
-                                  <MDBBtn color="link" className="px-2">
+                                  <MDBBtn
+                                    color="link"
+                                    // onClick={minus(vars)}
+                                    className="px-2"
+                                  >
                                     <MDBIcon fas icon="minus" />
                                   </MDBBtn>
 
