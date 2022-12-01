@@ -7,7 +7,7 @@ let accountSchema = require("../models/Account");
 
 router.post("/", (req, res) => {
   console.log("in ...");
-  // console.log(req.body);
+  console.log(req.body);
   const newAccount = new accountSchema({
     email: req.body.email,
     password: req.body.password,
