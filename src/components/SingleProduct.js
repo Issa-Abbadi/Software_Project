@@ -132,7 +132,7 @@ function SingleProduct(props) {
   return (
     <div class="card cardContent">
       <div class="hover-overlay ">
-        <Link to="/product" state={{ product: product }}>
+        <Link to="/product" state={{ product: product, var: productVar }}>
           <img src={productImg} class="img-fluid" />
         </Link>
       </div>

@@ -7,6 +7,8 @@ import "./product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import axios from "axios";
+
 import {
   faStar,
   faStarHalf,
@@ -30,9 +32,33 @@ function Product(props) {
     });
   };
 
+  const addtoCart = () => {
+    axios
+      .post("http://localhost:4000/login/addtoCart", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product.product._id,
+        var: productVar,
+        quantity: 1,
+      })
+      .then((res) => {
+        if (res.data.code === 500) {
+          setCode(500);
+        }
+        if (res.data.code === 404) {
+          setCode(404);
+        }
+        if (res.data.code === 200) {
+          setCode(200);
+        } else Promise.reject();
+      })
+      .catch((err) => alert("Something went wrong"));
+  };
+
   const [productImg, setProductImg] = useState("");
   const [productSize, setProductSize] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productVar, setProductVar] = useState(0);
+  const [code, setCode] = useState(0);
 
   const location = useLocation();
   const [product, setProduct] = useState({ product: "" });
@@ -40,7 +66,10 @@ function Product(props) {
     if (location.state) {
       let _state = location.state;
       setProduct(_state);
-      setProductImg(_state.product.vars[0].product_img);
+      setProductVar(_state.var);
+      setProductImg(_state.product.vars[_state.var].product_img);
+      setProductSize(_state.product.vars[_state.var].size);
+      setProductPrice(_state.product.vars[_state.var].price);
     }
   }, [location]);
 
@@ -110,7 +139,14 @@ function Product(props) {
                 )}
               </div>
               <p>{product.product.product_description}</p>{" "}
-              <button className="cart">أضف للسلة</button>
+              <button className="cart" onClick={addtoCart}>
+                أضف للسلة
+              </button>
+              {code == 200 && (
+                <Alert severity="success" onClose={() => {}}>
+                  {"تمت إضافة المنتج بنجاح"}
+                </Alert>
+              )}
             </div>
           </div>
         </div>

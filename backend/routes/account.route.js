@@ -62,22 +62,23 @@ router.post("/addtoCart", (req, res) => {
         cart = result.cart;
       } else {
         let found = -1;
+        let k = 0;
         result.cart[index].vars.map((var1) => {
           if (var1.var == req.body.var) {
-            found = var1.var;
+            found = k;
           }
+          k++;
         });
-        if (found == -1) {
+        console.log("found", found);
+        if (found === -1) {
+          console.log("new");
           result.cart[index].vars = [
             ...result.cart[index].vars,
             { var: req.body.var, quantity: req.body.quantity },
           ];
           cart = result.cart;
         } else {
-          console.log(
-            "duplicate",
-            req.body.quantity + result.cart[index].vars[found].quantity
-          );
+          console.log("duplicate");
           result.cart[index].vars[found] = {
             var: result.cart[index].vars[found].var,
             quantity:
