@@ -41,28 +41,86 @@ router.post("/one", (req, res) => {
     });
 });
 
-// router.post("/minus", (req, res) => {
-//   accountSchema
-//     .findOne({ email: req.body.email })
-//     .then((result) => {
-//       res.send(result);
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     });
-// });
+router.post("/minus", (req, res) => {
+  let cart;
+  console.log("req", req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log("res", result);
+      result.cart.map((prod) => {
+        if (prod._id == req.body._id) {
+          prod.vars[req.body.var].quantity--;
+          if (prod.vars[req.body.var].quantity <= 0) {
+            prod.vars.splice(req.body.var, 1);
+          }
+        }
+      });
+      cart = result.cart;
 
-// router.post("/plus", (req, res) => {
-//   accountSchema
-//     .findOne({ email: req.body.email })
-//     .then((result) => {
-//       res.send(result);
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     });
-// });
+      accountSchema
+        .updateOne({ email: result.email }, { cart: cart })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch();
+});
 
+router.post("/plus", (req, res) => {
+  let cart;
+  console.log("req", req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log("res", result);
+      result.cart.map((prod) => {
+        if (prod._id == req.body._id) {
+          prod.vars[req.body.var].quantity++;
+        }
+      });
+      cart = result.cart;
+
+      accountSchema
+        .updateOne({ email: result.email }, { cart: cart })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch();
+});
+
+router.post("/deleteC", (req, res) => {
+  let cart;
+  console.log("req", req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log("res", result);
+      result.cart.map((prod) => {
+        if (prod._id == req.body._id) {
+          prod.vars.splice(req.body.var, 1);
+        }
+      });
+      cart = result.cart;
+
+      accountSchema
+        .updateOne({ email: result.email }, { cart: cart })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch();
+});
 router.post("/addtoCart", (req, res) => {
   let cart;
   accountSchema
