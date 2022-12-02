@@ -69,6 +69,22 @@ function CartCard(props) {
       });
   };
 
+  const handleChange = (e, vars, _id) => {
+    setQuantity(e.target.value);
+    console.log("EE", e.target.value);
+    axios
+      .post("http://localhost:4000/login/setQuantity", {
+        email: localStorage.getItem("EMAIL"),
+        _id: _id,
+        var: vars,
+        quantity: parseInt(e.target.value),
+      })
+      .then((res) => {
+        setQuantity(e.target.value);
+      })
+      .catch();
+  };
+
   return (
     <>
       {quantity > 0 && (
@@ -104,7 +120,15 @@ function CartCard(props) {
                   <MDBIcon fas icon="minus" />
                 </MDBBtn>
 
-                <MDBInput min={0} value={quantity} type="number" size="sm" />
+                <MDBInput
+                  min={1}
+                  value={quantity}
+                  onChange={(e) => {
+                    handleChange(e, props.var, props.prod._id);
+                  }}
+                  type="number"
+                  size="sm"
+                />
 
                 <MDBBtn
                   color="link"
