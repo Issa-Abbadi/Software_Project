@@ -56,7 +56,9 @@ router.post("/minus", (req, res) => {
           }
         }
       });
-      cart = result.cart;
+
+      console.log("cart", result.cart);
+      cart = result.cart.filter((prod) => prod.vars[0] != null);
 
       accountSchema
         .updateOne({ email: result.email }, { cart: cart })
@@ -85,7 +87,8 @@ router.post("/setQuantity", (req, res) => {
           }
         }
       });
-      cart = result.cart;
+
+      cart = result.cart.filter((prod) => prod.vars[0] != null);
 
       accountSchema
         .updateOne({ email: result.email }, { cart: cart })
@@ -137,7 +140,7 @@ router.post("/deleteC", (req, res) => {
           prod.vars.splice(req.body.var, 1);
         }
       });
-      cart = result.cart;
+      cart = result.cart.filter((prod) => prod.vars[0] != null);
 
       accountSchema
         .updateOne({ email: result.email }, { cart: cart })
