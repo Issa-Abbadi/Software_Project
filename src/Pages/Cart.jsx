@@ -78,6 +78,19 @@ function Cart(props) {
     }
   }, [account]);
 
+  const deleteAll = () => {
+    axios
+      .post("http://localhost:4000/login/deleteAll", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        setProducts("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <section
@@ -145,9 +158,23 @@ function Cart(props) {
                 })}
               <MDBCard>
                 <MDBCardBody>
-                  <MDBBtn className="ms-3" color="warning" block size="lg">
-                    الدفع
-                  </MDBBtn>
+                  <MDBRow className="justify-content-between align-items-center">
+                    <MDBCol md="1" lg="1" xl="1" className="text-start">
+                      <MDBBtn className="ms-3" color="warning" block size="lg">
+                        الدفع
+                      </MDBBtn>
+                    </MDBCol>
+                    <MDBCol md="2" lg="2" xl="2" className="text-end">
+                      <a
+                        href="#!"
+                        onClick={() => deleteAll()}
+                        className="text-danger"
+                      >
+                        إزالة جميع المنتجات
+                        <MDBIcon fas icon="trash text-danger" size="lg" />
+                      </a>
+                    </MDBCol>
+                  </MDBRow>
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

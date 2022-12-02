@@ -153,6 +153,27 @@ router.post("/deleteC", (req, res) => {
     })
     .catch();
 });
+
+router.post("/deleteAll", (req, res) => {
+  let cart;
+  console.log("req", req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      result.cart = [];
+      cart = result.cart;
+
+      accountSchema
+        .updateOne({ email: result.email }, { cart: cart })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch();
+});
 router.post("/addtoCart", (req, res) => {
   let cart;
   accountSchema
