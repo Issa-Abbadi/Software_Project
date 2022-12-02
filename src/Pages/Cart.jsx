@@ -16,6 +16,7 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import axios from "axios";
+import usePrevious from "../components/usePrevious";
 import CartCard from "../components/CartCard";
 
 import Checkout from "../components/Checkout";
@@ -41,6 +42,9 @@ function Cart(props) {
   let i = -1;
   const [products, setProducts] = useState("");
   const [account, setAccount] = useState("");
+  const [price, setPrice] = useState([]);
+  const [sum, setSum] = useState(0);
+  const prevPrice = usePrevious(price);
   useEffect(() => {
     i = -1;
     if (account == "") {
@@ -78,6 +82,12 @@ function Cart(props) {
     }
   }, [account]);
 
+  useEffect(() => {
+    price.map((prc) => {
+      setSum(sum + prc.price);
+    });
+  }, [price]);
+
   const deleteAll = () => {
     axios
       .post("http://localhost:4000/login/deleteAll", {
@@ -90,6 +100,12 @@ function Cart(props) {
         console.log(error);
       });
   };
+
+  // const addPrice = (price1, _id) => {
+  //   setPrice([{ ...price, _id: _id, price: price1 }], function () {
+  //     console.log("setState completed", this.price);
+  //   });
+  // };
 
   return (
     <>
@@ -127,6 +143,7 @@ function Cart(props) {
                             vars={vars}
                             quantity={quantity}
                             var={0}
+                            // addPrice={addPrice}
                           />
 
                           {account.cart[i].vars[1] != null &&
@@ -138,6 +155,7 @@ function Cart(props) {
                                 vars={vars}
                                 quantity={quantity}
                                 var={1}
+                                // addPrice={addPrice}
                               />
                             )}
                           {account.cart[i].vars[2] != null &&
@@ -149,6 +167,7 @@ function Cart(props) {
                                 vars={vars}
                                 quantity={quantity}
                                 var={2}
+                                // addPrice={addPrice}
                               />
                             )}
                         </>
@@ -164,7 +183,10 @@ function Cart(props) {
                         الدفع
                       </MDBBtn>
                     </MDBCol>
-                    <MDBCol md="2" lg="2" xl="2" className="text-end">
+                    <MDBCol md="2" lg="2" xl="2" className="text-start">
+                      {/* ${sum} */}
+                    </MDBCol>
+                    <MDBCol md="3" lg="3" xl="3" className="text-end">
                       <a
                         href="#!"
                         onClick={() => deleteAll()}
