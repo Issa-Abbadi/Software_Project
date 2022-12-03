@@ -23,7 +23,7 @@ function CartCard(props) {
 
   useEffect(() => {
     if (quantity > 0) {
-      //props.calcSum();
+      props.calcSum();
     }
   }, [quantity]);
 
