@@ -51,6 +51,7 @@ router.post("/minus", (req, res) => {
       result.cart.map((prod) => {
         if (prod._id == req.body._id) {
           prod.vars[req.body.var].quantity--;
+
           if (prod.vars[req.body.var].quantity <= 0) {
             prod.vars.splice(req.body.var, 1);
           }

@@ -39,13 +39,16 @@ function dynamicSort(property) {
 }
 
 function Cart(props) {
-  async function calcSum() {
-    await axios
+  function calcSum() {
+    axios
       .post("http://localhost:4000/login/one", {
         email: localStorage.getItem("EMAIL"),
       })
       .then(({ data }) => {
+        setSum(0);
+        data.cart = data.cart.sort(dynamicSort("_id"));
         setAccount(data);
+
         let m = 0;
         if (account.cart[0] != null)
           account.cart.map((prod) => {
@@ -62,10 +65,12 @@ function Cart(props) {
       });
   }
   let i = -1;
+
   const [products, setProducts] = useState("");
   const [account, setAccount] = useState("");
   const [price, setPrice] = useState([]);
   const [sum, setSum] = useState(0);
+  const [x, setX] = useState(1);
   const prevPrice = usePrevious(price);
   useEffect(() => {
     i = -1;
@@ -78,12 +83,10 @@ function Cart(props) {
 
   useEffect(() => {
     if (account !== "") {
-      var x = 0;
-      let cart = account.cart.sort(dynamicSort("_id"));
-      console.log("cart", cart);
+      console.log("cart", products, account.cart);
       axios
         .post("http://localhost:4000/Products/oneForCart", {
-          _id: cart,
+          _id: account.cart,
         })
         .then(({ data }) => {
           setProducts(data.result);
@@ -91,7 +94,8 @@ function Cart(props) {
         .catch((error) => {
           console.log(error);
         });
-      console.log("x= ", x);
+
+      setX(0);
     }
   }, [account]);
 
