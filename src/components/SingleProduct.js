@@ -114,6 +114,7 @@ function SingleProduct(props) {
         _id: product._id,
         var: productVar,
         quantity: 1,
+        price: productPrice,
       })
       .then((res) => {
         if (res.data.code === 500) {

@@ -21,17 +21,18 @@ import axios from "axios";
 function CartCard(props) {
   const [quantity, setQuantity] = useState(props.quantity);
 
-  // useEffect(() => {
-  //   props.addPrice(
-  //     quantity * props.prod.vars[props.vars].price,
-  //     `${props.prod._id}${props.vars}`
-  //   );
-  //   console.log(
-  //     "it is ",
-  //     quantity * props.prod.vars[props.vars].price,
-  //     ` ${props.prod._id} ${props.vars}`
-  //   );
-  // }, [quantity]);
+  useEffect(() => {
+    props.calcSum();
+    //   props.addPrice(
+    //     quantity * props.prod.vars[props.vars].price,
+    //     `${props.prod._id}${props.vars}`
+    //   );
+    //   console.log(
+    //     "it is ",
+    //     quantity * props.prod.vars[props.vars].price,
+    //     ` ${props.prod._id} ${props.vars}`
+    //   );
+  }, [quantity]);
 
   const minus = (vars, _id) => {
     console.log("kkk", vars);

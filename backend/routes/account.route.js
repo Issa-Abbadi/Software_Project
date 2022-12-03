@@ -190,7 +190,13 @@ router.post("/addtoCart", (req, res) => {
       if (index == -1) {
         result.cart[i] = {
           _id: req.body._id,
-          vars: [{ var: req.body.var, quantity: req.body.quantity }],
+          vars: [
+            {
+              var: req.body.var,
+              quantity: req.body.quantity,
+              price: req.body.price,
+            },
+          ],
         };
         cart = result.cart;
       } else {
@@ -207,7 +213,11 @@ router.post("/addtoCart", (req, res) => {
           console.log("new");
           result.cart[index].vars = [
             ...result.cart[index].vars,
-            { var: req.body.var, quantity: req.body.quantity },
+            {
+              var: req.body.var,
+              quantity: req.body.quantity,
+              price: req.body.price,
+            },
           ];
           cart = result.cart;
         } else {
@@ -216,6 +226,7 @@ router.post("/addtoCart", (req, res) => {
             var: result.cart[index].vars[found].var,
             quantity:
               req.body.quantity + result.cart[index].vars[found].quantity,
+            price: result.cart[index].vars[found].price,
           };
           cart = result.cart;
         }

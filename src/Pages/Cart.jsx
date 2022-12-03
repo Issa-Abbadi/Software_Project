@@ -39,6 +39,28 @@ function dynamicSort(property) {
 }
 
 function Cart(props) {
+  async function calcSum() {
+    await axios
+      .post("http://localhost:4000/login/one", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        setAccount(data);
+        let m = 0;
+        if (account.cart[0] != null)
+          account.cart.map((prod) => {
+            prod.vars.map((var1) => {
+              m = m + var1.price * var1.quantity;
+              console.log("Sum= ", m);
+            });
+          });
+        console.log("Sum= ", sum);
+        setSum(m);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   let i = -1;
   const [products, setProducts] = useState("");
   const [account, setAccount] = useState("");
@@ -48,16 +70,7 @@ function Cart(props) {
   useEffect(() => {
     i = -1;
     if (account == "") {
-      axios
-        .post("http://localhost:4000/login/one", {
-          email: localStorage.getItem("EMAIL"),
-        })
-        .then(({ data }) => {
-          setAccount(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      calcSum();
     }
 
     console.log("222", account);
@@ -82,12 +95,6 @@ function Cart(props) {
     }
   }, [account]);
 
-  useEffect(() => {
-    price.map((prc) => {
-      setSum(sum + prc.price);
-    });
-  }, [price]);
-
   const deleteAll = () => {
     axios
       .post("http://localhost:4000/login/deleteAll", {
@@ -100,12 +107,6 @@ function Cart(props) {
         console.log(error);
       });
   };
-
-  // const addPrice = (price1, _id) => {
-  //   setPrice([{ ...price, _id: _id, price: price1 }], function () {
-  //     console.log("setState completed", this.price);
-  //   });
-  // };
 
   return (
     <>
@@ -125,7 +126,7 @@ function Cart(props) {
               {products !== "" &&
                 products !== null &&
                 products.map((prod) => {
-                  console.log("iii=", products, account.cart);
+                  console.log("iii= ", products, account.cart);
 
                   i++;
 
@@ -143,7 +144,7 @@ function Cart(props) {
                             vars={vars}
                             quantity={quantity}
                             var={0}
-                            // addPrice={addPrice}
+                            calcSum={calcSum}
                           />
 
                           {account.cart[i].vars[1] != null &&
@@ -155,7 +156,7 @@ function Cart(props) {
                                 vars={vars}
                                 quantity={quantity}
                                 var={1}
-                                // addPrice={addPrice}
+                                calcSum={calcSum}
                               />
                             )}
                           {account.cart[i].vars[2] != null &&
@@ -167,7 +168,7 @@ function Cart(props) {
                                 vars={vars}
                                 quantity={quantity}
                                 var={2}
-                                // addPrice={addPrice}
+                                calcSum={calcSum}
                               />
                             )}
                         </>
@@ -184,7 +185,7 @@ function Cart(props) {
                       </MDBBtn>
                     </MDBCol>
                     <MDBCol md="2" lg="2" xl="2" className="text-start">
-                      {/* ${sum} */}
+                      ${sum}
                     </MDBCol>
                     <MDBCol md="3" lg="3" xl="3" className="text-end">
                       <a
