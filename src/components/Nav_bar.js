@@ -51,6 +51,13 @@ function Nav_bar(props) {
     setShowMarket(false);
   };
 
+  const _handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === "NumpadEnter") {
+      localStorage.setItem("search", e.target.value);
+      navigate("/allProducts");
+    }
+  };
+
   return (
     <>
       <div style={{ minHeight: "75px" }}>
@@ -222,9 +229,7 @@ function Nav_bar(props) {
                 type="search"
                 placeholder="بحث"
                 aria-label="Search"
-                onChange={(event) =>
-                  localStorage.setItem("search", event.target.value)
-                }
+                onKeyDown={(e) => _handleKeyDown(e)}
                 style={{ marginLeft: "5px" }}
               />
               {/* <button

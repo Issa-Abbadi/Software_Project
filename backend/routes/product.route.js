@@ -6,13 +6,14 @@ let mongoose = require("mongoose"),
 let productSchema = require("../models/Product");
 
 router.get("/", (req, res) => {
-  productSchema.find((error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+  productSchema
+    .find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 router.post("/company", (req, res) => {

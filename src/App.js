@@ -31,6 +31,7 @@ import Analytics from "./Pages/Analytics";
 import Admin from "./Pages/Admin";
 import Product from "./Pages/Product";
 import Logout from "./Pages/Logout";
+import AllProducts from "./Pages/AllProducts";
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
@@ -70,6 +71,11 @@ function App() {
               <Route exact path="/signup" element={<SignUp />} />
               <Route exact path="/forget-pass" element={<ForgetPassword />} />
               <Route exact path="/homeProducts" element={<HomeProducts />} />
+              <Route
+                exact
+                path="/allProducts"
+                element={<AllProducts props={{ type: "0" }} />}
+              />
               <Route
                 exact
                 path="/kitchenProducts/kitchen-accessories"

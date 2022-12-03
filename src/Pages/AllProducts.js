@@ -8,7 +8,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Products from "../components/Products";
 import Filtering_in_PLP from "../components/filtering_in_PLP";
 
-function KitchenProducts(props) {
+function AllProducts(props) {
   const [products, setProducts] = useState([]);
   const [type, setType] = useState(props.props.type);
   const [colors, setColors] = useState([]);
@@ -21,32 +21,20 @@ function KitchenProducts(props) {
   useEffect(() => {
     setProducts([]);
     axios
-      .get("http://localhost:4000/Products/kitchen/")
+      .get("http://localhost:4000/Products/")
       .then(({ data }) => {
-        if (type === "0") {
-          filterData = data;
-          setProducts(data);
-        } else if (type === "1") {
-          filterData = productsFilterType(data, "رفايع المطبخ");
-          setProducts(filterData);
-        } else if (type === "2") {
-          filterData = productsFilterType(data, "أواني الطبخ");
-          setProducts(filterData);
-        } else if (type === "3") {
-          filterData = productsFilterType(data, "توزيع وتوابل");
-          setProducts(filterData);
-        } else {
-          setProducts(data);
-        }
+        console.log(data);
+        filterData = data;
+        setProducts(data);
 
         filterData = filterData.filter((product) => {
           if (search === "") {
-            console.log("No td");
+            console.log("Notd");
             return product;
           } else if (
             product.product_name.toLowerCase().includes(search.toLowerCase())
           ) {
-            console.log("feilterdd");
+            console.log("feilter");
             return product;
           }
         });
@@ -201,4 +189,4 @@ function KitchenProducts(props) {
     </>
   );
 }
-export default KitchenProducts;
+export default AllProducts;
