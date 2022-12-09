@@ -88,13 +88,11 @@ function Product(props) {
           {" "}
           <div className="details" key={product.product._id}>
             {" "}
+           
             <div className="big-img">
-              <img src={productImg} alt="" />{" "}
-            </div>
-            <div className="box">
-              <div className="row">
-                <h2>{product.product.product_name}</h2>
-                <div>
+              <img src={productImg} class="mainImg" alt="" />{" "}
+              <div>
+                
                   {product.product.vars.map((prod) => {
                     return (
                       <span style={{ margin: "5px" }} class="spanColors">
@@ -109,7 +107,7 @@ function Product(props) {
                           {prod.size === "S" && (
                             <img
                               src={prod.product_img}
-                              style={{ width: "25px", height: "25px" }}
+                              style={{ width: "25px", height: "25px", }}
                             />
                           )}
                           {prod.size === "M" && (
@@ -129,22 +127,48 @@ function Product(props) {
                     );
                   })}
                 </div>
-                <div>{Stars(product.product.product_rating)}</div>
-                <span>${productPrice}</span>
-                <p>{productSize}:الحجم</p>
-                <p>{product.product.product_company}:المتجر</p>
-                <p>:الفئة{product.product.product_category}</p>
-                <p>:الصنف{product.product.sub_category}</p>
+            </div>
+
+
+
+
+            <div className="box">
+              <div className="row">
+                <h2>{product.product.product_name}</h2>
+                
+                <div class="rating">{Stars(product.product.product_rating)}</div>
+                <span class="price">${productPrice}</span>
+                <div class="size">
+                    الحجم:
+                    
+                    <div class="psize active">S</div>
+                        <div class="psize">M</div>
+                        <div class="psize">L</div>
+                </div>
+                <div class="quantity">
+                      <p>الكمية</p>
+                      <input type="number" min="1" max ="5" value="1"  />
+                </div>
+                
+             
+
+                <p> المتجر: {product.product.product_company}</p>
+                <p>  الفئة: {product.product.product_category}</p>
+                <p>الصنف: {product.product.sub_category}</p>
                 {product.product.returnable == true && (
                   <Alert severity="success">قابل للإرجاع </Alert>
                 )}
               </div>
-              <p>{product.product.product_description}</p>{" "}
+              <p class="description">{product.product.product_description}</p>{" "}
               <button className="cart" onClick={addtoCart}>
                 أضف للسلة
+              </button> 
+              <button className="buyNow" onClick={addtoCart}>
+                اشتري الان
               </button>
+
               {code == 200 && (
-                <Alert severity="success" onClose={() => {}}>
+                <Alert severity="success" onClose={() => {setCode(201)}}>
                   {"تمت إضافة المنتج بنجاح"}
                 </Alert>
               )}

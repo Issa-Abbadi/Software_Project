@@ -32,6 +32,8 @@ import Admin from "./Pages/Admin";
 import Product from "./Pages/Product";
 import Logout from "./Pages/Logout";
 import AllProducts from "./Pages/AllProducts";
+import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
+
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
@@ -58,6 +60,8 @@ function App() {
               minHeight: "700px",
             }}
           >
+           <MessageOutlinedIcon class="chatIcon"/>
+
             <Routes>
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/" element={<Home />} />
@@ -114,7 +118,8 @@ function App() {
         </div>
 
         <footer>
-          <div className="chatingSystem">
+
+          {/* <div className="chatingSystem">
             <header>
               <h1>⚛️🔥💬</h1>
             </header>
@@ -123,7 +128,7 @@ function App() {
               {" "}
               <ChatRoom />{" "}
             </section>
-          </div>
+          </div> */}
           <Footer />
         </footer>
       </Router>

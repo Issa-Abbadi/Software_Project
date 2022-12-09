@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./product.css";
 
 import {
   MDBCol,
@@ -165,10 +166,29 @@ function Profile() {
                     </MDBCol>
                   </MDBRow> */}
                 </MDBCardBody>
+
+                </MDBCard>
+              
+              <MDBCard>
+                <span class="change-accountInfo">تغيير معلومات الحساب</span>
+                <hr />
+                  <a href="" class="change-email">تغيير كلمة السر</a>
+                  <a href=""  class="change-email">تغيير معلومات الدفع</a>
               </MDBCard>
+              
+              <MDBCard style={{"margin-top":"3%"}}>
+              <span class="change-myLists">تغيير قوائمي</span>
+                  <a href="" class="change-email">قائمة الرغبات</a>
+                  <a href="" class="change-email">قائمة الهدايا</a>
+              </MDBCard>   
+             
+
             </MDBCol>
+           
           </MDBRow>
+
         </MDBContainer>
+
       </section>
     </>
   );

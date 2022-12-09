@@ -19,9 +19,9 @@
 }
 
 .details .box {
-  max-width: 500px;
-  min-width: 290px;
-  margin: 25px;
+  max-width: 30%;
+  min-width: 60%;
+  margin: 1%;
 }
 .box .row {
   display: flex;
@@ -34,6 +34,15 @@
 }
 .box .row span {
   color: crimson;
+}
+.box .row .rating
+{
+  margin-bottom: 2%;
+}
+
+.box .row .price
+{
+  margin-bottom: 5%;
 }
 .box .colors button {
   width: 30px;
@@ -68,7 +77,7 @@
   opacity: 1;
   border: 1px solid lightseagreen;
 }
-.box .cart {
+.box button {
   background: var(--dark-liver-horses);
   color: white;
   outline: none;
@@ -76,6 +85,7 @@
   cursor: pointer;
   padding: 10px 25px;
   margin-top: 15px;
+  margin-left: 5%;
 }
 
 @media (max-width: 500px) {
@@ -85,4 +95,155 @@
   .thumb img {
     width: 50px;
   }
+}
+
+.details
+{
+  background-color: pink;
+  margin-top: 5%;
+  padding: 0;
+  direction: rtl;
+  position: relative;
+}
+
+.details .big-img {
+  position: absolute;
+  /* background-color: blue; */
+  right: 10%; 
+  /* margin-left: 5%; */
+}
+.details .big-img .mainImg
+{
+     width: 70%;
+     height: 70%;
+}
+
+
+.spanColors a{
+  /* background-color: red; */
+  margin: 0;
+  padding: 0;
+  margin-top: 2%; 
+  width: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1.5px solid black; 
+  border-radius: 0;
+}
+
+.spanColors a:hover{
+    transform: scale(1.2);
+}
+
+.spanColors{
+  overflow: hidden;
+}
+
+.box{
+
+  /* background-color: red; */
+  width: fit-content;
+}
+
+.box .row
+{
+  font-size: 22px;
+  font-weight: 600;
+  font-family: sans-serif;
+  width: fit-content;
+
+}
+
+.box .row .price
+{
+  font-size: 22px;
+  font-weight: 50;
+}
+
+.box .row .size 
+{
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+}
+
+.box .row .size  .psize
+{
+  /* display: flex; */
+  width: 20%;
+   margin-left: 2%;
+   border: 1px solid #ff5e00;
+   color: black;
+   text-align: center;
+   height: fit-content;
+   cursor: pointer;
+}
+.box .row .size  .psize p
+{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.box .row .size  .psize.active
+{
+   border-width: 1.5px;
+   color: #ff5e00;
+   font-weight: 500;
+}
+
+.box .row .quantity
+{
+  display: flex;
+  align-items: center;
+
+}
+
+.box .row .quantity p
+{
+    /* font-size: 18px; */
+    font-weight: 600;
+}
+
+.box .row .quantity input
+{
+   width: fit-content;
+   height: fit-content;
+   margin-right: 10px;
+   margin-top: 1px;
+   text-align: center;
+   font-size: large;
+   background-color: #eee;
+}
+
+.box{
+  /* background-color: red; */
+  margin-right: 10%;
+  position: absolute;
+  right: 40%;
+}
+
+.box .description{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.change-accountInfo{
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+.change-email{
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.listsDiv{
+  margin-top: 5%;
+}
+
+.change-myLists
+{
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
 }
