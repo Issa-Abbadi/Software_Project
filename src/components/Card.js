@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import { Link } from "react-router-dom";
 
 import LeftArrow from "../assets/left-arrow.svg";
 import RightArrow from "../assets/right-arrow.svg";
@@ -54,11 +55,16 @@ export default function Card({ title, data }) {
           return (
             <>
               <div className="card__container--inner--card" key={index}>
-                <img
-                  src={item.url}
-                  alt="hero_img"
-                  style={{ height: "200px", "border-radius": "50%" }}
-                />
+                <Link
+                  to="/markets"
+                  // state={{ product: product, var: productVar }}
+                >
+                  <img
+                    src={item.url}
+                    alt="hero_img"
+                    style={{ height: "200px", "border-radius": "50%" }}
+                  />
+                </Link>
               </div>
             </>
           );

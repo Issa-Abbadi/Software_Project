@@ -32,11 +32,18 @@ import Admin from "./Pages/Admin";
 import Product from "./Pages/Product";
 import Logout from "./Pages/Logout";
 import AllProducts from "./Pages/AllProducts";
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
-
+import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
+  const [chat, setChat] = useState(false);
+  const changeChat = () => {
+    if (chat === false) {
+      setChat(true);
+    } else if (chat === true) {
+      setChat(false);
+    }
+  };
   useEffect(() => {
     const data = localStorage.getItem("EMAIL");
     if (data === null) {
@@ -60,7 +67,7 @@ function App() {
               minHeight: "700px",
             }}
           >
-           <MessageOutlinedIcon class="chatIcon"/>
+            <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
 
             <Routes>
               <Route exact path="/admin" element={<Admin />} />
@@ -118,17 +125,18 @@ function App() {
         </div>
 
         <footer>
+          {chat && (
+            <div className="chatingSystem">
+              <header>
+                <h1>⚛️🔥💬</h1>
+              </header>
 
-          {/* <div className="chatingSystem">
-            <header>
-              <h1>⚛️🔥💬</h1>
-            </header>
-
-            <section>
-              {" "}
-              <ChatRoom />{" "}
-            </section>
-          </div> */}
+              <section>
+                {" "}
+                <ChatRoom />{" "}
+              </section>
+            </div>
+          )}
           <Footer />
         </footer>
       </Router>
