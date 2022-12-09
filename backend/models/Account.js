@@ -21,6 +21,9 @@ let accountSchema = new Schema(
     cart: {
       type: Array,
     },
+    market: {
+      type: Boolean,
+    },
   },
   {
     collection: "accounts",

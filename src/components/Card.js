@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import { Link } from "react-router-dom";
-
+import { Avatar } from "@mui/material";
 import LeftArrow from "../assets/left-arrow.svg";
 import RightArrow from "../assets/right-arrow.svg";
 
-export default function Card({ title, data }) {
+export default function Card({ title, data, target }) {
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 768px)").matches
   );
@@ -55,12 +55,9 @@ export default function Card({ title, data }) {
           return (
             <>
               <div className="card__container--inner--card" key={index}>
-                <Link
-                  to="/markets"
-                  // state={{ product: product, var: productVar }}
-                >
+                <Link to={target} state={{ product: item }}>
                   <img
-                    src={item.url}
+                    src={item.imageUrl}
                     alt="hero_img"
                     style={{ height: "200px", "border-radius": "50%" }}
                   />

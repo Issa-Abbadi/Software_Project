@@ -17,10 +17,21 @@ import { useTheme } from "@mui/material/styles";
 
 function Home() {
   const theme = useTheme();
-  const [products, setProducts] = useState([]);
+  const [markets, setMarkets] = useState([]);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   const config = isMatch ? "500px" : "100%";
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/login/markets/")
+      .then(({ data }) => {
+        setMarkets(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   function ControlledCarousel() {
     const [index, setIndex] = useState(0);
@@ -79,7 +90,7 @@ function Home() {
     );
   }
 
-  let size = Object.keys(products).length;
+  // let size = Object.keys(products).length;
   //console.log(size);
 
   const imgs = [
@@ -103,18 +114,28 @@ function Home() {
   const imgs2 = [
     {
       url: require("../assets/Stores/FahadHome.jpg"),
+      market_name: "الفهد",
+      target: "/markets",
     },
     {
       url: require("../assets/Stores/Rawafed.jpg"),
+      market_name: "الروافد",
+      target: "/markets",
     },
     {
       url: require("../assets/Stores/Saeed.jpg"),
+      market_name: "السيد",
+      target: "/markets",
     },
     {
       url: require("../assets/Stores/Shames.jpg"),
+      market_name: "شمس",
+      target: "/markets",
     },
     {
       url: require("../assets/Stores/kaery.jpg"),
+      market_name: "الخيري",
+      target: "/markets",
     },
   ];
   //console.log('"' + imgs2[0].url + '"');
@@ -147,7 +168,8 @@ function Home() {
           <div style={{ width: config }}>
             <Card
               title="متاجر عرضناها لك"
-              data={imgs2}
+              data={markets}
+              target="/markets"
               style={{ margin: "20%" }}
             />
           </div>

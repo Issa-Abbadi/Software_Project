@@ -30,6 +30,21 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get("/markets", (req, res) => {
+  console.log("in market...");
+  //console.log(req.body);
+  accountSchema
+    .find({ market: true })
+    .then((result) => {
+      console.log("found", result);
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log("not found");
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 router.post("/one", (req, res) => {
   accountSchema
     .findOne({ email: req.body.email })
