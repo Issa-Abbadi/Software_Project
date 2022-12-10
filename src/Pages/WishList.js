@@ -2,23 +2,24 @@ import axios from "axios";
 import SingleProduct from "../components/SingleProduct";
 import Products from "../components/Products";
 import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 
 function WishList() {
   const [account, setAccount] = useState("");
   const [products, setProducts] = useState("");
 
-  //     const deleteAll = () => {
-  //       axios
-  //         .post("http://localhost:4000/login/deleteAll", {
-  //           email: localStorage.getItem("EMAIL"),
-  //         })
-  //         .then(({ data }) => {
-  //           setProducts("");
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //     };
+  const deleteAll = () => {
+    axios
+      .post("http://localhost:4000/login/deleteAllW", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        setProducts("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   function getAccount() {
     axios
       .post("http://localhost:4000/login/one", {
@@ -58,6 +59,9 @@ function WishList() {
   return (
     <>
       <Products products={products} type="wishList" />
+      <div>
+        <Button onClick={deleteAll}>حذف الجميع</Button>
+      </div>
     </>
   );
 }

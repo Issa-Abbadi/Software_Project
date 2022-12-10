@@ -211,6 +211,25 @@ router.post("/deleteAll", (req, res) => {
     })
     .catch();
 });
+router.post("/deleteAllW", (req, res) => {
+  let wishList;
+  console.log("req", req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      wishList = [];
+
+      accountSchema
+        .updateOne({ email: result.email }, { wishList: wishList })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch();
+});
 router.post("/addtoCart", (req, res) => {
   let cart;
   accountSchema
@@ -282,6 +301,55 @@ router.post("/addtoCart", (req, res) => {
     })
     .catch((err) => {
       res.send(err);
+    });
+});
+
+router.post("/addtoWish", (req, res) => {
+  let wishList;
+  console.log("Add to wish");
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log("res", result);
+      wishList = [...result.wishList, { _id: req.body._id }];
+      console.log("wish", wishList);
+      accountSchema
+        .updateOne({ email: req.body.email }, { wishList: wishList })
+
+        .then((result) => {
+          console.log("here", result);
+          res.send({ code: 200, message: "Product Added" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "Server err" });
+    });
+});
+
+router.post("/removeFromWish", (req, res) => {
+  let wishList;
+  console.log("remove From wish");
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log("res", result);
+      wishList = result.wishList.filter((prod) => prod._id != req.body._id);
+      accountSchema
+        .updateOne({ email: req.body.email }, { wishList: wishList })
+
+        .then((result) => {
+          console.log("here", result);
+          res.send({ code: 200, message: "Product Added" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "Server err" });
     });
 });
 

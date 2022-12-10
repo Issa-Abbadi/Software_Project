@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import {
   faStar,
@@ -75,9 +77,45 @@ function Product(props) {
     }
   }, [location]);
 
+  const [wish, setWish] = useState(false);
+
   const addProduct = () => {
     localStorage.setItem("cart", product.product._id);
     console.log("added to cart ");
+  };
+
+  const addtoWish = () => {
+    axios
+      .post("http://localhost:4000/login/addtoWish", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product.product._id,
+      })
+      .then((res) => {
+        if (res.data.code === 200) {
+          setWish(true);
+        }
+        if (res.data.code === 500) {
+          setWish(false);
+        } else Promise.reject();
+      })
+      .catch((err) => alert("Something went wrong "));
+  };
+
+  const removeFromWish = () => {
+    axios
+      .post("http://localhost:4000/login/removeFromWish", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product._id,
+      })
+      .then((res) => {
+        if (res.data.code === 200) {
+          setWish(false);
+        }
+        if (res.data.code === 500) {
+          setWish(true);
+        } else Promise.reject();
+      })
+      .catch((err) => alert("Something went wrong "));
   };
 
   return (
@@ -130,7 +168,20 @@ function Product(props) {
             <div className="box">
               <div className="row">
                 <h2>{product.product.product_name}</h2>
-
+                <h2>
+                  {!wish && (
+                    <FavoriteBorderIcon
+                      style={{ color: "red" }}
+                      onClick={addtoWish}
+                    />
+                  )}
+                  {wish && (
+                    <FavoriteIcon
+                      style={{ color: "red" }}
+                      onClick={removeFromWish}
+                    />
+                  )}
+                </h2>
                 <div class="rating">
                   {Stars(product.product.product_rating)}
                 </div>

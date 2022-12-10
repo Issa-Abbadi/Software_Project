@@ -7,6 +7,7 @@ import {
   faStarHalfAlt,
   faStarAndCrescent,
 } from "@fortawesome/free-solid-svg-icons";
+
 import Alert from "@mui/material/Alert";
 import axios from "axios";
 import { Button } from "react-bootstrap";
@@ -166,6 +167,7 @@ function SingleProduct(props) {
             <h5 class="card-title" style={{ fontWeight: "bold" }}>
               {product.product_name}
             </h5>
+
             <div style={{ height: "5px" }}></div>
             <h5 class="card-title" style={{ fontWeight: "bold" }}>
               {productSize}
