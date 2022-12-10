@@ -170,6 +170,27 @@ router.post("/deleteC", (req, res) => {
     .catch();
 });
 
+router.post("/deleteW", (req, res) => {
+  let wishList;
+  console.log("req", req.body);
+  accountSchema
+    .findOne({ email: req.body.email })
+    .then((result) => {
+      console.log("resu", result);
+
+      wishList = result.wishList.filter((prod) => prod._id != req.body._id);
+      accountSchema
+        .updateOne({ email: result.email }, { wishList: wishList })
+        .then((result) => {
+          res.send({ code: 200, message: "Product Updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch();
+});
+
 router.post("/deleteAll", (req, res) => {
   let cart;
   console.log("req", req.body);

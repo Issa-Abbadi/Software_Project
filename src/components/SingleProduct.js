@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 function SingleProduct(props) {
   const Stars = (rating) => {
@@ -34,6 +35,7 @@ function SingleProduct(props) {
   const [productPrice, setProductPrice] = useState(props.product.vars[0].price);
   const [productVar, setProductVar] = useState(props.product.vars[0]._id);
   const [code, setCode] = useState(0);
+  const [show, setShow] = useState(true);
 
   const retColors = (product) => {
     if (product.vars[1] != null) {
@@ -127,42 +129,66 @@ function SingleProduct(props) {
           setCode(200);
         } else Promise.reject();
       })
-      .catch((err) => alert("Something went wrong"));
+      .catch((err) => alert("Something went wrong "));
+  };
+
+  const handleDeleteone = () => {
+    console.log("Delete");
+    axios
+      .post("http://localhost:4000/login/deleteW", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product._id,
+      })
+      .then(() => {
+        setShow(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
-    <div class="card cardContent">
-      <div class="hover-overlay ">
-        <Link to="/product" state={{ product: product, var: productVar }}>
-          <img src={productImg} class="img-fluid" />
-        </Link>
-      </div>
+    <>
+      {show === true && (
+        <div class="card cardContent">
+          {localStorage.getItem("wishList") == "true" && (
+            <>
+              <Button onClick={handleDeleteone}>حذف</Button>
+            </>
+          )}
+          <div class="hover-overlay ">
+            <Link to="/product" state={{ product: product, var: productVar }}>
+              <img src={productImg} class="img-fluid" />
+            </Link>
+          </div>
 
-      <div class="card-body">
-        <h5 class="card-title" style={{ fontWeight: "bold" }}>
-          {product.product_name}
-        </h5>
-        <div style={{ height: "5px" }}></div>
-        <h5 class="card-title" style={{ fontWeight: "bold" }}>
-          {productSize}
-        </h5>
-        <div style={{ height: "5px" }}></div>
-        <h5 class="card-title">{Stars(product.product_rating)}</h5>
-        <h5 class="card-title">{productPrice}$</h5>
-        <h6 class="card-title">المتجر:{product.product_company} </h6>
-        {/* {retSizes(product)} */}
-        {retColors(product)}
-        <p class="card-text">{product.product_description}</p>
-        <a onClick={addtoCart} class="btn btn-primary">
-          أضف للسلّة
-        </a>
-        {code == 200 && (
-          <Alert severity="success" onClose={() => {}}>
-            {"تمت إضافة المنتج بنجاح"}
-          </Alert>
-        )}
-      </div>
-    </div>
+          <div class="card-body">
+            <h5 class="card-title" style={{ fontWeight: "bold" }}>
+              {product.product_name}
+            </h5>
+            <div style={{ height: "5px" }}></div>
+            <h5 class="card-title" style={{ fontWeight: "bold" }}>
+              {productSize}
+            </h5>
+            <div style={{ height: "5px" }}></div>
+            <h5 class="card-title">{Stars(product.product_rating)}</h5>
+            <h5 class="card-title">{productPrice}$</h5>
+            <h6 class="card-title">المتجر:{product.product_company} </h6>
+            {/* {retSizes(product)} */}
+            {retColors(product)}
+            <p class="card-text">{product.product_description}</p>
+            <a onClick={addtoCart} class="btn btn-primary">
+              أضف للسلّة
+            </a>
+            {code == 200 && (
+              <Alert severity="success" onClose={() => {}}>
+                {"تمت إضافة المنتج بنجاح"}
+              </Alert>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

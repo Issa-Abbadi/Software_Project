@@ -380,11 +380,9 @@ function Nav_bar(props) {
                   }
                   menuVariant="dark"
                 >
-                  <NavDropdown.Item href="/cart">تفاصيل الطلب</NavDropdown.Item>
-
                   <NavDropdown.Item href="/profile">حسابي</NavDropdown.Item>
 
-                  <NavDropdown.Item href="#action/3.4">
+                  <NavDropdown.Item href="/wishList">
                     قائمة الرغبات
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/cart">السلة</NavDropdown.Item>

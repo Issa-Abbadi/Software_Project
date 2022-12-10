@@ -7,8 +7,17 @@ import SingleProduct from "./SingleProduct";
 
 function Products(props) {
   const products = props.products;
+
   const [productImg, setProductImg] = useState("");
   let size = Object.keys(products).length;
+
+  useEffect(() => {
+    if (props.type === "wishList") {
+      localStorage.setItem("wishList", true);
+    } else {
+      localStorage.setItem("wishList", false);
+    }
+  }, []);
 
   const RowTable = (i) => {
     //console.log("I is equal", i);

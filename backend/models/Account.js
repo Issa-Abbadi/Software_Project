@@ -24,6 +24,9 @@ let accountSchema = new Schema(
     market: {
       type: Boolean,
     },
+    wishList: {
+      type: Array,
+    },
   },
   {
     collection: "accounts",
