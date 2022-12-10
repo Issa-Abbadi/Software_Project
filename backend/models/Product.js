@@ -33,6 +33,9 @@ let productSchema = new Schema(
     vars: {
       type: Array,
     },
+    created_on: {
+      type: String,
+    },
   },
   {
     collection: "Products",

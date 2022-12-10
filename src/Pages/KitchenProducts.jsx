@@ -122,11 +122,12 @@ function KitchenProducts(props) {
     filteredData = data.filter((product) => {
       if (product.vars[0] != null) {
         for (let j = 0; j < product.vars.length; j++) {
-          for (let i = 0; i < colors.length; i++) {
-            if (product.vars[j].color == colors[i]) {
-              return product;
+          if (product.vars[j] !== null)
+            for (let i = 0; i < colors.length; i++) {
+              if (product.vars[j].color == colors[i]) {
+                return product;
+              }
             }
-          }
         }
       } else if (product.product_color != null) {
         for (let i = 0; i < colors.length; i++) {
@@ -144,11 +145,12 @@ function KitchenProducts(props) {
     filteredData = data.filter((product) => {
       if (product.vars[0] != null) {
         for (let j = 0; j < product.vars.length; j++) {
-          for (let i = 0; i < sizes.length; i++) {
-            if (product.vars[j].size == sizes[i]) {
-              return product;
+          if (product.vars[j] !== null)
+            for (let i = 0; i < sizes.length; i++) {
+              if (product.vars[j].size == sizes[i]) {
+                return product;
+              }
             }
-          }
         }
       } else if (product.product_color != null) {
         for (let i = 0; i < sizes.length; i++) {
@@ -158,7 +160,7 @@ function KitchenProducts(props) {
         }
       }
     });
-    //console.log("COLO RED", filteredData);
+    console.log("COLO RED", filteredData);
     setProducts(filteredData);
     return filteredData;
   };
@@ -184,6 +186,7 @@ function KitchenProducts(props) {
     else if (filter === "high-to-low") res.sort(dynamicSort("-product_price"));
     else if (filter === "customer-rating")
       res.sort(dynamicSort("-product_rating"));
+    else if (filter === "Newest") res.sort(dynamicSort("-created_on"));
     //console.log("FILTER", res);
     // console.log(Object.is(products, products));
     // console.log("state", products);

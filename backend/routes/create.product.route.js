@@ -17,6 +17,7 @@ router.post("/", (req, res) => {
     product_description: req.body.product_description,
     sub_category: req.body.sub_category,
     returnable: req.body.returnable,
+    created_on: new Date().toISOString(),
     vars: [
       {
         _id: 0,
