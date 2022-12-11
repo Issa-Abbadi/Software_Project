@@ -62,7 +62,7 @@ function Product(props) {
   const [productPrice, setProductPrice] = useState("");
   const [productVar, setProductVar] = useState(0);
   const [code, setCode] = useState(0);
-
+  const [account, setAccount] = useState("");
   const location = useLocation();
   const [product, setProduct] = useState({ product: "" });
 
@@ -75,6 +75,21 @@ function Product(props) {
       setProductSize(_state.product.vars[_state.var].size);
       setProductPrice(_state.product.vars[_state.var].price);
     }
+    axios
+      .post("http://localhost:4000/login/one", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        setAccount(data);
+        data.wishList.map((wish) => {
+          if (wish._id === location.state.product._id) {
+            setWish(true);
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [location]);
 
   const [wish, setWish] = useState(false);
@@ -105,7 +120,7 @@ function Product(props) {
     axios
       .post("http://localhost:4000/login/removeFromWish", {
         email: localStorage.getItem("EMAIL"),
-        _id: product._id,
+        _id: product.product._id,
       })
       .then((res) => {
         if (res.data.code === 200) {
