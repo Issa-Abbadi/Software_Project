@@ -19,6 +19,8 @@ function preventDefault(event) {
 export default function Deposits() {
   const [username, setUserName] = useState(localStorage.getItem("UserName"));
   const [products, setProducts] = useState([]);
+  const [rating, setRating] = useState(0);
+
   useEffect(() => {
     const token = localStorage.getItem("UserName");
     // console.log("token = ", token);
@@ -34,20 +36,18 @@ export default function Deposits() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+    axios
+      .post("http://localhost:4000/login/getRating", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        setRating(data.market_rating);
+      })
 
-  const getRating = (products) => {
-    // console.log(products);
-    let sum = 0;
-    let len = 0;
-    for (let i = 0; i < products.length; i++) {
-      //console.log(i);
-      sum += products[i].product_rating;
-      len += 1;
-    }
-    // console.log("sum&len", sum, len);
-    return sum / len;
-  };
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const Stars = (rating) => {
     const starArray = [...Array(5).keys()].map((i) => i + 1);
@@ -68,9 +68,9 @@ export default function Deposits() {
     <React.Fragment>
       <Title>{username}</Title>
       <Typography component="p" variant="h4">
-        {getRating(products).toFixed(2)}
+        {rating.toFixed(2)}
         <div />
-        {Stars(getRating(products).toFixed(2))}
+        {Stars(rating.toFixed(2))}
       </Typography>
       {/* <Typography color="text.secondary" sx={{ flex: 1 }}>
      on 15 March, 2019

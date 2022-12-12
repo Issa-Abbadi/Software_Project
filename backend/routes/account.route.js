@@ -353,4 +353,15 @@ router.post("/removeFromWish", (req, res) => {
     });
 });
 
+router.post("/getRating", (req, res) => {
+  accountSchema
+    .findOne({ email: req.body.email }, { market_rating: 1 })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "Server err" });
+    });
+});
+
 module.exports = router;
