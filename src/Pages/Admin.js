@@ -33,14 +33,17 @@ function Admin(props) {
     ],
   });
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [dash, setDash] = useState({ Name: "الرئيسية", Value: "0" });
   useEffect(() => {
-    // const token = localStorage.getItem("EMAIL");
-    // console.log("token = ", token);
-    // if (!token) {
-    //   navigate("/");
-    // }
+    const token = localStorage.getItem("EMAIL");
+    console.log("token = ", token);
+    if (!token) {
+      navigate("/");
+    } else if (!token.includes("@houseware")) {
+      console.log("hello");
+      navigate("/");
+    }
   }, []);
 
   const location = useLocation();
