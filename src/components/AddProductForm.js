@@ -21,7 +21,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import { prefixer } from "stylis";
 import createCache from "@emotion/cache";
-
+// import "./admin.css";
 const rtlTheme = createTheme({ direction: "rtl" });
 
 const cacheRtl = createCache({
@@ -47,7 +47,6 @@ const AddProductForm = (props) => {
       product_price: yup.string().required("مطلوب"),
       product_category: yup.string().required("مطلوب"),
       product_description: yup.string().required("مطلوب"),
-      product_img: yup.string().required("مطلوب"),
     });
   }
   // const location = useLocation();
@@ -233,6 +232,7 @@ const AddProductForm = (props) => {
                 id="product_name"
                 name="product_name"
                 label="الاسم"
+                class="productName"
                 value={formik.values.product_name}
                 onChange={formik.handleChange}
                 error={
@@ -378,27 +378,21 @@ const AddProductForm = (props) => {
             )}
             <div></div>
             {product_img === "" && (
-              <>
-                <span style={{ color: "red" }}>*</span>
-                <Button variant="contained" component="label">
-                  إضافة صورة
-                  <span style={{ display: "none" }}>
-                    <FileBase64
-                      name="product_img"
-                      as="input"
-                      id="InputImg"
-                      hidden
-                      type="file"
-                      inputProps={{ accept: "image/*" }}
-                      multiple={false}
-                      onDone={({ base64 }) => (
-                        setProduct_img(base64),
-                        (formik.values.product_img = base64)
-                      )}
-                    />
-                  </span>
-                </Button>
-              </>
+              <Button variant="contained" component="label">
+                إضافة صورة
+                <span style={{ display: "none" }}>
+                  <FileBase64
+                    name="product_img"
+                    id="InputImg"
+                    hidden
+                    multiple={false}
+                    onDone={({ base64 }) => (
+                      setProduct_img(base64),
+                      (formik.values.product_img = base64)
+                    )}
+                  />
+                </span>
+              </Button>
             )}
             {product_img !== "" && (
               <Alert

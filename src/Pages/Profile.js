@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./product.css";
+import "./profile.css";
 
 import {
   MDBCol,
@@ -20,13 +20,15 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { Avatar } from "@mui/material";
+import { Form } from "formik";
 
 function Profile() {
+
   return (
     <>
-      <section style={{ backgroundColor: "#eee", direction: "rtl" }}>
+      <section style={{ backgroundColor: "#eee", direction: "rtl",  }}>
         <MDBContainer className="py-5">
-          <MDBRow>
+          {/* <MDBRow>
             <MDBCol>
               <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
                 <MDBBreadcrumbItem>
@@ -34,16 +36,18 @@ function Profile() {
                 </MDBBreadcrumbItem>
               </MDBBreadcrumb>
             </MDBCol>
-          </MDBRow>
+          </MDBRow> */}
 
           <MDBRow>
             <MDBCol lg="4">
-              <MDBCard className="mb-4 ">
+              
+              <MDBCard className="mb-4">
                 <MDBCardBody className="text-center">
                   <Avatar
                     src={JSON.parse(localStorage.getItem("Profile")).imageUrl}
                     referrerpolicy="no-referrer"
                     alt="avatar"
+                    class="inside"
                     style={{
                       width: "50%",
                       height: "50%",
@@ -57,10 +61,10 @@ function Profile() {
 
                   {/* <p className="text-muted mb-1">Full Stack Developer</p>
                   <p className="text-muted mb-4">Bay Area, San Francisco, CA</p> */}
-                  <div className="d-flex justify-content-center mb-2">
-                    <MDBBtn outline className="ms-1">
-                      تغيير الصورة
-                    </MDBBtn>
+                  <div className="Cont">
+                    {/* <input type="file" class="inputFile" accept="image/*,.jpg,.png"/> */}
+                    
+                    <button variant="primary" class="changeImg">تغيير الصوره</button>
                   </div>
                 </MDBCardBody>
               </MDBCard>
@@ -108,9 +112,10 @@ function Profile() {
                 </MDBCardBody>
               </MDBCard> */}
             </MDBCol>
+            
             <MDBCol lg="8">
               <MDBCard className="mb-4">
-                <MDBCardBody>
+                <MDBCardBody >
                   <MDBRow>
                     <MDBCol sm="3">
                       <MDBCardText>الاسم</MDBCardText>
@@ -126,12 +131,23 @@ function Profile() {
                     <MDBCol sm="3">
                       <MDBCardText>البريد الإلكتروني</MDBCardText>
                     </MDBCol>
+                    {/* <MDBCol>
+                      <MDBCardText></MDBCardText>
+                    </MDBCol> */}
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
                         {JSON.parse(localStorage.getItem("Profile")).email}
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>
+                  <hr />
+                  {/* <MDBCol>
+                      <MDBCardText>رقم الهاتف</MDBCardText>
+                    </MDBCol>
+                    <hr />
+                    <MDBCol>
+                      <MDBCardText>العنوان</MDBCardText>
+                    </MDBCol> */}
                   {/* <hr />
                   <MDBRow>
                     <MDBCol sm="3">
@@ -166,31 +182,29 @@ function Profile() {
                     </MDBCol>
                   </MDBRow> */}
                 </MDBCardBody>
-              </MDBCard>
 
+                </MDBCard>
               <MDBCard>
                 <span class="change-accountInfo">تغيير معلومات الحساب</span>
-                <hr />
-                <a href="" class="change-email">
-                  تغيير كلمة السر
-                </a>
-                <a href="" class="change-email">
-                  تغيير معلومات الدفع
-                </a>
+                <hr/>
+                  <a href="../components/ForgetPassForm.js" class="change-email">تغيير كلمة السر</a>
+                  <a href=""  class="change-email">تغيير معلومات الدفع</a>
               </MDBCard>
+              
+              <MDBCard style={{"margin-top":"3%"}}>
+              <span class="change-accountInfo"> قوائمي</span>
+              <hr />
+                  <a href="" class="change-email">قائمة الرغبات</a>
+                  <a href="" class="change-email">قائمة الهدايا</a>
+              </MDBCard>   
+             
 
-              <MDBCard style={{ "margin-top": "3%" }}>
-                <span class="change-myLists">تغيير قوائمي</span>
-                <a href="" class="change-email">
-                  قائمة الرغبات
-                </a>
-                <a href="" class="change-email">
-                  قائمة الهدايا
-                </a>
-              </MDBCard>
             </MDBCol>
+           
           </MDBRow>
+
         </MDBContainer>
+
       </section>
     </>
   );
