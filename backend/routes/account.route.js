@@ -364,4 +364,19 @@ router.post("/getRating", (req, res) => {
     });
 });
 
+router.post("/markets", (req, res) => {
+  console.log("in market2...");
+  console.log(req.body);
+  accountSchema
+    .find({ email: req.body.uid.map((email) => email.uid) })
+    .then((result) => {
+      console.log("found", result);
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log("not found");
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 module.exports = router;

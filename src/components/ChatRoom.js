@@ -25,6 +25,9 @@ function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection("messages");
 
+  const userRef = firestore.collection(localStorage.getItem("EMAIL"));
+  const [users] = useCollectionData(userRef, { idField: "id" });
+
   const query1 = messagesRef
     .where("uid", "==", localStorage.getItem("EMAIL"))
     .where("Toid", "==", localStorage.getItem("EMAIL2"))
@@ -86,8 +89,17 @@ function ChatRoom() {
         .catch((error) => {
           console.log(error);
         });
+    } else {
+      axios
+        .post("http://localhost:4000/login/markets/", { uid: users })
+        .then(({ data }) => {
+          setMarkets(data);
+        })
+        .catch((error) => {
+          console.log("s", error);
+        });
     }
-  }, []);
+  }, [users]);
 
   let mssg;
   useEffect(() => {
@@ -97,7 +109,7 @@ function ChatRoom() {
           .sort(dynamicSort("-createdAt"))
           .slice(0, 25);
         setMessages(mssg.sort(dynamicSort("createdAt")));
-      }, 300);
+      }, 200);
       return () => clearInterval(intervalId);
     }
   }, [messages1, messages2]);
@@ -130,8 +142,23 @@ function ChatRoom() {
       Toid: localStorage.getItem("EMAIL2"),
       photoURL: imageUrl,
     });
-
     setFormValue("");
+    if (!localStorage.getItem("EMAIL").includes("@houseware")) {
+      const usersRef = firestore
+        .collection(localStorage.getItem("EMAIL2"))
+        .doc(localStorage.getItem("EMAIL"));
+
+      usersRef.get().then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          usersRef.onSnapshot((doc) => {
+            // do stuff with the data
+          });
+        } else {
+          usersRef.set({ uid: localStorage.getItem("EMAIL") }); // create the document
+        }
+      });
+    }
+
     //  dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -151,7 +178,7 @@ function ChatRoom() {
                           "max-width": "75px",
                         }}
                       >
-                        <Avatar src={market.imageUrl}>{market.name}</Avatar>
+                        <Avatar src={market.imageUrl}></Avatar>
                         <span>{market.name}</span>
                         <hr></hr>
                       </span>
