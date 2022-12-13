@@ -1,5 +1,5 @@
 .chatingSystem {
-  text-align: center;
+  /* text-align: center; */
   max-width: 728px;
   margin: 0 auto;
 }
@@ -143,14 +143,11 @@ li {
   border-radius: 50%;
   margin: 2px 5px;
 }
-.chatIcon
-{
-     width: 5%;
-     height: 5%;
-     margin-left: 94%;
-     cursor: pointer;
-     bottom: 5%;
-     position: fixed;
-     
+.chatIcon {
+  width: 5%;
+  height: 5%;
+  margin-left: 94%;
+  cursor: pointer;
+  bottom: 5%;
+  position: fixed;
 }
-
