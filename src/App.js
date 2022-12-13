@@ -35,6 +35,7 @@ import AllProducts from "./Pages/AllProducts";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import Markets from "./Pages/Markets";
 import WishList from "./Pages/WishList";
+// import { MuiBreadcrumbs } from "./components/Mui_Breadcrumbs";
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
@@ -59,6 +60,7 @@ function App() {
         <header>
           <Nav login={isLogin} />
         </header>
+
         <div style={{ display: "flex" }}>
           <div
             style={{
@@ -69,6 +71,8 @@ function App() {
               minHeight: "700px",
             }}
           >
+                    {/* <MuiBreadcrumbs/> */}
+
             <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
 
             <Routes>

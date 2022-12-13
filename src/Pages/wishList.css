@@ -1,0 +1,83 @@
+.wish-list-title{
+    direction: rtl;
+    margin-top: 2%;
+    /* background-color: red; */
+}
+
+.creatWishList-button{
+    background-color: #eee;
+    padding: 5px 2%;
+    font-size: 20px;
+    font-weight: bold;
+    transition: .1s;
+    color: black;
+    margin-top: 1.5%;
+}
+
+
+.creatWishList-button:hover
+{
+    opacity: 55%;
+}
+
+.window-father
+{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* background-color: blue; */
+   visibility: visible;
+   width: 50%;
+   margin: auto;
+}
+
+
+.creatWish-window{
+   width: 70%;
+   direction: rtl;
+   background-color: white;
+   margin-bottom: 10%;
+   box-shadow: 3px 5px 3px 5px #808080;
+}
+
+.buttons
+{
+    margin-top: 15%;
+    margin-bottom: 5%;
+}
+
+.listName-input
+{
+    margin: 4% 2%;
+    width: 96%;
+    height: 40px;
+}
+
+.createWishList-button{
+    background-color: #ce4c11;
+    color: white;
+    margin-right: 2%;
+    padding: 1% 8%;
+}
+
+.createWishList-button:hover{
+    background-color: #333;
+
+}
+
+.cancelButton
+{
+    background-color: white;
+    margin-right: 2%;
+    padding: 1% 8%;
+
+}
+
+.cancelButton:hover
+{
+    opacity: 55%;
+
+}
+hr{
+    color: #D3D3D3;
+}

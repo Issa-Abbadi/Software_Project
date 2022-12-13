@@ -3,7 +3,7 @@ import SingleProduct from "../components/SingleProduct";
 import Products from "../components/Products";
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-
+import './wishList.css';
 function WishList() {
   const [account, setAccount] = useState("");
   const [products, setProducts] = useState("");
@@ -56,12 +56,37 @@ function WishList() {
     }
   }, [account]);
 
+  function creatWish_window(e)
+  {
+     let x= document.getElementsByClassName("window-father");
+     
+  }
+
   return (
     <>
       <Products products={products} type="wishList" />
-      <div>
-        <Button onClick={deleteAll}>حذف الجميع</Button>
+      <div class="Breadcrumbs">Breadcrumbs Links</div>
+      <div class="wish-list-title">
+        <h1>قوائم الرغبات</h1>
+        <button class="creatWishList-button" onClick={creatWish_window}>انشاء قائمة جديده</button>
       </div>
+      <div class="window-father">
+          <div class="creatWish-window">
+            <form action="">
+                  <h2 style={{margin:"3% 3%"}}>إسم قائمة الرغبة</h2>
+                  <hr />
+                  <input type="text" placeholder="اسم قائمة الرغبه" required class="listName-input"></input>
+                  <hr />
+                 <div class="buttons">
+                      <button class="createWishList-button">انشاء القائمة</button>
+                      <button class="cancelButton">الغاء الامر</button>
+                  </div>
+            </form>
+          </div>
+      </div>
+      {/* <div>
+        <Button onClick={deleteAll}>حذف الجميع</Button>
+      </div> */}
     </>
   );
 }
