@@ -28,13 +28,13 @@ function ChatRoom() {
   const query1 = messagesRef
     .where("uid", "==", localStorage.getItem("EMAIL"))
     .where("Toid", "==", localStorage.getItem("EMAIL2"))
-    .orderBy("createdAt")
+    .orderBy("createdAt", "desc")
     .limit(25);
 
   const query2 = messagesRef
     .where("uid", "==", localStorage.getItem("EMAIL2"))
     .where("Toid", "==", localStorage.getItem("EMAIL"))
-    .orderBy("createdAt")
+    .orderBy("createdAt", "desc")
     .limit(25);
 
   let [messages1] = useCollectionData(query1, { idField: "id" });
@@ -89,12 +89,14 @@ function ChatRoom() {
     }
   }, []);
 
+  let mssg;
   useEffect(() => {
     if (messages1 && messages2) {
       const intervalId = setInterval(() => {
-        setMessages(
-          [...messages1, ...messages2].sort(dynamicSort("createdAt"))
-        );
+        mssg = [...messages1, ...messages2]
+          .sort(dynamicSort("-createdAt"))
+          .slice(0, 25);
+        setMessages(mssg.sort(dynamicSort("createdAt")));
       }, 300);
       return () => clearInterval(intervalId);
     }
