@@ -284,6 +284,7 @@
 
 .spanColors{
   overflow: hidden;
+  margin: 2% 20px 0 ;
 }
 
 .box{
@@ -393,4 +394,102 @@
   color: black;
   font-weight: bold;
   font-size: 25px;
+}
+
+.img-vars
+{
+   display: flex;
+   justify-content: center;
+   margin-top: 5%;
+   margin-bottom: 5%;
+   /* background-color: red; */
+}
+
+.card-img
+{
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.img-fluid{
+  width: 70%;
+  height: 20%;
+}
+
+#companyPrice
+{
+  display: flex;
+  justify-content: center;
+  /* background-color: red; */
+  width: 80%;
+  margin: auto;
+}
+
+
+.companyprice
+{
+   display: flex;
+   justify-content: center;
+   /* background-color: red; */
+}
+
+.text-muted
+{
+  font-weight: bold;
+}
+
+#stars
+{
+  display: flex;
+  justify-content: left;
+  /* background-color: red; */
+  margin: auto;
+}
+
+#addtoCart
+{
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  top: 92%; 
+  height: fit-content;
+  bottom: 0;
+  border-radius: 0;
+  background-color: var(--dark-liver-horses);
+}
+
+#cardTitle
+{
+   margin: auto;
+   font-weight: bold;
+   font-size: 30px;
+}
+
+#card-title
+{
+   width: 90%;
+   margin: auto;
+   /* background-color: red; */
+   display: flex;
+   justify-content: center;
+}
+
+#card-size
+{
+  width: 35px;
+  height: 35px;
+  margin-left: 10%;
+  background-color: var(--dark-liver-horses);
+}
+
+.card-container{
+   border: 1px solid #808080;
+}
+
+.card-container:hover
+{
+  background-color: white;
+   border: 5px solid var(--dark-liver-horses) 
 }

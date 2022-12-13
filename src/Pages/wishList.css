@@ -81,3 +81,24 @@
 hr{
     color: #D3D3D3;
 }
+
+.Breadcrumbs{
+    /* background-color: #808080; */
+    margin-top: 1%;
+    direction: rtl;
+}
+
+.Breadcrumbs .mainPage-link
+{
+    text-decoration: none;
+    color: black;
+}
+
+.Breadcrumbs .mainPage-link::after
+{
+    content: '\003E';
+}
+.Breadcrumbs .mainPage-link:hover
+{
+    text-decoration: underline;
+}

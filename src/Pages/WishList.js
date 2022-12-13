@@ -65,7 +65,10 @@ function WishList() {
   return (
     <>
       <Products products={products} type="wishList" />
-      <div class="Breadcrumbs">Breadcrumbs Links</div>
+      <div class="Breadcrumbs">
+        <a href="" class="mainPage-link">الصفحة الرئيسية</a>
+        
+      </div>
       <div class="wish-list-title">
         <h1>قوائم الرغبات</h1>
         <button class="creatWishList-button" onClick={creatWish_window}>انشاء قائمة جديده</button>
