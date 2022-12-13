@@ -178,7 +178,10 @@ function ChatRoom() {
                           "max-width": "75px",
                         }}
                       >
-                        <Avatar src={market.imageUrl}></Avatar>
+                        <Avatar
+                          src={market.imageUrl}
+                          referrerpolicy="no-referrer"
+                        ></Avatar>
                         <span>{market.name}</span>
                         <hr></hr>
                       </span>
