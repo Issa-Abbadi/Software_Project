@@ -1,3 +1,12 @@
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -13,6 +22,19 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 
 function SingleProduct(props) {
+  const [product, setProduct] = useState(props.product);
+  const [productImg, setProductImg] = useState(
+    props.product.vars[0].product_img
+  );
+  const [productSize, setProductSize] = useState(props.product.vars[0].size);
+  const [productPrice, setProductPrice] = useState(props.product.vars[0].price);
+  const [productQuantity, setProductQuantity] = useState(
+    props.product.vars[0].quantity
+  );
+  const [productVar, setProductVar] = useState(props.product.vars[0]._id);
+  const [code, setCode] = useState(0);
+  const [show, setShow] = useState(true);
+
   const Stars = (rating) => {
     const starArray = [...Array(5).keys()].map((i) => i + 1);
     return starArray.map((i) => {
@@ -28,16 +50,6 @@ function SingleProduct(props) {
     });
   };
 
-  const [product, setProduct] = useState(props.product);
-  const [productImg, setProductImg] = useState(
-    props.product.vars[0].product_img
-  );
-  const [productSize, setProductSize] = useState(props.product.vars[0].size);
-  const [productPrice, setProductPrice] = useState(props.product.vars[0].price);
-  const [productVar, setProductVar] = useState(props.product.vars[0]._id);
-  const [code, setCode] = useState(0);
-  const [show, setShow] = useState(true);
-
   const retColors = (product) => {
     if (product.vars[1] != null) {
       let vars = 0;
@@ -50,6 +62,7 @@ function SingleProduct(props) {
                   setProductImg(prod.product_img);
                   setProductPrice(prod.price);
                   setProductVar(prod._id);
+                  setProductQuantity(prod.quantity);
                 }}
                 class="btn"
               >
@@ -80,35 +93,6 @@ function SingleProduct(props) {
     } else {
     }
   };
-
-  // const retSizes = (product) => {
-  //   if (product.sizes[0] != null) {
-  //     return product.colors.map((prod) => (
-  //       <span style={{ margin: "5px" }}>
-  //         <a
-  //           onClick={() => {
-  //             setProductPrice(prod.price);
-  //           }}
-  //           class="btn"
-  //           style={{
-  //             width: "40px",
-  //             height: "25px",
-  //             borderRadius: "10%",
-  //             border: "2px solid var(--may-green)",
-  //             fontWeight: "bold",
-  //             textAlign: "center",
-  //             verticalAlign: "center",
-  //             margin: 0,
-  //             padding: 0,
-  //           }}
-  //         >
-  //           {prod.size}
-  //         </a>
-  //       </span>
-  //     ));
-  //   } else {
-  //   }
-  // };
 
   const addtoCart = () => {
     axios
@@ -151,44 +135,67 @@ function SingleProduct(props) {
   return (
     <>
       {show === true && (
-        <div class="card cardContent">
-          {localStorage.getItem("wishList") == "true" && (
-            <>
-              <Button onClick={handleDeleteone}>حذف</Button>
-            </>
-          )}
-          <div class="hover-overlay ">
-            <Link to="/product" state={{ product: product, var: productVar }}>
-              <img src={productImg} class="img-fluid" />
-            </Link>
-          </div>
+        <MDBContainer fluid className="my-5">
+          <MDBRow>
+            <MDBCol md="12" lg="12" className="mb-4 mb-lg-0">
+              <MDBCard style={{ direction: "rtl" }}>
+                {localStorage.getItem("wishList") == "true" && (
+                  <>
+                    <Button onClick={handleDeleteone}>حذف</Button>
+                  </>
+                )}
+                <div className="d-flex justify-content-between p-3">
+                  <p className="lead mb-0">{product.product_name}</p>
+                  <div
+                    className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style={{ width: "35px", height: "35px" }}
+                  >
+                    <p className="text-white mb-0 small">{productSize}</p>
+                  </div>
+                </div>
+                <Link
+                  to="/product"
+                  state={{ product: product, var: productVar }}
+                >
+                  <MDBCardImage
+                    src={productImg}
+                    position="top"
+                    class="img-fluid"
+                    alt="Product"
+                  />
+                </Link>
+                {retColors(product)}
 
-          <div class="card-body">
-            <h5 class="card-title" style={{ fontWeight: "bold" }}>
-              {product.product_name}
-            </h5>
+                <MDBCardBody>
+                  <div className="d-flex justify-content-between">
+                    <p className="small">
+                      <a href="#!" className="text-muted">
+                        {product.product_company}
+                      </a>
+                    </p>
+                    <p className="small text-danger">
+                      <s>$1399</s>
+                    </p>
+                  </div>
 
-            <div style={{ height: "5px" }}></div>
-            <h5 class="card-title" style={{ fontWeight: "bold" }}>
-              {productSize}
-            </h5>
-            <div style={{ height: "5px" }}></div>
-            <h5 class="card-title">{Stars(product.product_rating)}</h5>
-            <h5 class="card-title">{productPrice}$</h5>
-            <h6 class="card-title">المتجر:{product.product_company} </h6>
-            {/* {retSizes(product)} */}
-            {retColors(product)}
-            <p class="card-text">{product.product_description}</p>
-            <a onClick={addtoCart} class="btn btn-primary">
-              أضف للسلّة
-            </a>
-            {code == 200 && (
-              <Alert severity="success" onClose={() => {}}>
-                {"تمت إضافة المنتج بنجاح"}
-              </Alert>
-            )}
-          </div>
-        </div>
+                  <div className="d-flex justify-content-between mb-3">
+                    <h5 className="mb-0">{product.sub_category}</h5>
+                    <h5 className="text-dark mb-0">{productPrice}$</h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">
+                      متوفر: <span class="fw-bold">{productQuantity}</span>
+                    </p>
+                    <div class="ms-auto text-warning">
+                      {Stars(product.product_rating)}
+                    </div>
+                  </div>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       )}
     </>
   );
@@ -196,4 +203,48 @@ function SingleProduct(props) {
 
 export default SingleProduct;
 
-//
+//   return (
+//     <>
+//       {show === true && (
+//         <div class="card cardContent">
+//           {localStorage.getItem("wishList") == "true" && (
+//             <>
+//               <Button onClick={handleDeleteone}>حذف</Button>
+//             </>
+//           )}
+//           <div class="hover-overlay ">
+//             <Link to="/product" state={{ product: product, var: productVar }}>
+//               <img src={productImg} class="img-fluid" />
+//             </Link>
+//           </div>
+
+//           <div class="card-body">
+//             <h5 class="card-title" style={{ fontWeight: "bold" }}>
+//               {product.product_name}
+//             </h5>
+
+//             <div style={{ height: "5px" }}></div>
+//             <h5 class="card-title" style={{ fontWeight: "bold" }}>
+//               {productSize}
+//             </h5>
+//             <div style={{ height: "5px" }}></div>
+//             <h5 class="card-title">{Stars(product.product_rating)}</h5>
+//             <h5 class="card-title">{productPrice}$</h5>
+//             <h6 class="card-title">المتجر:{product.product_company} </h6>
+//             {/* {retSizes(product)} */}
+//             {retColors(product)}
+//             <p class="card-text">{product.product_description}</p>
+//             <a onClick={addtoCart} class="btn btn-primary">
+//               أضف للسلّة
+//             </a>
+//             {code == 200 && (
+//               <Alert severity="success" onClose={() => {}}>
+//                 {"تمت إضافة المنتج بنجاح"}
+//               </Alert>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// }
