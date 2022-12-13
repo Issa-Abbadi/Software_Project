@@ -191,6 +191,14 @@ function SingleProduct(props) {
                       {Stars(product.product_rating)}
                     </div>
                   </div>
+                  <a onClick={addtoCart} class="btn btn-primary">
+                    أضف للسلّة
+                  </a>
+                  {code == 200 && (
+                    <Alert severity="success" onClose={() => {}}>
+                      {"تمت إضافة المنتج بنجاح"}
+                    </Alert>
+                  )}
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>
