@@ -448,7 +448,7 @@
   margin: auto;
 }
 
-/* #addtoCart
+#addtoCart
 {
   width: 100%;
   left: 0;
@@ -458,9 +458,12 @@
   bottom: 0;
   border-radius: 0;
   background-color: var(--dark-liver-horses);
-} */
+}
 
-
+#addtoCart:hover{
+  font-size: large;
+}
+/* 
 #addtoCart
 {
   position: absolute;
@@ -501,7 +504,7 @@
 {
   transform: skewX(25deg) scaleX(0);
 
-}
+} */
 
 
 #cardTitle
