@@ -76,35 +76,34 @@ function Product(props) {
       setProductImg(_state.product.vars[_state.var].product_img);
       setProductSize(_state.product.vars[_state.var].size);
       setProductPrice(_state.product.vars[_state.var].price);
-
-      axios
-        .post("http://localhost:4000/login/one", {
-          email: localStorage.getItem("EMAIL"),
-        })
-        .then(({ data }) => {
-          setAccount(data);
-          data.wishList.map((wish) => {
-            if (wish._id === location.state.product._id) {
-              setWish(true);
-            }
-          });
-          axios
-            .post("http://localhost:4000/Products/subC", {
-              sub_category: location.state.product.sub_category,
-            })
-            .then(({ data }) => {
-              setRealtedP(data);
-            })
-
-            .catch((error) => {
-              console.log(error);
-            });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      console.log("h", product);
     }
+
+    axios
+      .post("http://localhost:4000/login/one", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        setAccount(data);
+        data.wishList.map((wish) => {
+          if (wish._id === location.state.product._id) {
+            setWish(true);
+          }
+        });
+        axios
+          .post("http://localhost:4000/Products/subC", {
+            sub_category: location.state.product.sub_category,
+          })
+          .then(({ data }) => {
+            setRealtedP(data);
+          })
+
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [location]);
 
   const [wish, setWish] = useState(false);
@@ -150,7 +149,7 @@ function Product(props) {
 
   return (
     <>
-      {console.log("h", product)}
+      {console.log("", product)}
 
       {product.product !== "" && (
         <div className="app">
@@ -195,8 +194,9 @@ function Product(props) {
                 })}
               </div>
             </div>
-            <div className="box">
-              <div className="row">
+            {/* here  Box row */}
+            <div class="Box">
+              <div>
                 <h2>{product.product.product_name}</h2>
                 <h2>
                   {!wish && (
@@ -253,15 +253,15 @@ function Product(props) {
               )}
             </div>
           </div>
-          <div>
-            {" "}
+          <div class="relatedProducts">
             {realtedP !== "" && (
               <div>
                 <Card
                   title="منتجات مشابهة"
                   data={realtedP}
                   target="/product"
-                  style={{ margin: "20%" }}
+                  class="card-product"
+                  // style={{ margin: "20%" }}
                 />
               </div>
             )}
