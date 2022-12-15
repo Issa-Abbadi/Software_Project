@@ -11,6 +11,7 @@ import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Card from "../components/Card";
+import Container from "react-bootstrap/Container";
 
 import {
   faStar,
@@ -150,124 +151,125 @@ function Product(props) {
   return (
     <>
       {console.log("", product)}
-
-      {product.product !== "" && (
-        <div className="app">
-          {" "}
-          <div className="details" key={product.product._id}>
+      <Container>
+        {product.product !== "" && (
+          <div className="app">
             {" "}
-            <div className="big-img">
-              <img src={productImg} class="mainImg" alt="" />{" "}
-              <div>
-                {product.product.vars.map((prod) => {
-                  return (
-                    <span style={{ margin: "5px" }} class="spanColors">
-                      <a
-                        onClick={() => {
-                          setProductImg(prod.product_img);
-                          setProductPrice(prod.price);
-                          setProductSize(prod.size);
-                        }}
-                        class="btn"
-                      >
-                        {prod.size === "S" && (
-                          <img
-                            src={prod.product_img}
-                            style={{ width: "25px", height: "25px" }}
-                          />
-                        )}
-                        {prod.size === "M" && (
-                          <img
-                            src={prod.product_img}
-                            style={{ width: "50px", height: "50px" }}
-                          />
-                        )}
-                        {prod.size === "L" && (
-                          <img
-                            src={prod.product_img}
-                            style={{ width: "75px", height: "75px" }}
-                          />
-                        )}
-                      </a>
-                    </span>
-                  );
-                })}
+            <div className="details" key={product.product._id}>
+              {" "}
+              <div className="big-img">
+                <img src={productImg} class="mainImg" alt="" />{" "}
+                <div>
+                  {product.product.vars.map((prod) => {
+                    return (
+                      <span style={{ margin: "5px" }} class="spanColors">
+                        <a
+                          onClick={() => {
+                            setProductImg(prod.product_img);
+                            setProductPrice(prod.price);
+                            setProductSize(prod.size);
+                          }}
+                          class="btn"
+                        >
+                          {prod.size === "S" && (
+                            <img
+                              src={prod.product_img}
+                              style={{ width: "25px", height: "25px" }}
+                            />
+                          )}
+                          {prod.size === "M" && (
+                            <img
+                              src={prod.product_img}
+                              style={{ width: "50px", height: "50px" }}
+                            />
+                          )}
+                          {prod.size === "L" && (
+                            <img
+                              src={prod.product_img}
+                              style={{ width: "75px", height: "75px" }}
+                            />
+                          )}
+                        </a>
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-            {/* here  Box row */}
-            <div class="Box">
-              <div>
-                <h2>{product.product.product_name}</h2>
-                <h2>
-                  {!wish && (
-                    <FavoriteBorderIcon
-                      style={{ color: "red" }}
-                      onClick={addtoWish}
-                    />
-                  )}
-                  {wish && (
-                    <FavoriteIcon
-                      style={{ color: "red" }}
-                      onClick={removeFromWish}
-                    />
-                  )}
-                </h2>
-                <div class="rating">
-                  {Stars(product.product.product_rating)}
-                </div>
-                <span class="price">${productPrice}</span>
-                <div class="size">
-                  الحجم:
-                  <div class="psize active">S</div>
-                  <div class="psize">M</div>
-                  <div class="psize">L</div>
-                </div>
-                <div class="quantity">
-                  <p>الكمية</p>
-                  <input type="number" min="1" max="5" value="1" />
-                </div>
+              {/* here  Box row */}
+              <div class="Box">
+                <div>
+                  <h2>{product.product.product_name}</h2>
+                  <h2>
+                    {!wish && (
+                      <FavoriteBorderIcon
+                        style={{ color: "red" }}
+                        onClick={addtoWish}
+                      />
+                    )}
+                    {wish && (
+                      <FavoriteIcon
+                        style={{ color: "red" }}
+                        onClick={removeFromWish}
+                      />
+                    )}
+                  </h2>
+                  <div class="rating">
+                    {Stars(product.product.product_rating)}
+                  </div>
+                  <span class="price">${productPrice}</span>
+                  <div class="size">
+                    الحجم:
+                    <div class="psize active">S</div>
+                    <div class="psize">M</div>
+                    <div class="psize">L</div>
+                  </div>
+                  <div class="quantity">
+                    <p>الكمية</p>
+                    <input type="number" min="1" max="5" value="1" />
+                  </div>
 
-                <p> المتجر: {product.product.product_company}</p>
-                <p> الفئة: {product.product.product_category}</p>
-                <p>الصنف: {product.product.sub_category}</p>
-                {product.product.returnable == true && (
-                  <Alert severity="success">قابل للإرجاع </Alert>
+                  <p> المتجر: {product.product.product_company}</p>
+                  <p> الفئة: {product.product.product_category}</p>
+                  <p>الصنف: {product.product.sub_category}</p>
+                  {product.product.returnable == true && (
+                    <Alert severity="success">قابل للإرجاع </Alert>
+                  )}
+                </div>
+                <p class="description">{product.product.product_description}</p>{" "}
+                <button className="cart" onClick={addtoCart}>
+                  أضف للسلة
+                </button>
+                <button className="buyNow" onClick={addtoCart}>
+                  اشتري الان
+                </button>
+                {code == 200 && (
+                  <Alert
+                    severity="success"
+                    onClose={() => {
+                      setCode(201);
+                    }}
+                  >
+                    {"تمت إضافة المنتج بنجاح"}
+                  </Alert>
                 )}
               </div>
-              <p class="description">{product.product.product_description}</p>{" "}
-              <button className="cart" onClick={addtoCart}>
-                أضف للسلة
-              </button>
-              <button className="buyNow" onClick={addtoCart}>
-                اشتري الان
-              </button>
-              {code == 200 && (
-                <Alert
-                  severity="success"
-                  onClose={() => {
-                    setCode(201);
-                  }}
-                >
-                  {"تمت إضافة المنتج بنجاح"}
-                </Alert>
+            </div>
+            <div class="relatedProducts">
+              {realtedP !== "" && (
+                <div style={{ width: "100%" }}>
+                  <Card
+                    title="منتجات مشابهة"
+                    data={realtedP}
+                    target="/product"
+                    class="card-product"
+                    style={{ margin: "20%" }}
+                  />
+                </div>
               )}
             </div>
           </div>
-          <div class="relatedProducts">
-            {realtedP !== "" && (
-              <div>
-                <Card
-                  title="منتجات مشابهة"
-                  data={realtedP}
-                  target="/product"
-                  class="card-product"
-                  // style={{ margin: "20%" }}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+        )}
+      </Container>
     </>
   );
 

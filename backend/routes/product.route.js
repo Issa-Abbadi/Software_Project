@@ -107,7 +107,7 @@ router.post("/subC", (req, res) => {
   productSchema
     .aggregate([
       { $match: { sub_category: req.body.sub_category } }, // filter the results
-      { $sample: { size: 4 } }, // You want to get 5 docs
+      { $sample: { size: 5 } }, // You want to get 5 docs
     ])
 
     .then((result) => {
