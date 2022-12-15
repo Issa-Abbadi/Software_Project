@@ -44,6 +44,9 @@ export default function Card({ title, data, target }) {
     prevArrow: <SlickArrowLeft />,
     nextArrow: <SlickArrowRight />,
   };
+  {
+    console.log("data", data);
+  }
   return (
     <div className="card__container">
       <h1>
@@ -55,22 +58,27 @@ export default function Card({ title, data, target }) {
           return (
             <>
               <div className="card__container--inner--card" key={index}>
-                <Link to={target} state={{ product: item }}>
-                  {target == "/product" && (
+                {target == "/product" && (
+                  <Link
+                    to={target}
+                    state={{ product: item, var: item.vars[0]._id }}
+                  >
                     <img
                       src={item.vars[0].product_img}
                       alt="hero_img"
                       style={{ height: "200px", "border-radius": "50%" }}
                     />
-                  )}
-                  {target == "/markets" && (
+                  </Link>
+                )}
+                {target == "/markets" && (
+                  <Link to={target} state={{ product: item }}>
                     <img
                       src={item.imageUrl}
                       alt="hero_img"
                       style={{ height: "200px", "border-radius": "50%" }}
                     />
-                  )}
-                </Link>
+                  </Link>
+                )}
               </div>
             </>
           );
