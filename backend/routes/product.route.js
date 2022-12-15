@@ -102,4 +102,23 @@ router.get("/home", (req, res) => {
     });
 });
 
+router.post("/subC", (req, res) => {
+  console.log("req22", req.body);
+  productSchema
+    .aggregate([
+      { $match: { sub_category: req.body.sub_category } }, // filter the results
+      { $sample: { size: 5 } }, // You want to get 5 docs
+    ])
+
+    .then((result) => {
+      console.log("res22", result);
+      if (result === null) {
+        res.send({ code: 500, message: "user not found" });
+      } else res.send(result);
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 module.exports = router;

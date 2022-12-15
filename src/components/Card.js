@@ -56,11 +56,20 @@ export default function Card({ title, data, target }) {
             <>
               <div className="card__container--inner--card" key={index}>
                 <Link to={target} state={{ product: item }}>
-                  <img
-                    src={item.imageUrl}
-                    alt="hero_img"
-                    style={{ height: "200px", "border-radius": "50%" }}
-                  />
+                  {target == "/product" && (
+                    <img
+                      src={item.vars[0].product_img}
+                      alt="hero_img"
+                      style={{ height: "200px", "border-radius": "50%" }}
+                    />
+                  )}
+                  {target == "/markets" && (
+                    <img
+                      src={item.imageUrl}
+                      alt="hero_img"
+                      style={{ height: "200px", "border-radius": "50%" }}
+                    />
+                  )}
                 </Link>
               </div>
             </>

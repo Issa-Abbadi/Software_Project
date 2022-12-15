@@ -10,6 +10,7 @@ import Alert from "@mui/material/Alert";
 import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Card from "../components/Card";
 
 import {
   faStar,
@@ -65,6 +66,7 @@ function Product(props) {
   const [account, setAccount] = useState("");
   const location = useLocation();
   const [product, setProduct] = useState({ product: "" });
+  const [realtedP, setRealtedP] = useState("");
 
   React.useEffect(() => {
     if (location.state) {
@@ -75,6 +77,7 @@ function Product(props) {
       setProductSize(_state.product.vars[_state.var].size);
       setProductPrice(_state.product.vars[_state.var].price);
     }
+
     axios
       .post("http://localhost:4000/login/one", {
         email: localStorage.getItem("EMAIL"),
@@ -86,6 +89,17 @@ function Product(props) {
             setWish(true);
           }
         });
+        axios
+          .post("http://localhost:4000/Products/subC", {
+            sub_category: location.state.product.sub_category,
+          })
+          .then(({ data }) => {
+            setRealtedP(data);
+          })
+
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -237,6 +251,18 @@ function Product(props) {
                 </Alert>
               )}
             </div>
+          </div>
+          <div>
+            {realtedP !== "" && (
+              <div>
+                {/* <Card
+                  title="منتجات مشابهة"
+                  data={realtedP}
+                  target="/product"
+                  style={{ margin: "20%" }}
+                /> */}
+              </div>
+            )}
           </div>
         </div>
       )}
