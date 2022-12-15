@@ -24,6 +24,9 @@ let accountSchema = new Schema(
     market: {
       type: Boolean,
     },
+    market_rating: {
+      type: Number,
+    },
     wishList: {
       type: Array,
     },
