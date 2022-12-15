@@ -149,7 +149,7 @@ function Product(props) {
 
   return (
     <>
-      {console.log(product)}
+      {console.log("", product)}
 
       {product.product !== "" && (
         <div className="app">

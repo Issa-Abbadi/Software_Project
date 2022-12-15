@@ -1,6 +1,5 @@
-.Main
-{
-   background-color: yellow;
+.Main {
+  background-color: yellow;
 }
 .details {
   /* display: flex; */
@@ -8,7 +7,6 @@
   flex-wrap: wrap; */
   padding: 30px 0;
   /* background-color: blue; */
-
 }
 .details .big-img {
   /* max-width: 500px;
@@ -31,7 +29,6 @@
   min-width: 60%;
   margin-right: -0%;
   background-color: blue;
-
 }
 .box .row {
   display: flex;
@@ -45,13 +42,11 @@
 .box .row span {
   color: crimson;
 }
-.box .row .rating
-{
+.box .row .rating {
   margin-bottom: 2%;
 }
 
-.box .row .price
-{
+.box .row .price {
   margin-bottom: 5%;
 }
 .box .colors button {
@@ -107,8 +102,7 @@
   }
 }
 
-.details
-{
+.details {
   background-color: red;
   margin-top: 5%;
   padding: 0;
@@ -118,173 +112,156 @@
 .details .big-img {
   position: absolute;
   /* background-color: blue; */
-  right: 10%; 
+  right: 10%;
   /* margin-left: 5%; */
 }
-.details .big-img .mainImg
-{
-     width: 100%;
-     height: 70%;
+.details .big-img .mainImg {
+  width: 100%;
+  height: 70%;
 }
 
-
-.spanColors a{
+.spanColors a {
   /* background-color: red; */
   margin: 0;
   padding: 0;
-  margin-top: 2%; 
+  margin-top: 2%;
   width: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1.5px solid black; 
+  border: 1.5px solid black;
   border-radius: 0;
 }
 
-.spanColors a:hover{
-    transform: scale(1.2);
+.spanColors a:hover {
+  transform: scale(1.2);
 }
 
-.spanColors{
+.spanColors {
   overflow: hidden;
 }
 
-.box{
-
+.box {
   /* background-color: red; */
   width: fit-content;
 }
 
-.box .row
-{
+.box .row {
   font-size: 22px;
   font-weight: 600;
   font-family: sans-serif;
   width: fit-content;
-
 }
 
-.box .row .price
-{
+.box .row .price {
   font-size: 22px;
   font-weight: 50;
 }
 
-.box .row .size 
-{
+.box .row .size {
   /* background-color: red; */
   display: flex;
   align-items: center;
 }
 
-.box .row .size  .psize
-{
+.box .row .size .psize {
   /* display: flex; */
   width: 20%;
-   margin-left: 2%;
-   border: 1px solid #ff5e00;
-   color: black;
-   text-align: center;
-   height: fit-content;
-   cursor: pointer;
+  margin-left: 2%;
+  border: 1px solid #ff5e00;
+  color: black;
+  text-align: center;
+  height: fit-content;
+  cursor: pointer;
 }
-.box .row .size  .psize p
-{
+.box .row .size .psize p {
   font-size: 18px;
   font-weight: 600;
 }
 
-.box .row .size  .psize.active
-{
-   border-width: 1.5px;
-   color: #ff5e00;
-   font-weight: 500;
+.box .row .size .psize.active {
+  border-width: 1.5px;
+  color: #ff5e00;
+  font-weight: 500;
 }
 
-.box .row .quantity
-{
+.box .row .quantity {
   display: flex;
   align-items: center;
-
 }
 
-.box .row .quantity p
-{
-    /* font-size: 18px; */
-    font-weight: 600;
+.box .row .quantity p {
+  /* font-size: 18px; */
+  font-weight: 600;
 }
 
-.box .row .quantity input
-{
-   width: fit-content;
-   height: fit-content;
-   margin-right: 10px;
-   margin-top: 1px;
-   text-align: center;
-   font-size: large;
-   background-color: #eee;
+.box .row .quantity input {
+  width: fit-content;
+  height: fit-content;
+  margin-right: 10px;
+  margin-top: 1px;
+  text-align: center;
+  font-size: large;
+  background-color: #eee;
 }
 
-.box{
+.box {
   /* background-color: red; */
   margin-right: 10%;
   position: absolute;
   right: 40%;
 }
 
-.box .description{
+.box .description {
   font-size: 18px;
   font-weight: 600;
 }
 
-.change-accountInfo{
+.change-accountInfo {
   color: black;
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 0;
   padding: 1% 2% 0 0;
 }
-.change-email{
+.change-email {
   text-decoration: none;
   color: black;
   font-size: 20px;
   padding-right: 2%;
 }
-.change-email:hover
-{
+.change-email:hover {
   background-color: var(--dark-liver-horses);
-  color:white;
+  color: white;
 }
-.listsDiv{
+.listsDiv {
   margin-top: 5%;
 }
 
-.change-myLists
-{
+.change-myLists {
   color: black;
   font-weight: bold;
   font-size: 25px;
 }
 
-.text-center{
+.text-center {
   height: 100%;
   position: relative;
 }
 
-.ms-1{
-   color: var(--dark-liver-horses);
-   border: 3px solid var(--dark-liver-horses);
-   background-color: var(--dark-liver-horses);
-   color: white;
-   margin-top: 3%;
-   overflow: hidden;
+.ms-1 {
+  color: var(--dark-liver-horses);
+  border: 3px solid var(--dark-liver-horses);
+  background-color: var(--dark-liver-horses);
+  color: white;
+  margin-top: 3%;
+  overflow: hidden;
 }
 
-
-.Cont .changeImg{
+.Cont .changeImg {
   position: relative;
   color: var(--dark-liver-horses);
   border: 3px solid var(--dark-liver-horses);
-  transform: translate(-0%,-10%);
+  transform: translate(-0%, -10%);
   background-color: var(--dark-liver-horses);
   color: black;
   margin-top: 4%;
@@ -292,57 +269,51 @@
   overflow: hidden;
   width: 30%;
 }
-.Cont .changeImg:hover
-{
-  color:white;
+.Cont .changeImg:hover {
+  color: white;
 }
-.Cont .changeImg:before
-{
+.Cont .changeImg:before {
   position: absolute;
-   content: '';
-   top: 0;
-   left: 5%;
-   width: 90%;
-   height: 100%;
-   background-color: white;
-   z-index: -1;
-   transform: skewX(25deg) scaleX(1);
-   transition: .5s;
+  content: "";
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  z-index: -1;
+  transform: skewX(25deg) scaleX(1);
+  transition: 0.5s;
 }
 
-.Cont .changeImg:hover:before
-{
+.Cont .changeImg:hover:before {
   transform: skewX(25deg) scaleX(0);
-  
 }
 
-.ms-1:hover{
-   font-size: 30px;
+.ms-1:hover {
+  font-size: 30px;
 }
-.mb-4{
+.mb-4 {
   /* background-color: red; */
   height: auto;
 }
 
-.d-flex justify-content-center mb-2{
+.d-flex justify-content-center mb-2 {
   background-color: red;
 }
 
-.inside
-{
+.inside {
   width: 50%;
   height: 50%;
   margin-right: 25%;
   display: flex;
   justify-content: center;
-  align-Items: center;
+  align-items: center;
 }
 
-.inputFile
-{
+.inputFile {
   display: block;
 }
 
-.buttonFile{
+.buttonFile {
   display: block;
 }

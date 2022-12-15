@@ -64,25 +64,25 @@ app.use(function (err, req, res, next) {
   res.status(err.statusCode).send(err.message);
 });
 
-cron.schedule("* * * * *", function () {
-  console.log("running a task every minute");
-  accountSchema
-    .find({ market: true })
-    .then((result) => {
-      console.log("found", result);
-      result.map((res) => {
-        const newRating = new ratingsSchema({
-          email: res.email,
-          market_rating: res.market_rating,
-          created_on: new Date().toISOString(),
-        });
-        newRating
-          .save()
-          .then(() => {})
-          .catch((err) => {});
-      });
-    })
-    .catch((err) => {
-      console.log("not found");
-    });
-});
+// cron.schedule("* * * * *", function () {
+//   console.log("running a task every minute");
+//   accountSchema
+//     .find({ market: true })
+//     .then((result) => {
+//       console.log("found", result);
+//       result.map((res) => {
+//         const newRating = new ratingsSchema({
+//           email: res.email,
+//           market_rating: res.market_rating,
+//           created_on: new Date().toISOString(),
+//         });
+//         newRating
+//           .save()
+//           .then(() => {})
+//           .catch((err) => {});
+//       });
+//     })
+//     .catch((err) => {
+//       console.log("not found");
+//     });
+// });
