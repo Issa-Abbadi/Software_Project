@@ -147,7 +147,7 @@ function App() {
                   <ChatRoom />{" "}
                 </section>
               </div>
-              <Notification />
+              {/* <Notification /> */}
             </>
           )}
           <Footer />
