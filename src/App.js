@@ -35,6 +35,7 @@ import AllProducts from "./Pages/AllProducts";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import Markets from "./Pages/Markets";
 import WishList from "./Pages/WishList";
+import Notification from "./components/Notification";
 // import { MuiBreadcrumbs } from "./components/Mui_Breadcrumbs";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
       setIsLogin(data);
     }
   }, [isLogin]);
+
   return (
     <>
       <Router>
@@ -71,7 +73,7 @@ function App() {
               minHeight: "700px",
             }}
           >
-                    {/* <MuiBreadcrumbs/> */}
+            {/* <MuiBreadcrumbs/> */}
 
             <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
 
@@ -134,16 +136,19 @@ function App() {
 
         <footer>
           {chat && (
-            <div className="chatingSystem">
-              <header>
-                <h1>⚛️🔥💬</h1>
-              </header>
+            <>
+              <div className="chatingSystem">
+                <header>
+                  <h1>⚛️🔥💬</h1>
+                </header>
 
-              <section>
-                {" "}
-                <ChatRoom />{" "}
-              </section>
-            </div>
+                <section>
+                  {" "}
+                  <ChatRoom />{" "}
+                </section>
+              </div>
+              <Notification />
+            </>
           )}
           <Footer />
         </footer>

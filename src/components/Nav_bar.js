@@ -9,16 +9,25 @@ import "https://kit.fontawesome.com/a076d05399.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { gettoken } from "../components/firebase";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
 
 import "./navbar.css";
 import Dashboard from "./Dashboard";
+import { Toast } from "react-bootstrap";
 
 function Nav_bar(props) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    gettoken(setTokenFound);
+  }, []);
+
   const [isLogin, setIsLogin] = useState(props.login);
+  const [show, setShow] = useState(false);
+  const [isTokenFound, setTokenFound] = useState(false);
 
   const [showKitchen, setShowKitchen] = useState(false);
   const showKitchenDropdown = (e) => {
@@ -386,6 +395,9 @@ function Nav_bar(props) {
                     قائمة الرغبات
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/cart">السلة</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => setShow(true)}>
+                    التنبيهات
+                  </NavDropdown.Item>
 
                   <NavDropdown.Item href="/logout">
                     <GoogleLogout
@@ -397,6 +409,29 @@ function Nav_bar(props) {
               </>
             )}
           </Container>
+          <Toast
+            onClose={() => setShow(false)}
+            show={show}
+            delay={5000}
+            autohide
+            animation
+            style={{
+              position: "absolute",
+              top: 20,
+              right: 20,
+            }}
+          >
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded mr-2"
+                alt=""
+              />
+              <strong className="mr-auto">تنبيه</strong>
+              <small>قبل 12 دقيقة</small>
+            </Toast.Header>
+            <Toast.Body>هناك تحديثات جديدة يمكن أن تعجبك! </Toast.Body>
+          </Toast>
         </Navbar>
       </div>
     </>
