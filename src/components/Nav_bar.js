@@ -9,7 +9,7 @@ import "https://kit.fontawesome.com/a076d05399.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
-import { gettoken } from "../components/firebase";
+import { gettoken, onMessageListener } from "../components/firebase";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
@@ -23,11 +23,23 @@ function Nav_bar(props) {
 
   useEffect(() => {
     gettoken(setTokenFound);
+
+    onMessageListener()
+      .then((payload) => {
+        setShow(true);
+        setNotification({
+          title: payload.notification.title,
+          body: payload.notification.body,
+        });
+        console.log(payload);
+      })
+      .catch((err) => console.log("failed: ", err));
   }, []);
 
   const [isLogin, setIsLogin] = useState(props.login);
   const [show, setShow] = useState(false);
   const [isTokenFound, setTokenFound] = useState(false);
+  const [notification, setNotification] = useState({ title: "", body: "" });
 
   const [showKitchen, setShowKitchen] = useState(false);
   const showKitchenDropdown = (e) => {

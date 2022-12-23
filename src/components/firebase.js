@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 var firebaseConfig = {
   apiKey: "AIzaSyCgLBah0eGYaTVSqc_kfdv4tCGeOiHA2ZQ",
   authDomain: "chat-system-67034.firebaseapp.com",
@@ -13,20 +13,26 @@ initializeApp(firebaseConfig);
 const firebaseApp = initializeApp(firebaseConfig);
 const messaging = getMessaging(firebaseApp);
 
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      resolve(payload);
+    });
+  });
+
 export const gettoken = (setTokenFound) => {
-  alert("in");
   return getToken(messaging, {
     vapidKey:
       "BA2_cdMytte9XJ5CbktQPF3C1-OFBZMQEwsyDerwjT7Mdf_thieG3H-kicb2cVuVORAIA58zz-eo9Y8aLjgkCro",
   })
     .then((currentToken) => {
       if (currentToken) {
-        alert("current token for client: ", currentToken);
+        console.log("current token for client: ", currentToken);
         setTokenFound(true);
         // Track the token -> client mapping, by sending to backend server
         // show on the UI that permission is secured
       } else {
-        alert(
+        console.log(
           "No registration token available. Request permission to generate one."
         );
         setTokenFound(false);
@@ -34,7 +40,7 @@ export const gettoken = (setTokenFound) => {
       }
     })
     .catch((err) => {
-      alert("An error occurred while retrieving token. ");
+      console.log("An error occurred while retrieving token. ");
       console.log(err);
       // catch error while creating client token
     });
