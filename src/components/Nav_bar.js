@@ -424,13 +424,14 @@ function Nav_bar(props) {
           <Toast
             onClose={() => setShow(false)}
             show={show}
-            delay={5000}
+            delay={3000}
             autohide
             animation
             style={{
               position: "absolute",
               top: 20,
               right: 20,
+              minWidth: 200,
             }}
           >
             <Toast.Header>
@@ -439,10 +440,10 @@ function Nav_bar(props) {
                 className="rounded mr-2"
                 alt=""
               />
-              <strong className="mr-auto">تنبيه</strong>
-              <small>قبل 12 دقيقة</small>
+              <strong className="mr-auto">{notification.title}</strong>
+              <small>just now</small>
             </Toast.Header>
-            <Toast.Body>هناك تحديثات جديدة يمكن أن تعجبك! </Toast.Body>
+            <Toast.Body>{notification.body}</Toast.Body>
           </Toast>
         </Navbar>
       </div>
