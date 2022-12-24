@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
 var firebaseConfig = {
   apiKey: "AIzaSyCgLBah0eGYaTVSqc_kfdv4tCGeOiHA2ZQ",
   authDomain: "chat-system-67034.firebaseapp.com",
@@ -12,6 +14,8 @@ var firebaseConfig = {
 initializeApp(firebaseConfig);
 const firebaseApp = initializeApp(firebaseConfig);
 const messaging = getMessaging(firebaseApp);
+
+const firestore = firebaseApp.firestore;
 
 export const onMessageListener = () =>
   new Promise((resolve) => {
@@ -47,3 +51,10 @@ export const gettoken = (setTokenFound) => {
       // catch error while creating client token
     });
 };
+
+export function GetNotifications(setNotifications) {
+  const userRef = firestore.collection(localStorage.getItem("EMAIL"));
+  const query1 = userRef.orderBy("createdAt", "Desc").limit(5);
+  let [notifications] = useCollectionData(query1, { idField: "id" });
+  setNotifications(notifications);
+}

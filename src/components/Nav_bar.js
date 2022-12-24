@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gettoken, onMessageListener } from "../components/firebase";
+import firebase from "firebase/compat/app";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
@@ -18,28 +20,57 @@ import "./navbar.css";
 import Dashboard from "./Dashboard";
 import { Toast } from "react-bootstrap";
 
+firebase.initializeApp({
+  apiKey: "AIzaSyCgLBah0eGYaTVSqc_kfdv4tCGeOiHA2ZQ",
+  authDomain: "chat-system-67034.firebaseapp.com",
+  projectId: "chat-system-67034",
+  storageBucket: "chat-system-67034.appspot.com",
+  messagingSenderId: "123521492390",
+  appId: "1:123521492390:web:0c70c6a21c66c60ee15b67",
+  measurementId: "G-E0KBFPD6JL",
+});
+const firestore = firebase.firestore();
+
 function Nav_bar(props) {
   const navigate = useNavigate();
+  let collection = "h";
+  if (localStorage.getItem("EMAIL") !== null) {
+    collection = localStorage.getItem("EMAIL");
+  }
+
+  const userRef = firestore.collection(collection);
+  const query1 = userRef.orderBy("createdAt", "Desc").limit(5);
+  let [notification] = useCollectionData(query1, { idField: "id" });
 
   useEffect(() => {
-    gettoken(setTokenFound);
-
-    onMessageListener()
-      .then((payload) => {
-        setShow(true);
-        setNotification({
-          title: payload.notification.title,
-          body: payload.notification.body,
-        });
-        console.log(payload);
-      })
-      .catch((err) => console.log("failed: ", err));
-  }, []);
+    if (localStorage.getItem("EMAIL") !== null) {
+      gettoken(setTokenFound);
+      onMessageListener()
+        .then((payload) => {
+          setShow(true);
+          setNotify({
+            title: payload.notification.title,
+            body: payload.notification.body,
+          });
+          console.log(payload);
+        })
+        .catch((err) => console.log("failed: ", err));
+      if (
+        localStorage.getItem("EMAIL").includes("@houseware") &&
+        notification
+      ) {
+        setNotifications(notification);
+      } else {
+        setNotifications("");
+      }
+    }
+  }, [notification]);
 
   const [isLogin, setIsLogin] = useState(props.login);
   const [show, setShow] = useState(false);
   const [isTokenFound, setTokenFound] = useState(false);
-  const [notification, setNotification] = useState({ title: "", body: "" });
+  const [notify, setNotify] = useState({ title: "", body: "" });
+  const [notifications, setNotifications] = useState("");
 
   const [showKitchen, setShowKitchen] = useState(false);
   const showKitchenDropdown = (e) => {
@@ -407,9 +438,21 @@ function Nav_bar(props) {
                     قائمة الرغبات
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/cart">السلة</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => setShow(true)}>
-                    التنبيهات
-                  </NavDropdown.Item>
+                  <NavDropdown
+                    style={{ direction: "ltr" }}
+                    id="nav-dropdown-dark-example3"
+                    menuVariant="dark"
+                    title=" التنبيهات"
+                  >
+                    {notifications !== "" &&
+                      notifications.map((notify) => {
+                        return (
+                          <NavDropdown.Item>
+                            {notify.name}يوجد لديك رسالة من
+                          </NavDropdown.Item>
+                        );
+                      })}
+                  </NavDropdown>
 
                   <NavDropdown.Item href="/logout">
                     <GoogleLogout
@@ -440,10 +483,10 @@ function Nav_bar(props) {
                 className="rounded mr-2"
                 alt=""
               />
-              <strong className="mr-auto">{notification.title}</strong>
+              <strong className="mr-auto">{notify.title}</strong>
               <small>just now</small>
             </Toast.Header>
-            <Toast.Body>{notification.body}</Toast.Body>
+            <Toast.Body>{notify.body}</Toast.Body>
           </Toast>
         </Navbar>
       </div>
