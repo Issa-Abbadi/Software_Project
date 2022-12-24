@@ -89,15 +89,8 @@ function ChatRoom() {
         .catch((error) => {
           console.log(error);
         });
-    } else {
-      axios
-        .post("http://localhost:4000/login/markets/", { uid: users })
-        .then(({ data }) => {
-          setMarkets(data);
-        })
-        .catch((error) => {
-          console.log("s", error);
-        });
+    } else if (users) {
+      setMarkets(users);
     }
   }, [users]);
 
@@ -155,9 +148,9 @@ function ChatRoom() {
           });
         } else {
           usersRef.set({
-            uid: localStorage.getItem("EMAIL"),
+            email: localStorage.getItem("EMAIL"),
             imageUrl: JSON.parse(localStorage.getItem("Profile")).imageUrl,
-            username: JSON.parse(localStorage.getItem("Profile")).name,
+            name: JSON.parse(localStorage.getItem("Profile")).name,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           }); // create the document
         }
