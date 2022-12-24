@@ -47,6 +47,7 @@ const AddProductForm = (props) => {
       product_price: yup.string().required("مطلوب"),
       product_category: yup.string().required("مطلوب"),
       product_description: yup.string().required("مطلوب"),
+      product_img: yup.string().required("مطلوب"),
     });
   }
   // const location = useLocation();
@@ -378,21 +379,24 @@ const AddProductForm = (props) => {
             )}
             <div></div>
             {product_img === "" && (
-              <Button variant="contained" component="label">
-                إضافة صورة
-                <span style={{ display: "none" }}>
-                  <FileBase64
-                    name="product_img"
-                    id="InputImg"
-                    hidden
-                    multiple={false}
-                    onDone={({ base64 }) => (
-                      setProduct_img(base64),
-                      (formik.values.product_img = base64)
-                    )}
-                  />
-                </span>
-              </Button>
+              <>
+                <span style={{ color: "red" }}>*</span>
+                <Button variant="contained" component="label">
+                  إضافة صورة
+                  <span style={{ display: "none" }}>
+                    <FileBase64
+                      name="product_img"
+                      id="InputImg"
+                      hidden
+                      multiple={false}
+                      onDone={({ base64 }) => (
+                        setProduct_img(base64),
+                        (formik.values.product_img = base64)
+                      )}
+                    />
+                  </span>
+                </Button>
+              </>
             )}
             {product_img !== "" && (
               <Alert

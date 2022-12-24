@@ -424,7 +424,7 @@ function Nav_bar(props) {
           <Toast
             onClose={() => setShow(false)}
             show={show}
-            delay={3000}
+            delay={5000}
             autohide
             animation
             style={{

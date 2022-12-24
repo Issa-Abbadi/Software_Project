@@ -150,11 +150,16 @@ function ChatRoom() {
 
       usersRef.get().then((docSnapshot) => {
         if (docSnapshot.exists) {
-          usersRef.onSnapshot((doc) => {
-            // do stuff with the data
+          usersRef.update({
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           });
         } else {
-          usersRef.set({ uid: localStorage.getItem("EMAIL") }); // create the document
+          usersRef.set({
+            uid: localStorage.getItem("EMAIL"),
+            imageUrl: JSON.parse(localStorage.getItem("Profile")).imageUrl,
+            username: JSON.parse(localStorage.getItem("Profile")).name,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          }); // create the document
         }
       });
     }

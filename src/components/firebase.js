@@ -28,6 +28,7 @@ export const gettoken = (setTokenFound) => {
     .then((currentToken) => {
       if (currentToken) {
         console.log("current token for client: ", currentToken);
+        localStorage.setItem("currentToken", currentToken);
         // alert(currentToken);
         setTokenFound(true);
         // Track the token -> client mapping, by sending to backend server
