@@ -44,6 +44,7 @@ const AddProductForm = (props) => {
       product_name: yup.string().required("مطلوب"),
 
       product_price: yup.string().required("مطلوب"),
+      product_discount: yup.string().required("مطلوب"),
       product_price: yup.string().required("مطلوب"),
       product_category: yup.string().required("مطلوب"),
       product_description: yup.string().required("مطلوب"),
@@ -99,6 +100,7 @@ const AddProductForm = (props) => {
     initialValues: {
       product_name: product.product_name,
       product_price: product.vars[value].price,
+      product_discount: product.vars[value].discount,
       product_category: product.product_category,
       sub_category: product.sub_category,
       product_company: localStorage.getItem("UserName"),
@@ -259,6 +261,23 @@ const AddProductForm = (props) => {
               }
               helperText={
                 formik.touched.product_price && formik.errors.product_price
+              }
+            />
+            <Input
+              fullWidth
+              type="number"
+              id="product_discount"
+              name="product_discount"
+              label="نسبة الخصم"
+              value={formik.values.product_discount}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.product_discount &&
+                Boolean(formik.errors.product_discount)
+              }
+              helperText={
+                formik.touched.product_discount &&
+                formik.errors.product_discount
               }
             />
             <Input
