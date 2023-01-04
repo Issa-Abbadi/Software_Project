@@ -152,6 +152,7 @@ function ChatRoom() {
             imageUrl: JSON.parse(localStorage.getItem("Profile")).imageUrl,
             name: JSON.parse(localStorage.getItem("Profile")).name,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            seen: false,
           }); // create the document
         }
       });

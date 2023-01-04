@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
+import PriceChart from "../components/PriceChart";
 
 import {
   faStar,
@@ -15,6 +16,7 @@ import {
   faStarHalfAlt,
   faStarAndCrescent,
 } from "@fortawesome/free-solid-svg-icons";
+import { Container } from "react-bootstrap";
 
 function Markets(props) {
   const Stars = (rating) => {
@@ -104,6 +106,9 @@ function Markets(props) {
                   {"تمت إضافة المنتج بنجاح"}
                 </Alert>
               )}
+            </div>
+            <div style={{ marginTop: "500px" }}>
+              <PriceChart />
             </div>
           </div>
         </div>
