@@ -19,6 +19,8 @@ import axios from "axios";
 import usePrevious from "../components/usePrevious";
 import CartCard from "../components/CartCard";
 
+import { Button } from "@mui/material";
+
 import Checkout from "../components/Checkout";
 
 import React, { useState, useEffect } from "react";
@@ -39,6 +41,7 @@ function dynamicSort(property) {
 }
 
 function Cart(props) {
+  const [calc, setCalc] = new useState(false);
   function getAccount() {
     axios
       .post("http://localhost:4000/login/one", {
@@ -54,10 +57,10 @@ function Cart(props) {
           account.cart.map((prod) => {
             prod.vars.map((var1) => {
               m = m + var1.price * var1.quantity;
-              console.log("Sum= ", m);
+              console.log("Sum=", m);
             });
           });
-        console.log("Sum= ", sum);
+        console.log("Sum=", sum);
         setSum(m);
       })
       .catch((error) => {
@@ -65,7 +68,11 @@ function Cart(props) {
       });
   }
 
-  function calcSum() {
+  function calcSum(value) {
+    setSum(sum + value);
+  }
+
+  function calcateSum() {
     axios
       .post("http://localhost:4000/login/one", {
         email: localStorage.getItem("EMAIL"),
@@ -76,11 +83,11 @@ function Cart(props) {
         setAccount2(data);
 
         let m = 0;
-        if (account2.cart[0] != null)
-          account2.cart.map((prod) => {
+        if (data.cart[0] != null)
+          data.cart.map((prod) => {
             prod.vars.map((var1) => {
               m = m + var1.price * var1.quantity;
-              console.log("Sum= ", m);
+              console.log("Sum =", m);
             });
           });
         console.log("Sum= ", sum);
@@ -99,6 +106,15 @@ function Cart(props) {
   const [sum, setSum] = useState(0);
   const [x, setX] = useState(1);
   const prevPrice = usePrevious(price);
+  useEffect(() => {
+    i = -1;
+    if (account == "") {
+      getAccount();
+    }
+
+    console.log("222", account);
+  }, []);
+
   useEffect(() => {
     i = -1;
     if (account == "") {
@@ -176,6 +192,7 @@ function Cart(props) {
                             quantity={quantity}
                             var={0}
                             calcSum={calcSum}
+                            calcateSum={calcateSum}
                           />
 
                           {account.cart[i].vars[1] != null &&
@@ -188,6 +205,7 @@ function Cart(props) {
                                 quantity={quantity}
                                 var={1}
                                 calcSum={calcSum}
+                                calcateSum={calcateSum}
                               />
                             )}
                           {account.cart[i].vars[2] != null &&
@@ -200,6 +218,7 @@ function Cart(props) {
                                 quantity={quantity}
                                 var={2}
                                 calcSum={calcSum}
+                                calcateSum={calcateSum}
                               />
                             )}
                         </>
@@ -211,9 +230,9 @@ function Cart(props) {
                 <MDBCardBody>
                   <MDBRow className="justify-content-between align-items-center">
                     <MDBCol md="1" lg="1" xl="1" className="text-start">
-                      <MDBBtn className="ms-3" color="warning" block size="lg">
+                      <Button className="ms-3" color="warning" block size="lg">
                         الدفع
-                      </MDBBtn>
+                      </Button>
                     </MDBCol>
                     <MDBCol md="2" lg="2" xl="2" className="text-start">
                       ${sum}

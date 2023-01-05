@@ -18,18 +18,35 @@ import {
 } from "mdb-react-ui-kit";
 import axios from "axios";
 
+import { Button } from "@mui/material";
+
 function CartCard(props) {
   const [quantity, setQuantity] = useState(props.quantity);
+  const [prevQuantity, setPrevQuantity] = useState(props.quantity);
+  const [see, setSee] = useState(true);
 
   useEffect(() => {
     if (quantity > 0) {
-      props.calcSum();
+      props.calcateSum();
     }
   }, [quantity]);
 
-  const minus = (vars, _id) => {
+  useEffect(() => {
+    console.log("in quantity");
+    if (quantity !== prevQuantity) {
+      setSee(false);
+      props.calcSum(
+        (quantity - prevQuantity) * props.prod.vars[props.vars].price
+      );
+      setPrevQuantity(quantity);
+    } else {
+      props.calcateSum();
+    }
+  }, [quantity]);
+
+  async function minus(vars, _id) {
     console.log("kkk", vars);
-    axios
+    await axios
       .post("http://localhost:4000/login/minus", {
         email: localStorage.getItem("EMAIL"),
         _id: _id,
@@ -41,7 +58,7 @@ function CartCard(props) {
       .catch((error) => {
         console.log(error);
       });
-  };
+  }
 
   const plus = (vars, _id) => {
     console.log("kkk", vars);
@@ -118,16 +135,16 @@ function CartCard(props) {
                 xl="2"
                 className="d-flex align-items-center justify-content-around"
               >
-                <MDBBtn
-                  color="link"
+                <Button
                   onClick={() => minus(props.var, props.prod._id)}
                   className="px-2"
                 >
                   <MDBIcon fas icon="minus" />
-                </MDBBtn>
+                </Button>
 
-                <MDBInput
+                <input
                   min={1}
+                  style={{ width: "70px" }}
                   value={quantity}
                   onChange={(e) => {
                     handleChange(e, props.var, props.prod._id);
@@ -136,13 +153,12 @@ function CartCard(props) {
                   size="sm"
                 />
 
-                <MDBBtn
-                  color="link"
+                <Button
                   onClick={() => plus(props.var, props.prod._id)}
                   className="px-2"
                 >
                   <MDBIcon fas icon="plus" />
-                </MDBBtn>
+                </Button>
               </MDBCol>
               <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
                 <MDBTypography tag="h5" className="mb-0">
