@@ -119,11 +119,11 @@ function LoginForm(props) {
   console.log(props);
   return (
     <>
-      <div className="form-wrapper outcard signupForm">
+      <div className="form-wrapper outcard signupForm"  style={{"direction":"rtl"}}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
 
-          <div class="finding">
+          <div class="finding" >
             <Avatar
               style={{
                 margin: "auto",
@@ -136,10 +136,10 @@ function LoginForm(props) {
             <Typography component="h1" variant="h5" class="labels">
               تسجيل دخول
             </Typography>
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} >
               <Grid container spacing={2} style={{ direction: "rtl" }}>
                 <Grid item xs={12}>
-                  <TextField
+                  <TextField 
                     variant="outlined"
                     fullWidth
                     id="email"

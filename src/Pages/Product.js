@@ -161,46 +161,51 @@ function Product(props) {
                 <img src={productImg} class="mainImg" alt="" />{" "}
                 <div>
                   {product.product.vars.map((prod) => {
-                    if (prod !== null)
-                      return (
-                        <span style={{ margin: "5px" }} class="spanColors">
-                          <a
-                            onClick={() => {
-                              setProductImg(prod.product_img);
-                              setProductPrice(prod.price);
-                              setProductSize(prod.size);
-                            }}
-                            class="btn"
-                          >
-                            {prod.size === "S" && (
-                              <img
-                                src={prod.product_img}
-                                style={{ width: "25px", height: "25px" }}
-                              />
-                            )}
-                            {prod.size === "M" && (
-                              <img
-                                src={prod.product_img}
-                                style={{ width: "50px", height: "50px" }}
-                              />
-                            )}
-                            {prod.size === "L" && (
-                              <img
-                                src={prod.product_img}
-                                style={{ width: "75px", height: "75px" }}
-                              />
-                            )}
-                          </a>
-                        </span>
-                      );
+                   if(prod !== null)
+                    return (
+                      <span style={{ margin: "5px" }} class="spanColors">
+                        <a
+                          onClick={() => {
+                            setProductImg(prod.product_img);
+                            setProductPrice(prod.price);
+                            setProductSize(prod.size);
+                          }}
+                          class="btn"
+                        >
+                          {prod.size === "S" && (
+                            <img
+                              src={prod.product_img}
+                              style={{ width: "25px", height: "25px" }}
+                            />
+                          )}
+                          {prod.size === "M" && (
+                            <img
+                              src={prod.product_img}
+                              style={{ width: "50px", height: "50px" }}
+                            />
+                          )}
+                          {prod.size === "L" && (
+                            <img
+                              src={prod.product_img}
+                              style={{ width: "75px", height: "75px" }}
+                            />
+                          )}
+                        </a>
+                      </span>
+                    );
                   })}
                 </div>
               </div>
               {/* here  Box row */}
+
+
+
+
+
               <div class="Box">
-                <div>
-                  <h2>{product.product.product_name}</h2>
-                  <h2>
+                <div class="rightSide">
+                  <h2 class="productName">{product.product.product_name}</h2>
+                  <span>
                     {!wish && (
                       <FavoriteBorderIcon
                         style={{ color: "red" }}
@@ -213,7 +218,7 @@ function Product(props) {
                         onClick={removeFromWish}
                       />
                     )}
-                  </h2>
+                  </span>
                   <div class="rating">
                     {Stars(product.product.product_rating)}
                   </div>
