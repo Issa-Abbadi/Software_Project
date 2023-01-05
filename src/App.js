@@ -75,7 +75,9 @@ function App() {
           >
             {/* <MuiBreadcrumbs/> */}
 
-            <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
+            {localStorage.getItem("EMAIL") && (
+              <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
+            )}
 
             <Routes>
               <Route exact path="/admin" element={<Admin />} />
@@ -144,7 +146,7 @@ function App() {
 
                 <section>
                   {" "}
-                  <ChatRoom />{" "}
+                  <ChatRoom />
                 </section>
               </div>
               {/* <Notification /> */}
