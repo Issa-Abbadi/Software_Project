@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
+import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
 import {
   Chart as ChartJS,
@@ -24,19 +25,35 @@ ChartJS.register(
 );
 
 function PriceChart(props) {
-  // const initialDates = [
-  //   "2021-08-25",
-  //   "2021-08-26",
-  //   "2021-08-27",
-  //   "2021-08-28",
-  //   "2021-08-29",
-  //   "2021-08-30",
-  //   "2021-08-31",
-  // ];
-  // const initialDataPoints = [1, 2, 4, 9, 12, 15, 16];
+  const [initialDates, setInitialDates] = useState("");
+  const [initialDataPoints, setInitialDataPoints] = useState("");
   const [dates, setDates] = useState("");
   const [dataPoints, setDataPoints] = useState("");
   const [Ratings, setRatings] = useState("");
+  const [age, setAge] = useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+    const dates2 = [...initialDates];
+    const dataPoints2 = [...initialDataPoints];
+
+    //slice the array
+    let indexstartdate = event.target.value;
+    if (indexstartdate > dates2.length) {
+      indexstartdate = 0;
+    } else {
+      indexstartdate = dates2.length - indexstartdate;
+    }
+    const filterDate = dates2.slice(indexstartdate, dates2.length + 1);
+    const filterDataPoints = dataPoints2.slice(
+      indexstartdate,
+      dates2.length + 1
+    );
+
+    setDates(filterDate);
+    setDataPoints(filterDataPoints);
+    console.log("isis", dates, dataPoints);
+  };
 
   useEffect(() => {
     axios
@@ -44,12 +61,18 @@ function PriceChart(props) {
       .then(({ data }) => {
         setRatings(data);
         console.log("dat", data);
-        let initialDates = data.map((rat) =>
-          rat.created_on.substring(0, rat.created_on.indexOf("T"))
+        setInitialDates(
+          data.map((rat) =>
+            rat.created_on.substring(0, rat.created_on.indexOf("T"))
+          )
         );
-        let initialDataPoints = data.map((rat) => rat.market_rating);
-        setDates(initialDates);
-        setDataPoints(initialDataPoints);
+        setInitialDataPoints(data.map((rat) => rat.market_rating));
+        setDates(
+          data.map((rat) =>
+            rat.created_on.substring(0, rat.created_on.indexOf("T"))
+          )
+        );
+        setDataPoints(data.map((rat) => rat.market_rating));
       })
       .catch((error) => {
         console.log(error);
@@ -67,23 +90,23 @@ function PriceChart(props) {
 
     //slice the array
     let value1 = inputRef1.current.value;
-    let value2 = inputRef2.current.value;
+    // let value2 = inputRef2.current.value;
     let indexstartdate = dates2.indexOf(value1);
-    let indexenddate = dates2.indexOf(value2);
+    // let indexenddate = dates2.indexOf(value2);
 
     //slice the array
     if (indexstartdate === -1) {
       indexstartdate = 0;
     }
-    if (indexenddate === -1) {
-      indexenddate = dates2.length;
-    }
+    // if (indexenddate === -1) {
+    //   indexenddate = dates2.length;
+    // }
     console.log("start ", indexstartdate);
-    console.log("end", indexenddate);
-    const filterDate = dates2.slice(indexstartdate, indexenddate + 1);
+    // console.log("end", indexenddate);
+    const filterDate = dates2.slice(indexstartdate, dates2.length + 1);
     const filterDataPoints = dataPoints2.slice(
       indexstartdate,
-      indexenddate + 1
+      dates2.length + 1
     );
 
     console.log(filterDate, filterDataPoints);
@@ -99,9 +122,27 @@ function PriceChart(props) {
   return (
     <div>
       <div style={{ direction: "ltr" }}>
-        <input type="date" ref={inputRef1} />
+        {/* <input type="date" ref={inputRef1} />
         <input type="date" ref={inputRef2} />
-        <button onClick={filterData}>Filter</button>
+        <button onClick={filterData}>Filter</button> */}
+        <FormControl sx={{ m: 1, minWidth: 80 }}>
+          <InputLabel id="demo-simple-select-autowidth-label">
+            الفترة
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-autowidth-label"
+            id="demo-simple-select-autowidth"
+            value={age}
+            onChange={handleChange}
+            autoWidth
+            label="الفترة"
+          >
+            <MenuItem value={999999}>كل الوقت</MenuItem>
+            <MenuItem value={7}>الأسبوع السابق</MenuItem>
+            <MenuItem value={30}>الشهر السابق</MenuItem>
+            <MenuItem value={365}>السنة السابقة</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div>
         {dataPoints !== "" && dates !== "" && (
