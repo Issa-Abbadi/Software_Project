@@ -26,7 +26,9 @@ function ChatRoom() {
   const messagesRef = firestore.collection("messages");
 
   const userRef = firestore.collection(localStorage.getItem("EMAIL"));
-  const [users] = useCollectionData(userRef, { idField: "id" });
+  const [users] = useCollectionData(
+    userRef.where("email", "!=", localStorage.getItem("EMAIL"))
+  );
 
   const query1 = messagesRef
     .where("uid", "==", localStorage.getItem("EMAIL"))
@@ -91,6 +93,7 @@ function ChatRoom() {
         });
     } else if (users) {
       setMarkets(users);
+      console.log("Users", users);
     }
   }, [users]);
 

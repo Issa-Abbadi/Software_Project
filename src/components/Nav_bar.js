@@ -39,7 +39,7 @@ function Nav_bar(props) {
   }
 
   const userRef = firestore.collection(collection);
-  const query1 = userRef.orderBy("createdAt", "Desc").limit(5);
+  const query1 = userRef.orderBy("createdAt", "desc").limit(5);
   let [notification] = useCollectionData(query1, { idField: "id" });
 
   useEffect(() => {

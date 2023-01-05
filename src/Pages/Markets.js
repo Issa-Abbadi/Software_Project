@@ -108,7 +108,7 @@ function Markets(props) {
               )}
             </div>
             <div style={{ marginTop: "500px" }}>
-              <PriceChart />
+              <PriceChart email={product.email} />
             </div>
           </div>
         </div>

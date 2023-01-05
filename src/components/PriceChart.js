@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Line, Bar } from "react-chartjs-2";
+import axios from "axios";
 
 import {
   Chart as ChartJS,
@@ -22,23 +23,37 @@ ChartJS.register(
   Legend
 );
 
-function PriceChart() {
-  const initialDates = [
-    "2021-08-25",
-    "2021-08-26",
-    "2021-08-27",
-    "2021-08-28",
-    "2021-08-29",
-    "2021-08-30",
-    "2021-08-31",
-  ];
-  const initialDataPoints = [1, 2, 4, 9, 12, 15, 16];
+function PriceChart(props) {
+  // const initialDates = [
+  //   "2021-08-25",
+  //   "2021-08-26",
+  //   "2021-08-27",
+  //   "2021-08-28",
+  //   "2021-08-29",
+  //   "2021-08-30",
+  //   "2021-08-31",
+  // ];
+  // const initialDataPoints = [1, 2, 4, 9, 12, 15, 16];
   const [dates, setDates] = useState("");
   const [dataPoints, setDataPoints] = useState("");
+  const [Ratings, setRatings] = useState("");
 
   useEffect(() => {
-    setDates(initialDates);
-    setDataPoints(initialDataPoints);
+    axios
+      .post("http://localhost:4000/Ratings/", { email: props.email })
+      .then(({ data }) => {
+        setRatings(data);
+        console.log("dat", data);
+        let initialDates = data.map((rat) =>
+          rat.created_on.substring(0, rat.created_on.indexOf("T"))
+        );
+        let initialDataPoints = data.map((rat) => rat.market_rating);
+        setDates(initialDates);
+        setDataPoints(initialDataPoints);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   console.log(dates, dataPoints);
@@ -83,6 +98,11 @@ function PriceChart() {
 
   return (
     <div>
+      <div style={{ direction: "ltr" }}>
+        <input type="date" ref={inputRef1} />
+        <input type="date" ref={inputRef2} />
+        <button onClick={filterData}>Filter</button>
+      </div>
       <div>
         {dataPoints !== "" && dates !== "" && (
           <Line
@@ -91,7 +111,7 @@ function PriceChart() {
 
               datasets: [
                 {
-                  label: "Sales",
+                  label: "التقييم",
                   data: dataPoints,
                   backgroundColor: [
                     "rgba(255, 99, 132, 0.2)",
@@ -130,9 +150,6 @@ function PriceChart() {
           />
         )}
       </div>
-      <input type="date" ref={inputRef1} />
-      <input type="date" ref={inputRef2} />
-      <button onClick={filterData}>Filter</button>
     </div>
   );
 }

@@ -15,6 +15,7 @@ const createAccountRoute = require("./routes/create.account.route");
 const submitOTPRoute = require("./routes/submit.otp.route");
 const sendOTPRoute = require("./routes/send.otp.route");
 const addProductRoute = require("./routes/create.product.route");
+const ratingsRoute = require("./routes/ratings.route");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db).then(
@@ -45,6 +46,7 @@ app.use("/addProduct", addProductRoute);
 app.use("/signup", createAccountRoute);
 app.use("/submit-otp", submitOTPRoute);
 app.use("/send-otp", sendOTPRoute);
+app.use("/Ratings", ratingsRoute);
 
 // PORT
 const port = process.env.PORT || 4000;
@@ -64,6 +66,10 @@ app.use(function (err, req, res, next) {
   res.status(err.statusCode).send(err.message);
 });
 
+// cron.schedule("* * * * * *", function () {
+//   console.log("running a task every minute");
+//   ratingsSchema.updateMany({ $set: { name: "الروافد" } });
+// });
 // cron.schedule("* * * * *", function () {
 //   console.log("running a task every minute");
 //   accountSchema
