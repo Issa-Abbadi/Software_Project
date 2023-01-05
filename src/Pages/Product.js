@@ -161,37 +161,38 @@ function Product(props) {
                 <img src={productImg} class="mainImg" alt="" />{" "}
                 <div>
                   {product.product.vars.map((prod) => {
-                    return (
-                      <span style={{ margin: "5px" }} class="spanColors">
-                        <a
-                          onClick={() => {
-                            setProductImg(prod.product_img);
-                            setProductPrice(prod.price);
-                            setProductSize(prod.size);
-                          }}
-                          class="btn"
-                        >
-                          {prod.size === "S" && (
-                            <img
-                              src={prod.product_img}
-                              style={{ width: "25px", height: "25px" }}
-                            />
-                          )}
-                          {prod.size === "M" && (
-                            <img
-                              src={prod.product_img}
-                              style={{ width: "50px", height: "50px" }}
-                            />
-                          )}
-                          {prod.size === "L" && (
-                            <img
-                              src={prod.product_img}
-                              style={{ width: "75px", height: "75px" }}
-                            />
-                          )}
-                        </a>
-                      </span>
-                    );
+                    if (prod !== null)
+                      return (
+                        <span style={{ margin: "5px" }} class="spanColors">
+                          <a
+                            onClick={() => {
+                              setProductImg(prod.product_img);
+                              setProductPrice(prod.price);
+                              setProductSize(prod.size);
+                            }}
+                            class="btn"
+                          >
+                            {prod.size === "S" && (
+                              <img
+                                src={prod.product_img}
+                                style={{ width: "25px", height: "25px" }}
+                              />
+                            )}
+                            {prod.size === "M" && (
+                              <img
+                                src={prod.product_img}
+                                style={{ width: "50px", height: "50px" }}
+                              />
+                            )}
+                            {prod.size === "L" && (
+                              <img
+                                src={prod.product_img}
+                                style={{ width: "75px", height: "75px" }}
+                              />
+                            )}
+                          </a>
+                        </span>
+                      );
                   })}
                 </div>
               </div>
