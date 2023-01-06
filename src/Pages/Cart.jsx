@@ -21,7 +21,7 @@ import CartCard from "../components/CartCard";
 
 import { Button } from "@mui/material";
 
-import Checkout from "../components/Checkout";
+import Checkout from "./Checkout";
 
 import React, { useState, useEffect } from "react";
 function dynamicSort(property) {
@@ -116,6 +116,7 @@ function Cart(props) {
   }, []);
 
   useEffect(() => {
+    setBuy(false);
     i = -1;
     if (account == "") {
       getAccount();
@@ -154,6 +155,7 @@ function Cart(props) {
         console.log(error);
       });
   };
+  const [buy, setBuy] = useState(false);
 
   return (
     <>
@@ -161,101 +163,110 @@ function Cart(props) {
         className="h-100"
         style={{ backgroundColor: "#eee", direction: "rtl" }}
       >
-        <MDBContainer className="py-5 h-100">
-          <MDBRow className="justify-content-center align-items-center h-100">
-            <MDBCol md="10">
-              <div className="d-flex justify-content-between align-items-center mb-4">
-                <MDBTypography tag="h3" className="fw-normal mb-0 text-black">
-                  سلة التسوق
-                </MDBTypography>
-              </div>
+        {buy === false && (
+          <MDBContainer className="py-5 h-100">
+            <MDBRow className="justify-content-center align-items-center h-100">
+              <MDBCol md="10">
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                  <MDBTypography tag="h3" className="fw-normal mb-0 text-black">
+                    سلة التسوق
+                  </MDBTypography>
+                </div>
 
-              {products !== "" &&
-                products !== null &&
-                products.map((prod) => {
-                  console.log("iii= ", products, account.cart);
+                {products !== "" &&
+                  products !== null &&
+                  products.map((prod) => {
+                    console.log("iii= ", products, account.cart);
 
-                  i++;
+                    i++;
 
-                  console.log("in..");
-                  if (account.cart[i] != null) {
-                    let _id = account.cart[i]._id;
-                    if (account.cart[i].vars[0] != null) {
-                      let vars = account.cart[i].vars[0].var;
-                      let quantity = account.cart[i].vars[0].quantity;
+                    console.log("in..");
+                    if (account.cart[i] != null) {
+                      let _id = account.cart[i]._id;
+                      if (account.cart[i].vars[0] != null) {
+                        let vars = account.cart[i].vars[0].var;
+                        let quantity = account.cart[i].vars[0].quantity;
 
-                      return (
-                        <>
-                          <CartCard
-                            prod={prod}
-                            vars={vars}
-                            quantity={quantity}
-                            var={0}
-                            calcSum={calcSum}
-                            calcateSum={calcateSum}
-                          />
+                        return (
+                          <>
+                            <CartCard
+                              prod={prod}
+                              vars={vars}
+                              quantity={quantity}
+                              var={0}
+                              calcSum={calcSum}
+                              calcateSum={calcateSum}
+                            />
 
-                          {account.cart[i].vars[1] != null &&
-                            (vars = account.cart[i].vars[1].var) != null &&
-                            (quantity = account.cart[i].vars[1].quantity) !=
-                              null && (
-                              <CartCard
-                                prod={prod}
-                                vars={vars}
-                                quantity={quantity}
-                                var={1}
-                                calcSum={calcSum}
-                                calcateSum={calcateSum}
-                              />
-                            )}
-                          {account.cart[i].vars[2] != null &&
-                            (vars = account.cart[i].vars[2].var) != null &&
-                            (quantity = account.cart[i].vars[2].quantity) !=
-                              null && (
-                              <CartCard
-                                prod={prod}
-                                vars={vars}
-                                quantity={quantity}
-                                var={2}
-                                calcSum={calcSum}
-                                calcateSum={calcateSum}
-                              />
-                            )}
-                        </>
-                      );
+                            {account.cart[i].vars[1] != null &&
+                              (vars = account.cart[i].vars[1].var) != null &&
+                              (quantity = account.cart[i].vars[1].quantity) !=
+                                null && (
+                                <CartCard
+                                  prod={prod}
+                                  vars={vars}
+                                  quantity={quantity}
+                                  var={1}
+                                  calcSum={calcSum}
+                                  calcateSum={calcateSum}
+                                />
+                              )}
+                            {account.cart[i].vars[2] != null &&
+                              (vars = account.cart[i].vars[2].var) != null &&
+                              (quantity = account.cart[i].vars[2].quantity) !=
+                                null && (
+                                <CartCard
+                                  prod={prod}
+                                  vars={vars}
+                                  quantity={quantity}
+                                  var={2}
+                                  calcSum={calcSum}
+                                  calcateSum={calcateSum}
+                                />
+                              )}
+                          </>
+                        );
+                      }
                     }
-                  }
-                })}
-              <MDBCard>
-                <MDBCardBody>
-                  <MDBRow className="justify-content-between align-items-center">
-                    <MDBCol md="1" lg="1" xl="1" className="text-start">
-                      <Button className="ms-3" color="warning" block size="lg">
-                        الدفع
-                      </Button>
-                    </MDBCol>
-                    <MDBCol md="2" lg="2" xl="2" className="text-start">
-                      ${sum}
-                    </MDBCol>
-                    <MDBCol md="3" lg="3" xl="3" className="text-end">
-                      <a
-                        href="#!"
-                        onClick={() => deleteAll()}
-                        className="text-danger"
-                      >
-                        إزالة جميع المنتجات
-                        <MDBIcon fas icon="trash text-danger" size="lg" />
-                      </a>
-                    </MDBCol>
-                  </MDBRow>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
+                  })}
+                <MDBCard>
+                  <MDBCardBody>
+                    <MDBRow className="justify-content-between align-items-center">
+                      <MDBCol md="1" lg="1" xl="1" className="text-start">
+                        <a href="#!" onClick={() => setBuy(true)}>
+                          <Button
+                            className="ms-3"
+                            color="warning"
+                            block
+                            size="lg"
+                          >
+                            الدفع
+                          </Button>
+                        </a>
+                      </MDBCol>
+                      <MDBCol md="2" lg="2" xl="2" className="text-start">
+                        ${sum}
+                      </MDBCol>
+                      <MDBCol md="3" lg="3" xl="3" className="text-end">
+                        <a
+                          href="#!"
+                          onClick={() => deleteAll()}
+                          className="text-danger"
+                        >
+                          إزالة جميع المنتجات
+                          <MDBIcon fas icon="trash text-danger" size="lg" />
+                        </a>
+                        {console.log("cart Products", products)}
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
+        )}
+        {buy === true && <Checkout />}
       </section>
-
-      {/* <Checkout /> */}
     </>
   );
 }

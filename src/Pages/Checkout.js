@@ -12,16 +12,16 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AddressForm from "./AddressForm";
-import PaymentForm from "./PaymentForm";
-import Review from "./Review";
+import AddressForm from "../components/AddressForm";
+import PaymentForm from "../components/PaymentForm";
+import Review from "../components/Review";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Houseware
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
