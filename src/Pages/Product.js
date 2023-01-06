@@ -156,52 +156,53 @@ function Product(props) {
         {product.product !== "" && (
           <div className="app">
             {" "}
-          <div className="productDesc" key={product.product._id}>
-            <div class="imgDiv">
-              <div className="big-img">
-                <img src={productImg} class="mainImg" alt="" />{" "}
-                <div>
-                  {product.product.vars.map((prod) => {
-                   if(prod !== null)
-                    return (
-                      <span style={{ margin: "5px" }} class="spanColors">
-                        <a
-                          onClick={() => {
-                            setProductImg(prod.product_img);
-                            setProductPrice(prod.price);
-                            setProductSize(prod.size);
-                          }}
-                          class="btn"
-                        >
-                          {prod.size === "S" && (
-                            <img
-                              src={prod.product_img}
-                              style={{ width: "25px", height: "25px" }}
-                            />
-                          )}
-                          {prod.size === "M" && (
-                            <img
-                              src={prod.product_img}
-                              style={{ width: "50px", height: "50px" }}
-                            />
-                          )}
-                          {prod.size === "L" && (
-                            <img
-                              src={prod.product_img}
-                              style={{ width: "75px", height: "75px" }}
-                            />
-                          )}
-                        </a>
-                      </span>
-                    );
-                  })}
+            <div className="productDesc" key={product.product._id}>
+              <div class="imgDiv">
+                <div className="big-img">
+                  <div className="cover-img">
+                    <img src={productImg} class="mainImg" alt="" />{" "}
+                  </div>
+                  <div>
+                    {product.product.vars.map((prod) => {
+                      if (prod !== null)
+                        return (
+                          <span style={{ margin: "5px" }} class="spanColors">
+                            <a
+                              onClick={() => {
+                                setProductImg(prod.product_img);
+                                setProductPrice(prod.price);
+                                setProductSize(prod.size);
+                              }}
+                              class="btn"
+                            >
+                              {prod.size === "S" && (
+                                <img
+                                  src={prod.product_img}
+                                  style={{ width: "25px", height: "25px" }}
+                                />
+                              )}
+                              {prod.size === "M" && (
+                                <img
+                                  src={prod.product_img}
+                                  style={{ width: "50px", height: "50px" }}
+                                />
+                              )}
+                              {prod.size === "L" && (
+                                <img
+                                  src={prod.product_img}
+                                  style={{ width: "75px", height: "75px" }}
+                                />
+                              )}
+                            </a>
+                          </span>
+                        );
+                    })}
+                  </div>
                 </div>
               </div>
-              </div>
-             
-             
-             <div class="descriptionDiv">
-              <div class="leftSide">
+
+              <div class="descriptionDiv">
+                <div class="leftSide">
                   <h2 class="productName">{product.product.product_name}</h2>
                   <span>
                     {!wish && (
@@ -256,19 +257,8 @@ function Product(props) {
                     {"تمت إضافة المنتج بنجاح"}
                   </Alert>
                 )}
-              </div>             
-          </div>
-
-
-
-
-
-
-
-
-
-
-
+              </div>
+            </div>
             <div class="relatedProducts">
               {realtedP !== "" && (
                 <div style={{ width: "100%" }}>
