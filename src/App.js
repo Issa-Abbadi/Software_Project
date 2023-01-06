@@ -56,11 +56,15 @@ function App() {
     }
   }, [isLogin]);
 
+  const setChating = () => {
+    if (chat === false) setChat(true);
+  };
+
   return (
     <>
       <Router>
         <header>
-          <Nav login={isLogin} />
+          <Nav login={isLogin} setChating={setChating} />
         </header>
 
         <div style={{ display: "flex" }}>

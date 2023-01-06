@@ -39,7 +39,10 @@ function Nav_bar(props) {
   }
 
   const userRef = firestore.collection(collection);
-  const query1 = userRef.orderBy("createdAt", "desc").limit(5);
+  const query1 = userRef
+    .where("seen", "==", false)
+    .orderBy("createdAt", "desc")
+    .limit(5);
   let [notification] = useCollectionData(query1, { idField: "id" });
 
   useEffect(() => {
@@ -108,6 +111,10 @@ function Nav_bar(props) {
       localStorage.setItem("search", e.target.value);
       navigate("/allProducts");
     }
+  };
+
+  const setNotifyTrue = (notify) => {
+    props.setChating();
   };
 
   return (
@@ -447,7 +454,7 @@ function Nav_bar(props) {
                     {notifications !== "" &&
                       notifications.map((notify) => {
                         return (
-                          <NavDropdown.Item>
+                          <NavDropdown.Item onClick={setNotifyTrue(notify)}>
                             {notify.name}يوجد لديك رسالة من
                           </NavDropdown.Item>
                         );

@@ -112,6 +112,13 @@ function ChatRoom() {
 
   const handleMarket = (market) => {
     localStorage.setItem("EMAIL2", market.email);
+    const usersRef = firestore
+      .collection(localStorage.getItem("EMAIL"))
+      .doc(market.email);
+
+    usersRef.update({
+      seen: true,
+    });
     if (formValue === "") {
       setFormValue(" ");
     } else {
