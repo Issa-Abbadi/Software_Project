@@ -120,13 +120,15 @@ function ChatRoom() {
         .doc(market.email);
     } else {
       console.log("Hello", market.email);
-      usersRef = firestore
-        .collection(localStorage.getItem("ClientsNotifications"))
-        .doc(market.email);
+      usersRef = firestore.collection("ClientsNotifications").doc(market.email);
+      console.log("Hello", market.email);
     }
-    console.log("Hello");
-    usersRef.update({
-      seen: true,
+    usersRef.get().then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        usersRef.update({
+          seen: true,
+        });
+      }
     });
     if (formValue === "") {
       setFormValue(" ");
@@ -170,6 +172,7 @@ function ChatRoom() {
       if (docSnapshot.exists) {
         usersRef.update({
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          seen: false,
         });
       } else {
         console.log("in else", JSON.parse(localStorage.getItem("Profile")));
