@@ -2,7 +2,7 @@
   /* margin-top: 5%;
   padding: 0;
   direction: rtl;*/
-  background-color: #eee;
+  background-color: red;
   /* width: 100%;
   height: 500px;  */
   /* position: relative; */
@@ -11,19 +11,23 @@
   justify-content: space-around;
   flex-wrap: wrap;
   direction: rtl;
+  /* margin: 5%; */
+  /* padding: -20%; */
 }
 
 .productDesc .imgDiv {
   /* position: absolute;
   width: 40%; */
   background-color: white;
-  /*right: 0;
-  height: 100%; */
+  height: 50%;
   border: 3px solid var(--dark-liver-horses);
   max-width: 500px;
-  min-width: 200px;
+  min-width: 400px;
   overflow: hidden;
-  margin: 25px;
+  /* margin-top: 25px; */
+  margin-bottom: 10%;
+  margin-top: 2%;
+
 }
 
 .productDesc .descriptionDiv {
@@ -31,10 +35,12 @@
   width: 60%; */
   background-color: white;
   left: 0;
-  max-width: 500px;
-  min-width: 200px;
+  max-width: 700px;
+  min-width: 600px;
   overflow: hidden;
-  margin: 25px;
+  margin-top: 25px;
+  margin-right: 0;
+  margin-bottom: 10%;
 }
 
 .productDesc .descriptionDiv .leftSide {
@@ -44,6 +50,7 @@
 .productDesc .descriptionDiv .leftSide .productName {
   /* background-color: yellow; */
   font-weight: bold;
+  margin-bottom: 2%;
 }
 .productDesc .descriptionDiv .leftSide .rating {
   /* background-color: blue; */
@@ -54,8 +61,8 @@
 }
 
 .imgDiv .big-img .cover-img {
-  max-width: 500px;
-  min-width: 290px;
+  max-width: 300;
+  min-width: 200px;
   overflow: hidden;
   margin: 25px;
 }
@@ -86,4 +93,19 @@
 
 .spanColors {
   overflow: hidden;
+}
+
+.leftSide .price
+{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 5%;
+}
+
+.leftSide .rating
+{
+    display: flex;
+    font-size: 20px;
+    margin-bottom: 1%;
+
 }
