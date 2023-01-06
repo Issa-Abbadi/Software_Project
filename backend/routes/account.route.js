@@ -20,6 +20,7 @@ router.post("/", (req, res) => {
           email: result.email,
           code: 200,
           message: "user Found",
+          imageUrl: result.imageUrl,
           token: "hfgdhg",
           name: result.name,
         });

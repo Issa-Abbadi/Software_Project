@@ -34,15 +34,29 @@ const firestore = firebase.firestore();
 function Nav_bar(props) {
   const navigate = useNavigate();
   let collection = "h";
+  let collection2 = "h";
   if (localStorage.getItem("EMAIL") !== null) {
     collection = localStorage.getItem("EMAIL");
+    collection2 = "ClientsNotifications";
   }
 
   const userRef = firestore.collection(collection);
-  const query1 = userRef
-    .where("seen", "==", false)
-    .orderBy("createdAt", "desc")
-    .limit(5);
+  const user2Ref = firestore.collection(collection2);
+  let query1;
+  if (localStorage.getItem("EMAIL") !== null)
+    if (localStorage.getItem("EMAIL").includes("@houseware")) {
+      query1 = userRef
+        .where("seen", "==", false)
+        .orderBy("createdAt", "desc")
+        .limit(5);
+    } else {
+      query1 = user2Ref
+        .where("seen", "==", false)
+        .where("Touid", "==", localStorage.getItem("EMAIL"))
+        .orderBy("createdAt", "desc")
+        .limit(5);
+    }
+
   let [notification] = useCollectionData(query1, { idField: "id" });
 
   useEffect(() => {
@@ -58,10 +72,7 @@ function Nav_bar(props) {
           console.log(payload);
         })
         .catch((err) => console.log("failed: ", err));
-      if (
-        localStorage.getItem("EMAIL").includes("@houseware") &&
-        notification
-      ) {
+      if (notification) {
         setNotifications(notification);
       } else {
         setNotifications("");

@@ -111,11 +111,20 @@ function ChatRoom() {
   }, [messages1, messages2]);
 
   const handleMarket = (market) => {
+    console.log("Hello");
     localStorage.setItem("EMAIL2", market.email);
-    const usersRef = firestore
-      .collection(localStorage.getItem("EMAIL"))
-      .doc(market.email);
-
+    let usersRef;
+    if (localStorage.getItem("EMAIL").includes("@houseware")) {
+      usersRef = firestore
+        .collection(localStorage.getItem("EMAIL"))
+        .doc(market.email);
+    } else {
+      console.log("Hello", market.email);
+      usersRef = firestore
+        .collection(localStorage.getItem("ClientsNotifications"))
+        .doc(market.email);
+    }
+    console.log("Hello");
     usersRef.update({
       seen: true,
     });
@@ -146,27 +155,34 @@ function ChatRoom() {
       photoURL: imageUrl,
     });
     setFormValue("");
+    let usersRef;
     if (!localStorage.getItem("EMAIL").includes("@houseware")) {
-      const usersRef = firestore
+      usersRef = firestore
         .collection(localStorage.getItem("EMAIL2"))
         .doc(localStorage.getItem("EMAIL"));
-
-      usersRef.get().then((docSnapshot) => {
-        if (docSnapshot.exists) {
-          usersRef.update({
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          });
-        } else {
-          usersRef.set({
-            email: localStorage.getItem("EMAIL"),
-            imageUrl: JSON.parse(localStorage.getItem("Profile")).imageUrl,
-            name: JSON.parse(localStorage.getItem("Profile")).name,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            seen: false,
-          }); // create the document
-        }
-      });
+    } else {
+      usersRef = firestore
+        .collection("ClientsNotifications")
+        .doc(localStorage.getItem("EMAIL"));
     }
+
+    usersRef.get().then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        usersRef.update({
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+      } else {
+        console.log("in else", JSON.parse(localStorage.getItem("Profile")));
+        usersRef.set({
+          email: localStorage.getItem("EMAIL"),
+          Touid: localStorage.getItem("EMAIL2"),
+          imageUrl: JSON.parse(localStorage.getItem("Profile")).imageUrl,
+          name: JSON.parse(localStorage.getItem("Profile")).name,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          seen: false,
+        }); // create the document
+      }
+    });
 
     //  dummy.current.scrollIntoView({ behavior: "smooth" });
   };
