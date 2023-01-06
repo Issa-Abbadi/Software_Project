@@ -4,6 +4,7 @@ import SingleProduct from "../components/SingleProduct";
 import Button from "@mui/material/Button";
 import { LocalGasStationRounded } from "@mui/icons-material";
 import "./product.css";
+import "./productDescPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
@@ -155,8 +156,8 @@ function Product(props) {
         {product.product !== "" && (
           <div className="app">
             {" "}
-            <div className="details" key={product.product._id}>
-              {" "}
+          <div className="productDesc" key={product.product._id}>
+            <div class="imgDiv">
               <div className="big-img">
                 <img src={productImg} class="mainImg" alt="" />{" "}
                 <div>
@@ -196,14 +197,11 @@ function Product(props) {
                   })}
                 </div>
               </div>
-              {/* here  Box row */}
-
-
-
-
-
-              <div class="Box">
-                <div class="rightSide">
+              </div>
+             
+             
+             <div class="descriptionDiv">
+              <div class="leftSide">
                   <h2 class="productName">{product.product.product_name}</h2>
                   <span>
                     {!wish && (
@@ -258,8 +256,19 @@ function Product(props) {
                     {"تمت إضافة المنتج بنجاح"}
                   </Alert>
                 )}
-              </div>
-            </div>
+              </div>             
+          </div>
+
+
+
+
+
+
+
+
+
+
+
             <div class="relatedProducts">
               {realtedP !== "" && (
                 <div style={{ width: "100%" }}>

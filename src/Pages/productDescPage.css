@@ -1,0 +1,84 @@
+
+.productDesc
+{
+    margin-top: 5%;
+    padding: 0;
+    direction: rtl;
+    background-color: #eee;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.productDesc .imgDiv
+{
+    position: absolute;
+    width: 40%;
+    background-color: white;
+    right: 0;
+    height: 100%;
+    border: 3px solid var(--dark-liver-horses);
+    display: flex;
+    flex: 1;
+}
+
+.productDesc .descriptionDiv
+{
+    position: absolute;
+    width: 60%;
+    background-color: white;
+    left: 0;
+    display: flex;
+    flex: 1;
+}
+
+.productDesc .descriptionDiv .leftSide
+{
+    /* background-color: red; */
+    margin-right: 5%;
+}
+.productDesc .descriptionDiv .leftSide .productName
+{
+    /* background-color: yellow; */
+    font-weight: bold;
+}
+.productDesc .descriptionDiv .leftSide .rating
+{
+    /* background-color: blue; */
+}
+.imgDiv .big-img
+{
+    margin-left: 10%; 
+     margin: auto ;
+}
+
+.imgDiv .big-img .mainImg
+{
+    width: 80%;
+    margin: auto;
+}
+
+.spanColors a{
+    /* background-color: red; */
+    margin: 0;
+    padding: 0;
+    margin-top: 2%; 
+    margin-right: 15%;
+    width: 5%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1.5px solid black; 
+    border-radius: 0;
+  }
+  
+  
+.spanColors a:hover{
+    transform: scale(1.2);
+}
+
+.spanColors{
+  overflow: hidden;
+}
