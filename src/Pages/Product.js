@@ -46,6 +46,7 @@ function Product(props) {
         quantity: 1,
         price: productPrice,
         product_company: product.product.product_company,
+        product_name: product.product.product_name,
       })
       .then((res) => {
         if (res.data.code === 500) {
@@ -234,7 +235,13 @@ function Product(props) {
                     <input type="number" min="1" max="5" value="1" />
                   </div>
 
-                  <p> المتجر:   <a href="/markets" class="storeName">{product.product.product_company}</a></p>
+                  <p>
+                    {" "}
+                    المتجر:{" "}
+                    <a href="/markets" class="storeName">
+                      {product.product.product_company}
+                    </a>
+                  </p>
                   <p> الفئة: {product.product.product_category}</p>
                   <p>الصنف: {product.product.sub_category}</p>
                   {product.product.returnable == true && (
@@ -242,24 +249,24 @@ function Product(props) {
                   )}
                 </div>
                 <p class="description">{product.product.product_description}</p>{" "}
-               <div class="buttons">
-                <button className="cart" onClick={addtoCart}>
-                  أضف للسلة
-                </button>
-                <button className="buyNow" onClick={addtoCart}>
-                  اشتري الان
-                </button>
-                {code == 200 && (
-                  <Alert
-                    severity="success"
-                    onClose={() => {
-                      setCode(201);
-                    }}
-                  >
-                    {"تمت إضافة المنتج بنجاح"}
-                  </Alert>
-                )}
-              </div>
+                <div class="buttons">
+                  <button className="cart" onClick={addtoCart}>
+                    أضف للسلة
+                  </button>
+                  <button className="buyNow" onClick={addtoCart}>
+                    اشتري الان
+                  </button>
+                  {code == 200 && (
+                    <Alert
+                      severity="success"
+                      onClose={() => {
+                        setCode(201);
+                      }}
+                    >
+                      {"تمت إضافة المنتج بنجاح"}
+                    </Alert>
+                  )}
+                </div>
               </div>
             </div>
             <div class="relatedProducts">

@@ -151,6 +151,7 @@ function Cart(props) {
       })
       .then(({ data }) => {
         setProducts("");
+        setSum(0);
       })
       .catch((error) => {
         console.log(error);
