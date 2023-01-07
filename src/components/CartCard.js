@@ -67,18 +67,20 @@ function CartCard(props) {
 
   const minus = (vars, _id) => {
     console.log("kkk", vars);
-    axios
-      .post("http://localhost:4000/login/minus", {
-        email: localStorage.getItem("EMAIL"),
-        _id: _id,
-        var: vars,
-      })
-      .then(({ data }) => {
-        setQuantity(quantity - 1);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (quantity > 1) {
+      axios
+        .post("http://localhost:4000/login/minus", {
+          email: localStorage.getItem("EMAIL"),
+          _id: _id,
+          var: vars,
+        })
+        .then(({ data }) => {
+          setQuantity(quantity - 1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const plus = (vars, _id) => {
@@ -114,19 +116,23 @@ function CartCard(props) {
   };
 
   const handleChange = (e, vars, _id) => {
-    setQuantity(e.target.value);
-    console.log("EE", e.target.value);
-    axios
-      .post("http://localhost:4000/login/setQuantity", {
-        email: localStorage.getItem("EMAIL"),
-        _id: _id,
-        var: vars,
-        quantity: parseInt(e.target.value),
-      })
-      .then((res) => {
-        setQuantity(e.target.value);
-      })
-      .catch();
+    if (e.target.value > 0) {
+      setQuantity(e.target.value);
+      console.log("EE", e.target.value);
+
+      axios
+        .post("http://localhost:4000/login/setQuantity", {
+          email: localStorage.getItem("EMAIL"),
+          _id: _id,
+          var: vars,
+          quantity: parseInt(e.target.value),
+        })
+        .then((res) => {
+          setQuantity(e.target.value);
+        })
+        .catch();
+    } else {
+    }
   };
 
   return (

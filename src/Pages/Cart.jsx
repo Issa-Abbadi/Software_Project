@@ -206,16 +206,18 @@ function Cart(props) {
         data.cart = data.cart.sort(dynamicSort("_id"));
         setAccount(data);
         let m = 0;
-        if (account.cart[0] != null)
+        if (account.cart[0] != null) {
+          processCom(data);
           account.cart.map((prod) => {
             prod.vars.map((var1) => {
               m = m + var1.price * var1.quantity;
               console.log("Sum=", m);
             });
           });
+        }
+
         console.log("Sum=", sum);
         setSum(m);
-        processCom(data);
       })
       .catch((error) => {
         console.log(error);
