@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddressForm from "../components/AddressForm";
 import PaymentForm from "../components/PaymentForm";
 import Review from "../components/Review";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Copyright() {
   return (
@@ -29,24 +31,44 @@ function Copyright() {
   );
 }
 
-const steps = ["Shipping address", "Payment details", "Review your order"];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
+const steps = ["العنوان", "طريقة الدفع", "مراجعة الطلب"];
 
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Checkout(props) {
+  const [address, setAddress] = useState({
+    firstName: "",
+    lastName: "",
+    city: "",
+    address: "",
+  });
+
+  async function getAddress() {
+    props.getAccount();
+  }
+
+  useEffect(() => {
+    getAddress();
+  }, []);
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return (
+          <AddressForm
+            handleNext={handleNext}
+            address={props.account.address}
+            getAddress={getAddress}
+          />
+        );
+      case 1:
+        return <PaymentForm handleNext={handleNext} handleBack={handleBack} />;
+      case 2:
+        return <Review handleNext={handleNext} handleBack={handleBack} />;
+      default:
+        throw new Error("Unknown step");
+    }
+  }
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -75,7 +97,7 @@ export default function Checkout() {
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            الطلب
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
@@ -98,10 +120,10 @@ export default function Checkout() {
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              {/* <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {activeStep !== 0 && (
                   <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
+                    السابق
                   </Button>
                 )}
 
@@ -110,9 +132,9 @@ export default function Checkout() {
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1 }}
                 >
-                  {activeStep === steps.length - 1 ? "Place order" : "Next"}
+                  {activeStep === steps.length - 1 ? "اعتماد الطلب" : "التالي"}
                 </Button>
-              </Box>
+              </Box>  */}
             </React.Fragment>
           )}
         </Paper>

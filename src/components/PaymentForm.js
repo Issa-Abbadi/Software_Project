@@ -4,8 +4,9 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
 
-export default function PaymentForm() {
+export default function PaymentForm(props) {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -59,6 +60,24 @@ export default function PaymentForm() {
             label="Remember credit card details for next time"
           />
         </Grid>
+        <Button
+          color="primary"
+          variant="outline"
+          type="submit"
+          sx={{ mt: 3, ml: 1 }}
+          onClick={props.handleBack}
+        >
+          السابق
+        </Button>
+        <Button
+          color="primary"
+          variant="contained"
+          type="submit"
+          sx={{ mt: 3, ml: 1 }}
+          onClick={props.handleNext}
+        >
+          التالي
+        </Button>
       </Grid>
     </React.Fragment>
   );

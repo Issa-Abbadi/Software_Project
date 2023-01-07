@@ -334,7 +334,7 @@ function Cart(props) {
             </MDBRow>
           </MDBContainer>
         )}
-        {buy === true && <Checkout />}
+        {buy === true && <Checkout account={account} getAccount={getAccount} />}
       </section>
     </>
   );

@@ -30,6 +30,9 @@ let accountSchema = new Schema(
     wishList: {
       type: Array,
     },
+    address: {
+      type: Object,
+    },
   },
   {
     collection: "accounts",

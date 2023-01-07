@@ -4,6 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
 const products = [
   {
@@ -37,7 +38,7 @@ const payments = [
   { name: "Expiry date", detail: "04/2024" },
 ];
 
-export default function Review() {
+export default function Review(props) {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -83,6 +84,24 @@ export default function Review() {
             ))}
           </Grid>
         </Grid>
+        <Button
+          color="primary"
+          variant="outline"
+          type="submit"
+          sx={{ mt: 3, ml: 1 }}
+          onClick={props.handleBack}
+        >
+          السابق
+        </Button>
+        <Button
+          color="primary"
+          variant="contained"
+          type="submit"
+          sx={{ mt: 3, ml: 1 }}
+          onClick={props.handleNext}
+        >
+          اعتماد الطلب
+        </Button>
       </Grid>
     </React.Fragment>
   );

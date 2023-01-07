@@ -383,4 +383,30 @@ router.post("/markets", (req, res) => {
     });
 });
 
+router.post("/addAddress", (req, res) => {
+  console.log("address", req.body);
+  accountSchema
+    .updateOne(
+      { email: req.body.email },
+      {
+        address: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          city: req.body.city,
+          address: req.body.address,
+        },
+      }
+    )
+    .then((result) => {
+      if (result.address === null) {
+      }
+      console.log("found", result);
+      res.send({ code: 200, message: "Address Added" });
+    })
+    .catch((err) => {
+      console.log("not found");
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 module.exports = router;
