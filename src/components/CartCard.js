@@ -149,10 +149,18 @@ function CartCard(props) {
                   <span className="text-muted">الحجم: </span>
                   {props.prod.vars[props.vars].size}{" "}
                 </p>
-                <p style={{ color: "green" }}>
-                  <span>متوفر: </span>
-                  {aquantity}
-                </p>
+                {aquantity >= quantity && (
+                  <p style={{ color: "green" }}>
+                    <span>متوفر: </span>
+                    {aquantity}
+                  </p>
+                )}
+                {aquantity < quantity && (
+                  <p style={{ color: "red" }}>
+                    <span>متوفر: </span>
+                    {aquantity}
+                  </p>
+                )}
               </MDBCol>
               <MDBCol
                 md="3"

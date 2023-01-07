@@ -168,8 +168,9 @@ function Cart(props) {
   // };
 
   async function processCom(data) {
-    data.cart.map((prod) => {
-      prod.vars.map(async (var1) => {
+    let buy1 = true;
+    for (const prod of data.cart) {
+      for (const var1 of prod.vars) {
         if (var1 !== null) {
           console.log("in Buy");
           await axios
@@ -181,18 +182,18 @@ function Cart(props) {
               console.log("code", data.code);
               if (data.code === 330 || data.code === 500) {
                 setBuy(false);
-
-                return false;
+                buy1 = false;
               }
             })
             .catch((error) => {
               console.log(error);
             });
         }
-      });
-    });
-
-    return true;
+      }
+    }
+    if (buy1 === true) {
+      setBuy(true);
+    }
   }
 
   async function processBuy() {
@@ -214,11 +215,7 @@ function Cart(props) {
           });
         console.log("Sum=", sum);
         setSum(m);
-        const buy1 = await processCom(data);
-        console.log("vvv", buy1, buy);
-        if (buy1 === true) {
-          setBuy(true);
-        }
+        processCom(data);
       })
       .catch((error) => {
         console.log(error);
