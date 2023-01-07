@@ -16,6 +16,10 @@ export default function PaymentForm(props) {
 
   const [method, setMethod] = useState("الدفع عند الاستلام");
 
+  React.useEffect(() => {
+    localStorage.setItem("MethodOfPayment", "الدفع عند الاستلام");
+  }, []);
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>

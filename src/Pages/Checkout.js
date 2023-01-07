@@ -64,7 +64,14 @@ export default function Checkout(props) {
       case 1:
         return <PaymentForm handleNext={handleNext} handleBack={handleBack} />;
       case 2:
-        return <Review handleNext={handleNext} handleBack={handleBack} />;
+        return (
+          <Review
+            handleNext={handleNext}
+            handleBack={handleBack}
+            getAddress={getAddress}
+            account={props.account}
+          />
+        );
       default:
         throw new Error("Unknown step");
     }
