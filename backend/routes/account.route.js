@@ -252,6 +252,7 @@ router.post("/addtoCart", (req, res) => {
               var: req.body.var,
               quantity: req.body.quantity,
               price: req.body.price,
+              product_company: req.body.product_company,
             },
           ],
         };
@@ -274,6 +275,7 @@ router.post("/addtoCart", (req, res) => {
               var: req.body.var,
               quantity: req.body.quantity,
               price: req.body.price,
+              product_company: req.body.product_company,
             },
           ];
           cart = result.cart;
@@ -284,6 +286,7 @@ router.post("/addtoCart", (req, res) => {
             quantity:
               req.body.quantity + result.cart[index].vars[found].quantity,
             price: result.cart[index].vars[found].price,
+            product_company: result.cart[index].vars[found].product_company,
           };
           cart = result.cart;
         }

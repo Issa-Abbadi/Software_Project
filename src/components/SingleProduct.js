@@ -103,6 +103,7 @@ function SingleProduct(props) {
         var: productVar,
         quantity: 1,
         price: productPrice,
+        product_company: product.product_company,
       })
       .then((res) => {
         if (res.data.code === 500) {
