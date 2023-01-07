@@ -16,6 +16,19 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/getVar", (req, res) => {
+  productSchema
+    .findOne({ _id: req.body._id })
+    .then((result) => {
+      console.log("res", result.vars[req.body.vars]);
+
+      res.send(result.vars[req.body.vars]);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 router.post("/company", (req, res) => {
   //console.log("Hello", req.body.product_company);
   productSchema
@@ -121,4 +134,31 @@ router.post("/subC", (req, res) => {
     });
 });
 
+router.post("/buyCart", (req, res) => {
+  productSchema
+    .findOne({
+      _id: req.body._id,
+    })
+
+    .then((result) => {
+      if (result === null) {
+        res.send({ code: 500, message: "product not found" });
+      } else if (
+        result.vars[req.body.vars.var].quantity >= req.body.vars.quantity
+      ) {
+        console.log(
+          "200",
+          result.vars[req.body.vars.var].quantity,
+          req.body.vars.quantity
+        );
+        res.send({ code: 200 });
+      } else {
+        console.log("330");
+        res.send({ code: 330 });
+      }
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
+});
 module.exports = router;

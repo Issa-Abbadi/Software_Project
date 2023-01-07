@@ -22,6 +22,9 @@ import { Button } from "@mui/material";
 
 function CartCard(props) {
   const [quantity, setQuantity] = useState(props.quantity);
+  const [aquantity, setAQuantity] = useState(
+    props.prod.vars[props.vars].quantity
+  );
   const [prevQuantity, setPrevQuantity] = useState(props.quantity);
   const [see, setSee] = useState(true);
 
@@ -44,9 +47,27 @@ function CartCard(props) {
     }
   }, [quantity]);
 
-  async function minus(vars, _id) {
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (props)
+  //       axios
+  //         .post("http://localhost:4000/Products/getVar", {
+  //           _id: props.prod._id,
+  //           vars: props.vars,
+  //         })
+  //         .then(({ data }) => {
+  //           setAQuantity(data.quantity);
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
+  //   }, 10000);
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  const minus = (vars, _id) => {
     console.log("kkk", vars);
-    await axios
+    axios
       .post("http://localhost:4000/login/minus", {
         email: localStorage.getItem("EMAIL"),
         _id: _id,
@@ -58,7 +79,7 @@ function CartCard(props) {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   const plus = (vars, _id) => {
     console.log("kkk", vars);
@@ -127,6 +148,10 @@ function CartCard(props) {
                 <p>
                   <span className="text-muted">الحجم: </span>
                   {props.prod.vars[props.vars].size}{" "}
+                </p>
+                <p style={{ color: "green" }}>
+                  <span>متوفر: </span>
+                  {aquantity}
                 </p>
               </MDBCol>
               <MDBCol

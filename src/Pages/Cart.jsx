@@ -18,7 +18,7 @@ import {
 import axios from "axios";
 import usePrevious from "../components/usePrevious";
 import CartCard from "../components/CartCard";
-
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import Checkout from "./Checkout";
@@ -41,6 +41,7 @@ function dynamicSort(property) {
 }
 
 function Cart(props) {
+  const navigate = useNavigate();
   const [calc, setCalc] = new useState(false);
   function getAccount() {
     axios
@@ -155,6 +156,75 @@ function Cart(props) {
         console.log(error);
       });
   };
+
+  // const getWithPromiseAll = async () => {
+  //   console.time("promise all");
+  //   let data = await Promise.all(
+  //     usernames.map(async (username) => {
+  //       return await simulateFetchData(username);
+  //     })
+  //   );
+  //   console.timeEnd("promise all");
+  // };
+
+  async function processCom(data) {
+    data.cart.map((prod) => {
+      prod.vars.map(async (var1) => {
+        if (var1 !== null) {
+          console.log("in Buy");
+          await axios
+            .post("http://localhost:4000/Products/buyCart", {
+              _id: prod._id,
+              vars: var1,
+            })
+            .then(({ data }) => {
+              console.log("code", data.code);
+              if (data.code === 330 || data.code === 500) {
+                setBuy(false);
+
+                return false;
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      });
+    });
+
+    return true;
+  }
+
+  async function processBuy() {
+    axios
+      .post("http://localhost:4000/login/one", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(async ({ data }) => {
+        setSum(0);
+        data.cart = data.cart.sort(dynamicSort("_id"));
+        setAccount(data);
+        let m = 0;
+        if (account.cart[0] != null)
+          account.cart.map((prod) => {
+            prod.vars.map((var1) => {
+              m = m + var1.price * var1.quantity;
+              console.log("Sum=", m);
+            });
+          });
+        console.log("Sum=", sum);
+        setSum(m);
+        const buy1 = await processCom(data);
+        console.log("vvv", buy1, buy);
+        if (buy1 === true) {
+          setBuy(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const [buy, setBuy] = useState(false);
 
   return (
@@ -233,7 +303,7 @@ function Cart(props) {
                   <MDBCardBody>
                     <MDBRow className="justify-content-between align-items-center">
                       <MDBCol md="1" lg="1" xl="1" className="text-start">
-                        <a href="#!" onClick={() => setBuy(true)}>
+                        <a href="#!" onClick={() => processBuy()}>
                           <Button
                             className="ms-3"
                             color="warning"
