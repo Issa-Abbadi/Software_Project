@@ -2,15 +2,19 @@
   /* margin-top: 5%;
   padding: 0;
   direction: rtl;*/
-  background-color: red;
+  /* background-color: red; */
   /* width: 100%;
   height: 500px;  */
   /* position: relative; */
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: center;
   flex-wrap: wrap;
   direction: rtl;
+  overflow: hidden;
+  /* background-color: red; */
+  padding: -50%;
   /* margin: 5%; */
   /* padding: -20%; */
 }
@@ -18,34 +22,44 @@
 .productDesc .imgDiv {
   /* position: absolute;
   width: 40%; */
-  background-color: white;
   height: 50%;
-  border: 3px solid var(--dark-liver-horses);
+  /* border: 3px solid var(--dark-liver-horses); */
+  background-color: white;
   max-width: 500px;
   min-width: 400px;
   overflow: hidden;
   /* margin-top: 25px; */
   margin-bottom: 10%;
   margin-top: 2%;
-
+ padding-bottom: 10%;
+ border: 2px solid var(--dark-liver-horses);
 }
 
 .productDesc .descriptionDiv {
   /* position: absolute;
   width: 60%; */
+  height: 50%;
   background-color: white;
   left: 0;
   max-width: 700px;
   min-width: 600px;
   overflow: hidden;
-  margin-top: 25px;
-  margin-right: 0;
-  margin-bottom: 10%;
+
+
+  /* margin-bottom: 10%; */
+  margin-top: 2%;
+  border: 2px solid var(--dark-liver-horses);
+ /* padding-bottom: -1%; */
+  /* margin-bottom: -1%; */
 }
 
 .productDesc .descriptionDiv .leftSide {
   /* background-color: red; */
   margin-right: 5%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .productDesc .descriptionDiv .leftSide .productName {
   /* background-color: yellow; */
@@ -54,10 +68,16 @@
 }
 .productDesc .descriptionDiv .leftSide .rating {
   /* background-color: blue; */
+  margin-bottom: 2%;
+}
+
+.productDesc .descriptionDiv .leftSide .heart
+{
+    margin-bottom: 2%;
 }
 .imgDiv .big-img {
-  margin-left: 10%;
   margin: auto;
+ 
 }
 
 .imgDiv .big-img .cover-img {
@@ -99,13 +119,69 @@
 {
     font-weight: bold;
     font-size: 30px;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
 
 .leftSide .rating
 {
     display: flex;
     font-size: 20px;
-    margin-bottom: 1%;
 
 }
+
+.leftSide .size
+{
+  /* background-color: red; */
+  display: flex;
+  justify-content: right;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.leftSide .size div
+{
+  margin-right: 5%;
+  border: 3px solid var(--dark-liver-horses);
+  padding: 2% 6%;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--dark-liver-horses);
+
+}
+.leftSide .size div:hover
+{
+     background-color: var(--dark-liver-horses);
+     /* border: 5px; */
+     color: white;
+}
+
+.descriptionDiv p 
+{
+  margin-right: 5%;
+}
+
+.descriptionDiv .buttons
+{
+  display: flex;
+  margin-right: 5%;
+  margin-top: -1%;
+}
+
+.descriptionDiv p
+{
+  margin-right: 0%;
+  margin-top: 2%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.descriptionDiv .storeName
+{
+   color: rgb(125, 134, 141);   
+
+}
+.app
+{
+  background-color: #eee;
+}
+

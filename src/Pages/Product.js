@@ -205,7 +205,7 @@ function Product(props) {
               <div class="descriptionDiv">
                 <div class="leftSide">
                   <h2 class="productName">{product.product.product_name}</h2>
-                  <span>
+                  <span class="heart">
                     {!wish && (
                       <FavoriteBorderIcon
                         style={{ color: "red" }}
@@ -234,7 +234,7 @@ function Product(props) {
                     <input type="number" min="1" max="5" value="1" />
                   </div>
 
-                  <p> المتجر: {product.product.product_company}</p>
+                  <p> المتجر:   <a href="/markets" class="storeName">{product.product.product_company}</a></p>
                   <p> الفئة: {product.product.product_category}</p>
                   <p>الصنف: {product.product.sub_category}</p>
                   {product.product.returnable == true && (
@@ -242,6 +242,7 @@ function Product(props) {
                   )}
                 </div>
                 <p class="description">{product.product.product_description}</p>{" "}
+               <div class="buttons">
                 <button className="cart" onClick={addtoCart}>
                   أضف للسلة
                 </button>
@@ -258,6 +259,7 @@ function Product(props) {
                     {"تمت إضافة المنتج بنجاح"}
                   </Alert>
                 )}
+              </div>
               </div>
             </div>
             <div class="relatedProducts">
