@@ -80,7 +80,7 @@ function App() {
             {/* <MuiBreadcrumbs/> */}
 
             {localStorage.getItem("EMAIL") && (
-              <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
+              <MessageOutlinedIcon class="chatIcon"  onClick={changeChat} />
             )}
 
             <Routes>

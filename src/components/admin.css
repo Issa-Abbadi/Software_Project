@@ -1,0 +1,51 @@
+.addProductContainer
+{
+    background-color: white;
+    margin-right: 15%;
+    outline: 5px solid brown;
+    padding: 2%;
+    width: 40%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+#product_price
+{
+    border: 2px solid black;
+    width: 60%;
+    margin: 1%;
+    
+}
+/* rgb(184, 177, 177); */
+#product_price::placeholder{
+    font-size: 20px;
+    color: black;
+
+}
+
+#product_discount
+{
+    border: 2px solid black;
+    width: 60%;
+    margin: 1%;
+}
+
+#product_discount::placeholder
+{
+    font-size: 20px;
+    color: black;
+}
+
+#product_quantity
+{
+    border: 2px solid black;
+    width: 60%;
+    margin: 1%;
+}
+
+#product_discount::placeholder
+{
+    font-size: 20px;
+    color: black;
+}

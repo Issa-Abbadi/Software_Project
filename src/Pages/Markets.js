@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import SingleProduct from "../components/SingleProduct";
 import Button from "@mui/material/Button";
 import { LocalGasStationRounded } from "@mui/icons-material";
-import "./product.css";
+// import "./product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";

@@ -21,7 +21,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import { prefixer } from "stylis";
 import createCache from "@emotion/cache";
-// import "./admin.css";
+import "./admin.css";
 const rtlTheme = createTheme({ direction: "rtl" });
 
 const cacheRtl = createCache({
@@ -223,7 +223,7 @@ const AddProductForm = (props) => {
   }, [formik.values.product_category]);
 
   return (
-    <div style={{ marginTop: " 5%" }}>
+    <div style={{ marginTop: " 5%" }} class="addProductContainer">
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={rtlTheme}>
           <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
@@ -247,11 +247,13 @@ const AddProductForm = (props) => {
                 }
               />
             )}
+        
             <Input
               fullWidth
               type="number"
               id="product_price"
               name="product_price"
+              placeholder="السعر"
               label="السعر"
               value={formik.values.product_price}
               onChange={formik.handleChange}
@@ -269,6 +271,7 @@ const AddProductForm = (props) => {
               id="product_discount"
               name="product_discount"
               label="نسبة الخصم"
+              placeholder="نسبة الخصم"
               value={formik.values.product_discount}
               onChange={formik.handleChange}
               error={
