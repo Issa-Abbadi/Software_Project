@@ -198,31 +198,22 @@ function Cart(props) {
   }
 
   async function processBuy() {
-    axios
+    await axios
       .post("http://localhost:4000/login/one", {
         email: localStorage.getItem("EMAIL"),
       })
       .then(async ({ data }) => {
-        setSum(0);
         data.cart = data.cart.sort(dynamicSort("_id"));
         setAccount(data);
-        let m = 0;
-        if (account.cart[0] != null) {
-          processCom(data);
-          account.cart.map((prod) => {
-            prod.vars.map((var1) => {
-              m = m + var1.price * var1.quantity;
-              console.log("Sum=", m);
-            });
-          });
-        }
 
-        console.log("Sum=", sum);
-        setSum(m);
+        if (account.cart[0] != null) {
+          await processCom(data);
+        }
       })
       .catch((error) => {
         console.log(error);
       });
+    return true;
   }
 
   const [buy, setBuy] = useState(false);

@@ -52,6 +52,15 @@ export default function Review(props) {
     { name: "Expiry date", detail: "04/2024" },
   ];
 
+  const handlefinish = async () => {
+    const result = await props.processBuy();
+    console.log("result", result);
+    if (result) {
+      console.log("result", result);
+      props.handleNext();
+    }
+  };
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -113,7 +122,7 @@ export default function Review(props) {
           variant="contained"
           type="submit"
           sx={{ mt: 3, ml: 1 }}
-          onClick={props.processBuy}
+          onClick={handlefinish}
         >
           اعتماد الطلب
         </Button>
