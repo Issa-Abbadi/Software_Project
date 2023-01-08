@@ -117,13 +117,9 @@ export default function Checkout(props) {
           {activeStep === steps.length ? (
             <React.Fragment>
               <Typography variant="h5" gutterBottom>
-                Thank you for your order.
+                شكراً على طلبك
               </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
+              <Typography variant="subtitle1">تم الطلب بنجاح</Typography>
             </React.Fragment>
           ) : (
             <React.Fragment>

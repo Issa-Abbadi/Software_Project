@@ -6,6 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Review(props) {
   useEffect(() => {
@@ -45,19 +46,35 @@ export default function Review(props) {
   const [products, setProducts] = useState([]);
   const [sum, setSum] = useState(0);
 
-  const payments = [
-    { name: "Card type", detail: "Visa" },
-
-    { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
-    { name: "Expiry date", detail: "04/2024" },
-  ];
-
   const handlefinish = async () => {
     const result = await props.processBuy();
-    console.log("result", result);
+
     if (result) {
-      console.log("result", result);
-      props.handleNext();
+      let done = true;
+      for (const prod of props.account.cart) {
+        for (const var1 of prod.vars) {
+          if (var1 !== null) {
+            await axios
+              .post("http://localhost:4000/Products/buyCheckout", {
+                _id: prod._id,
+                vars: var1,
+                account: localStorage.getItem("EMAIL"),
+              })
+              .then(({ data }) => {
+                console.log("code", data.code);
+                if (data.code === 330 || data.code === 500) {
+                  done = false;
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        }
+      }
+      if (done === true) {
+        props.handleNext();
+      }
     }
   };
 

@@ -47,6 +47,7 @@ function CartCard(props) {
     }
   }, [quantity]);
 
+  //comment it when testing
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (props)

@@ -4,6 +4,8 @@ let mongoose = require("mongoose"),
 
 // Student Model
 let productSchema = require("../models/Product");
+let paymentsSchema = require("../models/Payments");
+let accountSchema = require("../models/Account");
 
 router.get("/", (req, res) => {
   productSchema
@@ -20,8 +22,6 @@ router.post("/getVar", (req, res) => {
   productSchema
     .findOne({ _id: req.body._id })
     .then((result) => {
-      console.log("res", result.vars[req.body.vars]);
-
       res.send(result.vars[req.body.vars]);
     })
     .catch((err) => {
@@ -161,4 +161,53 @@ router.post("/buyCart", (req, res) => {
       res.send({ code: 500, message: "user not found" });
     });
 });
+
+// router.post("/buyCheckout", (req, res) => {
+//   productSchema
+//     .findOne({
+//       _id: req.body._id,
+//     })
+
+//     .then((result) => {
+//       if (result === null) {
+//         res.send({ code: 500, message: "product not found" });
+//       } else {
+//         result.vars[req.body.vars.var].quantity -= req.body.vars.quantity;
+//         productSchema
+//           .updateOne({ _id: req.body._id }, { vars: result.vars })
+//           .then(() => {
+//             const newPayment = new paymentsSchema({
+//               product_name: req.body.vars.product_name,
+//               client_email: req.body.account,
+//               market_name: req.body.vars.product_company,
+//               quantity: req.body.vars.quantity,
+//               price: req.body.vars.price,
+//               created_on: new Date().toISOString(),
+//             });
+
+//             newPayment
+//               .save()
+//               .then(() => {
+//                 accountSchema
+//                   .updateOne({ email: req.body.account }, { cart: [] })
+//                   .then(() => {
+//                     res.send({ code: 200, message: "Added Successfully" });
+//                   })
+//                   .catch((err) => {
+//                     res.send({ code: 500, message: "Something wrong" });
+//                   });
+//               })
+//               .catch((err) => {
+//                 res.send({ code: 500, message: "Something wrong" });
+//               });
+//           })
+//           .catch((err) => {
+//             res.send({ code: 500, message: "Something wrong" });
+//           });
+//       }
+//     })
+//     .catch((err) => {
+//       res.send({ code: 500, message: "user not found" });
+//     });
+// });
 module.exports = router;
