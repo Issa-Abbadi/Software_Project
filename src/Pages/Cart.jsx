@@ -107,14 +107,11 @@ function Cart(props) {
   const [sum, setSum] = useState(0);
   const [x, setX] = useState(1);
   const prevPrice = usePrevious(price);
-  useEffect(() => {
-    i = -1;
-    if (account == "") {
-      getAccount();
-    }
-
-    console.log("222", account);
-  }, []);
+  // useEffect(() => {
+  //   if (account !== "") {
+  //     getAccount();
+  //   }
+  // }, [account2]);
 
   useEffect(() => {
     setBuy(false);
@@ -128,7 +125,7 @@ function Cart(props) {
 
   useEffect(() => {
     if (account !== "") {
-      console.log("cart", products, account.cart);
+      console.log("cart2", x, products, account.cart);
       axios
         .post("http://localhost:4000/Products/oneForCart", {
           _id: account.cart,
@@ -194,26 +191,17 @@ function Cart(props) {
     }
     if (buy1 === true) {
       setBuy(true);
+      return true;
+    } else {
+      return false;
     }
   }
 
   async function processBuy() {
-    await axios
-      .post("http://localhost:4000/login/one", {
-        email: localStorage.getItem("EMAIL"),
-      })
-      .then(async ({ data }) => {
-        data.cart = data.cart.sort(dynamicSort("_id"));
-        setAccount(data);
-
-        if (account.cart[0] != null) {
-          await processCom(data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return true;
+    if (account2.cart[0] !== null) {
+      const result = await processCom(account2);
+      return result;
+    }
   }
 
   const [buy, setBuy] = useState(false);
@@ -257,6 +245,7 @@ function Cart(props) {
                               var={0}
                               calcSum={calcSum}
                               calcateSum={calcateSum}
+                              setAccount={setAccount}
                             />
 
                             {account.cart[i].vars[1] != null &&
@@ -270,6 +259,7 @@ function Cart(props) {
                                   var={1}
                                   calcSum={calcSum}
                                   calcateSum={calcateSum}
+                                  setAccount={setAccount}
                                 />
                               )}
                             {account.cart[i].vars[2] != null &&
@@ -283,6 +273,7 @@ function Cart(props) {
                                   var={2}
                                   calcSum={calcSum}
                                   calcateSum={calcateSum}
+                                  setAccount={setAccount}
                                 />
                               )}
                           </>
@@ -294,7 +285,7 @@ function Cart(props) {
                   <MDBCardBody>
                     <MDBRow className="justify-content-between align-items-center">
                       <MDBCol md="1" lg="1" xl="1" className="text-start">
-                        <a href="#!" onClick={() => processBuy()}>
+                        <a href="#!" onClick={async () => await processBuy()}>
                           <Button
                             className="ms-3"
                             color="warning"

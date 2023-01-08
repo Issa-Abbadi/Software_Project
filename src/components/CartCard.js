@@ -29,7 +29,7 @@ function CartCard(props) {
   const [see, setSee] = useState(true);
 
   useEffect(() => {
-    if (quantity > 0) {
+    if (quantity >= 0) {
       props.calcateSum();
     }
   }, [quantity]);
@@ -100,9 +100,9 @@ function CartCard(props) {
       });
   };
 
-  const deleteC = (vars, _id) => {
+  const deleteC = async (vars, _id) => {
     console.log("kkk", vars);
-    axios
+    await axios
       .post("http://localhost:4000/login/deleteC", {
         email: localStorage.getItem("EMAIL"),
         _id: _id,
