@@ -115,6 +115,53 @@ router.get("/home", (req, res) => {
     });
 });
 
+router.post("/buyCheckout", (req, res) => {
+  productSchema
+    .findOne({
+      _id: req.body._id,
+    })
+    .then((result) => {
+      if (result === null) {
+        res.send({ code: 500, message: "product not found" });
+      } else {
+        result.vars[req.body.vars.var].quantity -= req.body.vars.quantity;
+        productSchema
+          .updateOne({ _id: req.body._id }, { vars: result.vars })
+          .then(() => {
+            const newPayment = new paymentsSchema({
+              product_name: req.body.vars.product_name,
+              client_email: req.body.account,
+              market_name: req.body.vars.product_company,
+              quantity: req.body.vars.quantity,
+              price: req.body.vars.price,
+              created_on: new Date().toISOString(),
+            });
+            newPayment
+              .save()
+              .then(() => {
+                accountSchema
+                  .updateOne({ email: req.body.account }, { cart: [] })
+                  .then(() => {
+                    res.send({ code: 200, message: "Added Successfully" });
+                  })
+                  .catch((err) => {
+                    res.send({ code: 500, message: "Something wrong" });
+                  });
+              })
+              .catch((err) => {
+                res.send({ code: 500, message: "Something wrong" });
+              });
+          })
+          .catch((err) => {
+            res.send({ code: 500, message: "Something wrong" });
+          });
+      }
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 router.post("/subC", (req, res) => {
   console.log("req22", req.body);
   productSchema
@@ -162,52 +209,4 @@ router.post("/buyCart", (req, res) => {
     });
 });
 
-// router.post("/buyCheckout", (req, res) => {
-//   productSchema
-//     .findOne({
-//       _id: req.body._id,
-//     })
-
-//     .then((result) => {
-//       if (result === null) {
-//         res.send({ code: 500, message: "product not found" });
-//       } else {
-//         result.vars[req.body.vars.var].quantity -= req.body.vars.quantity;
-//         productSchema
-//           .updateOne({ _id: req.body._id }, { vars: result.vars })
-//           .then(() => {
-//             const newPayment = new paymentsSchema({
-//               product_name: req.body.vars.product_name,
-//               client_email: req.body.account,
-//               market_name: req.body.vars.product_company,
-//               quantity: req.body.vars.quantity,
-//               price: req.body.vars.price,
-//               created_on: new Date().toISOString(),
-//             });
-
-//             newPayment
-//               .save()
-//               .then(() => {
-//                 accountSchema
-//                   .updateOne({ email: req.body.account }, { cart: [] })
-//                   .then(() => {
-//                     res.send({ code: 200, message: "Added Successfully" });
-//                   })
-//                   .catch((err) => {
-//                     res.send({ code: 500, message: "Something wrong" });
-//                   });
-//               })
-//               .catch((err) => {
-//                 res.send({ code: 500, message: "Something wrong" });
-//               });
-//           })
-//           .catch((err) => {
-//             res.send({ code: 500, message: "Something wrong" });
-//           });
-//       }
-//     })
-//     .catch((err) => {
-//       res.send({ code: 500, message: "user not found" });
-//     });
-// });
 module.exports = router;
