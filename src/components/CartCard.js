@@ -47,23 +47,23 @@ function CartCard(props) {
     }
   }, [quantity]);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     if (props)
-  //       axios
-  //         .post("http://localhost:4000/Products/getVar", {
-  //           _id: props.prod._id,
-  //           vars: props.vars,
-  //         })
-  //         .then(({ data }) => {
-  //           setAQuantity(data.quantity);
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //   }, 10000);
-  //   return () => clearInterval(intervalId);
-  // }, []);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (props)
+        axios
+          .post("http://localhost:4000/Products/getVar", {
+            _id: props.prod._id,
+            vars: props.vars,
+          })
+          .then(({ data }) => {
+            setAQuantity(data.quantity);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   const minus = (vars, _id) => {
     console.log("kkk", vars);

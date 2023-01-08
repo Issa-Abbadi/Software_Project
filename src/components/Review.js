@@ -7,39 +7,43 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 
-const products = [
-  {
-    name: "Product 1",
-    desc: "A nice thing",
-    price: "$9.99",
-  },
-  {
-    name: "Product 2",
-    desc: "Another thing",
-    price: "$3.45",
-  },
-  {
-    name: "Product 3",
-    desc: "Something else",
-    price: "$6.51",
-  },
-  {
-    name: "Product 4",
-    desc: "Best thing of all",
-    price: "$14.11",
-  },
-  { name: "Shipping", desc: "", price: "Free" },
-];
-
 export default function Review(props) {
   useEffect(() => {
     props.getAddress();
+    productsSummary();
   }, []);
+
+  async function productsSummary() {
+    let arrayProd = [];
+    let ssum = 0;
+    for (const prod of props.account.cart) {
+      for (const var1 of prod.vars) {
+        if (var1 !== null) {
+          arrayProd = [
+            ...arrayProd,
+            {
+              name: var1.product_name,
+              quantity: var1.quantity,
+              price: var1.price,
+            },
+          ];
+          ssum = ssum + var1.price * var1.quantity;
+        }
+      }
+    }
+    arrayProd = [...arrayProd, { name: "التوصيل", quantity: 1, price: 20 }];
+    ssum = ssum + 20;
+    setProducts(arrayProd);
+    setSum(ssum);
+  }
 
   const [address, setAddress] = useState([
     props.account.address.city,
     props.account.address.address,
   ]);
+
+  const [products, setProducts] = useState([]);
+  const [sum, setSum] = useState(0);
 
   const payments = [
     { name: "Card type", detail: "Visa" },
@@ -56,15 +60,21 @@ export default function Review(props) {
       <List disablePadding>
         {products.map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+            {product.quantity > 1 && (
+              <ListItemText
+                primary={product.name}
+                secondary={"الكمية:" + product.quantity}
+              />
+            )}
+            {product.quantity <= 1 && <ListItemText primary={product.name} />}
+            <Typography variant="body2">{product.price + "$"}</Typography>
           </ListItem>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
+          <ListItemText primary="المجموع:" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+            ${sum}
           </Typography>
         </ListItem>
       </List>
@@ -103,7 +113,7 @@ export default function Review(props) {
           variant="contained"
           type="submit"
           sx={{ mt: 3, ml: 1 }}
-          onClick={props.handleNext}
+          onClick={props.processBuy}
         >
           اعتماد الطلب
         </Button>

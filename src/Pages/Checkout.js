@@ -70,6 +70,7 @@ export default function Checkout(props) {
             handleBack={handleBack}
             getAddress={getAddress}
             account={props.account}
+            processBuy={props.processBuy}
           />
         );
       default:
