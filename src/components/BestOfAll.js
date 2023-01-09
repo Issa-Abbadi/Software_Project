@@ -121,11 +121,7 @@ function PriceChart(props) {
 
   return (
     <div>
-      <div
-        style={{
-          direction: "ltr",
-        }}
-      >
+      <div style={{ direction: "ltr" }}>
         {/* <input type="date" ref={inputRef1} />
         <input type="date" ref={inputRef2} />
         <button onClick={filterData}>Filter</button> */}
@@ -148,7 +144,7 @@ function PriceChart(props) {
           </Select>
         </FormControl>
       </div>
-      <div>
+      <div nameClass="priceChart">
         {dataPoints !== "" && dates !== "" && (
           <Line
             data={{

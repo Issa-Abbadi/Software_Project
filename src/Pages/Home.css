@@ -29,6 +29,14 @@ body {
   display: block;
 }
 
+.priceChart {
+  height: calc(100vh - 75px) !important;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  object-fit: contain;
+}
+
 .Home .sideImg1 {
   width: 70%;
   height: auto;

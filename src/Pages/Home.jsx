@@ -14,6 +14,7 @@ import Analytics from "./Analytics";
 import Sidebar from "../components/Sidebar";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import BestRatingChart from "../components/BestRatingChart";
 
 function Home() {
   const theme = useTheme();
@@ -144,6 +145,20 @@ function Home() {
     <>
       <div style={{ display: "inline-block", width: "100%" }}>
         <Container className="Home">
+          {/* <div
+            style={{
+              width: "auto",
+
+              "max-width": "2000px",
+              height: "calc(100vh - 75px)",
+              display: "block",
+            }}
+          >
+            {/* <BestRatingChart
+              markets={markets}
+              style={{ height: "calc(100vh - 75px)" }}
+            /> 
+          </div> */}
           <div
             style={{
               overflow: "hidden",
