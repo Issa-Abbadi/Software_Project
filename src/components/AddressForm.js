@@ -43,6 +43,7 @@ export default function AddressForm(props) {
         .then(({ data }) => {
           if (data.code === 200) {
             props.getAddress();
+
             props.handleNext();
           }
         })

@@ -56,7 +56,7 @@ export default function Checkout(props) {
       case 0:
         return (
           <>
-            {props.account.address !== null ? (
+            {props.account.address ? (
               <AddressForm
                 handleNext={handleNext}
                 address={props.account.address}
