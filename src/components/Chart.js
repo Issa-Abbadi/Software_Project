@@ -28,11 +28,50 @@ const data = [
 ];
 
 export default function Chart() {
+  // let ratt = [];
+  // let datess = [];
+  // async function getRatings() {
+  //   let date1 = new Date().toISOString();
+  //   console.log("DAte ", date1.substring(0, date1.indexOf("T")));
+
+  //   for (const market of props.markets) {
+  //     await axios
+  //       .post("http://localhost:4000/Ratings/Week", {
+  //         email: market.email,
+  //         dates: [date1.substring(0, date1.indexOf("T"))],
+  //       })
+  //       .then(({ data }) => {
+  //         ratt = [...ratt, { rating: data.res, name: market.name }];
+
+  //         console.log("EE:", ratt, datess);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  //   return true;
+  // }
+
+  // useEffect(async () => {
+  //   let result = await getRatings();
+  //   if (result) {
+  //     ratt.sort((a, b) => b.rating - a.rating);
+  //     setInitialDates(ratt.slice(0, 3).map((rating) => rating.name));
+  //     setRatings(ratt.slice(0, 3).map((rating) => rating.rating));
+  //     console.log(
+  //       "HERE:",
+  //       ratt,
+  //       ratt.slice(0, 3).map((rating) => rating.name),
+  //       ratt.slice(0, 3).map((rating) => rating.rating)
+  //     );
+  //   }
+  // }, []);
+
   const theme = useTheme();
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>الأسبوع الماضي</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -61,7 +100,7 @@ export default function Chart() {
                 ...theme.typography.body1,
               }}
             >
-              Sales ($)
+              المبيعات ($)
             </Label>
           </YAxis>
           <Line
