@@ -34,6 +34,7 @@ import Logout from "./Pages/Logout";
 import AllProducts from "./Pages/AllProducts";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import Markets from "./Pages/Markets";
+import Blog from "./Pages/Blog";
 import WishList from "./Pages/WishList";
 import Notification from "./components/Notification";
 // import { MuiBreadcrumbs } from "./components/Mui_Breadcrumbs";
@@ -80,14 +81,14 @@ function App() {
             {/* <MuiBreadcrumbs/> */}
 
             {localStorage.getItem("EMAIL") && (
-              <MessageOutlinedIcon class="chatIcon"  onClick={changeChat} />
+              <MessageOutlinedIcon class="chatIcon" onClick={changeChat} />
             )}
 
             <Routes>
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/" element={<Home />} />
               <Route exact path="/logout" element={<Logout />} />
-              <Route exact path="/markets" element={<Markets />} />
+              <Route exact path="/markets" element={<Blog />} />
               <Route exact path="/wishList" element={<WishList />} />
 
               <Route exact path="/product" element={<Product />} />
