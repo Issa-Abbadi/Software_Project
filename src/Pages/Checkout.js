@@ -55,11 +55,21 @@ export default function Checkout(props) {
     switch (step) {
       case 0:
         return (
-          <AddressForm
-            handleNext={handleNext}
-            address={props.account.address}
-            getAddress={getAddress}
-          />
+          <>
+            {props.account.address !== null ? (
+              <AddressForm
+                handleNext={handleNext}
+                address={props.account.address}
+                getAddress={getAddress}
+              />
+            ) : (
+              <AddressForm
+                handleNext={handleNext}
+                address={address}
+                getAddress={getAddress}
+              />
+            )}
+          </>
         );
       case 1:
         return <PaymentForm handleNext={handleNext} handleBack={handleBack} />;

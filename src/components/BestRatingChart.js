@@ -55,32 +55,45 @@ function BestRatingChart(props) {
   //   console.log("isis", dates, dataPoints);
   // };
 
-  useEffect(async () => {
+  let ratt = [];
+  let datess = [];
+  async function getRatings() {
     let date1 = new Date().toISOString();
     console.log("DAte ", date1.substring(0, date1.indexOf("T")));
-    if (props.markets) {
-      let ratt = [];
-      let datess = [];
-      for (const market of props.markets) {
-        await axios
-          .post("http://localhost:4000/Ratings/Week", {
-            email: market.email,
-            dates: [date1.substring(0, date1.indexOf("T"))],
-          })
-          .then(({ data }) => {
-            ratt = [...ratt, data.res];
 
-            datess = [...datess, market.name];
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        setInitialDates(datess);
-        setRatings(ratt);
-        console.log("HERE:", ratt, datess);
-      }
+    for (const market of props.markets) {
+      await axios
+        .post("http://localhost:4000/Ratings/Week", {
+          email: market.email,
+          dates: [date1.substring(0, date1.indexOf("T"))],
+        })
+        .then(({ data }) => {
+          ratt = [...ratt, data.res];
+
+          datess = [...datess, market.name];
+          console.log("EE:", ratt, datess);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    return true;
+  }
+
+  useEffect(async () => {
+    let result = await getRatings();
+    if (result) {
+      setInitialDates(datess);
+      setRatings(ratt);
+      console.log("HERE: ", ratt, datess);
     }
   }, []);
+
+  useEffect(() => {
+    // setInitialDates(datess);
+    // setRatings(ratt);
+    // console.log("HERE: ", ratt, datess);
+  }, [ratt]);
 
   console.log(dates, dataPoints);
 
@@ -147,7 +160,7 @@ function BestRatingChart(props) {
           </Select>
         </FormControl> */}
 
-        {ratings !== [] && initialDates !== [] && (
+        {ratings.length !== 0 && initialDates.length !== 0 && (
           <Line
             data={{
               labels: initialDates,

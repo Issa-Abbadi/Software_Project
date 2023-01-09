@@ -145,20 +145,22 @@ function Home() {
     <>
       <div style={{ display: "inline-block", width: "100%" }}>
         <Container className="Home">
-          {/* <div
-            style={{
-              width: "auto",
+          {markets.length !== 0 && (
+            <div
+              style={{
+                width: "auto",
 
-              "max-width": "2000px",
-              height: "calc(100vh - 75px)",
-              display: "block",
-            }}
-          >
-            {/* <BestRatingChart
-              markets={markets}
-              style={{ height: "calc(100vh - 75px)" }}
-            /> 
-          </div> */}
+                "max-width": "2000px",
+                height: "calc(100vh - 75px)",
+                display: "block",
+              }}
+            >
+              <BestRatingChart
+                markets={markets}
+                style={{ height: "calc(100vh - 75px)" }}
+              />
+            </div>
+          )}
           <div
             style={{
               overflow: "hidden",
