@@ -83,6 +83,7 @@ export default function PaymentForm(props) {
           color="primary"
           variant="outline"
           type="submit"
+          class="previousPayment"
           sx={{ mt: 3, ml: 1 }}
           onClick={props.handleBack}
         >
@@ -92,6 +93,7 @@ export default function PaymentForm(props) {
           color="primary"
           variant="contained"
           type="submit"
+          class="nextPayment"
           sx={{ mt: 3, ml: 1 }}
           onClick={props.handleNext}
         >

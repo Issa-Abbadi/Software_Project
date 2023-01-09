@@ -1,0 +1,23 @@
+
+.checkoutContainer
+{
+  background-color: white;
+  overflow: hidden;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1% auto;
+  height: fit-content;
+  direction: rtl;
+  border: 2px solid  var(--dark-liver-horses);
+  box-shadow: 2px 2px 2px 2px var(--may-green);
+}
+
+.title_pay_review
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+}

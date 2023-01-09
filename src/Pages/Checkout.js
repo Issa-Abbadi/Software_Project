@@ -17,12 +17,13 @@ import PaymentForm from "../components/PaymentForm";
 import Review from "../components/Review";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './checkout.css';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
+    <Typography variant="body2" color="text.secondary" align="center" >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="https://mui.com/" >
         Houseware
       </Link>{" "}
       {new Date().getFullYear()}
@@ -61,6 +62,7 @@ export default function Checkout(props) {
                 handleNext={handleNext}
                 address={props.account.address}
                 getAddress={getAddress}
+                
               />
             ) : (
               <AddressForm
@@ -102,6 +104,7 @@ export default function Checkout(props) {
       <CssBaseline />
       <AppBar
         position="absolute"
+        
         color="default"
         elevation={0}
         sx={{
@@ -109,30 +112,32 @@ export default function Checkout(props) {
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
         }}
       ></AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper
+      <Container  component="main" maxWidth="sm" sx={{ mb: 4 }}  class="checkoutContainer">
+        <Paper  
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
           <Typography component="h1" variant="h4" align="center">
             الطلب
           </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} style={{"width":"auto"}}>
             {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+              
+              <Step  key={label} >
+                <StepLabel >{label}
+                </StepLabel>
               </Step>
             ))}
           </Stepper>
           {activeStep === steps.length ? (
-            <React.Fragment>
-              <Typography variant="h5" gutterBottom>
+            <React.Fragment >
+              <Typography variant="h5" gutterBottom >
                 شكراً على طلبك
               </Typography>
-              <Typography variant="subtitle1">تم الطلب بنجاح</Typography>
+              <Typography variant="subtitle1" >تم الطلب بنجاح</Typography>
             </React.Fragment>
           ) : (
-            <React.Fragment>
+            <React.Fragment >
               {getStepContent(activeStep)}
               {/* <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {activeStep !== 0 && (

@@ -9,7 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import './admin.css';
 export default function AddressForm(props) {
   let validationSchema = yup.object({});
 
@@ -172,10 +172,12 @@ export default function AddressForm(props) {
           />
         </Grid> */}
           <Button
-            color="primary"
+            // color="primary"
             variant="contained"
             type="submit"
             sx={{ mt: 3, ml: 1 }}
+            // sty
+            class="nextButton"
           >
             التالي
           </Button>
