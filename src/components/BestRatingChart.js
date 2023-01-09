@@ -8,6 +8,7 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  BarElement,
   LineElement,
   Title,
   Tooltip,
@@ -19,6 +20,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend
@@ -161,7 +163,7 @@ function BestRatingChart(props) {
         </FormControl> */}
 
         {ratings.length !== 0 && initialDates.length !== 0 && (
-          <Line
+          <Bar
             data={{
               labels: initialDates,
 
@@ -196,13 +198,11 @@ function BestRatingChart(props) {
                   position: "top",
                 },
                 title: {
-                  display: true,
-                  text: "Chart.js Line Chart",
+                  display: false,
+                  text: "Chart.js Bar Chart",
                 },
               },
             }}
-            height={400}
-            width={400}
           />
         )}
       </div>
