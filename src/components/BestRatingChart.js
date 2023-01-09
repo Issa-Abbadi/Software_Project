@@ -8,6 +8,7 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  BarElement,
   LineElement,
   Title,
   Tooltip,
@@ -19,6 +20,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend
@@ -68,9 +70,8 @@ function BestRatingChart(props) {
           dates: [date1.substring(0, date1.indexOf("T"))],
         })
         .then(({ data }) => {
-          ratt = [...ratt, data.res];
+          ratt = [...ratt, { rating: data.res, name: market.name }];
 
-          datess = [...datess, market.name];
           console.log("EE:", ratt, datess);
         })
         .catch((error) => {
@@ -83,9 +84,15 @@ function BestRatingChart(props) {
   useEffect(async () => {
     let result = await getRatings();
     if (result) {
-      setInitialDates(datess);
-      setRatings(ratt);
-      console.log("HERE: ", ratt, datess);
+      ratt.sort((a, b) => b.rating - a.rating);
+      setInitialDates(ratt.slice(0, 3).map((rating) => rating.name));
+      setRatings(ratt.slice(0, 3).map((rating) => rating.rating));
+      console.log(
+        "HERE:",
+        ratt,
+        ratt.slice(0, 3).map((rating) => rating.name),
+        ratt.slice(0, 3).map((rating) => rating.rating)
+      );
     }
   }, []);
 
@@ -161,7 +168,7 @@ function BestRatingChart(props) {
         </FormControl> */}
 
         {ratings.length !== 0 && initialDates.length !== 0 && (
-          <Line
+          <Bar
             data={{
               labels: initialDates,
 
@@ -196,13 +203,11 @@ function BestRatingChart(props) {
                   position: "top",
                 },
                 title: {
-                  display: true,
-                  text: "Chart.js Line Chart",
+                  display: false,
+                  text: "Chart.js Bar Chart",
                 },
               },
             }}
-            height={400}
-            width={400}
           />
         )}
       </div>

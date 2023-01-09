@@ -42,11 +42,14 @@ import Notification from "./components/Notification";
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("EMAIL"));
   const [chat, setChat] = useState(false);
+  const [chat2, setChat2] = useState(true);
   const changeChat = () => {
     if (chat === false) {
       setChat(true);
+      setChat2(true);
     } else if (chat === true) {
       setChat(false);
+      setChat2(false);
     }
   };
   useEffect(() => {
@@ -142,7 +145,7 @@ function App() {
         </div>
 
         <footer>
-          {chat && (
+          {chat && chat2 && (
             <>
               <div className="chatingSystem">
                 <header>
