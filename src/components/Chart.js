@@ -9,6 +9,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Title from "./Title";
+import axios from "axios";
+
+import { useState, useEffect } from "react";
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -27,45 +30,44 @@ const data = [
   createData("24:00", undefined),
 ];
 
-export default function Chart() {
-  // let ratt = [];
-  // let datess = [];
-  // async function getRatings() {
-  //   let date1 = new Date().toISOString();
-  //   console.log("DAte ", date1.substring(0, date1.indexOf("T")));
+export default function Chart(props) {
+  let ratt = [];
+  let datess = [0, 1, 2, 3, 4, 5, 6];
+  async function getRatings() {
+    for (const aaa of datess) {
+      let date = new Date();
+      date.setDate(date.getDate() - aaa);
+      let date1 = date.toISOString();
+      console.log("Date", date1);
 
-  //   for (const market of props.markets) {
-  //     await axios
-  //       .post("http://localhost:4000/Ratings/Week", {
-  //         email: market.email,
-  //         dates: [date1.substring(0, date1.indexOf("T"))],
-  //       })
-  //       .then(({ data }) => {
-  //         ratt = [...ratt, { rating: data.res, name: market.name }];
+      // .substring(0, date1.indexOf("T"))
+      await axios
+        .post("http://localhost:4000/Payments/Week", {
+          name: JSON.parse(localStorage.getItem("Profile")).name,
+          dates: [date1],
+        })
+        .then(({ data }) => {
+          ratt = [
+            ...ratt,
+            createData(date1.substring(0, date1.indexOf("T")), data.res),
+          ];
 
-  //         console.log("EE:", ratt, datess);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  //   return true;
-  // }
+          console.log("EE:", ratt, datess);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    return true;
+  }
 
-  // useEffect(async () => {
-  //   let result = await getRatings();
-  //   if (result) {
-  //     ratt.sort((a, b) => b.rating - a.rating);
-  //     setInitialDates(ratt.slice(0, 3).map((rating) => rating.name));
-  //     setRatings(ratt.slice(0, 3).map((rating) => rating.rating));
-  //     console.log(
-  //       "HERE:",
-  //       ratt,
-  //       ratt.slice(0, 3).map((rating) => rating.name),
-  //       ratt.slice(0, 3).map((rating) => rating.rating)
-  //     );
-  //   }
-  // }, []);
+  useEffect(async () => {
+    let result = await getRatings();
+    if (result) {
+      // ratt.sort((a, b) => b.rating - a.rating);
+      data = ratt;
+    }
+  }, []);
 
   const theme = useTheme();
 

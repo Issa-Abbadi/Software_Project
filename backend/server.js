@@ -16,6 +16,7 @@ const submitOTPRoute = require("./routes/submit.otp.route");
 const sendOTPRoute = require("./routes/send.otp.route");
 const addProductRoute = require("./routes/create.product.route");
 const ratingsRoute = require("./routes/ratings.route");
+const paymentsRoute = require("./routes/payments.route");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db).then(
@@ -47,6 +48,7 @@ app.use("/signup", createAccountRoute);
 app.use("/submit-otp", submitOTPRoute);
 app.use("/send-otp", sendOTPRoute);
 app.use("/Ratings", ratingsRoute);
+app.use("/Payments", paymentsRoute);
 
 // PORT
 const port = process.env.PORT || 4000;

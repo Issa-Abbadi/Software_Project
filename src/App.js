@@ -44,10 +44,10 @@ function App() {
   const [chat, setChat] = useState(false);
   const [chat2, setChat2] = useState(true);
   const changeChat = () => {
-    if (chat === false) {
+    if (chat2 === false) {
       setChat(true);
       setChat2(true);
-    } else if (chat === true) {
+    } else if (chat2 === true) {
       setChat(false);
       setChat2(false);
     }
