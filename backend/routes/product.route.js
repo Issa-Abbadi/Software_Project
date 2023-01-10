@@ -209,4 +209,15 @@ router.post("/buyCart", (req, res) => {
     });
 });
 
+router.get("/lastProducts", (req, res) => {
+  productSchema
+    .find({}, null, { sort: { created_on: -1 }, limit: 5 })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 module.exports = router;
