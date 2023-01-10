@@ -43,7 +43,7 @@ function Product(props) {
         email: localStorage.getItem("EMAIL"),
         _id: product.product._id,
         var: productVar,
-        quantity: 1,
+        quantity: quantity,
         price: productPrice,
         product_company: product.product.product_company,
         product_name: product.product.product_name,
@@ -71,6 +71,7 @@ function Product(props) {
   const location = useLocation();
   const [product, setProduct] = useState({ product: "" });
   const [realtedP, setRealtedP] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   React.useEffect(() => {
     if (location.state) {
@@ -232,7 +233,18 @@ function Product(props) {
                   </div>
                   <div class="quantity">
                     <p>الكمية</p>
-                    <input type="number" min="1" max="5" value="1" />
+                    <input
+                      type="number"
+                      min="1"
+                      max="10"
+                      value={quantity}
+                      readonly
+                      onChange={(event) => {
+                        if (event.target.value > 0) {
+                          setQuantity(event.target.value);
+                        }
+                      }}
+                    />
                   </div>
 
                   <p>
