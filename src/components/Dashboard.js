@@ -90,11 +90,14 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function DashboardContent(props) {
   const [open, setOpen] = React.useState(true);
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  React.useEffect(() => {}, []);
 
   return (
     <ThemeProvider theme={mdTheme}>
