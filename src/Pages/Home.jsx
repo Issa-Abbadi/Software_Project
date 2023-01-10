@@ -20,6 +20,7 @@ function Home() {
   const theme = useTheme();
   const [markets, setMarkets] = useState([]);
   const [lastProducts, setLastProducts] = useState([]);
+  const [bestProducts, setBestProducts] = useState([]);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   const config = isMatch ? "500px" : "100%";
@@ -38,6 +39,14 @@ function Home() {
       .get("http://localhost:4000/Products/lastProducts/")
       .then(({ data }) => {
         setLastProducts(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get("http://localhost:4000/Products/BestProducts/")
+      .then(({ data }) => {
+        setBestProducts(data);
       })
       .catch((error) => {
         console.log(error);
@@ -205,6 +214,15 @@ function Home() {
             <Card
               title="أحدث المنتجات"
               data={lastProducts}
+              target="/product"
+              style={{ margin: "20%" }}
+            />
+          </div>
+
+          <div style={{ width: config }}>
+            <Card
+              title="أفضل المنتجات"
+              data={bestProducts}
               target="/product"
               style={{ margin: "20%" }}
             />

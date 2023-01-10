@@ -220,4 +220,14 @@ router.get("/lastProducts", (req, res) => {
     });
 });
 
+router.get("/BestProducts", (req, res) => {
+  productSchema
+    .find({}, null, { sort: { product_rating: -1 }, limit: 5 })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 module.exports = router;

@@ -81,19 +81,22 @@ function BestRatingChart(props) {
     return true;
   }
 
-  useEffect(async () => {
-    let result = await getRatings();
-    if (result) {
-      ratt.sort((a, b) => b.rating - a.rating);
-      setInitialDates(ratt.slice(0, 3).map((rating) => rating.name));
-      setRatings(ratt.slice(0, 3).map((rating) => rating.rating));
-      console.log(
-        "HERE:",
-        ratt,
-        ratt.slice(0, 3).map((rating) => rating.name),
-        ratt.slice(0, 3).map((rating) => rating.rating)
-      );
-    }
+  useEffect(() => {
+    const getData = async () => {
+      let result = await getRatings();
+      if (result) {
+        ratt.sort((a, b) => b.rating - a.rating);
+        setInitialDates(ratt.slice(0, 3).map((rating) => rating.name));
+        setRatings(ratt.slice(0, 3).map((rating) => rating.rating));
+        console.log(
+          "HERE:",
+          ratt,
+          ratt.slice(0, 3).map((rating) => rating.name),
+          ratt.slice(0, 3).map((rating) => rating.rating)
+        );
+      }
+    };
+    getData();
   }, []);
 
   useEffect(() => {
