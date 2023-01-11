@@ -245,9 +245,12 @@ router.post("/addReview", (req, res) => {
       ],
     })
     .then((result) => {
+      // console.log("DOne", result);
       let found = false;
+      let prev = 0;
       result.reviews.map((review) => {
         if (review.email === req.body.email) {
+          prev = -review.rating;
           review.review = req.body.review;
           review.rating = req.body.rating;
           found = true;
@@ -264,7 +267,11 @@ router.post("/addReview", (req, res) => {
           },
         ];
       }
-
+      // console.log("DOne", result);
+      result.product_rating =
+        result.product_rating +
+        (prev + req.body.rating) / result.reviews.length;
+      console.log("DOne ", result);
       productSchema
         .updateOne(
           {
@@ -277,7 +284,12 @@ router.post("/addReview", (req, res) => {
               },
             ],
           },
-          { reviews: result.reviews }
+          {
+            $set: {
+              reviews: result.reviews,
+              product_rating: result.product_rating,
+            },
+          }
         )
         .then((result) => {
           res.send({ code: 200, message: "reviews updated" });
