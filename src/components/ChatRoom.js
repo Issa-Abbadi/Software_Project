@@ -200,19 +200,35 @@ function ChatRoom() {
                 return (
                   <>
                     <a onClick={() => handleMarket(market)}>
-                      <span
-                        style={{
-                          color: "white",
-                          "max-width": "75px",
-                        }}
-                      >
-                        <Avatar
-                          src={market.imageUrl}
-                          referrerpolicy="no-referrer"
-                        ></Avatar>
-                        <span>{market.name}</span>
-                        <hr></hr>
-                      </span>
+                      {market.email === localStorage.getItem("EMAIL2") ? (
+                        <span
+                          style={{
+                            color: "green",
+                            "max-width": "75px",
+                          }}
+                        >
+                          <Avatar
+                            src={market.imageUrl}
+                            referrerpolicy="no-referrer"
+                          ></Avatar>
+                          <span>{market.name}</span>
+                          <hr></hr>
+                        </span>
+                      ) : (
+                        <span
+                          style={{
+                            color: "white",
+                            "max-width": "75px",
+                          }}
+                        >
+                          <Avatar
+                            src={market.imageUrl}
+                            referrerpolicy="no-referrer"
+                          ></Avatar>
+                          <span>{market.name}</span>
+                          <hr></hr>
+                        </span>
+                      )}
                     </a>
                   </>
                 );
