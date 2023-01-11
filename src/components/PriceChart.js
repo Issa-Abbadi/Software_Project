@@ -124,6 +124,7 @@ function PriceChart(props) {
       <div
         style={{
           direction: "ltr",
+          backgroundColor: "red",
         }}
       >
         {/* <input type="date" ref={inputRef1} />

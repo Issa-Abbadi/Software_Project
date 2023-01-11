@@ -12,7 +12,6 @@ import Title from "./Title";
 import axios from "axios";
 
 import { useState, useEffect } from "react";
-
 // Generate Sales Data
 
 export default function Chart(props) {

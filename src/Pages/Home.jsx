@@ -60,7 +60,7 @@ function Home() {
       setIndex(selectedIndex);
     };
     return (
-      <div style={{ height: "100%", overflow: "hidden" }}>
+      <div style={{ height: "100%", overflow: "hidden",  }}>
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}
@@ -162,24 +162,9 @@ function Home() {
 
   return (
     <>
-      <div style={{ display: "inline-block", width: "100%" }}>
+      <div style={{ display: "inline-block", width: "100%", }}>
         <Container className="Home">
-          {markets.length !== 0 && (
-            <div
-              style={{
-                width: "auto",
-
-                "max-width": "2000px",
-                height: "calc(100vh - 75px)",
-                display: "block",
-              }}
-            >
-              <BestRatingChart
-                markets={markets}
-                style={{ height: "calc(100vh - 75px)" }}
-              />
-            </div>
-          )}
+       
           <div
             style={{
               overflow: "hidden",
@@ -201,12 +186,12 @@ function Home() {
           </div> */}
           {/* <div className="centerMode">{<CenterMode />}</div> */}
 
-          <div style={{ width: config }}>
+          <div style={{ width: config,  }}>
             <Card
               title="متاجر عرضناها لك"
               data={markets}
               target="/markets"
-              style={{ margin: "20%" }}
+              style={{ margin: "20%", }}
             />
           </div>
 
@@ -396,6 +381,28 @@ function Home() {
           <Card title="عروض خاصة" data={imgs} />
           <Card title="جديد" data={imgs} /> */}
           {/* {DataTable()} */}
+           
+          <div class="chart">
+                  <p>هنا مقارنه بين المتاجر المتوافرة من حيث التقييم</p>          
+          </div>
+          {markets.length !== 0 && (
+            <div
+             class="chartHome"
+
+              style={{
+                width: "auto",
+
+                "max-width": "2000px",
+                height: "calc(100vh - 75px)",
+                display: "block",
+              }}
+            >
+              <BestRatingChart
+                markets={markets}
+                style={{ height: "calc(100vh - 75px)" }}
+              />
+            </div>
+          )}
         </Container>
       </div>
     </>
