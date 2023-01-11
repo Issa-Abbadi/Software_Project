@@ -28,6 +28,9 @@ function SingleProduct(props) {
     props.product.vars[0].product_img
   );
   const [productSize, setProductSize] = useState(props.product.vars[0].size);
+  const [productDiscount, setProductDiscount] = useState(
+    props.product.vars[0].discount
+  );
   const [productPrice, setProductPrice] = useState(props.product.vars[0].price);
   const [productQuantity, setProductQuantity] = useState(
     props.product.vars[0].quantity
@@ -62,6 +65,8 @@ function SingleProduct(props) {
                 onClick={() => {
                   setProductImg(prod.product_img);
                   setProductPrice(prod.price);
+                  setProductSize(prod.size);
+                  setProductDiscount(prod.discount);
                   setProductVar(prod._id);
                   setProductQuantity(prod.quantity);
                 }}
@@ -191,7 +196,7 @@ function SingleProduct(props) {
                       </a>
                     </p>
                     <p className="small text-danger">
-                      <s>$1399</s>
+                      <s>${productDiscount}</s>
                     </p>
                   </div>
 

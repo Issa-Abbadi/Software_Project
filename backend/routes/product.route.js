@@ -230,4 +230,91 @@ router.get("/BestProducts", (req, res) => {
       res.send(err);
     });
 });
+
+router.post("/addReview", (req, res) => {
+  console.log("in review", req.body);
+  productSchema
+    .findOne({
+      $and: [
+        {
+          product_name: req.body.product_name,
+        },
+        {
+          product_company: req.body.product_company,
+        },
+      ],
+    })
+    .then((result) => {
+      let found = false;
+      result.reviews.map((review) => {
+        if (review.email === req.body.email) {
+          review.review = req.body.review;
+          review.rating = req.body.rating;
+          found = true;
+        }
+      });
+      if (found === false) {
+        result.reviews = [
+          ...result.reviews,
+          {
+            review: req.body.review,
+            rating: req.body.rating,
+            email: req.body.email,
+            name: req.body.name,
+          },
+        ];
+      }
+
+      productSchema
+        .updateOne(
+          {
+            $and: [
+              {
+                product_name: req.body.product_name,
+              },
+              {
+                product_company: req.body.product_company,
+              },
+            ],
+          },
+          { reviews: result.reviews }
+        )
+        .then((result) => {
+          res.send({ code: 200, message: "reviews updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+router.post("/getReviews", (req, res) => {
+  console.log("in review", req.body);
+  productSchema
+    .findOne({
+      $and: [
+        {
+          product_name: req.body.product_name,
+        },
+        {
+          product_company: req.body.product_company,
+        },
+      ],
+    })
+    .then((result) => {
+      if (result.reviews !== null) {
+        res.send({ result: result.reviews });
+        console.log("result", result.reviews);
+      }
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 module.exports = router;
+
+//getReviews

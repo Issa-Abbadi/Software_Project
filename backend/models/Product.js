@@ -36,6 +36,9 @@ let productSchema = new Schema(
     created_on: {
       type: String,
     },
+    reviews: {
+      type: Array,
+    },
   },
   {
     collection: "Products",

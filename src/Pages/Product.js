@@ -13,6 +13,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Card from "../components/Card";
 import Container from "react-bootstrap/Container";
+import Rating from "../components/Rating";
 
 import {
   faStar,
@@ -73,6 +74,48 @@ function Product(props) {
   const [realtedP, setRealtedP] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState("");
+  const [newRating, setNewRating] = useState(1);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // you can use axios or fetch to send the data to server
+    const email = localStorage.getItem("EMAIL");
+    const existingReview = reviews.find((review) => review.email === email);
+
+    if (existingReview) {
+      // allow editing the review if the user has already submitted one
+      existingReview.review = newReview;
+      existingReview.rating = newRating;
+    } else {
+      // add new review otherwise
+      setReviews([
+        ...reviews,
+        {
+          review: newReview,
+          rating: newRating,
+          email: localStorage.getItem("EMAIL"),
+          name: JSON.parse(localStorage.getItem("Profile")).name,
+        },
+      ]);
+    }
+    axios
+      .post("http://localhost:4000/Products/addReview", {
+        product_company: product.product.product_company,
+        product_name: product.product.product_name,
+        review: newReview,
+        rating: newRating,
+        email: localStorage.getItem("EMAIL"),
+        name: JSON.parse(localStorage.getItem("Profile")).name,
+      })
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+
+    setNewReview("");
+  };
   React.useEffect(() => {
     if (location.state) {
       let _state = location.state;
@@ -81,6 +124,19 @@ function Product(props) {
       setProductImg(_state.product.vars[_state.var].product_img);
       setProductSize(_state.product.vars[_state.var].size);
       setProductPrice(_state.product.vars[_state.var].price);
+
+      axios
+        .post("http://localhost:4000/Products/getReviews", {
+          product_company: _state.product.product_company,
+          product_name: _state.product.product_name,
+        })
+        .then((data) => {
+          setReviews(data.data.result);
+          console.log("this is data", data, data.result);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
     axios
@@ -294,6 +350,23 @@ function Product(props) {
                 </div>
               )}
             </div>
+            <h3> Reviews </h3>
+            {reviews.map((review, i) => (
+              <div key={i}>
+                {Stars(review.rating)}
+                <p>{review.review}</p>
+              </div>
+            ))}
+            <form onSubmit={handleSubmit}>
+              <div>
+                <Rating rating={newRating} setNewRating={setNewRating} />
+              </div>
+              <textarea
+                value={newReview}
+                onChange={(event) => setNewReview(event.target.value)}
+              />
+              <button type="submit">Submit Review</button>
+            </form>
           </div>
         )}
       </Container>

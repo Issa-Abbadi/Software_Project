@@ -27,8 +27,8 @@ router.post("/", async (req, res) => {
 
   let info = await transporter.sendMail({
     from: "node-123456789-node@outlook.com",
-    to: req.body.email, // list of receivers
-    subject: "OTP", // Subject line
+    to: req.body.email,
+    subject: "OTP",
     text: String(_otp),
   });
 
