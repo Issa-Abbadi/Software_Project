@@ -15,7 +15,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
-
+import axios from "axios";
 import "./navbar.css";
 import Dashboard from "./Dashboard";
 import { Toast } from "react-bootstrap";
@@ -42,6 +42,7 @@ function Nav_bar(props) {
 
   const userRef = firestore.collection(collection);
   const user2Ref = firestore.collection(collection2);
+  const [markets, setMarkets] = useState([]);
   let query1;
   if (localStorage.getItem("EMAIL") !== null)
     if (localStorage.getItem("EMAIL").includes("@houseware")) {
@@ -79,6 +80,17 @@ function Nav_bar(props) {
       }
     }
   }, [notification]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/login/markets/")
+      .then(({ data }) => {
+        setMarkets(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [isLogin, setIsLogin] = useState(props.login);
   const [show, setShow] = useState(false);
@@ -128,6 +140,26 @@ function Nav_bar(props) {
     props.setChating();
   };
 
+  const getMarkets = () => {
+    if (markets.length === 0) {
+      return [];
+    }
+    if (markets.length !== 0) {
+      return markets.map((market) => {
+        return (
+          <NavDropdown.Item>
+            <Link
+              to="/markets"
+              state={{ product: market }}
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              {market.name}
+            </Link>
+          </NavDropdown.Item>
+        );
+      });
+    }
+  };
   return (
     <>
       <div style={{ minHeight: "75px" }}>
@@ -269,10 +301,7 @@ function Nav_bar(props) {
                   <NavDropdown
                     title={
                       <>
-                        <Link class="navbar-link" to="/markets">
-                          {" "}
-                          متاجرنا{" "}
-                        </Link>
+                        <Link class="navbar-link"> متاجرنا </Link>
                       </>
                     }
                     id="collasible-nav-dropdown"
@@ -282,12 +311,7 @@ function Nav_bar(props) {
                     menuVariant="dark"
                     className="li"
                   >
-                    <NavDropdown.Item href="#action/3.1">
-                      الفهد
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.1">
-                      شمس الشام
-                    </NavDropdown.Item>
+                    {markets.length !== 0 && getMarkets()}
                   </NavDropdown>
                 </ul>
               </Nav>

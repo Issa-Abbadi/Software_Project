@@ -44,7 +44,7 @@ function App() {
   const [chat, setChat] = useState(false);
   const [chat2, setChat2] = useState(true);
   const changeChat = () => {
-    if (chat2 === false) {
+    if (chat2 === false || (chat === false && chat2 === true)) {
       setChat(true);
       setChat2(true);
     } else if (chat2 === true) {
