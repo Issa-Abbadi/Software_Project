@@ -165,6 +165,7 @@ function Product(props) {
       .catch((error) => {
         console.log(error);
       });
+    window.scrollTo(0, 0);
   }, [location]);
 
   const [wish, setWish] = useState(false);
@@ -367,13 +368,14 @@ function Product(props) {
                 />
                 <button type="submit">إرسال التقييم</button>
               </form>
-              {reviews.map((review, i) => (
-                <div key={i} style={{ backgroundColor: "white" }}>
-                  {Stars(review.rating)}
-                  {review.name}
-                  <p>{review.review}</p>
-                </div>
-              ))}
+              {reviews.length !== 0 &&
+                reviews.map((review, i) => (
+                  <div key={i} style={{ backgroundColor: "white" }}>
+                    {Stars(review.rating)}
+                    {review.name}
+                    <p>{review.review}</p>
+                  </div>
+                ))}
             </div>
           </div>
         )}

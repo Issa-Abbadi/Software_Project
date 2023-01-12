@@ -3,7 +3,7 @@ import SingleProduct from "../components/SingleProduct";
 import Products from "../components/Products";
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import './wishList.css';
+import "./wishList.css";
 function WishList() {
   const [account, setAccount] = useState("");
   const [products, setProducts] = useState("");
@@ -56,15 +56,13 @@ function WishList() {
     }
   }, [account]);
 
-  function creatWish_window(e)
-  {
-     let x= document.getElementsByClassName("window-father");
-     
+  function creatWish_window(e) {
+    let x = document.getElementsByClassName("window-father");
   }
 
   return (
     <>
-       <div class="wish-list-title">
+      <div class="wish-list-title">
         <h1>قائمة الرغبات</h1>
       </div>
       <Products products={products} type="wishList" />
@@ -72,8 +70,8 @@ function WishList() {
         <a href="" class="mainPage-link">الصفحة الرئيسية</a>
         
       </div> */}
-     
-     {/* <div class="window-father">
+
+      {/* <div class="window-father">
           <div class="creatWish-window">
             <form action="">
                   <h2 style={{margin:"3% 3%"}}>إسم قائمة الرغبة</h2>
@@ -87,9 +85,9 @@ function WishList() {
             </form>
           </div>
       </div> */}
-      {/* <div>
+      <div>
         <Button onClick={deleteAll}>حذف الجميع</Button>
-      </div> */}
+      </div>
     </>
   );
 }
