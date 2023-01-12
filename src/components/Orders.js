@@ -94,19 +94,12 @@ export default function Orders() {
       headerAlign: "center",
       align: "center",
     },
-    {
-      field: "الوصف",
-      headerName: "الوصف",
 
-      width: 200,
-      headerAlign: "center",
-      align: "center",
-    },
     {
       field: "السعر",
       headerName: "السعر",
 
-      width: 50,
+      width: 60,
       headerAlign: "center",
       align: "center",
     },
@@ -188,6 +181,14 @@ export default function Orders() {
         </>
       ),
     },
+    {
+      field: "الوصف",
+      headerName: "الوصف",
+
+      width: 200,
+      headerAlign: "center",
+      align: "center",
+    },
   ];
 
   return (
@@ -208,9 +209,9 @@ export default function Orders() {
           }}
           localeText={{
             // Root
-            noRowsLabel: "لا يوجد سطور",
-            noResultsOverlayLabel: "لايوجد نتائج",
-            errorOverlayDefaultLabel: "حصل خلل ما",
+            noRowsLabel: "",
+            noResultsOverlayLabel: "",
+            errorOverlayDefaultLabel: "",
             // Column menu text
             columnMenuLabel: "القائمة",
             columnMenuShowColumns: "أظهر الأعمدة",

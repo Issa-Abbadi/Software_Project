@@ -212,7 +212,7 @@ function Nav_bar(props) {
                     menuVariant="dark"
                     className="li"
                     onClick={() => {
-                      navigate(0);
+                      // navigate(0);
                     }}
                   >
                     <NavDropdown.Item
@@ -474,6 +474,9 @@ function Nav_bar(props) {
                   }
                   menuVariant="dark"
                 >
+                  {localStorage.getItem("EMAIL").includes("@houseware") && (
+                    <NavDropdown.Item href="/admin"> الإدارة</NavDropdown.Item>
+                  )}
                   <NavDropdown.Item href="/profile">حسابي</NavDropdown.Item>
 
                   <NavDropdown.Item href="/wishList">

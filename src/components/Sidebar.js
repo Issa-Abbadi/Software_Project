@@ -33,11 +33,11 @@ const Sidebar = (props, { children }) => {
       name: "أضف منتج",
       icon: <FaCommentAlt />,
     },
-    {
-      path: "/admin",
-      name: "تعديل منتج",
-      icon: <FaCommentAlt />,
-    },
+    // {
+    //   path: "/admin",
+    //   name: "تعديل منتج",
+    //   icon: <FaCommentAlt />,
+    // },
     {
       path: "/admin",
       name: "المنتجات",
