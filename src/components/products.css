@@ -454,10 +454,10 @@
 }
 
 #addtoCart {
+  position: absolute;
   width: 100%;
   left: 0;
   bottom: 0;
-  top: 92%;
   height: fit-content;
   bottom: 0;
   border-radius: 0;
@@ -534,6 +534,8 @@
 .card-container {
   border: 1px solid #808080;
   background-color: white;
+  min-height: 500px;
+  max-height: 550px;
 }
 
 .card-container:hover {

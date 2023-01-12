@@ -194,7 +194,27 @@ function Home() {
               style={{ margin: "20%", }}
             />
           </div>
+          <div class="chart">
+                  <p>هنا مقارنه بين المتاجر المتوافرة من حيث التقييم</p>          
+          </div>
+          {markets.length !== 0 && (
+            <div
+             class="chartHome"
 
+              style={{
+                width: "auto",
+
+                "max-width": "2000px",
+                height: "calc(100vh - 75px)",
+                display: "block",
+              }}
+            >
+              <BestRatingChart
+                markets={markets}
+                style={{ height: "calc(100vh - 75px)" }}
+              />
+            </div>
+          )}
           <div style={{ width: config }}>
             <Card
               title="أحدث المنتجات"
@@ -382,27 +402,7 @@ function Home() {
           <Card title="جديد" data={imgs} /> */}
           {/* {DataTable()} */}
            
-          <div class="chart">
-                  <p>هنا مقارنه بين المتاجر المتوافرة من حيث التقييم</p>          
-          </div>
-          {markets.length !== 0 && (
-            <div
-             class="chartHome"
-
-              style={{
-                width: "auto",
-
-                "max-width": "2000px",
-                height: "calc(100vh - 75px)",
-                display: "block",
-              }}
-            >
-              <BestRatingChart
-                markets={markets}
-                style={{ height: "calc(100vh - 75px)" }}
-              />
-            </div>
-          )}
+          
         </Container>
       </div>
     </>

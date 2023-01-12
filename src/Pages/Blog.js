@@ -155,7 +155,8 @@ export default function Blog(props) {
       <Container maxWidth="lg">
         <Header title={product.name} sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+          {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
+          <img url="../assets/Stores/FahadHome.jpg" alt="" />
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
