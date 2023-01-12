@@ -1,6 +1,8 @@
 .wish-list-title{
     direction: rtl;
     margin-top: 2%;
+    display: flex;
+    justify-content: center;
     /* background-color: red; */
 }
 

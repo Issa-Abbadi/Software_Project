@@ -152,7 +152,17 @@ function SingleProduct(props) {
               >
                 {localStorage.getItem("wishList") == "true" && (
                   <>
-                    <Button onClick={handleDeleteone}>حذف</Button>
+                    <Button onClick={handleDeleteone} 
+                    style=
+                    {{
+                       "backgroundColor":"var(--dark-liver-horses)",
+                       "color":"white",
+                       "width":"100%",
+                       "borderRadius":"0%",
+                       "border":"1px solid var(--dark-liver-horses)",
+                    }}>
+                      حذف
+                      </Button>
                   </>
                 )}
 
@@ -221,14 +231,15 @@ function SingleProduct(props) {
                           {Stars(product.product_rating)}
                         </div>
                   </div> */}
-                  <a onClick={addtoCart} class="btn btn-primary" id="addtoCart">
-                    أضف للسلّة
-                  </a>
-                  {/* {code == 200 && (
+                  {code == 200 && (
                     <Alert severity="success" onClose={() => {}}>
                       {"تمت إضافة المنتج بنجاح"}
                     </Alert>
-                  )} */}
+                  )}
+                  <a onClick={addtoCart} class="btn btn-primary" id="addtoCart">
+                    أضف للسلّة
+                  </a>
+                
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

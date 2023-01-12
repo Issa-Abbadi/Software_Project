@@ -64,16 +64,16 @@ function WishList() {
 
   return (
     <>
+       <div class="wish-list-title">
+        <h1>قائمة الرغبات</h1>
+      </div>
       <Products products={products} type="wishList" />
-      <div class="Breadcrumbs">
+      {/* <div class="Breadcrumbs">
         <a href="" class="mainPage-link">الصفحة الرئيسية</a>
         
-      </div>
-      <div class="wish-list-title">
-        <h1>قوائم الرغبات</h1>
-        <button class="creatWishList-button" onClick={creatWish_window}>انشاء قائمة جديده</button>
-      </div>
-      <div class="window-father">
+      </div> */}
+     
+     {/* <div class="window-father">
           <div class="creatWish-window">
             <form action="">
                   <h2 style={{margin:"3% 3%"}}>إسم قائمة الرغبة</h2>
@@ -86,7 +86,7 @@ function WishList() {
                   </div>
             </form>
           </div>
-      </div>
+      </div> */}
       {/* <div>
         <Button onClick={deleteAll}>حذف الجميع</Button>
       </div> */}

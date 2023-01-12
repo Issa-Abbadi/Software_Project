@@ -462,6 +462,8 @@
   bottom: 0;
   border-radius: 0;
   background-color: var(--dark-liver-horses);
+  margin-top: 2%;
+  outline: 1px solid var(--dark-liver-horses);
 }
 
 #addtoCart:hover {
@@ -534,8 +536,8 @@
 .card-container {
   border: 1px solid #808080;
   background-color: white;
-  min-height: 500px;
-  max-height: 550px;
+  min-height:  550px;
+  max-height: 600px;
 }
 
 .card-container:hover {
@@ -546,5 +548,10 @@
 .productName{
   /* background-color: yellow; */
   display: inline-block;
+}
+
+.card-container .delete
+{
+  background-color: red;
 }
 
