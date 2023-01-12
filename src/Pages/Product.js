@@ -306,9 +306,13 @@ function Product(props) {
                   <p>
                     {" "}
                     المتجر:{" "}
-                    <a href="/markets" class="storeName">
+                    <Link
+                      to="/markets"
+                      class="storeName"
+                      state={{ product: account }}
+                    >
                       {product.product.product_company}
-                    </a>
+                    </Link>
                   </p>
                   <p> الفئة: {product.product.product_category}</p>
                   <p>الصنف: {product.product.sub_category}</p>
