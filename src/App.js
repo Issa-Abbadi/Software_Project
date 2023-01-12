@@ -101,7 +101,16 @@ function App() {
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/signup" element={<SignUp />} />
               <Route exact path="/forget-pass" element={<ForgetPassword />} />
-              <Route exact path="/homeProducts" element={<HomeProducts />} />
+              <Route
+                exact
+                path="/homeProducts"
+                element={<HomeProducts props={{ type: "0" }} />}
+              />
+              <Route
+                exact
+                path="/homeProducts/bathroom-accessories"
+                element={<HomeProducts props={{ type: "1" }} />}
+              />
               <Route
                 exact
                 path="/allProducts"
@@ -129,7 +138,52 @@ function App() {
                 element={<KitchenProducts props={{ type: "0" }} />}
               />
 
-              <Route exact path="/tableProducts" element={<TableProducts />} />
+              <Route
+                exact
+                path="/tableProducts"
+                element={<TableProducts props={{ type: "0" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/glassware"
+                element={<TableProducts props={{ type: "1" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/dining-sets"
+                element={<TableProducts props={{ type: "2" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/tea-and-gatoh"
+                element={<TableProducts props={{ type: "3" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/archopyrex"
+                element={<TableProducts props={{ type: "4" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/forks-and-spoons"
+                element={<TableProducts props={{ type: "5" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/submit"
+                element={<TableProducts props={{ type: "6" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/throw-and-porcelain"
+                element={<TableProducts props={{ type: "7" }} />}
+              />
+              <Route
+                exact
+                path="/tableProducts/punchanya"
+                element={<TableProducts props={{ type: "8" }} />}
+              />
+
               <Route exact path="/otp" element={<NewSubmit />} />
               <Route exact path="/support" element={<Support />} />
               <Route exact path="/FAQ" element={<FAQ />} />

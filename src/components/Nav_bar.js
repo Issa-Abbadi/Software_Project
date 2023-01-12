@@ -252,28 +252,49 @@ function Nav_bar(props) {
                     menuVariant="dark"
                     className="li"
                   >
-                    <NavDropdown.Item href="#action/3.1">
+                    <NavDropdown.Item
+                      href="/tableProducts/glassware"
+                      eventKey="1"
+                    >
                       أدوات زجاجية
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item
+                      href="/tableProducts/dining-sets"
+                      eventKey="2"
+                    >
                       أطقم سفرة
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item
+                      href="/tableProducts/tea-and-gatoh"
+                      eventKey="3"
+                    >
                       شاي وجاتوه
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item
+                      href="/tableProducts/archopyrex"
+                      eventKey="4"
+                    >
                       أركوبيركس
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item
+                      href="/tableProducts/forks-and-spoons"
+                      eventKey="5"
+                    >
                       شوك ومعالق
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/tableProducts/submit" eventKey="6">
                       تقديم
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item
+                      href="/tableProducts/throw-and-porcelain"
+                      eventKey="7"
+                    >
                       خذف وبورسلين
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item
+                      href="/tableProducts/punchanya"
+                      eventKey="8"
+                    >
                       وبونشاينا
                     </NavDropdown.Item>
                   </NavDropdown>
@@ -294,7 +315,10 @@ function Nav_bar(props) {
                     menuVariant="dark"
                     className="li"
                   >
-                    <NavDropdown.Item href="#action/3.1">
+                    <NavDropdown.Item
+                      href="/homeProducts/bathroom-accessories"
+                      eventkey="1"
+                    >
                       رفايع الحمام
                     </NavDropdown.Item>
                   </NavDropdown>

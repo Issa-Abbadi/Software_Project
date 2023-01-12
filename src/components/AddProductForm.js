@@ -216,7 +216,7 @@ const AddProductForm = (props) => {
         { id: "توزيع وتوابل", name: "توزيع وتوابل" },
       ]);
     } else if (formik.values.product_category === "المنزل") {
-      setSubGategory([{ id: "رفايع الحمايم", name: "رفايع الحمايم" }]);
+      setSubGategory([{ id: "رفايع الحمام", name: "رفايع الحمام" }]);
     } else {
       setSubGategory([]);
     }
@@ -247,7 +247,7 @@ const AddProductForm = (props) => {
                 }
               />
             )}
-        
+
             <Input
               fullWidth
               type="number"
