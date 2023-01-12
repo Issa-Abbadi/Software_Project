@@ -354,23 +354,27 @@ function Product(props) {
                 </div>
               )}
             </div>
-            <h3> Reviews </h3>
-            {reviews.map((review, i) => (
-              <div key={i}>
-                {Stars(review.rating)}
-                <p>{review.review}</p>
-              </div>
-            ))}
-            <form onSubmit={handleSubmit}>
-              <div>
-                <Rating rating={newRating} setNewRating={setNewRating} />
-              </div>
-              <textarea
-                value={newReview}
-                onChange={(event) => setNewReview(event.target.value)}
-              />
-              <button type="submit">Submit Review</button>
-            </form>
+            <div style={{ direction: "rtl" }}>
+              <h3> التقييمات </h3>
+
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <Rating rating={newRating} setNewRating={setNewRating} />
+                </div>
+                <textarea
+                  value={newReview}
+                  onChange={(event) => setNewReview(event.target.value)}
+                />
+                <button type="submit">إرسال التقييم</button>
+              </form>
+              {reviews.map((review, i) => (
+                <div key={i} style={{ backgroundColor: "white" }}>
+                  {Stars(review.rating)}
+                  {review.name}
+                  <p>{review.review}</p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </Container>
