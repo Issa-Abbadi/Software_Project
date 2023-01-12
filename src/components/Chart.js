@@ -23,6 +23,10 @@ export default function Chart(props) {
 
   let ratt = [];
   let datess = [0, 1, 2, 3, 4, 5, 6];
+  let datess2 = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29,
+  ];
   async function getRatings() {
     for (const aaa of datess) {
       let date = new Date();
@@ -51,19 +55,56 @@ export default function Chart(props) {
     return true;
   }
 
+  async function getRatings2() {
+    for (const aaa of datess2) {
+      let date = new Date();
+      date.setDate(date.getDate() - aaa);
+      let date1 = date.toISOString();
+      console.log("Date", date1);
+
+      // .substring(0, date1.indexOf("T"))
+      await axios
+        .post("http://localhost:4000/Payments/Month", {
+          name: JSON.parse(localStorage.getItem("Profile")).name,
+          dates: [date1],
+        })
+        .then(({ data }) => {
+          ratt = [
+            ...ratt,
+            createData(date1.substring(0, date1.indexOf("T")), data.res),
+          ];
+
+          console.log("EE:  ", ratt, datess);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    return true;
+  }
+
   useEffect(() => {
-    getRatings().then((result) => {
-      if (result) {
-        setData2(ratt);
-      }
-    });
+    if (props.value === "الشهر") {
+      getRatings2().then((result) => {
+        if (result) {
+          setData2(ratt);
+        }
+      });
+    } else {
+      getRatings().then((result) => {
+        if (result) {
+          setData2(ratt);
+        }
+      });
+    }
   }, []);
 
   const theme = useTheme();
 
   return (
     <React.Fragment>
-      <Title>الأسبوع الماضي</Title>
+      {props.value !== "الشهر" && <Title>الأسبوع الماضي</Title>}
+      {props.value === "الشهر" && <Title>الشهر الماضي</Title>}
 
       {data2.length !== 0 && (
         <ResponsiveContainer>

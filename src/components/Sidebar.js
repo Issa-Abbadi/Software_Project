@@ -18,11 +18,11 @@ const Sidebar = (props, { children }) => {
       name: "الرئيسية",
       icon: <FaTh />,
     },
-    {
-      path: "/admin",
-      name: "عن متجرك",
-      icon: <FaUserAlt />,
-    },
+    // {
+    //   path: "/admin",
+    //   name: "عن متجرك",
+    //   icon: <FaUserAlt />,
+    // },
     {
       path: "/admin",
       name: "احصائيات",
@@ -38,11 +38,11 @@ const Sidebar = (props, { children }) => {
     //   name: "تعديل منتج",
     //   icon: <FaCommentAlt />,
     // },
-    {
-      path: "/admin",
-      name: "المنتجات",
-      icon: <FaShoppingBag />,
-    },
+    // {
+    //   path: "/admin",
+    //   name: "المنتجات",
+    //   icon: <FaShoppingBag />,
+    // },
     {
       path: "/admin",
       name: "قائمة المنتجات",

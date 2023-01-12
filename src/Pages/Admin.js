@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddProduct from "./AddProduct";
 import Disposes from "../components/Dashboard";
+import Chart from "../components/Chart";
 import AddProductForm from "../components/AddProductForm";
 import EditProduct from "../components/EditProduct";
 import Orders from "../components/Orders";
@@ -87,6 +88,20 @@ function Admin(props) {
         <AddProductForm product={product} form={form} value={0} />
       )}
       {dash.Name === "إضافة نوع" && <AddVarForm />}
+      {dash.Name === "احصائيات" && (
+        <Paper
+          sx={{
+            p: 2,
+            display: "flex",
+            flexDirection: "column",
+            flex: "1",
+            height: "400px",
+            padding: "30px",
+          }}
+        >
+          <Chart value="الشهر" />
+        </Paper>
+      )}
       {dash.Name === "تعديل نوع" && <EditVarForm value={dash.Value} />}
       {dash.Name === "تعديل منتج" && <EditProduct />}
       {dash.Name === "قائمة المنتجات" && (
