@@ -22,7 +22,11 @@ router.post("/", (req, res) => {
       {
         _id: 0,
         quantity: req.body.product_quantity,
-        price: req.body.product_price,
+        original_price: req.body.product_price,
+        price: (
+          req.body.product_price -
+          req.body.product_price * (req.body.product_discount / 100)
+        ).toFixed(2),
         discount: req.body.product_discount,
         size: req.body.product_size,
         color: req.body.product_color,
@@ -107,7 +111,11 @@ router.put("/Var", (req, res) => {
               {
                 _id: 0,
                 quantity: req.body.product_quantity,
-                price: req.body.product_price,
+                original_price: req.body.product_price,
+                price: (
+                  req.body.product_price -
+                  req.body.product_price * (req.body.product_discount / 100)
+                ).toFixed(2),
                 discount: req.body.product_discount,
                 size: req.body.product_size,
                 color: req.body.product_color,
@@ -147,7 +155,11 @@ router.put("/VarE", (req, res) => {
         result.vars[0] = {
           _id: 0,
           quantity: req.body.product_quantity,
-          price: req.body.product_price,
+          original_price: req.body.product_price,
+          price: (
+            req.body.product_price -
+            req.body.product_price * (req.body.product_discount / 100)
+          ).toFixed(2),
           discount: req.body.product_discount,
           size: req.body.product_size,
           color: req.body.product_color,
@@ -157,7 +169,11 @@ router.put("/VarE", (req, res) => {
         result.vars[1] = {
           _id: 1,
           quantity: req.body.product_quantity,
-          price: req.body.product_price,
+          original_price: req.body.product_price,
+          price: (
+            req.body.product_price -
+            req.body.product_price * (req.body.product_discount / 100)
+          ).toFixed(2),
           discount: req.body.product_discount,
           size: req.body.product_size,
           color: req.body.product_color,
@@ -167,7 +183,12 @@ router.put("/VarE", (req, res) => {
         result.vars[2] = {
           _id: 2,
           quantity: req.body.product_quantity,
-          price: req.body.product_price,
+          original_price: req.body.product_price,
+          price: (
+            req.body.product_price -
+            req.body.product_price * (req.body.product_discount / 100)
+          ).toFixed(2),
+
           discount: req.body.product_discount,
           size: req.body.product_size,
           color: req.body.product_color,

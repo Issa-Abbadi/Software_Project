@@ -11,6 +11,8 @@ import {
 import Title from "./Title";
 import axios from "axios";
 
+import PriceChart from "./PriceChart";
+
 import { useState, useEffect } from "react";
 // Generate Sales Data
 
@@ -107,46 +109,48 @@ export default function Chart(props) {
       {props.value === "الشهر" && <Title>الشهر الماضي</Title>}
 
       {data2.length !== 0 && (
-        <ResponsiveContainer>
-          <LineChart
-            data={data2}
-            margin={{
-              top: 16,
-              right: 16,
-              bottom: 0,
-              left: 24,
-            }}
-          >
-            <XAxis
-              dataKey="time"
-              stroke={theme.palette.text.secondary}
-              style={theme.typography.body2}
-            />
-            <YAxis
-              stroke={theme.palette.text.secondary}
-              style={theme.typography.body2}
+        <>
+          <ResponsiveContainer>
+            <LineChart
+              data={data2}
+              margin={{
+                top: 16,
+                right: 16,
+                bottom: 0,
+                left: 24,
+              }}
             >
-              <Label
-                angle={270}
-                position="left"
-                style={{
-                  textAnchor: "middle",
-                  fill: theme.palette.text.primary,
-                  ...theme.typography.body1,
-                }}
+              <XAxis
+                dataKey="time"
+                stroke={theme.palette.text.secondary}
+                style={theme.typography.body2}
+              />
+              <YAxis
+                stroke={theme.palette.text.secondary}
+                style={theme.typography.body2}
               >
-                المبيعات ($)
-              </Label>
-            </YAxis>
-            <Line
-              isAnimationActive={false}
-              type="monotone"
-              dataKey="amount"
-              stroke={theme.palette.primary.main}
-              dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+                <Label
+                  angle={270}
+                  position="left"
+                  style={{
+                    textAnchor: "middle",
+                    fill: theme.palette.text.primary,
+                    ...theme.typography.body1,
+                  }}
+                >
+                  المبيعات ($)
+                </Label>
+              </YAxis>
+              <Line
+                isAnimationActive={false}
+                type="monotone"
+                dataKey="amount"
+                stroke={theme.palette.primary.main}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </>
       )}
     </React.Fragment>
   );

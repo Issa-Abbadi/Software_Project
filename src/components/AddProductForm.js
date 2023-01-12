@@ -99,7 +99,7 @@ const AddProductForm = (props) => {
   const formik = useFormik({
     initialValues: {
       product_name: product.product_name,
-      product_price: product.vars[value].price,
+      product_price: product.vars[value].original_price,
       product_discount: product.vars[value].discount,
       product_category: product.product_category,
       sub_category: product.sub_category,
@@ -271,6 +271,7 @@ const AddProductForm = (props) => {
               id="product_discount"
               name="product_discount"
               label="نسبة الخصم"
+              inputProps={{ min: 0, max: 100, step: 1 }}
               placeholder="نسبة الخصم"
               value={formik.values.product_discount}
               onChange={formik.handleChange}
@@ -289,6 +290,7 @@ const AddProductForm = (props) => {
               id="product_quantity"
               name="product_quantity"
               label="الكمية"
+              placeholder="الكمية"
               value={formik.values.product_quantity}
               onChange={formik.handleChange}
             />

@@ -66,6 +66,8 @@ function Product(props) {
   const [productImg, setProductImg] = useState("");
   const [productSize, setProductSize] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productDiscount, setProductDiscount] = useState(0);
+  const [productOriginalPrice, setProductOriginalPrice] = useState("");
   const [productVar, setProductVar] = useState(0);
   const [code, setCode] = useState(0);
   const [account, setAccount] = useState("");
@@ -124,6 +126,8 @@ function Product(props) {
       setProductImg(_state.product.vars[_state.var].product_img);
       setProductSize(_state.product.vars[_state.var].size);
       setProductPrice(_state.product.vars[_state.var].price);
+      setProductOriginalPrice(_state.product.vars[_state.var].original_price);
+      setProductDiscount(_state.product.vars[_state.var].discount);
 
       axios
         .post("http://localhost:4000/Products/getReviews", {
@@ -232,6 +236,9 @@ function Product(props) {
                                 setProductImg(prod.product_img);
                                 setProductPrice(prod.price);
                                 setProductSize(prod.size);
+                                setProductDiscount(prod.discount);
+                                setProductVar(prod._id);
+                                setProductOriginalPrice(prod.original_price);
                               }}
                               class="btn"
                             >
@@ -282,6 +289,11 @@ function Product(props) {
                     {Stars(product.product.product_rating)}
                   </div>
                   <span class="price">${productPrice}</span>
+                  <p className="small text-danger">
+                    {productDiscount > 0 && (
+                      <s>${parseFloat(productOriginalPrice).toFixed(2)}</s>
+                    )}
+                  </p>
                   <div class="size">
                     الحجم:
                     <div class="psize active">S</div>

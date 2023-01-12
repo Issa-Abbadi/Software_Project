@@ -28,6 +28,9 @@ function SingleProduct(props) {
     props.product.vars[0].product_img
   );
   const [productSize, setProductSize] = useState(props.product.vars[0].size);
+  const [productOriginalPrice, setProductOriginalPrice] = useState(
+    props.product.vars[0].original_price
+  );
   const [productDiscount, setProductDiscount] = useState(
     props.product.vars[0].discount
   );
@@ -69,6 +72,7 @@ function SingleProduct(props) {
                   setProductDiscount(prod.discount);
                   setProductVar(prod._id);
                   setProductQuantity(prod.quantity);
+                  setProductOriginalPrice(prod.original_price);
                 }}
                 class="btn"
               >
@@ -152,17 +156,18 @@ function SingleProduct(props) {
               >
                 {localStorage.getItem("wishList") == "true" && (
                   <>
-                    <Button onClick={handleDeleteone} 
-                    style=
-                    {{
-                       "backgroundColor":"var(--dark-liver-horses)",
-                       "color":"white",
-                       "width":"100%",
-                       "borderRadius":"0%",
-                       "border":"1px solid var(--dark-liver-horses)",
-                    }}>
+                    <Button
+                      onClick={handleDeleteone}
+                      style={{
+                        backgroundColor: "var(--dark-liver-horses)",
+                        color: "white",
+                        width: "100%",
+                        borderRadius: "0%",
+                        border: "1px solid var(--dark-liver-horses)",
+                      }}
+                    >
                       حذف
-                      </Button>
+                    </Button>
                   </>
                 )}
 
@@ -206,7 +211,9 @@ function SingleProduct(props) {
                       </a>
                     </p>
                     <p className="small text-danger">
-                      <s>${productDiscount}</s>
+                      {productDiscount > 0 && (
+                        <s>${parseFloat(productOriginalPrice).toFixed(2)}</s>
+                      )}
                     </p>
                   </div>
 
@@ -239,7 +246,6 @@ function SingleProduct(props) {
                   <a onClick={addtoCart} class="btn btn-primary" id="addtoCart">
                     أضف للسلّة
                   </a>
-                
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

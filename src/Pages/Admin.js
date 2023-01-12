@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import { useLocation } from "react-router-dom";
 import AddVarForm from "../components/AddVarForm";
 import EditVarForm from "../components/EditVarForm";
+import PriceChart from "../components/PriceChart";
 function Admin(props) {
   const [form, setForm] = useState("add");
   const [product, setProduct] = useState({
@@ -89,18 +90,36 @@ function Admin(props) {
       )}
       {dash.Name === "إضافة نوع" && <AddVarForm />}
       {dash.Name === "احصائيات" && (
-        <Paper
-          sx={{
-            p: 2,
-            display: "flex",
-            flexDirection: "column",
-            flex: "1",
-            height: "400px",
-            padding: "30px",
-          }}
-        >
-          <Chart value="الشهر" />
-        </Paper>
+        <>
+          <Paper
+            sx={{
+              p: 2,
+              display: "flex",
+              flexDirection: "column",
+              flex: "1",
+              height: "550px",
+              padding: "30px",
+            }}
+          >
+            <Chart value="الشهر" />
+          </Paper>
+          <Paper
+            sx={{
+              p: 2,
+              display: "flex",
+              flexDirection: "column",
+              flex: "1",
+              height: "550px",
+              padding: "30px",
+            }}
+          >
+            <div>
+              <div style={{ height: "500px" }}>
+                <PriceChart email={localStorage.getItem("EMAIL")} />
+              </div>
+            </div>
+          </Paper>
+        </>
       )}
       {dash.Name === "تعديل نوع" && <EditVarForm value={dash.Value} />}
       {dash.Name === "تعديل منتج" && <EditProduct />}

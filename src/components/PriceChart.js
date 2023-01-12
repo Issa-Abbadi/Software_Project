@@ -124,7 +124,6 @@ function PriceChart(props) {
       <div
         style={{
           direction: "ltr",
-          backgroundColor: "red",
         }}
       >
         {/* <input type="date" ref={inputRef1} />
@@ -149,7 +148,7 @@ function PriceChart(props) {
           </Select>
         </FormControl>
       </div>
-      <div>
+      <div className="priceChart">
         {dataPoints !== "" && dates !== "" && (
           <Line
             data={{
@@ -186,7 +185,7 @@ function PriceChart(props) {
                   position: "top",
                 },
                 title: {
-                  display: true,
+                  display: false,
                   text: "Chart.js Line Chart",
                 },
               },
