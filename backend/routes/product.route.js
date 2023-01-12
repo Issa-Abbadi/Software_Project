@@ -270,7 +270,7 @@ router.post("/addReview", (req, res) => {
       // console.log("DOne", result);
       result.product_rating =
         result.product_rating +
-        (prev + req.body.rating) / result.reviews.length;
+        (req.body.rating - result.product_rating) / result.reviews.length;
       console.log("DOne ", result);
       productSchema
         .updateOne(
