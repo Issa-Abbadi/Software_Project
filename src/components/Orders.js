@@ -6,7 +6,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
-import { Avatar } from "@mui/material";
+import { Avatar, Input } from "@mui/material";
 import axios from "axios";
 import Title from "./Title";
 import { DataGrid, renderCell, GridColDef } from "@mui/x-data-grid";
@@ -27,7 +27,7 @@ function preventDefault(event) {
 export default function Orders() {
   const [products, setProducts] = useState([]);
   const [ID, setID] = useState([]);
-
+  const [discount, setDiscount] = useState("");
   useEffect(() => {
     axios
       .post("http://localhost:4000/Products/company", {
@@ -191,6 +191,27 @@ export default function Orders() {
     },
   ];
 
+  const handleDiscount = () => {
+    axios
+      .post("http://localhost:4000/Products/discount", {
+        ID: ID,
+        product_company: localStorage.getItem("UserName"),
+        discount: discount,
+      })
+      .then(({ data }) => {
+        //setProducts(data);
+        //console.log("h", data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleChange = (event) => {
+    if (event.target.value >= 0 && event.target.value <= 100)
+      setDiscount(event.target.value);
+  };
+
   return (
     <React.Fragment>
       <Title>منتجاتك</Title>
@@ -200,7 +221,7 @@ export default function Orders() {
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          // checkboxSelection
+          checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {
             console.log(newSelectionModel);
             setID(newSelectionModel);
@@ -265,6 +286,30 @@ export default function Orders() {
         <Link to="/admin" state={{ Name: "أضف منتج" }}>
           إضافة منتج
         </Link>
+        <form onSubmit={handleDiscount}>
+          <Input
+            required
+            type="number"
+            id="product_discount"
+            name="product_discount"
+            label="نسبة الخصم"
+            inputProps={{ min: 0, max: 100, step: 1 }}
+            style={{ width: "200px", margin: "20px" }}
+            placeholder="نسبة الخصم"
+            value={discount}
+            onChange={(event) => {
+              handleChange(event);
+            }}
+          />
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{ mt: 3, ml: 1 }}
+            class="nextButton"
+          >
+            تحديد نسبة الخصم
+          </Button>
+        </form>
       </div>
     </React.Fragment>
   );

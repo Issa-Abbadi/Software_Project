@@ -329,6 +329,67 @@ router.post("/getReviews", (req, res) => {
     });
 });
 
+router.post("/discount", async (req, res) => {
+  console.log("in discount ... ", req.body);
+  const products = await productSchema.find({
+    $and: [
+      { product_company: req.body.product_company },
+      { _id: { $in: req.body.ID } },
+    ],
+  });
+  const updatedProducts = await Promise.all(
+    products.map(async (product) => {
+      product.vars = product.vars.map((var1) => {
+        if (var1 !== null) {
+          var1.price =
+            var1.original_price -
+            var1.original_price * (req.body.discount / 100);
+          var1.discount = req.body.discount;
+        }
+        return var1;
+      });
+      console.log("updated Product is ", product.vars[0]);
+      return productSchema(product).save();
+    })
+  );
+
+  console.log("updated Products", updatedProducts[0].vars);
+  await Promise.all(updatedProducts.map((product) => product.save()));
+  // const updatedProducts = products.map((product) => {
+  //   product.vars = product.vars.map((var1) => {
+  //     if (var1 !== null) {
+  //       var1.price =
+  //         var1.original_price - var1.original_price * (req.body.discount / 100);
+  //       var1.discount = req.body.discount;
+  //     }
+  //     return var1;
+  //   });
+  //   return product;
+  // });
+  // console.log("updated Products", updatedProducts[0].vars);
+
+  // await Promise.all(updatedProducts.map((product) => product.save()));
+});
+
 module.exports = router;
 
 //getReviews
+// .then((result) => {
+//   // console.log("result is ", result);
+//   if (result === null) {
+//     res.send({ code: 500, message: "user not found" });
+//   }  else {
+//     result.map((result1) => {
+//       result1.vars.map((var1) => {
+//         if(var1 !== null){
+//           var1.price = var1.original_price - (var1.original_price * (req.body.discount /100));
+//           var1.discount = req.body.discount;
+//         }
+//       })
+//     })
+
+//   }
+// })
+// .catch((err) => {
+//   res.send({ code: 500, message: "user not found" });
+// });
