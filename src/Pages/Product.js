@@ -382,14 +382,21 @@ function Product(props) {
               </form>
           
             </div>
-            <div class="review" style={{"display":"block","position":"relative",marginBottom:"8%",width:"100%",}}>
+            <div class="review" style={{"display":"block","position":"relative",marginBottom:"8%",width:"100%",marginTop:"2%",direction:"rtl",backgroundColor:"white",}}>
+            
             {reviews.length !== 0 &&
                 reviews.map((review, i) => (
-                  <div key={i} style={{ backgroundColor: "white","position":"absolute",marginTop:"1%",right:"0",marginBottom:"5%",width:"100%",direction:"rtl", }}>
+                <div key={i}
+                   style={{"backgroundColor":"white",}}
+                >
+
                     {Stars(review.rating)}
                     {review.name}
+                    
                     <p>{review.review}</p>
+                    <hr />
                   </div>
+                    
                 ))}
             </div>
           </div>
