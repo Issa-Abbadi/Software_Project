@@ -270,10 +270,8 @@ function Product(props) {
 
               <div class="descriptionDiv">
                 <div class="leftSide">
+                  <div class="ratingHeart">
                   <h2 class="productName">{product.product.product_name}</h2>
-                  <span class="price">${productPrice}</span>
-                  <p class="description">{product.product.product_description}</p>{" "}
-
                   <span class="heart">
                     {!wish && (
                       <FavoriteBorderIcon
@@ -288,9 +286,15 @@ function Product(props) {
                       />
                     )}
                   </span>
+                  </div>
+                  <span class="price">${productPrice}</span>
+                  <p class="description">{product.product.product_description}</p>{" "}
+                 
                   <div class="rating">
                     {Stars(product.product.product_rating)}
                   </div>
+                 
+                 
                   <div class="size">
                     الحجم:
                     {product.product.size}

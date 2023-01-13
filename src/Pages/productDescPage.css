@@ -69,11 +69,11 @@
 .productDesc .descriptionDiv .leftSide .rating {
   /* background-color: blue; */
   margin-bottom: 2%;
+  margin-left: 1%;
 }
 
 .productDesc .descriptionDiv .leftSide .heart
 {
-    margin-bottom: 2%;
 }
 .imgDiv .big-img {
   margin: auto;
@@ -246,4 +246,11 @@
   top:25%;
   bottom: 15%;
   height: 65%;
+}
+
+.ratingHeart
+{
+  display: flex;
+  justify-content: right;
+  flex-direction: row;
 }

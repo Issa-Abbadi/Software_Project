@@ -19,8 +19,8 @@
 
 .storeLogo
 {
-  width: 70%;
-  height: 400px;
+  width: 15%;
+  height: 65px;
   margin-left: 15%;
 }
 
@@ -28,5 +28,15 @@
 {
    display: flex;
    flex-direction: row;
-   justify-content: center;
+   justify-content: space-between;
+   direction: rtl;
+   margin-right: 15%;
 }
+ .storeTitle .storeName
+ {
+    background-color: white;
+ }
+ .ms-3
+ {
+  background-color: red;
+ }

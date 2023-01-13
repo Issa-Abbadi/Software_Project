@@ -16,8 +16,9 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMediaQuery } from "@mui/material";
 import Carousel from "react-bootstrap/Carousel";
-
 import './Cart.css';
+import './Home.css';
+
 import {
   faStar,
   faStarHalf,
@@ -68,7 +69,6 @@ const featuredPosts = [
   },
 ];
 
-let fahed=require('../assets/Stores/FahadHome.jpg');
 const sidebar = {
   title: "About",
   description:
@@ -233,12 +233,15 @@ export default function Blog(props) {
   }, [location]);
 
   return (
+    
     <ThemeProvider theme={theme}>
+      
       <CssBaseline />
 
       <Container maxWidth="lg">
+
         <div class="storeTitle">
-            <Header title={product.name} sections={sections} />
+            <Header title={product.name} sections={sections} class="storeName"/>
             <img src={product.imageUrl} alt="" class="storeLogo"/>
         </div>
 
@@ -255,29 +258,43 @@ export default function Blog(props) {
               <ControlledCarousel />
             </a>
           </div>
+           
+           <div>
+              {/* <h2 style={{"direction":"rtl",marginTop:"2%",}}>عن متجرنا</h2> */}
+      
+                <span class="aboutUsStore">عن متجرنا</span>
 
+                <span class="ourSite">موقعنا </span>
+
+                <iframe width="600" height="363" id="gmap_canvas" src="https://maps.google.com/maps?q=Palestine/Nablus/Rawafed&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+           </div>
 
 
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
 
 
 
-
+{/* 
            <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
-          </Grid> 
-          <Grid container spacing={5} sx={{ mt: 3 }}>
+          </Grid>  */}
+
+          {/* <Grid container spacing={5} sx={{ mt: 3 }}>
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
               archives={sidebar.archives}
               social={sidebar.social}
             />
-          </Grid>
+          </Grid> */}
         </main>
+
       </Container>
+      
     </ThemeProvider>
+
   );
 }

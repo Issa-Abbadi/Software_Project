@@ -16,7 +16,8 @@ function FeaturedPost(props) {
         <Card sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
-              {post.title}
+              {/* {post.title} */}
+                  <p style={{"direction":"rtl",}}>عن متجرنا</p>
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
               {post.date}
