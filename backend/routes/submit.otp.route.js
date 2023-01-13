@@ -15,7 +15,7 @@ router.put("/", (req, res) => {
       //  update the password
 
       accountSchema
-        .updateOne({ email: result.email }, { password: req.body.password })
+        .updateOne({ email: result.email }, { password: req.body.Password })
         .then((result) => {
           res.send({ code: 200, message: "Password updated" });
         })

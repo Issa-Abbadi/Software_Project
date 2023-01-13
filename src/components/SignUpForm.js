@@ -21,6 +21,8 @@ import { styled } from "@mui/system";
 import Container from "@mui/material/Container";
 import "../Pages/loginAndSign.css";
 
+const bcrypt = require("bcryptjs");
+const saltRounds = 5;
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("مطلوب"),
   email: Yup.string().email("هذا البريد الالكتروني غير صالح").required("مطلوب"),
@@ -59,11 +61,18 @@ function SignUpForm(props) {
       ppassword: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (studentObject) => {
+    onSubmit: async (studentObject) => {
       //console.log(studentObject);
       if (formik.values.ppassword === formik.values.password) {
+        const hashedPassword = await bcrypt.hash(
+          formik.values.password,
+          saltRounds
+        );
         axios
-          .post("http://localhost:4000/signup/", studentObject)
+          .post("http://localhost:4000/signup/", {
+            ...studentObject,
+            Password: hashedPassword,
+          })
           .then((res) => {
             // console.log(res.data.code);
 

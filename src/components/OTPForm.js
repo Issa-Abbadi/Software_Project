@@ -19,6 +19,8 @@ import "../Pages/loginAndSign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "@mui/material/Container";
 import "../Pages/loginAndSign.css";
+const bcrypt = require("bcryptjs");
+const saltRounds = 5;
 
 const validationSchema = Yup.object().shape({
   OTP: Yup.string().required("مطلوب"),
@@ -35,9 +37,16 @@ function OTPForm(props) {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (studentObject) => {
+    onSubmit: async (studentObject) => {
+      const hashedPassword = await bcrypt.hash(
+        formik.values.password,
+        saltRounds
+      );
       axios
-        .put("http://localhost:4000/submit-otp/", studentObject)
+        .put("http://localhost:4000/submit-otp/", {
+          ...studentObject,
+          Password: hashedPassword,
+        })
         .then((res) => {
           if (res.data.code === 200) {
             navigate("/login");

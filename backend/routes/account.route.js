@@ -13,18 +13,16 @@ router.post("/", (req, res) => {
     .then((result) => {
       //console.log(result, "11");
       // match password with req.body.password
-      if (result.password !== req.body.password) {
-        res.send({ code: 404, message: "password wrong" });
-      } else {
-        res.send({
-          email: result.email,
-          code: 200,
-          message: "user Found",
-          imageUrl: result.imageUrl,
-          token: "hfgdhg",
-          name: result.name,
-        });
-      }
+
+      res.send({
+        email: result.email,
+        code: 200,
+        message: "user Found",
+        imageUrl: result.imageUrl,
+        token: "hfgdhg",
+        name: result.name,
+        password: result.password,
+      });
     })
     .catch((err) => {
       res.send({ code: 500, message: "user not found" });

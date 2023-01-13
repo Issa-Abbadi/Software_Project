@@ -22,7 +22,8 @@ import "../Pages/loginAndSign.css";
 import { gapi } from "gapi-script";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { Logout } from "@mui/icons-material";
-
+const bcrypt = require("bcryptjs");
+const saltRounds = 5;
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("مطلوب"),
   password: Yup.string().required("مطلوب"),
@@ -44,7 +45,7 @@ function LoginForm(props) {
     axios
       .post("http://localhost:4000/signup/", {
         email: res.profileObj.email.concat("G"),
-        password: "",
+        Password: "",
         name: res.profileObj.name,
         imageUrl: res.profileObj.imageUrl,
       })
@@ -90,7 +91,7 @@ function LoginForm(props) {
     onSubmit: (studentObject) => {
       axios
         .post("http://localhost:4000/login/", studentObject)
-        .then((res) => {
+        .then(async (res) => {
           if (res.data.code === 500) {
             setCode(500); //userNotFound
           }
@@ -98,17 +99,23 @@ function LoginForm(props) {
             setCode(404); //Password is Wrong
           }
           if (res.data.code === 200) {
-            localStorage.setItem("Profile", JSON.stringify(res.data));
-            window.localStorage.setItem("TOKEN", res.data.token);
-            window.localStorage.setItem("EMAIL", res.data.email);
-            window.localStorage.setItem("UserName", res.data.name);
+            const isValidPassword = await bcrypt.compare(
+              formik.values.password,
+              res.data.password
+            );
+            if (isValidPassword) {
+              localStorage.setItem("Profile", JSON.stringify(res.data));
+              window.localStorage.setItem("TOKEN", res.data.token);
+              window.localStorage.setItem("EMAIL", res.data.email);
+              window.localStorage.setItem("UserName", res.data.name);
 
-            if (res.data.email.includes("houseware")) {
-              navigate("/admin");
-              navigate(0);
-            } else {
-              navigate("/");
-              navigate(0);
+              if (res.data.email.includes("houseware")) {
+                navigate("/admin");
+                navigate(0);
+              } else {
+                navigate("/");
+                navigate(0);
+              }
             }
           } else Promise.reject();
         })
@@ -119,11 +126,14 @@ function LoginForm(props) {
   console.log(props);
   return (
     <>
-      <div className="form-wrapper outcard signupForm"  style={{"direction":"rtl"}}>
+      <div
+        className="form-wrapper outcard signupForm"
+        style={{ direction: "rtl" }}
+      >
         <Container component="main" maxWidth="xs">
           <CssBaseline />
 
-          <div class="finding" >
+          <div class="finding">
             <Avatar
               style={{
                 margin: "auto",
@@ -136,10 +146,10 @@ function LoginForm(props) {
             <Typography component="h1" variant="h5" class="labels">
               تسجيل دخول
             </Typography>
-            <form onSubmit={formik.handleSubmit} >
+            <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={2} style={{ direction: "rtl" }}>
                 <Grid item xs={12}>
-                  <TextField 
+                  <TextField
                     variant="outlined"
                     fullWidth
                     id="email"

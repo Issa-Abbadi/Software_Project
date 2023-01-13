@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
   console.log(req.body);
   const newAccount = new accountSchema({
     email: req.body.email,
-    password: req.body.password,
+    password: req.body.Password,
     name: req.body.name,
   });
 
