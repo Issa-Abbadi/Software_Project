@@ -17,3 +17,16 @@
   );
 }
 
+.storeLogo
+{
+  width: 70%;
+  height: 400px;
+  margin-left: 15%;
+}
+
+.storeTitle
+{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}

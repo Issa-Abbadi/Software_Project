@@ -16,7 +16,8 @@ import {
   faStarHalfAlt,
   faStarAndCrescent,
 } from "@fortawesome/free-solid-svg-icons";
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
 import { Button } from "react-bootstrap";
@@ -136,12 +137,14 @@ function SingleProduct(props) {
         email: localStorage.getItem("EMAIL"),
         _id: product._id,
       })
+      
       .then(() => {
         setShow(false);
       })
       .catch((error) => {
         console.log(error);
       });
+      
   };
 
   return (
@@ -182,6 +185,7 @@ function SingleProduct(props) {
                     className=" rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
                     id="card-size"
                   >
+                
                     <p className="text-white mb-0 small">{productSize}</p>
                   </div>
                 </div>

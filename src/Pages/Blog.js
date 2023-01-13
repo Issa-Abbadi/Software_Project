@@ -14,6 +14,10 @@ import Sidebar from "../components/SidebarBlog";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useMediaQuery } from "@mui/material";
+import Carousel from "react-bootstrap/Carousel";
+
+import './Cart.css';
 import {
   faStar,
   faStarHalf,
@@ -34,6 +38,7 @@ const sections = [
   { title: "Style", url: "#" },
   { title: "Travel", url: "#" },
 ];
+
 
 const mainFeaturedPost = {
   title: "Title of a longer featured blog post",
@@ -63,6 +68,7 @@ const featuredPosts = [
   },
 ];
 
+let fahed=require('../assets/Stores/FahadHome.jpg');
 const sidebar = {
   title: "About",
   description:
@@ -87,8 +93,83 @@ const sidebar = {
   ],
 };
 
-const theme = createTheme();
 
+const imgs = [
+  {
+    url: "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1572656934803-d2162b2e98bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1501924497965-792fefaea3dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80",
+  },
+];
+
+
+const theme = createTheme();
+function ControlledCarousel() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+  return (
+    <div style={{ height: "100%", overflow: "hidden",  }}>
+      <Carousel
+        activeIndex={index}
+        onSelect={handleSelect}
+        variant="dark"
+        style={{ display: "flex" }}
+      >
+        <Carousel.Item
+          interval={1500}
+          style={{ height: "100%", overflow: "hidden" }}
+        >
+          <img
+            className="cover d-block w-100"
+            src={imgs[0].url}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>الأدوات</h3>
+            <p> </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="cover d-block w-100"
+            src={imgs[1].url}
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            <h3>الأدوات</h3>
+            <p></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="cover d-block w-100"
+            src={imgs[2].url}
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>الأدوات</h3>
+            <p></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </div>
+  );
+}
 export default function Blog(props) {
   const Stars = (rating) => {
     const starArray = [...Array(5).keys()].map((i) => i + 1);
@@ -104,7 +185,9 @@ export default function Blog(props) {
       }
     });
   };
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
+  const config = isMatch ? "500px" : "100%";
   const addtoCart = () => {
     axios
       .post("http://localhost:4000/login/addtoCart", {
@@ -152,16 +235,39 @@ export default function Blog(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <Container maxWidth="lg">
-        <Header title={product.name} sections={sections} />
+        <div class="storeTitle">
+            <Header title={product.name} sections={sections} />
+            <img src={product.imageUrl} alt="" class="storeLogo"/>
+        </div>
+
         <main>
+          
+        <div
+            style={{
+              overflow: "hidden",
+              height: "100%",
+              width: config,
+            }}
+          >
+            <a href="">
+              <ControlledCarousel />
+            </a>
+          </div>
+
+
+
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
-          <img url="../assets/Stores/FahadHome.jpg" alt="" />
-          <Grid container spacing={4}>
+
+
+
+
+           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
-          </Grid>
+          </Grid> 
           <Grid container spacing={5} sx={{ mt: 3 }}>
             <Sidebar
               title={sidebar.title}

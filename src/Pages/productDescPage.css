@@ -185,3 +185,55 @@
   background-color: #eee;
 }
 
+/* {
+  background-color: #eee;
+} */
+
+.cart
+{
+  background-color: var(--dark-liver-horses);
+  color: white;
+  width: 30%;
+  padding: 8px 0;
+}
+.canBack
+{
+  background-color: red;
+}
+
+.reviews
+{
+  background-color: white;
+  margin-top: 5%;
+}
+
+.reviews h3
+{
+  display: flex;
+  justify-content: center;
+
+}
+
+.review
+{
+   display: flex;
+   background-color: red;
+   flex-direction: column;
+   justify-content: right;
+}
+
+.writeRev
+{
+  position: relative;
+}
+.sendReview
+{
+  color: white;
+  background-color: var(--dark-liver-horses);
+  width: 25%;
+  margin-right: 2%;
+  position: absolute;
+  top:25%;
+  bottom: 15%;
+  height: 65%;
+}

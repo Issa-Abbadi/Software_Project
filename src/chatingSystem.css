@@ -162,6 +162,3 @@ li {
   z-index: 100;
   border-radius: 40%;
 }
-.chatIcon:hover {
-  background-color: var(--dark-liver-horses);
-}

@@ -104,3 +104,10 @@ hr{
 {
     text-decoration: underline;
 }
+
+.deleteAll
+{
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}

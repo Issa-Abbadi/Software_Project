@@ -85,8 +85,15 @@ function WishList() {
             </form>
           </div>
       </div> */}
-      <div>
-        <Button onClick={deleteAll}>حذف الجميع</Button>
+      <div style={{"display":"flex","justifyContent":"center",}}>
+        <Button onClick={deleteAll}
+        style=
+        {{
+             "backgroundColor":"var(--dark-liver-horses)",
+             "display":"flex",
+             "justifyContent":"center",
+             "width":"30%",
+        }}>حذف الجميع</Button>
       </div>
     </>
   );

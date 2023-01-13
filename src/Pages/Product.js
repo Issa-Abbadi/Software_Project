@@ -271,6 +271,8 @@ function Product(props) {
               <div class="descriptionDiv">
                 <div class="leftSide">
                   <h2 class="productName">{product.product.product_name}</h2>
+                  <p class="description">{product.product.product_description}</p>{" "}
+
                   <span class="heart">
                     {!wish && (
                       <FavoriteBorderIcon
@@ -296,9 +298,7 @@ function Product(props) {
                   </p>
                   <div class="size">
                     الحجم:
-                    <div class="psize active">S</div>
-                    <div class="psize">M</div>
-                    <div class="psize">L</div>
+                    {product.product.size}
                   </div>
                   <div class="quantity">
                     <p>الكمية</p>
@@ -333,14 +333,13 @@ function Product(props) {
                     <Alert severity="success">قابل للإرجاع </Alert>
                   )}
                 </div>
-                <p class="description">{product.product.product_description}</p>{" "}
                 <div class="buttons">
                   <button className="cart" onClick={addtoCart}>
                     أضف للسلة
                   </button>
-                  <button className="buyNow" onClick={addtoCart}>
+                  {/* <button className="buyNow" onClick={addtoCart}>
                     اشتري الان
-                  </button>
+                  </button> */}
                   {code == 200 && (
                     <Alert
                       severity="success"
@@ -367,22 +366,26 @@ function Product(props) {
                 </div>
               )}
             </div>
-            <div style={{ direction: "rtl" }}>
+            <div style={{ direction: "rtl" }} class="reviews">
               <h3> التقييمات </h3>
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} class="writeRev">
                 <div>
                   <Rating rating={newRating} setNewRating={setNewRating} />
                 </div>
                 <textarea
                   value={newReview}
                   onChange={(event) => setNewReview(event.target.value)}
+                  style={{"width":"60%"}}
                 />
-                <button type="submit">إرسال التقييم</button>
+                <button type="submit" class="sendReview">إرسال التقييم</button>
               </form>
-              {reviews.length !== 0 &&
+          
+            </div>
+            <div class="review" style={{"display":"block","position":"relative",marginBottom:"8%",width:"100%",}}>
+            {reviews.length !== 0 &&
                 reviews.map((review, i) => (
-                  <div key={i} style={{ backgroundColor: "white" }}>
+                  <div key={i} style={{ backgroundColor: "white","position":"absolute",marginTop:"1%",right:"0",marginBottom:"5%",width:"100%",direction:"rtl", }}>
                     {Stars(review.rating)}
                     {review.name}
                     <p>{review.review}</p>
