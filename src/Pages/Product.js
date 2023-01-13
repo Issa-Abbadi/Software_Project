@@ -291,11 +291,6 @@ function Product(props) {
                     {Stars(product.product.product_rating)}
                   </div>
                   <span class="price">${productPrice}</span>
-                  <p className="small text-danger">
-                    {productDiscount > 0 && (
-                      <s>${parseFloat(productOriginalPrice).toFixed(2)}</s>
-                    )}
-                  </p>
                   <div class="size">
                     الحجم:
                     {product.product.size}
