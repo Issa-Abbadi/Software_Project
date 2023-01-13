@@ -271,6 +271,7 @@ function Product(props) {
               <div class="descriptionDiv">
                 <div class="leftSide">
                   <h2 class="productName">{product.product.product_name}</h2>
+                  <span class="price">${productPrice}</span>
                   <p class="description">{product.product.product_description}</p>{" "}
 
                   <span class="heart">
@@ -290,15 +291,15 @@ function Product(props) {
                   <div class="rating">
                     {Stars(product.product.product_rating)}
                   </div>
-                  <span class="price">${productPrice}</span>
                   <div class="size">
                     الحجم:
                     {product.product.size}
                   </div>
-                  <div class="quantity">
-                    <p>الكمية</p>
+                  <div class="quantity" style={{display:"flex",justifyContent:"right",flexDirection:"rtl",}}>
+                    <p>الكمية: </p>
                     <input
                       type="number"
+                      style={{height:"31px",marginRight:"2%",marginTop:"2%",}}
                       min="1"
                       max="10"
                       value={quantity}

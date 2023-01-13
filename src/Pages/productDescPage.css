@@ -118,8 +118,9 @@
 .leftSide .price
 {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 2%;
+    color: red;
 }
 
 .leftSide .rating
@@ -177,9 +178,18 @@
 
 .descriptionDiv .storeName
 {
-   color: rgb(125, 134, 141);   
-
+   color: rgb(119, 119, 119);  
+   text-decoration: none;
+   font-size: 20px;
+   font-weight: lighter;
+   cursor: pointer;
 }
+.descriptionDiv .storeName:hover
+{
+  text-decoration: underline;
+  color: black;
+}
+
 .app
 {
   background-color: #eee;
