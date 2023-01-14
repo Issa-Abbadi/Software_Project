@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMediaQuery } from "@mui/material";
 import Carousel from "react-bootstrap/Carousel";
 import { Avatar } from "@mui/material";
+import Rating from "../components/Rating";
 import PriceChart from "../components/PriceChart";
 import "./Cart.css";
 import "./Home.css";
@@ -96,13 +97,13 @@ const sidebar = {
 
 const imgs = [
   {
-    url: "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    url: "https://scontent.fjrs2-2.fna.fbcdn.net/v/t39.30808-6/258858975_128997442883312_6254727363737905622_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=jQjghrMwSpQAX_6396z&_nc_ht=scontent.fjrs2-2.fna&oh=00_AfAH3pBtf23HXNt1om11kjajDtzs34_W_DEdOpbDjUovTQ&oe=63C7EC17",
   },
   {
-    url: "https://images.unsplash.com/photo-1572656934803-d2162b2e98bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    url: "https://scontent.fjrs2-2.fna.fbcdn.net/v/t39.30808-6/258858975_128997442883312_6254727363737905622_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=jQjghrMwSpQAX_6396z&_nc_ht=scontent.fjrs2-2.fna&oh=00_AfAH3pBtf23HXNt1om11kjajDtzs34_W_DEdOpbDjUovTQ&oe=63C7EC17",
   },
   {
-    url: "https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    url: "https://scontent.fjrs2-2.fna.fbcdn.net/v/t39.30808-6/258858975_128997442883312_6254727363737905622_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=jQjghrMwSpQAX_6396z&_nc_ht=scontent.fjrs2-2.fna&oh=00_AfAH3pBtf23HXNt1om11kjajDtzs34_W_DEdOpbDjUovTQ&oe=63C7EC17",
   },
   {
     url: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
@@ -137,7 +138,7 @@ function ControlledCarousel() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>الأدوات</h3>
+            <h3></h3>
             <p> </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -149,7 +150,7 @@ function ControlledCarousel() {
           />
 
           <Carousel.Caption>
-            <h3>الأدوات</h3>
+            <h3></h3>
             <p></p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -161,7 +162,7 @@ function ControlledCarousel() {
           />
 
           <Carousel.Caption>
-            <h3>الأدوات</h3>
+            <h3></h3>
             <p></p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -266,7 +267,10 @@ export default function Blog(props) {
             {/* <h2 style={{"direction":"rtl",marginTop:"2%",}}>عن متجرنا</h2> */}
 
             <span class="aboutUsStore">عن متجرنا</span>
-
+            <p>
+              الروافد هي شركة فلسطينية رائدة في مجال بيع و توزيع الأدوات
+              المنزلية
+            </p>
             <span class="ourSite">موقعنا </span>
 
             <iframe
@@ -281,6 +285,22 @@ export default function Blog(props) {
             ></iframe>
           </div>
           <div>{product.email && <PriceChart email={product.email} />}</div>
+          {/* <div style={{ direction: "rtl" }} class="reviews">
+              <h3> التقييمات </h3>
+
+              <form onSubmit={handleSubmit} class="writeRev">
+                <div>
+                  <Rating rating={newRating} setNewRating={setNewRating} />
+                </div>
+                <textarea
+                  value={newReview}
+                  onChange={(event) => setNewReview(event.target.value)}
+                  style={{"width":"60%"}}
+                />
+                <button type="submit" class="sendReview">إرسال التقييم</button>
+              </form>
+          
+            </div> */}
 
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
 
