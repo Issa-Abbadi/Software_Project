@@ -40,7 +40,7 @@ function KitchenProducts(props) {
         }
 
         filterData = filterData.filter((product) => {
-          if (search === "") {
+          if (search === "" || search === null) {
             console.log("No td");
             return product;
           } else if (

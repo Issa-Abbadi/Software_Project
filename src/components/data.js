@@ -26,5 +26,8 @@ export const sizeOptions = [
 
 export const marketOptions = [
   { value: "الروافد", label: "الروافد" },
-  { value: "الفهد", label: "الفهد" },
+  { value: "فهد هوم", label: "فهد هوم" },
+  { value: "السيد", label: "السيد" },
+  { value: "شمس الشام", label: "شمس الشام" },
+  { value: "الخيري", label: "الخيري" },
 ];
