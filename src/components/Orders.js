@@ -99,7 +99,7 @@ export default function Orders() {
       field: "السعر",
       headerName: "السعر",
 
-      width: 60,
+      width: 100,
       headerAlign: "center",
       align: "center",
     },

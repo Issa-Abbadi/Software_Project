@@ -271,39 +271,54 @@ function Product(props) {
               <div class="descriptionDiv">
                 <div class="leftSide">
                   <div class="ratingHeart">
-                  <h2 class="productName">{product.product.product_name}</h2>
-                  <span class="heart">
-                    {!wish && (
-                      <FavoriteBorderIcon
-                        style={{ color: "red" }}
-                        onClick={addtoWish}
-                      />
-                    )}
-                    {wish && (
-                      <FavoriteIcon
-                        style={{ color: "red" }}
-                        onClick={removeFromWish}
-                      />
-                    )}
-                  </span>
+                    <h2 class="productName">{product.product.product_name}</h2>
+                    <span class="heart">
+                      {!wish && (
+                        <FavoriteBorderIcon
+                          style={{ color: "red" }}
+                          onClick={addtoWish}
+                        />
+                      )}
+                      {wish && (
+                        <FavoriteIcon
+                          style={{ color: "red" }}
+                          onClick={removeFromWish}
+                        />
+                      )}
+                    </span>
                   </div>
                   <span class="price">${productPrice}</span>
-                  <p class="description">{product.product.product_description}</p>{" "}
-                 
+                  <p className="small text-danger">
+                    {productDiscount > 0 && (
+                      <s>${parseFloat(productOriginalPrice).toFixed(2)}</s>
+                    )}
+                  </p>
+                  <p class="description">
+                    {product.product.product_description}
+                  </p>{" "}
                   <div class="rating">
                     {Stars(product.product.product_rating)}
                   </div>
-                 
-                 
                   <div class="size">
                     الحجم:
                     {product.product.size}
                   </div>
-                  <div class="quantity" style={{display:"flex",justifyContent:"right",flexDirection:"rtl",}}>
+                  <div
+                    class="quantity"
+                    style={{
+                      display: "flex",
+                      justifyContent: "right",
+                      flexDirection: "rtl",
+                    }}
+                  >
                     <p>الكمية: </p>
                     <input
                       type="number"
-                      style={{height:"31px",marginRight:"2%",marginTop:"2%",}}
+                      style={{
+                        height: "31px",
+                        marginRight: "2%",
+                        marginTop: "2%",
+                      }}
                       min="1"
                       max="10"
                       value={quantity}
@@ -315,7 +330,6 @@ function Product(props) {
                       }}
                     />
                   </div>
-
                   <p>
                     {" "}
                     المتجر:{" "}
@@ -376,27 +390,34 @@ function Product(props) {
                 <textarea
                   value={newReview}
                   onChange={(event) => setNewReview(event.target.value)}
-                  style={{"width":"60%"}}
+                  style={{ width: "60%" }}
                 />
-                <button type="submit" class="sendReview">إرسال التقييم</button>
+                <button type="submit" class="sendReview">
+                  إرسال التقييم
+                </button>
               </form>
-          
             </div>
-            <div class="review" style={{"display":"block","position":"relative",marginBottom:"8%",width:"100%",marginTop:"2%",direction:"rtl",backgroundColor:"white",}}>
-            
-            {reviews.length !== 0 &&
+            <div
+              class="review"
+              style={{
+                display: "block",
+                position: "relative",
+                marginBottom: "8%",
+                width: "100%",
+                marginTop: "2%",
+                direction: "rtl",
+                backgroundColor: "white",
+              }}
+            >
+              {reviews.length !== 0 &&
                 reviews.map((review, i) => (
-                <div key={i}
-                   style={{"backgroundColor":"white",}}
-                >
-
+                  <div key={i} style={{ backgroundColor: "white" }}>
                     {Stars(review.rating)}
                     {review.name}
-                    
+
                     <p>{review.review}</p>
                     <hr />
                   </div>
-                    
                 ))}
             </div>
           </div>
