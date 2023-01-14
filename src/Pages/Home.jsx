@@ -60,7 +60,7 @@ function Home() {
       setIndex(selectedIndex);
     };
     return (
-      <div style={{ height: "100%", overflow: "hidden",  }}>
+      <div style={{ height: "100%", overflow: "hidden" }}>
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}
@@ -162,9 +162,8 @@ function Home() {
 
   return (
     <>
-      <div style={{ display: "inline-block", width: "100%", }}>
+      <div style={{ display: "inline-block", width: "100%" }}>
         <Container className="Home">
-       
           <div
             style={{
               overflow: "hidden",
@@ -186,21 +185,20 @@ function Home() {
           </div> */}
           {/* <div className="centerMode">{<CenterMode />}</div> */}
 
-          <div style={{ width: config,  }}>
+          <div style={{ width: config }}>
             <Card
               title="متاجر عرضناها لك"
               data={markets}
               target="/markets"
-              style={{ margin: "20%", }}
+              style={{ margin: "20%" }}
             />
           </div>
           <div class="chart">
-                  <p>هنا مقارنه بين المتاجر المتوافرة من حيث التقييم</p>          
+            <p>أفضل المتاجر خلال الأسبوع الماضي</p>
           </div>
           {markets.length !== 0 && (
             <div
-             class="chartHome"
-
+              class="chartHome"
               style={{
                 width: "auto",
 
@@ -401,8 +399,6 @@ function Home() {
           <Card title="عروض خاصة" data={imgs} />
           <Card title="جديد" data={imgs} /> */}
           {/* {DataTable()} */}
-           
-          
         </Container>
       </div>
     </>
