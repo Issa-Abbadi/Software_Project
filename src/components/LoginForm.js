@@ -199,7 +199,7 @@ function LoginForm(props) {
               </Button>
               <GoogleLogin
                 clientId={clientId}
-                buttonText="Sign in with Google"
+                buttonText="تسجيل الدخول بواسطة جوجل"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_origin"}

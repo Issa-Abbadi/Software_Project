@@ -21,7 +21,6 @@ import CartCard from "../components/CartCard";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import Checkout from "./Checkout";
-
 import React, { useState, useEffect } from "react";
 function dynamicSort(property) {
   var sortOrder = 1;
