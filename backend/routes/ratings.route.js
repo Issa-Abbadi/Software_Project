@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log("in ...");
+  console.log("in Ratings...", req.body);
   //console.log(req.body);
   ratingsSchema
     .find({ email: req.body.email })

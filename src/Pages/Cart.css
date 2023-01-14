@@ -17,26 +17,23 @@
   );
 }
 
-.storeLogo
-{
-  width: 15%;
-  height: 65px;
+.storeLogo {
+  width: 7.5%;
+  height: 7.5%;
   margin-left: 15%;
+  border-radius: 50%;
 }
 
-.storeTitle
-{
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   direction: rtl;
-   margin-right: 15%;
+.storeTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  direction: rtl;
+  margin-right: 15%;
 }
- .storeTitle .storeName
- {
-    background-color: white;
- }
- .ms-3
- {
+.storeTitle .storeName {
+  background-color: white;
+}
+.ms-3 {
   background-color: red;
- }
+}

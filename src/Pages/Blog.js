@@ -16,8 +16,10 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMediaQuery } from "@mui/material";
 import Carousel from "react-bootstrap/Carousel";
-import './Cart.css';
-import './Home.css';
+import { Avatar } from "@mui/material";
+import PriceChart from "../components/PriceChart";
+import "./Cart.css";
+import "./Home.css";
 
 import {
   faStar,
@@ -39,7 +41,6 @@ const sections = [
   { title: "Style", url: "#" },
   { title: "Travel", url: "#" },
 ];
-
 
 const mainFeaturedPost = {
   title: "Title of a longer featured blog post",
@@ -93,7 +94,6 @@ const sidebar = {
   ],
 };
 
-
 const imgs = [
   {
     url: "https://images.unsplash.com/photo-1556910096-6f5e72db6803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
@@ -112,7 +112,6 @@ const imgs = [
   },
 ];
 
-
 const theme = createTheme();
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
@@ -121,7 +120,7 @@ function ControlledCarousel() {
     setIndex(selectedIndex);
   };
   return (
-    <div style={{ height: "100%", overflow: "hidden",  }}>
+    <div style={{ height: "100%", overflow: "hidden" }}>
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
@@ -233,21 +232,25 @@ export default function Blog(props) {
   }, [location]);
 
   return (
-    
     <ThemeProvider theme={theme}>
-      
       <CssBaseline />
 
       <Container maxWidth="lg">
-
         <div class="storeTitle">
-            <Header title={product.name} sections={sections} class="storeName"/>
-            <img src={product.imageUrl} alt="" class="storeLogo"/>
+          <div>
+            <Header
+              title={product.name}
+              sections={sections}
+              class="storeName"
+            />
+            {Stars(product.market_rating)}
+          </div>
+
+          <img src={product.imageUrl} alt="" class="storeLogo" />
         </div>
 
         <main>
-          
-        <div
+          <div
             style={{
               overflow: "hidden",
               height: "100%",
@@ -258,24 +261,30 @@ export default function Blog(props) {
               <ControlledCarousel />
             </a>
           </div>
-           
-           <div>
-              {/* <h2 style={{"direction":"rtl",marginTop:"2%",}}>عن متجرنا</h2> */}
-      
-                <span class="aboutUsStore">عن متجرنا</span>
 
-                <span class="ourSite">موقعنا </span>
+          <div>
+            {/* <h2 style={{"direction":"rtl",marginTop:"2%",}}>عن متجرنا</h2> */}
 
-                <iframe width="600" height="363" id="gmap_canvas" src="https://maps.google.com/maps?q=Palestine/Nablus/Rawafed&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <span class="aboutUsStore">عن متجرنا</span>
 
-           </div>
+            <span class="ourSite">موقعنا </span>
 
+            <iframe
+              width="600"
+              height="363"
+              id="gmap_canvas"
+              src="https://maps.google.com/maps?q=Palestine/Nablus/Rawafed&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+            ></iframe>
+          </div>
+          <div>{product.email && <PriceChart email={product.email} />}</div>
 
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
 
-
-
-{/* 
+          {/* 
            <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
@@ -291,10 +300,7 @@ export default function Blog(props) {
             />
           </Grid> */}
         </main>
-
       </Container>
-      
     </ThemeProvider>
-
   );
 }
