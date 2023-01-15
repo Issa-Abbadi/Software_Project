@@ -410,4 +410,64 @@ router.post("/addAddress", (req, res) => {
     });
 });
 
+router.post("/addReview", (req, res) => {
+  console.log("in review", req.body);
+  accountSchema
+    .findOne({
+      name: req.body.name,
+    })
+    .then((result) => {
+      // console.log("DOne", result);
+      let found = false;
+      let prev = 0;
+      result.reviews.map((review) => {
+        if (review.email === req.body.email) {
+          prev = -review.rating;
+          review.review = req.body.review;
+          review.rating = req.body.rating;
+          found = true;
+        }
+      });
+      if (found === false) {
+        result.reviews = [
+          ...result.reviews,
+          {
+            review: req.body.review,
+            rating: req.body.rating,
+            email: req.body.email,
+            name: req.body.name,
+          },
+        ];
+      }
+      // console.log("DOne", result);
+
+      result.market_rating =
+        result.market_rating +
+        (req.body.rating - result.market_rating) / result.reviews.length;
+
+      console.log("DOne ", result);
+      accountSchema
+        .updateOne(
+          {
+            name: req.body.name,
+          },
+          {
+            $set: {
+              reviews: result.reviews,
+              market_rating: result.market_rating,
+            },
+          }
+        )
+        .then((result) => {
+          res.send({ code: 200, message: "reviews updated" });
+        })
+        .catch((err) => {
+          res.send({ code: 500, message: "Server err" });
+        });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 module.exports = router;

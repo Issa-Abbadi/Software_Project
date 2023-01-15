@@ -33,6 +33,9 @@ let accountSchema = new Schema(
     address: {
       type: Object,
     },
+    reviews: {
+      type: Array,
+    },
   },
   {
     collection: "accounts",

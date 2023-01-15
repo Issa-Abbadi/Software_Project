@@ -19,6 +19,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { Avatar } from "@mui/material";
 import Rating from "../components/Rating";
 import PriceChart from "../components/PriceChart";
+import { Alert } from "@mui/material";
 import "./Cart.css";
 import "./Home.css";
 
@@ -139,7 +140,7 @@ function ControlledCarousel() {
           />
           <Carousel.Caption>
             <h3></h3>
-            <p> </p>
+            <p></p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -209,6 +210,26 @@ export default function Blog(props) {
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));
+  };
+
+  const [newRating, setNewRating] = useState(1);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:4000/login/addReview", {
+        name: product.name,
+        review: "",
+        rating: newRating,
+        email: localStorage.getItem("EMAIL"),
+        name: JSON.parse(localStorage.getItem("Profile")).name,
+      })
+      .then(() => {
+        setCode(222);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const [productImg, setProductImg] = useState("");
@@ -285,22 +306,28 @@ export default function Blog(props) {
             ></iframe>
           </div>
           <div>{product.email && <PriceChart email={product.email} />}</div>
-          {/* <div style={{ direction: "rtl" }} class="reviews">
-              <h3> التقييمات </h3>
+          <div style={{ direction: "rtl" }} class="reviews">
+            <h3> قيم المتجر </h3>
 
-              <form onSubmit={handleSubmit} class="writeRev">
-                <div>
-                  <Rating rating={newRating} setNewRating={setNewRating} />
-                </div>
-                <textarea
-                  value={newReview}
-                  onChange={(event) => setNewReview(event.target.value)}
-                  style={{"width":"60%"}}
-                />
-                <button type="submit" class="sendReview">إرسال التقييم</button>
-              </form>
-          
-            </div> */}
+            <form onSubmit={handleSubmit} class="writeRev">
+              <div>
+                <Rating rating={newRating} setNewRating={setNewRating} />
+              </div>
+
+              <button
+                type="submit"
+                class="sendReview"
+                style={{ height: "50px", margin: "1.5%" }}
+              >
+                إرسال التقييم
+              </button>
+            </form>
+          </div>
+          {code === 222 && (
+            <div>
+              <Alert severity="success">تم تخزين التقييم بنجاح </Alert>
+            </div>
+          )}
 
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
 
