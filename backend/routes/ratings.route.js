@@ -24,6 +24,7 @@ router.post("/", (req, res) => {
   //console.log(req.body);
   ratingsSchema
     .find({ email: req.body.email })
+    .sort({ created_on: 1 })
     .then((result) => {
       res.send(result);
     })
