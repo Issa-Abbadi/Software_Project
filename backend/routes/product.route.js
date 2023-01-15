@@ -371,6 +371,28 @@ router.post("/discount", async (req, res) => {
   // await Promise.all(updatedProducts.map((product) => product.save()));
 });
 
+router.post("/delete", async (req, res) => {
+  await productSchema.deleteMany({
+    $and: [
+      { product_company: req.body.product_company },
+      { _id: { $in: req.body.ID } },
+    ],
+  });
+  productSchema
+    .find({ product_company: req.body.product_company })
+    .then((result) => {
+      // console.log("result is ", result);
+      if (result === null) {
+        res.send({ code: 500, message: "user not found" });
+      } else {
+        res.send(result);
+      }
+    })
+    .catch((err) => {
+      res.send({ code: 500, message: "user not found" });
+    });
+});
+
 module.exports = router;
 
 //getReviews

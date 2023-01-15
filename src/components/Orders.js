@@ -207,6 +207,20 @@ export default function Orders() {
       });
   };
 
+  const handleDelete = () => {
+    axios
+      .post("http://localhost:4000/Products/delete", {
+        ID: ID,
+        product_company: localStorage.getItem("UserName"),
+      })
+      .then(({ data }) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const handleChange = (event) => {
     if (event.target.value >= 0 && event.target.value <= 100)
       setDiscount(event.target.value);
@@ -309,6 +323,18 @@ export default function Orders() {
           >
             تحديد نسبة الخصم
           </Button>
+          <div>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => {
+                handleDelete();
+              }}
+              sx={{ mt: 3, ml: 1 }}
+            >
+              حذف المنتجات
+            </Button>
+          </div>
         </form>
       </div>
     </React.Fragment>
