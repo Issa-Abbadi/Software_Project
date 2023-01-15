@@ -153,7 +153,7 @@ function SingleProduct(props) {
           <MDBRow>
             <MDBCol md="12" lg="12" className="mb-4 mb-lg-0">
               <MDBCard
-                style={{ direction: "rtl", position: "relative" }}
+                style={{ direction: "rtl", position: "relative",borderRadius:"5px", }}
                 class="card-container"
               >
                 {localStorage.getItem("wishList") == "true" && (
