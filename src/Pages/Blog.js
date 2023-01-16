@@ -115,63 +115,65 @@ const imgs = [
 ];
 
 const theme = createTheme();
-function ControlledCarousel() {
-  const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-  return (
-    <div style={{ height: "100%", overflow: "hidden" }}>
-      <Carousel
-        activeIndex={index}
-        onSelect={handleSelect}
-        variant="dark"
-        style={{ display: "flex" }}
-      >
-        <Carousel.Item
-          interval={1500}
-          style={{ height: "100%", overflow: "hidden" }}
-        >
-          <img
-            className="cover d-block w-100"
-            src={imgs[0].url}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3></h3>
-            <p></p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="cover d-block w-100"
-            src={imgs[1].url}
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-            <h3></h3>
-            <p></p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="cover d-block w-100"
-            src={imgs[2].url}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3></h3>
-            <p></p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    </div>
-  );
-}
 export default function Blog(props) {
+  function ControlledCarousel() {
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+      setIndex(selectedIndex);
+    };
+    return (
+      <div style={{ height: "100%", overflow: "hidden" }}>
+        <Carousel
+          activeIndex={index}
+          onSelect={handleSelect}
+          variant="dark"
+          style={{ display: "flex" }}
+        >
+          <Carousel.Item
+            interval={1500}
+            style={{ height: "100%", overflow: "hidden" }}
+          >
+            <img
+              className="cover d-block w-100"
+              src={product.cover_img1}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3></h3>
+              <p></p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="cover d-block w-100"
+              src={product.cover_img2}
+              alt="Second slide"
+            />
+
+            <Carousel.Caption>
+              <h3></h3>
+              <p></p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="cover d-block w-100"
+              src={product.cover_img3}
+              alt="Third slide"
+            />
+
+            <Carousel.Caption>
+              <h3></h3>
+              <p></p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+    );
+  }
+
   const Stars = (rating) => {
     const starArray = [...Array(5).keys()].map((i) => i + 1);
     return starArray.map((i) => {
@@ -288,17 +290,14 @@ export default function Blog(props) {
             {/* <h2 style={{"direction":"rtl",marginTop:"2%",}}>عن متجرنا</h2> */}
 
             <span class="aboutUsStore">عن متجرنا</span>
-            <p>
-              الروافد هي شركة فلسطينية رائدة في مجال بيع و توزيع الأدوات
-              المنزلية
-            </p>
+            <p>{product.market_description}</p>
             <span class="ourSite">موقعنا </span>
 
             <iframe
               width="600"
               height="363"
               id="gmap_canvas"
-              src="https://maps.google.com/maps?q=Palestine/Nablus/Rawafed&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              src={product.location}
               frameborder="0"
               scrolling="no"
               marginheight="0"

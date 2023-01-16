@@ -36,6 +36,21 @@ let accountSchema = new Schema(
     reviews: {
       type: Array,
     },
+    market_description: {
+      type: String,
+    },
+    cover_img1: {
+      type: String,
+    },
+    cover_img2: {
+      type: String,
+    },
+    cover_img3: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
   },
   {
     collection: "accounts",
