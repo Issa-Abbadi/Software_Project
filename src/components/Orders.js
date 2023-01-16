@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,11 +9,10 @@ import { Avatar, Input } from "@mui/material";
 import axios from "axios";
 import Title from "./Title";
 import { DataGrid, renderCell, GridColDef } from "@mui/x-data-grid";
-
 import { optionGroupUnstyledClasses } from "@mui/base";
 import { Link } from "react-router-dom";
 import { spacing } from "@mui/system";
-
+import './navbar.css';
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
@@ -308,7 +306,8 @@ export default function Orders() {
             name="product_discount"
             label="نسبة الخصم"
             inputProps={{ min: 0, max: 100, step: 1 }}
-            style={{ width: "200px", margin: "20px" }}
+            style={{ width: "400px", margin: "20px",backgroundColor:"white",borderColor:"white", }}
+            class="discountPerc"
             placeholder="نسبة الخصم"
             value={discount}
             onChange={(event) => {

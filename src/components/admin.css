@@ -2,53 +2,35 @@
 {
     background-color: white;
     margin-right: 15%;
-    outline: 5px solid brown;
-    padding: 2%;
+    outline: 3px solid var(--dark-liver-horses);
     width: 40%;
     height: fit-content;
-    display: flex;
-    justify-content: center;
+    padding: 1%;
+    box-shadow: 2px 2px 2px 2px var(--may-green);
+    margin-bottom: 10%;
 }
 
 #product_price
 {
-    border: 2px solid black;
-    width: 60%;
-    margin: 1%;
-    
+    width: 100%;    
 }
 /* rgb(184, 177, 177); */
-#product_price::placeholder{
-    font-size: 20px;
-    color: black;
 
-}
 
 #product_discount
 {
-    border: 2px solid black;
-    width: 60%;
+    width: 100%;
     margin: 1%;
 }
 
-#product_discount::placeholder
-{
-    font-size: 20px;
-    color: black;
-}
 
 #product_quantity
 {
-    border: 2px solid black;
-    width: 60%;
+    width: 100%;
     margin: 1%;
 }
 
-#product_discount::placeholder
-{
-    font-size: 20px;
-    color: black;
-}
+
 
 .nextButton
 {
@@ -99,4 +81,21 @@
     border: 3px solid black ;
 }
   
-  
+.addImg 
+{
+    background-color: var(--dark-liver-horses);
+    color: white;
+    padding: 1%;
+    width: 50%;
+    margin: 2% 0;
+}
+
+.addOK
+{
+    display: block;
+    width: 50%;
+    margin: auto;
+    color: white;
+    background-color: var(--dark-liver-horses);
+    padding: 1%;
+}

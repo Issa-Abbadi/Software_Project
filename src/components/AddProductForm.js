@@ -226,16 +226,14 @@ const AddProductForm = (props) => {
     <div style={{ marginTop: " 5%" }} class="addProductContainer">
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={rtlTheme}>
-          <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }}>
+          <form onSubmit={formik.handleSubmit} style={{ textAlign: "center" }} class="addProductForm">
             {form === "add" && <h1>أضف منتج</h1>}
             {form === "addE" && <h1>تعديل منتج</h1>}
             {form !== "addVar" && form !== "addEVar" && (
               <TextField
                 fullWidth
-                id="product_name"
                 name="product_name"
                 label="الاسم"
-                class="productName"
                 value={formik.values.product_name}
                 onChange={formik.handleChange}
                 error={
@@ -404,8 +402,7 @@ const AddProductForm = (props) => {
             <div></div>
             {product_img === "" && (
               <>
-                <span style={{ color: "red" }}>*</span>
-                <Button variant="contained" component="label">
+                <Button variant="contained" component="label" class="addImg">
                   إضافة صورة
                   <span style={{ display: "none" }}>
                     <FileBase64
@@ -433,7 +430,7 @@ const AddProductForm = (props) => {
               </Alert>
             )}
 
-            <Button color="primary" variant="contained" fullWidth type="submit">
+            <Button color="primary" variant="contained" fullWidth type="submit" class="addOK">
               {form === "add" && <>إضافة </>}
               {form === "addE" && <>تعديل </>}
               {form === "addVar" && <>إضافة نوع</>}
