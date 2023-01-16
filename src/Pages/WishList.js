@@ -15,6 +15,7 @@ function WishList() {
       })
       .then(({ data }) => {
         setProducts("");
+        localStorage.setItem("CurrentWishList", JSON.stringify([]));
       })
       .catch((error) => {
         console.log(error);
@@ -85,15 +86,18 @@ function WishList() {
             </form>
           </div>
       </div> */}
-      <div style={{"display":"flex","justifyContent":"center",}}>
-        <Button onClick={deleteAll}
-        style=
-        {{
-             "backgroundColor":"var(--dark-liver-horses)",
-             "display":"flex",
-             "justifyContent":"center",
-             "width":"30%",
-        }}>حذف الجميع</Button>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Button
+          onClick={deleteAll}
+          style={{
+            backgroundColor: "var(--dark-liver-horses)",
+            display: "flex",
+            justifyContent: "center",
+            width: "30%",
+          }}
+        >
+          حذف الجميع
+        </Button>
       </div>
     </>
   );

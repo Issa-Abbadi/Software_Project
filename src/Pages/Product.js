@@ -143,6 +143,7 @@ function Product(props) {
         });
     }
 
+    // ?/
     axios
       .post("http://localhost:4000/login/one", {
         email: localStorage.getItem("EMAIL"),
@@ -188,6 +189,10 @@ function Product(props) {
       .then((res) => {
         if (res.data.code === 200) {
           setWish(true);
+          localStorage.setItem(
+            "CurrentWishList",
+            JSON.stringify(res.data.wishList)
+          );
         }
         if (res.data.code === 500) {
           setWish(false);
@@ -205,6 +210,10 @@ function Product(props) {
       .then((res) => {
         if (res.data.code === 200) {
           setWish(false);
+          localStorage.setItem(
+            "CurrentWishList",
+            JSON.stringify(res.data.wishList)
+          );
         }
         if (res.data.code === 500) {
           setWish(true);

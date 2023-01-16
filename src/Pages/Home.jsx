@@ -51,6 +51,17 @@ function Home() {
       .catch((error) => {
         console.log(error);
       });
+
+    axios
+      .post("http://localhost:4000/login/one/", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        localStorage.setItem("CurrentWishList", JSON.stringify(data.wishList));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   function ControlledCarousel() {

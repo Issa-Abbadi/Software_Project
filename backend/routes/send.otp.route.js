@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
     service: "outlook",
     auth: {
       user: "node-123456789-node@outlook.com",
-      pass: "123456789!@#",
+      pass: "123456789!@##",
     },
   });
 
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
     from: "node-123456789-node@outlook.com",
     to: req.body.email,
     subject: "OTP",
-    text: String(_otp),
+    html: "<h1>Your Code number is : " + String(_otp) + "</h1>",
   });
 
   if (info.messageId) {

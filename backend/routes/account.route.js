@@ -181,7 +181,11 @@ router.post("/deleteW", (req, res) => {
       accountSchema
         .updateOne({ email: result.email }, { wishList: wishList })
         .then((result) => {
-          res.send({ code: 200, message: "Product Updated" });
+          res.send({
+            code: 200,
+            message: "Product Updated",
+            wishList: wishList,
+          });
         })
         .catch((err) => {
           res.send({ code: 500, message: "Server err" });
@@ -323,7 +327,7 @@ router.post("/addtoWish", (req, res) => {
 
         .then((result) => {
           console.log("here", result);
-          res.send({ code: 200, message: "Product Added" });
+          res.send({ code: 200, message: "Product Added", wishList: wishList });
         })
         .catch((err) => {
           res.send({ code: 500, message: "Server err" });
@@ -347,7 +351,7 @@ router.post("/removeFromWish", (req, res) => {
 
         .then((result) => {
           console.log("here", result);
-          res.send({ code: 200, message: "Product Added" });
+          res.send({ code: 200, message: "Product Added", wishList: wishList });
         })
         .catch((err) => {
           res.send({ code: 500, message: "Server err" });

@@ -7,7 +7,7 @@ import {
   MDBCardImage,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import {
@@ -138,12 +138,68 @@ function SingleProduct(props) {
         _id: product._id,
       })
 
-      .then(() => {
+      .then((res) => {
         setShow(false);
+        localStorage.setItem(
+          "CurrentWishList",
+          JSON.stringify(res.data.wishList)
+        );
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const [wish, setWish] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("CurrentWishList")) {
+      JSON.parse(localStorage.getItem("CurrentWishList")).map((wish) => {
+        if (wish._id === props.product._id) {
+          setWish(true);
+        }
+      });
+    }
+  }, []);
+  const addtoWish = () => {
+    axios
+      .post("http://localhost:4000/login/addtoWish", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product._id,
+      })
+      .then((res) => {
+        if (res.data.code === 200) {
+          setWish(true);
+          localStorage.setItem(
+            "CurrentWishList",
+            JSON.stringify(res.data.wishList)
+          );
+        }
+        if (res.data.code === 500) {
+          setWish(false);
+        } else Promise.reject();
+      })
+      .catch((err) => alert("Something went wrong "));
+  };
+
+  const removeFromWish = () => {
+    axios
+      .post("http://localhost:4000/login/removeFromWish", {
+        email: localStorage.getItem("EMAIL"),
+        _id: product._id,
+      })
+      .then((res) => {
+        if (res.data.code === 200) {
+          setWish(false);
+          localStorage.setItem(
+            "CurrentWishList",
+            JSON.stringify(res.data.wishList)
+          );
+        }
+        if (res.data.code === 500) {
+          setWish(true);
+        } else Promise.reject();
+      })
+      .catch((err) => alert("Something went wrong "));
   };
 
   return (
@@ -153,7 +209,11 @@ function SingleProduct(props) {
           <MDBRow>
             <MDBCol md="12" lg="12" className="mb-4 mb-lg-0">
               <MDBCard
-                style={{ direction: "rtl", position: "relative",borderRadius:"5px", }}
+                style={{
+                  direction: "rtl",
+                  position: "relative",
+                  borderRadius: "5px",
+                }}
                 class="card-container"
               >
                 {localStorage.getItem("wishList") == "true" && (
@@ -177,9 +237,26 @@ function SingleProduct(props) {
                   className="d-flex justify-content-between p-3"
                   id="card-title"
                 >
+                  {localStorage.getItem("wishList") == "false" && (
+                    <span class="heart">
+                      {!wish && (
+                        <FavoriteBorderIcon
+                          style={{ color: "red" }}
+                          onClick={addtoWish}
+                        />
+                      )}
+                      {wish && (
+                        <FavoriteIcon
+                          style={{ color: "red" }}
+                          onClick={removeFromWish}
+                        />
+                      )}
+                    </span>
+                  )}
                   <p className="lead mb-0" id="cardTitle">
                     {product.product_name}
                   </p>
+
                   <div
                     className=" rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
                     id="card-size"
