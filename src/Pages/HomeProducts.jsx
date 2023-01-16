@@ -78,12 +78,10 @@ function HomeProducts(props) {
         /* next line works with strings and numbers,
          * and you may want to customize it to your needs
          */
-        var result =
-          a.vars[0].price < b.vars[0].price
-            ? -1
-            : a.vars[0].price > b.vars[0].price
-            ? 1
-            : 0;
+
+        var priceA = parseFloat(a.vars[0].price);
+        var priceB = parseFloat(b.vars[0].price);
+        var result = priceA < priceB ? -1 : priceA > priceB ? 1 : 0;
         return result * sortOrder;
       };
     } else {
