@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import AddVarForm from "../components/AddVarForm";
 import EditVarForm from "../components/EditVarForm";
 import PriceChart from "../components/PriceChart";
+import axios from "axios";
 function Admin(props) {
   const [form, setForm] = useState("add");
   const [product, setProduct] = useState({
@@ -39,6 +40,16 @@ function Admin(props) {
   const [dash, setDash] = useState({ Name: "الرئيسية", Value: "0" });
   useEffect(() => {
     const token = localStorage.getItem("EMAIL");
+    axios
+      .post("http://localhost:4000/login/one/", {
+        email: localStorage.getItem("EMAIL"),
+      })
+      .then(({ data }) => {
+        localStorage.setItem("CurrentWishList", JSON.stringify(data.wishList));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log("token = ", token);
     if (!token) {
       navigate("/");
