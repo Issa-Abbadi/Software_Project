@@ -67,7 +67,7 @@ function App() {
   return (
     <>
       <Router>
-        <header>
+        <header style={{"zIndex":"5000",}}>
           <Nav login={isLogin} setChating={setChating} />
         </header>
 

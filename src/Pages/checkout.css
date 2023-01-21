@@ -3,7 +3,7 @@
 {
   background-color: white;
   overflow: hidden;
-  width: 60%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
