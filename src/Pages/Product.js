@@ -230,12 +230,10 @@ function Product(props) {
           <div className="app">
             {" "}
             <div className="productDesc" key={product.product._id}>
-              <div class="imgDiv">
-                <div className="big-img">
-                  <div className="cover-img">
-                    <img src={productImg} class="mainImg" alt="" />{" "}
-                  </div>
-                  <div>
+              <div className="cover-img">
+                  <img src={productImg} class="mainImg" alt="" />{" "}
+              </div>
+              <div>
                     {product.product.vars.map((prod) => {
                       if (prod !== null)
                         return (
@@ -273,9 +271,7 @@ function Product(props) {
                           </span>
                         );
                     })}
-                  </div>
-                </div>
-              </div>
+            </div>
 
               <div class="descriptionDiv">
                 <div class="leftSide">
