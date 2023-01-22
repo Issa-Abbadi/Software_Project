@@ -23,6 +23,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Product(props) {
+
   const Stars = (rating) => {
     const starArray = [...Array(5).keys()].map((i) => i + 1);
     return starArray.map((i) => {
@@ -306,7 +307,8 @@ function Product(props) {
                   </div>
                   <div class="size">
                     الحجم:
-                    {product.product.size}
+                    {productSize}
+                    
                   </div>
                   <div
                     class="quantity"
