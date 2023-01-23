@@ -1,86 +1,87 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.app"
+3    package="com.Software_android.app"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="22"
-8-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml
+8-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml
+9-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml
 10
 11    <!-- Permissions -->
 12
 13    <uses-permission android:name="android.permission.INTERNET" />
-13-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:41:5-67
-13-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:41:22-64
+13-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:44:5-67
+13-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:44:22-64
 14
 15    <application
-15-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:5:5-37:19
+15-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:5:5-40:19
 16        android:allowBackup="true"
-16-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:6:9-35
+16-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:6:9-35
 17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 17-->[androidx.core:core:1.8.0] C:\Users\eisaa\.gradle\caches\transforms-3\fe0dba67bfac75aa58e7b93d33808165\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 18        android:debuggable="true"
 19        android:icon="@mipmap/ic_launcher"
-19-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:7:9-43
+19-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:7:9-43
 20        android:label="@string/app_name"
-20-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:8:9-41
+20-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:8:9-41
 21        android:roundIcon="@mipmap/ic_launcher_round"
-21-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:9:9-54
+21-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:9:9-54
 22        android:supportsRtl="true"
-22-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:10:9-35
-23        android:testOnly="true"
-24        android:theme="@style/AppTheme" >
-24-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:11:9-40
+22-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:10:9-35
+23        android:theme="@style/AppTheme"
+23-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:11:9-40
+24        android:usesCleartextTraffic="true" >
+24-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:12:9-44
 25        <activity
-25-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:13:9-26:20
-26            android:name="com.example.app.MainActivity"
-26-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:15:13-56
+25-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:16:5-29:20
+26            android:name="com.Software_android.app.MainActivity"
+26-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:18:13-65
 27            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
-27-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:14:13-129
+27-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:17:13-129
 28            android:exported="true"
-28-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:19:13-36
+28-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:22:13-36
 29            android:label="@string/title_activity_main"
-29-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:16:13-56
+29-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:19:13-56
 30            android:launchMode="singleTask"
-30-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:18:13-44
+30-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:21:13-44
 31            android:theme="@style/AppTheme.NoActionBarLaunch" >
-31-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:17:13-62
+31-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:20:13-62
 32            <intent-filter>
-32-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:21:13-24:29
+32-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:24:13-27:29
 33                <action android:name="android.intent.action.MAIN" />
-33-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:22:17-69
-33-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:22:25-66
+33-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:25:17-69
+33-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:25:25-66
 34
 35                <category android:name="android.intent.category.LAUNCHER" />
-35-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:23:17-77
-35-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:23:27-74
+35-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:26:17-77
+35-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:26:27-74
 36            </intent-filter>
 37        </activity>
 38
 39        <provider
 40            android:name="androidx.core.content.FileProvider"
-40-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:29:13-62
-41            android:authorities="com.example.app.fileprovider"
-41-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:30:13-64
+40-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:32:13-62
+41            android:authorities="com.Software_android.app.fileprovider"
+41-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:33:13-64
 42            android:exported="false"
-42-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:31:13-37
+42-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:34:13-37
 43            android:grantUriPermissions="true" >
-43-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:32:13-47
+43-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:35:13-47
 44            <meta-data
-44-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:33:13-35:64
+44-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:36:13-38:64
 45                android:name="android.support.FILE_PROVIDER_PATHS"
-45-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:34:17-67
+45-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:37:17-67
 46                android:resource="@xml/file_paths" />
-46-->D:\React_apps\Software_Project - delete\android\app\src\main\AndroidManifest.xml:35:17-51
+46-->D:\React_apps\Software_Project - Copy\android\app\src\main\AndroidManifest.xml:38:17-51
 47        </provider>
 48        <provider
 48-->[androidx.emoji2:emoji2:1.0.0] C:\Users\eisaa\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 49            android:name="androidx.startup.InitializationProvider"
 49-->[androidx.emoji2:emoji2:1.0.0] C:\Users\eisaa\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
-50            android:authorities="com.example.app.androidx-startup"
+50            android:authorities="com.Software_android.app.androidx-startup"
 50-->[androidx.emoji2:emoji2:1.0.0] C:\Users\eisaa\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
 51            android:exported="false" >
 51-->[androidx.emoji2:emoji2:1.0.0] C:\Users\eisaa\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37

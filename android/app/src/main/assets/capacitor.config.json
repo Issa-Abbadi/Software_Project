@@ -1,6 +1,12 @@
 {
-	"appId": "com.example.app",
-	"appName": "app1",
+	"appId": "com.Software_android.app",
+	"appName": "Software_android",
 	"webDir": "build",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"server": {
+		"allowNavigation": []
+	},
+	"android": {
+		"allowMixedContent": true
+	}
 }
